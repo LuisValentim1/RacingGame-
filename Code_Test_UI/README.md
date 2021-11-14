@@ -1,0 +1,1 @@
+Para testar, colocar a pasta "Code_Test_UI" dentro do Unity e, abrir o ficheiro que diz: "UI_Test.unity"
