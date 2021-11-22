@@ -14,9 +14,6 @@ public class Manager : MonoBehaviour
         data.OnAwake();
         for (int i = 0; i < systems.Length; i++)
             systems[i].AwakeSys();
-
-        Window_Options window_options = Window_Options.Get();
-        window_options.LoadAndApply();
     }
 
     private void Start() {

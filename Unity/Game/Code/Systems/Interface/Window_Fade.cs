@@ -4,30 +4,33 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Window_Fade : Window
+namespace CatJam.UI 
 {
-    // Variables -> Instance
-    public static Window_Fade instance;
-    public static Window_Fade Get() { return instance; }
+    public class Window_Fade : Window
+    {
+        // Variables -> Instance
+        public static Window_Fade instance;
+        public static Window_Fade Get() { return instance; }
 
-    // Variables
+        // Variables
 
-    // Methods -> Override
-    protected override void OnAwakeWindow() {
-        instance = this;
+        // Methods -> Override
+        protected override void OnAwakeWindow() {
+            instance = this;
+        }
+
+        protected override void OnOpenWindow() {
+
+        }
+
+        protected override void OnCloseWindow() {
+
+        }
+
+        protected override void OnUpdateWindow() {
+
+        }
+
+        // Methods -> Public
     }
-
-    protected override void OnOpenWindow() {
-
-    }
-
-    protected override void OnCloseWindow() {
-
-    }
-
-    protected override void OnUpdateWindow() {
-
-    }
-
-    // Methods -> Public
 }
