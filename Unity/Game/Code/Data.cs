@@ -24,6 +24,8 @@ public class Data : MonoBehaviour {
 
     [Serializable]
     public class Options {
+        public int quality_level;
+
         public int textures_quality;
         public int lighting_quality;
         public bool enable_shadows;

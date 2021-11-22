@@ -66,18 +66,63 @@ public class Window_Options : Window
 
     public void Save() {
         string path = Application.persistentDataPath + "/options.dat";
-        BinaryFormatter bf = new BinaryFormatter();
+        BinaryFormatter binary = new BinaryFormatter();
         FileStream fStream = File.Create(path);
-        bf.Serialize(fStream, Data.options);
+        binary.Serialize(fStream, Data.options);
         fStream.Close();
     }
 
     public void Load() {
-        // throw new NotImplementedException();
+        string path = Application.persistentDataPath + "/Options.dat";
+
+        if (File.Exists(path) == true) {
+            BinaryFormatter binary = new BinaryFormatter();
+            FileStream fStream = File.Open(path, FileMode.Open);
+            Data.options = binary.Deserialize(fStream) as Data.Options;
+        }
     }
 
     public void Apply() {
-        // throw new NotImplementedException();
+        // Quality Level
+        QualitySettings.SetQualityLevel(Data.options.quality_level);
+
+        // Audio
+
+
+        // Textures
+        switch (Data.options.textures_quality) {
+            case 0:
+                QualitySettings.masterTextureLimit = 2;
+                break;
+            case 1:
+                QualitySettings.masterTextureLimit = 1;
+                break;
+            case 2:
+                QualitySettings.masterTextureLimit = 0;
+                break;
+        }
+
+        // Shadows
+        if (Data.options.enable_shadows == true)
+            QualitySettings.shadows = ShadowQuality.All;
+        else
+            QualitySettings.shadows = ShadowQuality.Disable;
+
+        switch (Data.options.shadows_quality)
+        {
+            case 0: 
+                QualitySettings.shadowDistance = 50;
+                break;
+            case 1:
+                QualitySettings.shadowDistance = 100;
+                break;
+            case 2:
+                QualitySettings.shadowDistance = 150;
+                break;
+        }
+
+        // Anti Aliasing
+
     }
 
     public void LoadAndApply() {
