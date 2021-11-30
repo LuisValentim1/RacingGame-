@@ -40,17 +40,21 @@ namespace CatJam.Map {
             return 0;
         }
 
+        // NOT FINISHED
         public bool IsCompatible (Module with_module) {
             bool is_compatible = false;
           
             for (int i = 0; i < 4; i++) {
+               
+               /*
                 if (compatibles[i].direction == with_module.compatibles[i].direction - 180) {
                     if (compatibles[i].road_size == with_module.compatibles[i].road_size) {
                         if (compatibles[i].road_exists == true) {
-
+                            
                         }
                     }
                 }
+                */
             }
             return is_compatible;         
         }
