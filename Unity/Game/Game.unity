@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 116788837}
   - component: {fileID: 116788836}
   m_Layer: 5
-  m_Name: Background_Options
+  m_Name: Window_Options
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -345,7 +345,7 @@ Transform:
   m_GameObject: {fileID: 147019332}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.7874, y: 0.7722, z: -3}
-  m_LocalScale: {x: 0.3948, y: 0.78427994, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1912152241}
@@ -400,6 +400,7 @@ MonoBehaviour:
   accelerationFactor: 15
   turnFactor: 3.5
   maxSpeed: 12
+  rotOffset: -90
 --- !u!114 &147019337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,8 +456,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.764151, g: 0.16148092, b: 0.16148092, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 07f3e35ae73e1c74aad050e33c470d58, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -579,7 +580,7 @@ GameObject:
   - component: {fileID: 301566702}
   - component: {fileID: 301566701}
   m_Layer: 5
-  m_Name: Background_Credits
+  m_Name: Window_Credits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -796,7 +797,7 @@ GameObject:
   - component: {fileID: 323551335}
   - component: {fileID: 323551334}
   m_Layer: 5
-  m_Name: Background_Fade
+  m_Name: Window_Fade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1774,7 +1775,7 @@ GameObject:
   - component: {fileID: 732405481}
   - component: {fileID: 732405480}
   m_Layer: 5
-  m_Name: Background_PauseMenu
+  m_Name: Window_PauseMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2668,6 +2669,7 @@ MonoBehaviour:
   systems:
   - {fileID: 1155818059}
   - {fileID: 1912152242}
+  - {fileID: 1431976956}
   data: {fileID: 1330949567}
 --- !u!114 &1330949567
 MonoBehaviour:
@@ -2694,6 +2696,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1386903372}
   - component: {fileID: 1386903373}
+  - component: {fileID: 1386903374}
   m_Layer: 0
   m_Name: SideWalk
   m_TagString: Untagged
@@ -2768,6 +2771,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1386903374
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386903371}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1431976954
 GameObject:
   m_ObjectHideFlags: 0
@@ -2777,6 +2806,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1431976955}
+  - component: {fileID: 1431976956}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -2800,6 +2830,20 @@ Transform:
   m_Father: {fileID: 1330949565}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1431976956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431976954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b122ce5080009694c8adba5ef52f190d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  can_pause: 0
+  current_camera: {fileID: 156395580}
 --- !u!1001 &1498678108
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3783,7 +3827,7 @@ MonoBehaviour:
   is_opened: 0
   canvasGroup: {fileID: 1824492145}
   ui_elements: []
-  character_selected: -1
+  toggleGroup: {fileID: 0}
 --- !u!1001 &1840680236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4023,7 +4067,7 @@ GameObject:
   - component: {fileID: 1904543537}
   - component: {fileID: 1904543536}
   m_Layer: 5
-  m_Name: Background_SplashScreen
+  m_Name: Window_SplashScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

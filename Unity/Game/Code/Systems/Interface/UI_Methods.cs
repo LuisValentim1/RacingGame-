@@ -30,12 +30,5 @@ namespace CatJam.UI
 
 
         // Methods -> Window
-        public static void OpenWindow(Window target) {
-            
-        }
-
-        public static void CloseWindow(Window target) {
-            
-        }
     }
 }

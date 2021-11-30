@@ -4,27 +4,62 @@ using UnityEngine;
 
 namespace CatJam.Audio 
 {
-    public class AudioMusic : Audio {
+    public class AudioMusic : MonoBehaviour {
 
-        // Methods -> Override
-        protected override void OnAwake() {
+        // Variables
+        [SerializeField] private AudioSource audioSource;
+        private AudioClip clip;
+        private bool started;
+
+        public float volume;
+
+
+        // Methods -> Standard
+        public void AwakeAudio() {
+            if(audioSource == null)
+                audioSource.GetComponent<AudioSource>();
+
+            started = false;
+        }
+
+        public void StartAudio() {
+
+        }
+        
+        public void UpdateAudio() {
 
         }
 
-        protected override void OnStart() {
+        // Methods -> Public
+        public void PlayMusic() {
+            if(audioSource.clip == null)
+                return;
 
+            started = true;
+            audioSource.Play();
         }
 
-        protected override void OnPlay() {
-
+        public void PlayMusic(AudioClip clip) {
+            SetAudioClip(clip);
+            PlayMusic();
         }
 
-        protected override void OnUpdate() {
-
+        public void PauseMusic() {
+            audioSource.Pause();
         }
 
-        protected override void OnStop() {
+        public void StopMusic() {
+            audioSource.Stop();
+        }
 
+
+        // Methods -> Set
+        public void SetAudioClip(AudioClip clip) {
+            this.clip = clip;
+        }
+
+        public void SetVolume(float value) {
+            volume = Math.Clamp(value, 0, 1);
         }
     }
 }

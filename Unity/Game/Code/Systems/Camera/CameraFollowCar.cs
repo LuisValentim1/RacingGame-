@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace CatJam.Camera 
+namespace CatJam.Cameras
 {
-    public class CameraFollowCar : MonoBehaviour
+    public class CameraFollowCar : CameraBase
     {
+        // Variables
         public Transform player;
         public Vector3 offset;
     
-        void Update () 
-        {
+        // Methods
+        protected override void OnUpdate() {
             transform.position = new Vector3 (player.position.x + offset.x, player.position.y + offset.y, offset.z); // Camera follows the player with specified offset position
         }
     }

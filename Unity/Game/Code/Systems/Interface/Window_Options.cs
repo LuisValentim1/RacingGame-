@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace CatJam.UI 
 {
@@ -86,12 +85,12 @@ namespace CatJam.UI
         }
 
         public void Apply() {
-            /*
             // Quality Level
-            QualitySettings.SetQualityLevel(Data.options.quality_level);
+           // QualitySettings.SetQualityLevel(Data.options.quality_level);
 
             // Audio
 
+            /*
 
             // Textures
             switch (Data.options.textures_quality) {

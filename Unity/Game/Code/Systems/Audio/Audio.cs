@@ -12,6 +12,8 @@ namespace CatJam.Audio
         protected AudioClip clip;
         protected bool started;
 
+        public float volume;
+
         // Methods -> Abstract
         abstract protected void OnAwake();
         abstract protected void OnStart();
@@ -49,6 +51,10 @@ namespace CatJam.Audio
 
         public void SetAudio(AudioClip clip) {
             this.clip = clip;
+        }
+
+        public void SetVolume(float value) {
+            volume = Math.Clamp(value, 0, 1);
         }
     }
 }

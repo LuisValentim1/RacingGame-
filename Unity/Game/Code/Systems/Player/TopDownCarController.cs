@@ -19,6 +19,7 @@ namespace CatJam.Player
         float steeringInput = 0;
 
         float rotationAngle = 0;
+        public float rotOffset = -90;
 
         float velocityVsUp = 0;
 
@@ -77,7 +78,7 @@ namespace CatJam.Player
             minSpeedBeforeAllowTurningFactor = Mathf.Clamp01(minSpeedBeforeAllowTurningFactor);
 
             rotationAngle -= steeringInput * turnFactor * minSpeedBeforeAllowTurningFactor;
-            carRigidbody2D.MoveRotation(rotationAngle);
+            carRigidbody2D.MoveRotation(rotationAngle + rotOffset);
         }
 
         void KillOrthogonalVelocity() {

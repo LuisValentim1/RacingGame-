@@ -10,13 +10,17 @@ namespace CatJam.UI
 
         // Methods -> Abstract
         abstract protected void OnAwake();
+        abstract protected void OnUpdate();
         abstract protected void OnOpen();
         abstract protected void OnClose();
-        abstract protected void OnUpdate();
 
-        // Methods -> Public
+        // Methods -> Standard
         public void AwakeUI() {
             OnAwake();
+        }
+
+        public void UpdateUI() {
+            OnUpdate();
         }
 
         public void OpenUI() {
@@ -25,10 +29,6 @@ namespace CatJam.UI
 
         public void CloseUI() {
             OnClose();
-        }
-
-        public void UpdateUI() {
-            OnUpdate();
         }
     }
 }

@@ -5,32 +5,23 @@ using UnityEngine;
 
 namespace CatJam.Audio 
 {
-    public class AudioEffect : Audio {
+    public class AudioEffect : MonoBehaviour {
         
         // Variables
-        
+        private AudioSource audioSource;
+        private bool started; 
 
         // Methods -> Override
-        override protected void OnAwake() {
-
-        }
-
-        protected override void OnStart() {
-
-        }
-
-        protected override void OnUpdate() {
+        public void UpdateEffect() {
             if (started == true && audioSource.isPlaying == false)
                 Destroy(gameObject);
         }
 
-        
-        override protected void OnPlay() {
-
+        public void Play(AudioClip clip) {
+            audioSource = GetComponent<AudioSource>();
+            audioSource.clip = clip;
+            audioSource.Play();
         }
 
-        override protected void OnStop() {
-
-        }
     }
 }
