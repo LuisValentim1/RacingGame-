@@ -22,7 +22,7 @@ abstract public class Sys : MonoBehaviour
     }
 
     public void UpdateSys() {
-        if (can_pause == false && Data.Get().is_paused == false)
+        if (can_pause == false)
             OnUpdate();
     }
 }

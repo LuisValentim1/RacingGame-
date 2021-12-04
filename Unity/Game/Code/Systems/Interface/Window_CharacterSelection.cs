@@ -38,11 +38,11 @@ namespace CatJam.UI
 
             UI_Methods.SetFade(this, FadeType.fade_out, 0.5f, 0);
             GeneralMethods.StartGame();
+            GeneralMethods.PauseGame(false);
         }
 
         public void Button_Select_Character(int number) {
             Data.gameData.character_selected = number;
-            // toggleGroup.ActivateToggle(number);
         }
         
         public void Button_Back() {

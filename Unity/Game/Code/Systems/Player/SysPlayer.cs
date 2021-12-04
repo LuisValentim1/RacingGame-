@@ -30,6 +30,5 @@ namespace CatJam.Player
             carInputHandler.UpdateCar();
             topDownCarController.UpdateCar();
         }
-    
     }
 }

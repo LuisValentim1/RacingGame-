@@ -8,23 +8,29 @@ public class Data : MonoBehaviour {
     public static Data instance;
     public static Data Get() { return instance;}
 
+    public static GameLogic gameLogic;
     public static GameData gameData;
     public static Options options;
-
-    // Variables -> Public
-    public bool is_paused;
-    public bool in_game;
-    public bool in_main_menu;
 
     // Methods -> Standard
     public void OnAwake() {
         instance = this;
+        gameLogic = new GameLogic();
         gameData = new GameData();
         options = new Options();
+
+
     }
 
 
     // Serializables
+
+    [Serializable]
+    public class GameLogic {
+        public bool is_paused = false;
+        public bool in_game = false;
+        public bool in_main_menu = true;
+    }
 
     [Serializable]
     public class GameData {

@@ -42,7 +42,7 @@ namespace CatJam.Player
 
         // Methods -> Public
         private void FixedUpdate() {
-            if (Data.Get().in_game == false)
+            if (Data.gameLogic.is_paused == true)
                 return;
 
             ApplyEngineForce();
@@ -71,6 +71,7 @@ namespace CatJam.Player
 
             Vector2 engineForceVector = transform.up * accelerationInput * accelerationFactor;
             carRigidbody2D.AddForce(engineForceVector, ForceMode2D.Force);
+            // carRigidbody2D.AddTorque(1, ForceMode2D.Impulse);
         }
 
         void ApplySteering() {
