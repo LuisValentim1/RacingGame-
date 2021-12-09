@@ -11,23 +11,30 @@ namespace CatJam.Map {
         public static Generator Get() { return instance; }
 
         // Variables 
-        public int modules_quantity = 100;
-        public GameObject[] start_modules;
+        public bool gerarTudo;
+
+
+        public int modulesQuantity = 100;
+        public int generateQuantity = 1;
+        public int deleteQuantity = 2;
+        public GameObject[] startModules;
 
         public System.Random r;
 
-        private List<GameObject> list_modules;
-        private GameObject last_module;
+        public int currentModuleArray;
+        public GameObject[] arrayModules;
+        public GameObject lastModule;
 
 
         // Methods -> Standard
         public void OnAwake() {
             instance = this;
             r = new System.Random(DateTime.Now.Day);
+            arrayModules = new GameObject[generateQuantity + deleteQuantity];
         }
 
         public void OnStart() {
-            list_modules = new List<GameObject>();
+
         }
 
         public void OnUpdate() {
@@ -39,21 +46,27 @@ namespace CatJam.Map {
 
         // Methods -> Public
         public void GenerateMap() {
-            for (int i = 0; i < modules_quantity; i++) {
-                Generate_Module(i);
+            if (gerarTudo == true) {
+                for (int i = 0; i < modulesQuantity; i++) {
+                    GenerateModule(i);
+                }
+            } else {
+                for (int i = 0; i < generateQuantity; i++) {
+                    GenerateModule(i);
+                }
             }
         }
 
-        private void Generate_Module(int number) {
+        public void GenerateModule(int number) {
             GameObject new_module;
 
             // Chooses the next Module
             if (number == 0) {
-                new_module = start_modules[UnityEngine.Random.Range(0, start_modules.Length)];
-            } else if (number == modules_quantity - 1) {
-                new_module = last_module.GetComponent<Module>().GetFinish();
+                new_module = startModules[UnityEngine.Random.Range(0, startModules.Length)];
+            } else if (number == modulesQuantity - 1) {
+                new_module = lastModule.GetComponent<Module>().GetFinish();
             } else {
-                new_module = last_module.GetComponent<Module>().GetRandomModule();
+                new_module = lastModule.GetComponent<Module>().GetRandomModule();
             }
 
             GameObject newObj = null;
@@ -62,19 +75,39 @@ namespace CatJam.Map {
                 newObj.transform.position = Vector3.zero;
             } else {
                 newObj = Instantiate(new_module, transform);
-                newObj.transform.position = last_module.GetComponent<Module>().GetToNewPosition();
+                newObj.transform.position = lastModule.GetComponent<Module>().GetToNewPosition();
             }
 
-            list_modules.Add(newObj);
-            last_module = newObj;
+//            listModules.Add(newObj);
+            newObj.GetComponent<Module>().moduleId = number;
+
+            arrayModules[currentModuleArray] = newObj;
+            lastModule = newObj;
+
+            // Currect Module Number - Array
+            currentModuleArray++;
+            if (currentModuleArray >= deleteQuantity + generateQuantity)
+                currentModuleArray = 0;
         }
 
+        public void DeleteLastModule(GameObject module) {
+            Destroy(arrayModules[currentModuleArray]);
+          //  int lastModule = module.GetComponent<Module>().moduleId - deleteQuantity;
+
+         //   if (lastModule >= 0) {
+         //   } 
+        }
+
+        
+
         public void RestartMap() {
-            for(int i = 0; i < list_modules.Count; i++) {
-                Destroy(list_modules[i].gameObject);
+            /*
+            for(int i = 0; i < listModules.Count; i++) {
+                Destroy(listModules[i].gameObject);
             }
 
-            list_modules = new List<GameObject>();
+            listModules = new List<GameObject>();
+            */
         }
 
 

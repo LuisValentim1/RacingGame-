@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CatJam.Player;
 
 namespace CatJam.Map {
     public class Module : MonoBehaviour {
@@ -10,6 +11,9 @@ namespace CatJam.Map {
         public SquareConfiguration squareConfiguration;
         public ModuleConfiguration moduleConfiguration;
 
+        public int moduleId;
+        public bool playerWasInside;
+
         //public Compatible[] compatibles;
 
         // Methods -> Standard
@@ -17,6 +21,18 @@ namespace CatJam.Map {
             
         }
          
+        private void OnTriggerEnter2D(Collider2D other) {
+            if (other.tag == "Player" && playerWasInside == false) {
+                other.GetComponent<TopDownCarController>().inModule = moduleId;
+                Generator.Get().DeleteLastModule(gameObject);
+
+                if (moduleId + 1 != Generator.Get().modulesQuantity)
+                    Generator.Get().GenerateModule(moduleId + 1);
+         
+                playerWasInside = true;
+            }
+        }
+
         // Methods -> Public
 
         // Methods -> Get
@@ -39,24 +55,23 @@ namespace CatJam.Map {
         public GameObject GetRandomModule() {
             GameObject module = null;
 
-            // Probabilty
-            int module_number;
+            int module_number = 0;
             int prob = Generator.Get().r.Next(0,100);
 
-            if(prob < moduleConfiguration.probability[0])            {
-                module_number = 0;
-            }
-            else if(prob < moduleConfiguration.probability[0] +  moduleConfiguration.probability[1])            {
-                module_number = 1;
-            }
-            else{
-                module_number = 2;
+            float increment = 0;
+            for (int i = 0; i < moduleConfiguration.modules.Length; i++) {
+                increment += moduleConfiguration.probability[i];
+                if (prob < increment) {
+                    module_number = i;
+                    break;
+                }
             }
 
             module = moduleConfiguration.modules[module_number];
             return module;
         }
 
+        // Return the position for the generation of a New Module
         public Vector2 GetToNewPosition() {
             return new Vector2(transform.position.x + moduleConfiguration.to_direction.x * moduleConfiguration.size, 
                 transform.position.y + moduleConfiguration.to_direction.y * moduleConfiguration.size);

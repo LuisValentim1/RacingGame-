@@ -361,9 +361,10 @@ GameObject:
   - component: {fileID: 147019336}
   - component: {fileID: 147019335}
   - component: {fileID: 147019334}
+  - component: {fileID: 147019337}
   m_Layer: 0
   m_Name: Car
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -433,7 +434,34 @@ MonoBehaviour:
   accelerationFactor: 15
   turnFactor: 3.5
   maxSpeed: 25
+  inModule: 0
   rotOffset: -90
+--- !u!61 &147019337
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147019332}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &156395576
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,7 +531,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1078,6 +1106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 358886171}
+  - component: {fileID: 358886172}
   m_Layer: 0
   m_Name: Modules_Test
   m_TagString: Untagged
@@ -1120,6 +1149,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &358886172
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358886170}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.055561543, y: -0.16667557}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 29.779114, y: 30.223576}
+  m_EdgeRadius: 0
 --- !u!1 &359275364
 GameObject:
   m_ObjectHideFlags: 0
@@ -4219,12 +4274,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6f69b5b50efc954eb341ed9abd1e6cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modules_quantity: 100
-  start_modules:
-  - {fileID: 8297082399823031506, guid: dad62b6d3e5aedd429314bef2651d049, type: 3}
-  - {fileID: 5848176228167328324, guid: 954b39cec72d1814790eed406e119849, type: 3}
-  - {fileID: 7054744751457069216, guid: 50a3c722de86ff048a1cf54a6695adfe, type: 3}
+  gerarTudo: 0
+  modulesQuantity: 5
+  generateQuantity: 1
+  deleteQuantity: 2
+  startModules:
   - {fileID: 4768491124407092618, guid: a22ebf6f7e254c34ca8863556c32aace, type: 3}
+  - {fileID: 7054744751457069216, guid: 50a3c722de86ff048a1cf54a6695adfe, type: 3}
+  - {fileID: 5848176228167328324, guid: 954b39cec72d1814790eed406e119849, type: 3}
+  - {fileID: 8297082399823031506, guid: dad62b6d3e5aedd429314bef2651d049, type: 3}
+  currentModuleArray: 0
+  arrayModules: []
+  lastModule: {fileID: 0}
 --- !u!114 &1837847972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4932,10 +4993,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Module_Horizontal_Right_Left
       objectReference: {fileID: 0}
-    - target: {fileID: 5707741460364066978, guid: 810ff62ef0c38c446b8a3be7060733c5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6926957925629031761, guid: 810ff62ef0c38c446b8a3be7060733c5, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -5357,10 +5414,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Module_Curve_Right_Top
       objectReference: {fileID: 0}
-    - target: {fileID: 2234861809484679378, guid: 180b283f7041cff4fb968dc8403bd9c3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 180b283f7041cff4fb968dc8403bd9c3, type: 3}
 --- !u!1001 &2471110023240935583
@@ -5418,10 +5471,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Module_Curve_Left_Top
       objectReference: {fileID: 0}
-    - target: {fileID: 2471110023994994380, guid: 71566a6b8e851264ca927ae1f0e8e4cc, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71566a6b8e851264ca927ae1f0e8e4cc, type: 3}
 --- !u!1001 &2526742349901494915
@@ -5434,10 +5483,6 @@ PrefabInstance:
     - target: {fileID: 5048672665437879154, guid: 4c2098822ea3de04aa60cae763772bb6, type: 3}
       propertyPath: m_Name
       value: Module_Vertical_Down_Top
-      objectReference: {fileID: 0}
-    - target: {fileID: 5048672665437879154, guid: 4c2098822ea3de04aa60cae763772bb6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5048672665437879155, guid: 4c2098822ea3de04aa60cae763772bb6, type: 3}
       propertyPath: m_RootOrder
@@ -5739,10 +5784,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Module_Curve_Top_Right
       objectReference: {fileID: 0}
-    - target: {fileID: 4104818369502259058, guid: 20f865395ca99234d9d3f67f00b7ee45, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4104818369502259069, guid: 20f865395ca99234d9d3f67f00b7ee45, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -6028,10 +6069,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Module_Curve_Down_Left
       objectReference: {fileID: 0}
-    - target: {fileID: 6392395650421920133, guid: 6c4f2e289babba54782504f7b1f12eb8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c4f2e289babba54782504f7b1f12eb8, type: 3}
 --- !u!1001 &6443028593642869547
@@ -6089,10 +6126,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Module_Curve_Down_Right
       objectReference: {fileID: 0}
-    - target: {fileID: 6443028594123303482, guid: cfdc8fbdbbc3a634f971f7978070086d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfdc8fbdbbc3a634f971f7978070086d, type: 3}
 --- !u!1001 &6546965367467830205
@@ -6149,10 +6182,6 @@ PrefabInstance:
     - target: {fileID: 6546965366535860026, guid: 751e06be415c21a46b6caf17a2ed45e0, type: 3}
       propertyPath: m_Name
       value: Module_Curve_Top_Left
-      objectReference: {fileID: 0}
-    - target: {fileID: 6546965366535860026, guid: 751e06be415c21a46b6caf17a2ed45e0, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 751e06be415c21a46b6caf17a2ed45e0, type: 3}
@@ -6241,10 +6270,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Module_Vertical_Top_Down
       objectReference: {fileID: 0}
-    - target: {fileID: 4196234488143808316, guid: 0698c9754be6c7a468f1d4724a7c92b2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0698c9754be6c7a468f1d4724a7c92b2, type: 3}
 --- !u!1001 &8482630348680357467
@@ -6302,10 +6327,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Module_Horizontal_Left_Right
       objectReference: {fileID: 0}
-    - target: {fileID: 1204973031283483175, guid: d1bb0f55bcfbd8f4c863254b70f5fb59, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1bb0f55bcfbd8f4c863254b70f5fb59, type: 3}
 --- !u!1001 &8561660142798078450
@@ -6318,10 +6339,6 @@ PrefabInstance:
     - target: {fileID: 8561660143344381352, guid: 16f2c01d85281594eb7dd74dda261a54, type: 3}
       propertyPath: m_Name
       value: Module_Curve_Right_Down
-      objectReference: {fileID: 0}
-    - target: {fileID: 8561660143344381352, guid: 16f2c01d85281594eb7dd74dda261a54, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8561660143344381353, guid: 16f2c01d85281594eb7dd74dda261a54, type: 3}
       propertyPath: m_RootOrder
@@ -6480,10 +6497,6 @@ PrefabInstance:
     - target: {fileID: 9117003505062794663, guid: 84e48198829585a4ba12cc7f3d6660cf, type: 3}
       propertyPath: m_Name
       value: Module_Curve_Left_Down
-      objectReference: {fileID: 0}
-    - target: {fileID: 9117003505062794663, guid: 84e48198829585a4ba12cc7f3d6660cf, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84e48198829585a4ba12cc7f3d6660cf, type: 3}

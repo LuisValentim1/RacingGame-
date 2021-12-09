@@ -14,6 +14,8 @@ namespace CatJam.Player
         public float turnFactor = 0.5f;
         public float maxSpeed = 20.0f;
 
+        public int inModule = 0;
+
         // Variables -> Private
         float accelerationInput = 0;
         float steeringInput = 0;

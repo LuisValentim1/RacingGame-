@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8297082399823031507}
   - component: {fileID: 8297082399823031504}
+  - component: {fileID: 5048672664657868340}
   m_Layer: 0
   m_Name: Module_Start_Down_Top
   m_TagString: Untagged
@@ -108,7 +109,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8297082399823031506}
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -145.14392, y: 61.349102, z: 0.71644735}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -139,11 +140,36 @@ MonoBehaviour:
     - {fileID: 6392395650421920133, guid: 6c4f2e289babba54782504f7b1f12eb8, type: 3}
     - {fileID: 6443028594123303482, guid: cfdc8fbdbbc3a634f971f7978070086d, type: 3}
     probability: 460000000f0000000f000000
-    probability_straight: 0
     moduleFinish: {fileID: 5086570353260209477, guid: c01f0f82d6efbfd4c8bbd7dce072f421, type: 3}
     from_direction: {x: 0, y: -1}
     to_direction: {x: 0, y: 1}
     size: 30
+--- !u!61 &5048672664657868340
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8297082399823031506}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.055561543, y: -0.16667557}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 29.779114, y: 30.223576}
+  m_EdgeRadius: 0
 --- !u!1 &8297082400546240184
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,7 +295,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8297082400605960498}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
