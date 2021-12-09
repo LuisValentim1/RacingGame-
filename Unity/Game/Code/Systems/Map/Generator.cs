@@ -12,16 +12,18 @@ namespace CatJam.Map {
 
         // Variables 
         public int modules_quantity = 100;
-        public GameObject start_module;
-        public GameObject finish_module;
+        public GameObject[] start_modules;
 
+        public System.Random r;
 
         private List<GameObject> list_modules;
         private GameObject last_module;
 
+
         // Methods -> Standard
         public void OnAwake() {
             instance = this;
+            r = new System.Random(DateTime.Now.Day);
         }
 
         public void OnStart() {
@@ -47,16 +49,17 @@ namespace CatJam.Map {
 
             // Chooses the next Module
             if (number == 0) {
-                new_module = start_module;
-            } else if (number == modules_quantity) {
-                new_module = finish_module;
+                new_module = start_modules[UnityEngine.Random.Range(0, start_modules.Length)];
+            } else if (number == modules_quantity - 1) {
+                new_module = last_module.GetComponent<Module>().GetFinish();
             } else {
-                new_module = last_module.GetComponent<Module>().GetRandomModuleCompatible();
+                new_module = last_module.GetComponent<Module>().GetRandomModule();
             }
 
             GameObject newObj = null;
             if (number == 0) {
                 newObj = Instantiate(new_module, transform);
+                newObj.transform.position = Vector3.zero;
             } else {
                 newObj = Instantiate(new_module, transform);
                 newObj.transform.position = last_module.GetComponent<Module>().GetToNewPosition();

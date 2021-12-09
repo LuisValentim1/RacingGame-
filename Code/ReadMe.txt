@@ -1,1 +1,0 @@
-Não alterar a pasta "Code_System_Base", pois é onde todos os sistemas são 'merged' como um!

@@ -475,10 +475,13 @@ MonoBehaviour:
     squares_rows_quant: 10
     squares_collumns_quant: 10
   moduleConfiguration:
-    modulesCompatible:
+    modules:
+    - {fileID: 4196234488143808316, guid: 0698c9754be6c7a468f1d4724a7c92b2, type: 3}
     - {fileID: 6546965366535860026, guid: 751e06be415c21a46b6caf17a2ed45e0, type: 3}
     - {fileID: 4104818369502259058, guid: 20f865395ca99234d9d3f67f00b7ee45, type: 3}
-    - {fileID: 4196234488143808316, guid: 0698c9754be6c7a468f1d4724a7c92b2, type: 3}
+    probability: 460000000f0000000f000000
+    probability_straight: 0
+    moduleFinish: {fileID: 3513992889690790048, guid: e87495f2df1c95c4280eec6cd7384005, type: 3}
     from_direction: {x: 1, y: 0}
     to_direction: {x: 0, y: -1}
     size: 30

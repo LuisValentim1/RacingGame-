@@ -278,10 +278,12 @@ MonoBehaviour:
     squares_rows_quant: 10
     squares_collumns_quant: 10
   moduleConfiguration:
-    modulesCompatible:
+    modules:
     - {fileID: 5707741460364066978}
     - {fileID: 8561660143344381352, guid: 16f2c01d85281594eb7dd74dda261a54, type: 3}
     - {fileID: 2234861809484679378, guid: 180b283f7041cff4fb968dc8403bd9c3, type: 3}
+    probability: 460000000f0000000f000000
+    moduleFinish: {fileID: 5941244086380087103, guid: f913f475dd840294eb5b9c22ff0c1dec, type: 3}
     from_direction: {x: 1, y: 0}
     to_direction: {x: -1, y: 0}
     size: 30

@@ -12,7 +12,6 @@ namespace CatJam.UI
         public static Window_Credits Get() { return instance; }
 
         // Variables
-        public int character_selected = -1;
 
         // Methods -> Override
         protected override void OnAwakeWindow() {
