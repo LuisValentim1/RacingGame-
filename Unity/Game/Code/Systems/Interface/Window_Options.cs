@@ -70,7 +70,7 @@ namespace CatJam.UI
             string path = Application.persistentDataPath + "/options.dat";
             BinaryFormatter binary = new BinaryFormatter();
             FileStream fStream = File.Create(path);
-            binary.Serialize(fStream, Data.options);
+            binary.Serialize(fStream, Data.Get().options);
             fStream.Close();
         }
 
@@ -80,7 +80,7 @@ namespace CatJam.UI
             if (File.Exists(path) == true) {
                 BinaryFormatter binary = new BinaryFormatter();
                 FileStream fStream = File.Open(path, FileMode.Open);
-                Data.options = binary.Deserialize(fStream) as Data.Options;
+                Data.Get().options = binary.Deserialize(fStream) as Data.Options;
             }
         }
 

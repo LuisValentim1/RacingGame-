@@ -16,6 +16,7 @@ namespace CatJam.Audio
 
         // Methods -> Override
         protected override void OnAwake() {
+            instance = this;
             for (int i = 0; i < audios_type.Length; i++)
                 audios_type[i].AwakeAudio();
         }
@@ -39,5 +40,18 @@ namespace CatJam.Audio
         public void PlayMusic() {
 
         }
+
+
+
+
+        public void PlayMainMenuMusic() {
+
+        }
+
+        public void PlayGameMusic() {
+
+        }
+
+
     }
 }

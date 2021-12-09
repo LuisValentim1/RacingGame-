@@ -14,6 +14,7 @@ namespace CatJam.Map {
 
         // Methods -> Override
         protected override void OnAwake() {
+            instance = this;
             generator.OnAwake();
         }
 

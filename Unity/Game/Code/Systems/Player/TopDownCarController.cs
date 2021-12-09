@@ -42,7 +42,7 @@ namespace CatJam.Player
 
         // Methods -> Public
         private void FixedUpdate() {
-            if (Data.gameLogic.is_paused == true)
+            if (Data.Get().gameLogic.is_paused == true)
                 return;
 
             ApplyEngineForce();

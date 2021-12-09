@@ -17,6 +17,7 @@ namespace CatJam.Player
 
         // Methods -> Override
         protected override void OnAwake() {
+            instance = this;
             carInputHandler.AwakeCar();
             topDownCarController.AwakeCar();
         }
@@ -29,6 +30,11 @@ namespace CatJam.Player
         protected override void OnUpdate() {
             carInputHandler.UpdateCar();
             topDownCarController.UpdateCar();
+        }
+
+
+        public void AutoConfigurePlayer() {
+
         }
     }
 }

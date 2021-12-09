@@ -8,9 +8,10 @@ public class Data : MonoBehaviour {
     public static Data instance;
     public static Data Get() { return instance;}
 
-    public static GameLogic gameLogic;
-    public static GameData gameData;
-    public static Options options;
+    public GameLogic gameLogic;
+    public SceneConfiguration sceneConfiguration;
+    public GameData gameData;
+    public Options options;
 
     // Methods -> Standard
     public void OnAwake() {
@@ -30,6 +31,12 @@ public class Data : MonoBehaviour {
         public bool is_paused = false;
         public bool in_game = false;
         public bool in_main_menu = true;
+    }
+
+    [Serializable]
+    public class SceneConfiguration {
+        public GameObject scene_main_menu;
+        public GameObject scene_play;
     }
 
     [Serializable]

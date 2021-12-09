@@ -25,11 +25,14 @@ namespace CatJam.Map {
         }
 
         public void OnStart() {
-
+            list_modules = new List<GameObject>();
         }
 
         public void OnUpdate() {
 
+//            if (Input.GetKeyDown(KeyCode.T)) {
+  //              GenerateMap();
+    //        }
         }
 
         // Methods -> Public
@@ -53,9 +56,10 @@ namespace CatJam.Map {
 
             GameObject newObj = null;
             if (number == 0) {
-                newObj = Instantiate(new_module, Vector2.zero, Quaternion.identity, transform);
+                newObj = Instantiate(new_module, transform);
             } else {
-                newObj = Instantiate(new_module, last_module.GetComponent<Module>().GetToNewPosition(), Quaternion.identity, transform);
+                newObj = Instantiate(new_module, transform);
+                newObj.transform.position = last_module.GetComponent<Module>().GetToNewPosition();
             }
 
             list_modules.Add(newObj);
@@ -63,7 +67,11 @@ namespace CatJam.Map {
         }
 
         public void RestartMap() {
-            
+            for(int i = 0; i < list_modules.Count; i++) {
+                Destroy(list_modules[i].gameObject);
+            }
+
+            list_modules = new List<GameObject>();
         }
 
 
