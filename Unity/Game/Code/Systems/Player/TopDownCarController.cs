@@ -102,5 +102,13 @@ namespace CatJam.Player
             steeringInput = inputVector.x;
             accelerationInput = inputVector.y;
         }
+
+        public void Restart() {
+            transform.position = new Vector3(0, 0, -5);
+            steeringInput = 0;
+            accelerationInput = 0;
+            velocityVsUp = 0;
+            carRigidbody2D.velocity = Vector2.zero;
+        }
     }
 }

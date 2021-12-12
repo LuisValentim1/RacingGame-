@@ -57,6 +57,9 @@ MonoBehaviour:
     from_direction: {x: -1, y: 0}
     to_direction: {x: 1, y: 0}
     size: 30
+    isFinishLine: 1
+  moduleId: 0
+  playerWasInside: 0
 --- !u!61 &1204973029333421619
 BoxCollider2D:
   m_ObjectHideFlags: 0

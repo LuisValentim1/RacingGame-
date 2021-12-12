@@ -33,6 +33,7 @@ namespace CatJam.UI
             switch(fade_type){
                 case FadeType.fade_in:
                     fade_value += Time.unscaledDeltaTime;
+
                     if (fade_value >= 1) {
                         canvas_group.blocksRaycasts = true;
                         finished = true;

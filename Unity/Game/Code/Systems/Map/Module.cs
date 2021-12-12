@@ -14,8 +14,6 @@ namespace CatJam.Map {
         public int moduleId;
         public bool playerWasInside;
 
-        //public Compatible[] compatibles;
-
         // Methods -> Standard
         private void Reset() {
             
@@ -23,14 +21,18 @@ namespace CatJam.Map {
          
         private void OnTriggerEnter2D(Collider2D other) {
             if (other.tag == "Player" && playerWasInside == false) {
-                other.GetComponent<TopDownCarController>().inModule = moduleId;
-                Generator.Get().DeleteLastModule(gameObject);
+                if (moduleConfiguration.isFinishLine == true) {
+                    GeneralMethods.CallFinish();
+                } else {
+                    other.GetComponent<TopDownCarController>().inModule = moduleId;
+                    Generator.Get().DeleteLastModule(gameObject);
 
-                if (moduleId + 1 != Generator.Get().modulesQuantity)
-                    Generator.Get().GenerateModule(moduleId + 1);
-         
-                playerWasInside = true;
-            }
+                    if (moduleId + 1 != Generator.Get().modulesQuantity)
+                        Generator.Get().GenerateModule(moduleId + 1);
+            
+                    playerWasInside = true;                
+                }
+            }     
         }
 
         // Methods -> Public
@@ -87,6 +89,8 @@ namespace CatJam.Map {
             public Vector2 from_direction;
             public Vector2 to_direction;
             public float size;
+
+            public bool isFinishLine;
         }
 
         [Serializable]

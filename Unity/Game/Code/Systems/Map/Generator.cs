@@ -13,7 +13,6 @@ namespace CatJam.Map {
         // Variables 
         public bool gerarTudo;
 
-
         public int modulesQuantity = 100;
         public int generateQuantity = 1;
         public int deleteQuantity = 2;
@@ -39,9 +38,6 @@ namespace CatJam.Map {
 
         public void OnUpdate() {
 
-//            if (Input.GetKeyDown(KeyCode.T)) {
-  //              GenerateMap();
-    //        }
         }
 
         // Methods -> Public
@@ -78,7 +74,6 @@ namespace CatJam.Map {
                 newObj.transform.position = lastModule.GetComponent<Module>().GetToNewPosition();
             }
 
-//            listModules.Add(newObj);
             newObj.GetComponent<Module>().moduleId = number;
 
             arrayModules[currentModuleArray] = newObj;
@@ -92,29 +87,16 @@ namespace CatJam.Map {
 
         public void DeleteLastModule(GameObject module) {
             Destroy(arrayModules[currentModuleArray]);
-          //  int lastModule = module.GetComponent<Module>().moduleId - deleteQuantity;
-
-         //   if (lastModule >= 0) {
-         //   } 
         }
 
         
 
         public void RestartMap() {
-            /*
-            for(int i = 0; i < listModules.Count; i++) {
-                Destroy(listModules[i].gameObject);
+            for (int i = 0; i < arrayModules.Length; i++) {
+                if (arrayModules[i] != null)
+                    Destroy(arrayModules[i]);
+                arrayModules[i] = null;
             }
-
-            listModules = new List<GameObject>();
-            */
         }
-
-
-
-        public void Undo(int steps) {
-
-        }
-
     }
 }

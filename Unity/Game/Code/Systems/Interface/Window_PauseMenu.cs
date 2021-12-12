@@ -28,10 +28,6 @@ namespace CatJam.UI
         }
 
         protected override void OnUpdateWindow() {
-            if (Input.GetKeyDown(KeyCode.Escape)) {
-                OpenWindow(0.2f, 0);
-            }
-
             if (quit == true) {
                 Window_Fade window = Window_Fade.Get() as Window_Fade;
                 UI_Methods.SetFade(window, FadeType.fade_out, 1f, 0);
@@ -42,10 +38,7 @@ namespace CatJam.UI
 
         // Methods -> Public
         public void Button_Continue() {
-            UI_Methods.SetFade(this, FadeType.fade_out, 0.5f, 0);
-            Window_CharacterSelection window = Window_CharacterSelection.Get() as Window_CharacterSelection;
-            UI_Methods.SetFade(window, FadeType.fade_in, 0.5f, 0.5f);
-        
+            CloseWindow(0.2f, 0);
             GeneralMethods.PauseGame(false);
         }
 

@@ -30,11 +30,19 @@ namespace CatJam.Player
         protected override void OnUpdate() {
             carInputHandler.UpdateCar();
             topDownCarController.UpdateCar();
+
+            if (Input.GetKeyDown(KeyCode.Escape)) {
+                if (Data.Get().gameLogic.is_paused == false) {
+                    GeneralMethods.PauseGame(true);
+                } else {
+                    GeneralMethods.PauseGame(false);
+                }
+            }
         }
 
 
-        public void AutoConfigurePlayer() {
-
+        public void RestartPlayer() {
+            topDownCarController.Restart();
         }
     }
 }
