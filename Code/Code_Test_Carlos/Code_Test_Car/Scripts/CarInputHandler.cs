@@ -26,5 +26,8 @@ public class CarInputHandler : MonoBehaviour
         inputVector.y = Input.GetAxis("Vertical");
 
         topDownCarController.SetInputVector(inputVector);
+
+        if (Input.GetButtonDown("Jump"))
+            topDownCarController.Jump(1.0f, 0.0f);
     }
 }
