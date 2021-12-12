@@ -29,7 +29,7 @@ public class Manager : MonoBehaviour
         Test();
     }
 
-    public void Test(){
+    public void Test() {
 
         if (Input.GetKeyDown(KeyCode.Keypad1)) {
             SkipToGame(0);

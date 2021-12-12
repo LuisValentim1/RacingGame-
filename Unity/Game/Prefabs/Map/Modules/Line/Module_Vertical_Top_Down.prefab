@@ -255,6 +255,9 @@ MonoBehaviour:
     from_direction: {x: 0, y: 1}
     to_direction: {x: 0, y: -1}
     size: 30
+    isFinishLine: 0
+  moduleId: 0
+  playerWasInside: 0
 --- !u!61 &7344315423160862000
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -446,7 +449,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8747841327847183940
