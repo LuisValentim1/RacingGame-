@@ -144,6 +144,7 @@ MonoBehaviour:
     isFinishLine: 1
   moduleId: 0
   playerWasInside: 0
+  noBuildings: 1
 --- !u!61 &9028136942312009070
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -354,7 +355,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 0.7169812, g: 0.3125605, b: 0.28002846, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -362,7 +363,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8331276356060613080

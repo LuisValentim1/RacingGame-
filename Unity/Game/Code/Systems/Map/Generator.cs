@@ -13,13 +13,18 @@ namespace CatJam.Map {
         // Variables 
         public bool gerarTudo;
 
+        [Header("Configurations")]
         public int modulesQuantity = 100;
         public int generateQuantity = 1;
         public int deleteQuantity = 2;
         public GameObject[] startModules;
 
+        public GameObject[] backgroundPrefabs = new GameObject[2];
+        public Vector3[] cornerOffsets = {new Vector3(), new Vector3(), new Vector3(), new Vector3()};
+
         public System.Random r;
 
+        [Header("Runtime - Test")]
         public int currentModuleArray;
         public GameObject[] arrayModules;
         public GameObject lastModule;
@@ -78,6 +83,7 @@ namespace CatJam.Map {
 
             arrayModules[currentModuleArray] = newObj;
             lastModule = newObj;
+            generateBuildings(newObj);
 
             // Currect Module Number - Array
             currentModuleArray++;
@@ -89,6 +95,19 @@ namespace CatJam.Map {
             Destroy(arrayModules[currentModuleArray]);
         }
 
+
+        public void generateBuildings(GameObject mod){ 
+            Vector3 pos = mod.transform.position;
+            // Debug.Log(pos);
+            if(mod.GetComponent<Module>().noBuildings){
+                for(int i = 0; i<4; i++){
+                    Vector3 b_pos = pos + cornerOffsets[i];
+                    GameObject b = Instantiate (backgroundPrefabs[r.Next(0,2)], b_pos, transform.rotation, mod.transform);
+                    mod.GetComponent<Module>().noBuildings = false;
+                    // Debug.Log(b_pos);
+                }
+            }
+        }
         
 
         public void RestartMap() {

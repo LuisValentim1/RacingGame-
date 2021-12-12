@@ -13,6 +13,7 @@ namespace CatJam.Map {
 
         public int moduleId;
         public bool playerWasInside;
+        public bool noBuildings = true;
 
         // Methods -> Standard
         private void Reset() {

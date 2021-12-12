@@ -194,7 +194,6 @@ namespace CatJam.Player
             carShadowRenderer.transform.localScale = carSpriteRenderer.transform.localScale;
 
             carCollider2D.enabled = true;
-
             isJumping = false; 
         }
 

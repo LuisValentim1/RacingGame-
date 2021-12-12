@@ -59,6 +59,7 @@ namespace CatJam.UI
 
         public void Button_Quit() {
             quit = true;
+            Application.Quit();
         }
     }
 }
