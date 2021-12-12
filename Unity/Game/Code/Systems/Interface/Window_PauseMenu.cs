@@ -12,11 +12,6 @@ namespace CatJam.UI
         public static Window_PauseMenu Get() { return instance; }
 
         // Variables
-        public Button button_continue;
-        public Button button_options;
-        public Button button_main_menu;
-        public Button button_quit;
-
         private bool quit;
 
         // Methods -> Override
@@ -33,7 +28,9 @@ namespace CatJam.UI
         }
 
         protected override void OnUpdateWindow() {
-
+            if (Input.GetKeyDown(KeyCode.Escape)) {
+                OpenWindow(0.2f, 0);
+            }
 
             if (quit == true) {
                 Window_Fade window = Window_Fade.Get() as Window_Fade;

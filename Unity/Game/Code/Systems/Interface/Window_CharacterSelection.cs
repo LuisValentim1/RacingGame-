@@ -33,7 +33,7 @@ namespace CatJam.UI
 
         // Methods -> Public
         public void Button_Play() {
-            if (Data.gameData.character_selected < 0)
+            if (Data.Get().gameData.character_selected < 0)
                 return;
 
             UI_Methods.SetFade(this, FadeType.fade_out, 0.5f, 0);
@@ -42,11 +42,11 @@ namespace CatJam.UI
         }
 
         public void Button_Select_Character(int number) {
-            Data.gameData.character_selected = number;
+            Data.Get().gameData.character_selected = number;
         }
         
         public void Button_Back() {
-            Data.gameData.character_selected = -1;
+            Data.Get().gameData.character_selected = -1;
             CloseWindow(0.5f, 0);
             Window_MainMenu.Get().OpenWindow(0.5f, 0.5f);
         }

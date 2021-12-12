@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 
 namespace CatJam.UI 
 {
-    public class Window_Gade : Window
+    public class Window_Game : Window
     {
         // Variables -> Instance
-        public static Window_Gade instance;
-        public static Window_Gade Get() { return instance; }
+        public static Window_Game instance;
+        public static Window_Game Get() { return instance; }
 
         // Variables
         public int currenct_character;
@@ -35,6 +35,10 @@ namespace CatJam.UI
         // Methods -> Public
         public void Configure() {
             
+        }
+
+        public void Button_PauseMenu() {
+            Window_PauseMenu.Get().OpenWindow(0.2f, 0);
         }
     }
 }
