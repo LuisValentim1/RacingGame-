@@ -169,7 +169,7 @@ namespace CatJam.Players
             jumpHeightScale = jumpHeightScale * carRigidbody2D.velocity.magnitude * 0.05f;
             jumpHeightScale = Mathf.Clamp(jumpHeightScale, 0.0f, 1.0f);
 
-            carCollider2D.enabled = false;
+            // carCollider2D.enabled = false;
 
             while (isJumping)
             {
@@ -193,7 +193,7 @@ namespace CatJam.Players
             carShadowRenderer.transform.localPosition = Vector3.zero;
             carShadowRenderer.transform.localScale = carSpriteRenderer.transform.localScale;
 
-            carCollider2D.enabled = true;
+            // carCollider2D.enabled = true;
             isJumping = false; 
         }
 
@@ -206,11 +206,7 @@ namespace CatJam.Players
             carRigidbody2D.velocity = Vector2.zero;
 
             // Player starts with the initial rotation of the track
-//            turnFactor = Generator.Get().GetInitialPlayerRotation();
-  //          carRigidbody2D.rotation = Generator.Get().GetInitialPlayerRotation().z;
             rotationAngle = Generator.Get().GetInitialPlayerRotation();
-    //        transform.rotation = Generator.Get().GetInitialPlayerRotation();
-      //      carRigidbody2D.SetRotation(rotationAngle);
         }
     }
 }
