@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using CatJam.Player;
+using CatJam.Players;
 using CatJam.Cameras;
 using CatJam.UI;
 using CatJam.Audio;
@@ -13,6 +13,7 @@ public static class GeneralMethods {
         PauseGame(false);
         Data.Get().gameLogic.in_main_menu = false;
         Data.Get().gameLogic.in_game = true;
+        Data.Get().gameLogic.game_finished = false;
         Data.Get().sceneConfiguration.scene_play.SetActive(true);
         Data.Get().sceneConfiguration.scene_main_menu.SetActive(false);
         
@@ -22,13 +23,20 @@ public static class GeneralMethods {
         SysCamera.Get().AutoConfigureCamera();
         SysAudio.Get().PlayGameMusic();
 
+        Time.timeScale = 1;
+
         // Terminar para os outros sistemas
     }
 
     public static void PauseGame(bool state) {
-        Debug.Log("Pause was called: " + state);
-        Data.Get().gameLogic.is_paused = state;
+        if (Data.Get().gameLogic.game_finished == true)
+            return;
 
+        if (Data.Get().gameLogic.in_game == false)
+            return;
+
+        // Debug.Log("Pause was called: " + state);
+        Data.Get().gameLogic.is_paused = state;
         if (state == true) {
             Window_PauseMenu.Get().OpenWindow(0.2f, 0);
             Time.timeScale = 0;
@@ -51,8 +59,11 @@ public static class GeneralMethods {
     }
 
     public static void CallFinish() {
-        Data.Get().gameLogic.is_paused = true;
+        Data.Get().gameLogic.game_finished = true;
         Time.timeScale = 0;
         Window_Finish.Get().OpenWindow(0.2f, 0);
+
+        if (Data.Get().gameLogic.is_paused == true)
+            Window_PauseMenu.Get().CloseWindow(0.3f, 0);
     }
 }

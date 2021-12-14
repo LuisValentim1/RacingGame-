@@ -32,7 +32,7 @@ namespace CatJam.UI
             // Muda o valor do fade conforme o tipo de fade
             switch(fade_type){
                 case FadeType.fade_in:
-                    fade_value += Time.unscaledDeltaTime;
+                    fade_value += Time.unscaledDeltaTime / fade_time;
 
                     if (fade_value >= 1) {
                         canvas_group.blocksRaycasts = true;
@@ -40,7 +40,7 @@ namespace CatJam.UI
                     }
                     break;
                 case FadeType.fade_out:
-                    fade_value -= Time.unscaledDeltaTime;
+                    fade_value -= Time.unscaledDeltaTime / fade_time;
                     canvas_group.blocksRaycasts = false;
                     if (fade_value <= 0)
                         finished = true;

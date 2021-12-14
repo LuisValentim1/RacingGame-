@@ -26,11 +26,11 @@ public class Manager : MonoBehaviour
         for (int i = 0; i < systems.Length; i++)
             systems[i].UpdateSys();
 
-        Test();
+        Dev_InputToSkip();
     }
 
-    public void Test() {
 
+    public void Dev_InputToSkip() {
         if (Input.GetKeyDown(KeyCode.Keypad1)) {
             SkipToGame(0);
         } else if (Input.GetKeyDown(KeyCode.Keypad2)) {

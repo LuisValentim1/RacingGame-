@@ -2,9 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CatJam.Map;
 
-
-namespace CatJam.Player 
+namespace CatJam.Players
 {
     public class TopDownCarController : MonoBehaviour
     {
@@ -54,7 +54,7 @@ namespace CatJam.Player
         }
         
         public void StartCar() {
-            
+
         }
 
         public void UpdateCar() {
@@ -198,11 +198,19 @@ namespace CatJam.Player
         }
 
         public void Restart() {
+            // Restart all the variables
             transform.position = new Vector3(0, 0, -5);
             steeringInput = 0;
             accelerationInput = 0;
             velocityVsUp = 0;
             carRigidbody2D.velocity = Vector2.zero;
+
+            // Player starts with the initial rotation of the track
+//            turnFactor = Generator.Get().GetInitialPlayerRotation();
+  //          carRigidbody2D.rotation = Generator.Get().GetInitialPlayerRotation().z;
+            rotationAngle = Generator.Get().GetInitialPlayerRotation();
+    //        transform.rotation = Generator.Get().GetInitialPlayerRotation();
+      //      carRigidbody2D.SetRotation(rotationAngle);
         }
     }
 }

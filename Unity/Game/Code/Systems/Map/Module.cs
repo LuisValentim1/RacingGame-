@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using CatJam.Player;
+using CatJam.Players;
 
 namespace CatJam.Map {
     public class Module : MonoBehaviour {
@@ -21,6 +21,8 @@ namespace CatJam.Map {
         }
          
         private void OnTriggerEnter2D(Collider2D other) {
+
+            // Create new module and destroy last
             if (other.tag == "Player" && playerWasInside == false) {
                 if (moduleConfiguration.isFinishLine == true) {
                     GeneralMethods.CallFinish();
@@ -91,6 +93,7 @@ namespace CatJam.Map {
             public Vector2 to_direction;
             public float size;
 
+            public bool isStartingLine;
             public bool isFinishLine;
         }
 

@@ -31,6 +31,7 @@ public class Data : MonoBehaviour {
         public bool is_paused = false;
         public bool in_game = false;
         public bool in_main_menu = true;
+        public bool game_finished = false;
     }
 
     [Serializable]

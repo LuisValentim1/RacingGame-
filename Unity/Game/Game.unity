@@ -1278,12 +1278,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 147019333}
+  - component: {fileID: 147019338}
   - component: {fileID: 147019336}
   - component: {fileID: 147019335}
   - component: {fileID: 147019334}
   - component: {fileID: 147019337}
   m_Layer: 0
-  m_Name: Car
+  m_Name: Player_1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1353,7 +1354,7 @@ MonoBehaviour:
   driftFactor: 0.1
   accelerationFactor: 50
   turnFactor: 4
-  maxSpeed: 20
+  maxSpeed: 30
   rotOffset: -90
   carSpriteRenderer: {fileID: 970718011}
   carShadowRenderer: {fileID: 2910795137588186170}
@@ -1422,6 +1423,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &147019338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147019332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98a2d8ecfb028c64887e2a465d0d3b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  local: 1
 --- !u!1 &150679265
 GameObject:
   m_ObjectHideFlags: 0
@@ -1529,7 +1543,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -9670,6 +9684,7 @@ MonoBehaviour:
     is_paused: 0
     in_game: 0
     in_main_menu: 1
+    game_finished: 0
   sceneConfiguration:
     scene_main_menu: {fileID: 2064107669}
     scene_play: {fileID: 589375282}
@@ -14981,8 +14996,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   can_pause: 0
-  carInputHandler: {fileID: 147019335}
-  topDownCarController: {fileID: 147019336}
+  player: {fileID: 147019338}
+  onlinePlayers: []
 --- !u!1 &1917321403
 GameObject:
   m_ObjectHideFlags: 0

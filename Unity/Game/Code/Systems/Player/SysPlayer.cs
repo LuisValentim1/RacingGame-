@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 
-namespace CatJam.Player 
+namespace CatJam.Players
 {
     public class SysPlayer : Sys {
         
@@ -12,24 +12,21 @@ namespace CatJam.Player
         public static SysPlayer Get() { return instance; }
 
         // Variables
-        public CarInputHandler carInputHandler;
-        public TopDownCarController topDownCarController;
+        public Player player;
+        public Player[] onlinePlayers;
 
         // Methods -> Override
         protected override void OnAwake() {
             instance = this;
-            carInputHandler.AwakeCar();
-            topDownCarController.AwakeCar();
+            player.OnAwake();
         }
 
         protected override void OnStart() {
-            carInputHandler.StartCar();
-            topDownCarController.StartCar();
+            player.OnStart();
         }
     
         protected override void OnUpdate() {
-            carInputHandler.UpdateCar();
-            topDownCarController.UpdateCar();
+            player.OnUpdate();
 
             if (Input.GetKeyDown(KeyCode.Escape)) {
                 if (Data.Get().gameLogic.is_paused == false) {
@@ -40,9 +37,13 @@ namespace CatJam.Player
             }
         }
 
+        public void RestartAllPlayers() {
+            for (int i = 0; i < onlinePlayers.Length; i++)
+                onlinePlayers[i].Restart();
+        }
 
         public void RestartPlayer() {
-            topDownCarController.Restart();
+            player.Restart();
         }
     }
 }

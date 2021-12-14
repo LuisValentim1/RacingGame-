@@ -288,6 +288,7 @@ MonoBehaviour:
     from_direction: {x: -1, y: 0}
     to_direction: {x: 1, y: 0}
     size: 30
+    isStartingLine: 1
     isFinishLine: 0
   moduleId: 0
   playerWasInside: 0

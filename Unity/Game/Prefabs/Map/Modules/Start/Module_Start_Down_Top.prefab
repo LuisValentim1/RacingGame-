@@ -144,6 +144,7 @@ MonoBehaviour:
     from_direction: {x: 0, y: -1}
     to_direction: {x: 0, y: 1}
     size: 30
+    isStartingLine: 1
     isFinishLine: 0
   moduleId: 0
   playerWasInside: 0

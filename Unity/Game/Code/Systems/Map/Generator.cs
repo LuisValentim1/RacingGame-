@@ -117,5 +117,30 @@ namespace CatJam.Map {
                 arrayModules[i] = null;
             }
         }
+
+        public Module GetInitialModule() {
+            for (int i = 0; i < arrayModules.Length; i++)
+                if (arrayModules[i] != null)
+                    if (arrayModules[i].GetComponent<Module>().moduleConfiguration.isStartingLine == true)
+                        return arrayModules[i].GetComponent<Module>();
+            return null;
+        }
+
+        public float GetInitialPlayerRotation() {
+            Module firstModule = GetInitialModule();
+            if (firstModule != null) {
+                if (firstModule.moduleConfiguration.to_direction == new Vector2(0, 1)){
+                    return 0;
+                } else if (firstModule.moduleConfiguration.to_direction == new Vector2(1, 0)) {
+                    return 270;
+                } else if (firstModule.moduleConfiguration.to_direction == new Vector2(0, -1)) {
+                    return 180;
+                } else if (firstModule.moduleConfiguration.to_direction == new Vector2(-1, 0)) {
+                    return 90;
+                }
+            }
+
+            return 0;
+        }
     }
 }
