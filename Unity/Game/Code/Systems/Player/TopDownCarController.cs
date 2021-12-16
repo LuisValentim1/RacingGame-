@@ -94,12 +94,10 @@ namespace CatJam.Players
             if(carRigidbody2D.velocity.sqrMagnitude > maxSpeed * maxSpeed && accelerationInput > 0){
                 return;
             }
-            if(accelerationInput == 0)
-            {
+            
+            if(accelerationInput == 0) {
                 carRigidbody2D.drag = Mathf.Lerp(carRigidbody2D.drag, 3.0f, Time.fixedDeltaTime * 3);
-            }
-            else
-            {
+            } else {
                 carRigidbody2D.drag = 0;
             }
 
