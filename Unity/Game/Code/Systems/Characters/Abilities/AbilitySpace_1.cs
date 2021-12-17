@@ -6,6 +6,21 @@ namespace CatJam.Characters
 {
     public class AbilitySpace_1 : Ability
     {
-        
+        // Methods -> Override
+        protected override void OnAwake() {
+
+        }
+
+        protected override void OnStart() {
+
+        }
+
+        protected override void OnUpdate() {
+
+        }
+
+        protected override void OnUse() {
+
+        }
     }
 }

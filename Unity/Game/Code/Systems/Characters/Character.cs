@@ -7,19 +7,35 @@ namespace CatJam.Characters
     public class Character : MonoBehaviour 
     {
         // Variables
-        public Ability ability;
+        public string characterName;
+        public Ability abilityBasic;
+        public Ability abilityUlti;
 
-        // Methods
+        public CharacterLogic CharacterLogic;
+
+        // Methods -> Standard
         public void OnAwake() {
-
+            abilityBasic.AwakeAbility();
+            abilityUlti.AwakeAbility();
         }
 
         public void OnStart() {
-
+            abilityBasic.StartAbility();
+            abilityUlti.StartAbility();
         }
 
         public void OnUpdate() {
+            abilityBasic.UpdateAbility();
+            abilityUlti.UpdateAbility();
+        }
 
+        // Methods -> Publlic
+        public void UseAbilityBasic() {
+            abilityBasic.UseAbility();
+        }
+
+        public void UseAbilityUlti() {
+            abilityUlti.UseAbility();
         }
     }
 }
