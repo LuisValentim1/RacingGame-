@@ -10,7 +10,6 @@ namespace CatJam.Characters
         public string characterName;
         public Ability abilityBasic;
         public Ability abilityUlti;
-
         public CharacterLogic CharacterLogic;
 
         // Methods -> Standard

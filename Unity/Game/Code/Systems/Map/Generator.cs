@@ -79,7 +79,7 @@ namespace CatJam.Map {
                 newObj.transform.position = lastModule.GetComponent<Module>().GetToNewPosition();
             }
 
-            newObj.GetComponent<Module>().moduleId = number;
+            newObj.GetComponent<Module>().Generate(number);
 
             arrayModules[currentModuleArray] = newObj;
             lastModule = newObj;

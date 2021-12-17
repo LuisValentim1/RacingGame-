@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using CatJam.Players;
 
 namespace CatJam.Map {
@@ -10,8 +11,9 @@ namespace CatJam.Map {
         // Variables
         public SquareConfiguration squareConfiguration;
         public ModuleConfiguration moduleConfiguration;
+        public Sprites sprites;
 
-        public int moduleId;
+        public int moduleID;
         public bool playerWasInside;
         public bool noBuildings = true;
 
@@ -27,15 +29,21 @@ namespace CatJam.Map {
                 if (moduleConfiguration.isFinishLine == true) {
                     GeneralMethods.CallFinish();
                 } else {
-                    other.GetComponent<TopDownCarController>().inModule = moduleId;
+                    other.GetComponent<TopDownCarController>().inModule = moduleID;
                     Generator.Get().DeleteLastModule(gameObject);
 
-                    if (moduleId + 1 != Generator.Get().modulesQuantity)
-                        Generator.Get().GenerateModule(moduleId + 1);
+                    if (moduleID + 1 != Generator.Get().modulesQuantity)
+                        Generator.Get().GenerateModule(moduleID + 1);
             
                     playerWasInside = true;                
                 }
             }     
+        }
+
+        public void Generate(int moduleID) {
+            this.moduleID = moduleID;
+            Sprite randomSprite = GetRandomSpriteRoad();
+            sprites.spriteRendererRoad.sprite = randomSprite;
         }
 
         // Methods -> Public
@@ -82,6 +90,10 @@ namespace CatJam.Map {
                 transform.position.y + moduleConfiguration.to_direction.y * moduleConfiguration.size);
         }
 
+        public Sprite GetRandomSpriteRoad() {
+            return sprites.spritesRoad[UnityEngine.Random.Range(0, sprites.spritesRoad.Length)];
+        }
+
         // Structs 
         [Serializable]       
         public struct ModuleConfiguration {
@@ -102,6 +114,12 @@ namespace CatJam.Map {
             public int squares_rows_quant;
             public int squares_collumns_quant;
             public Square[,] squares;
+        }
+
+        [Serializable]
+        public struct Sprites {
+            public SpriteRenderer spriteRendererRoad;
+            public Sprite[] spritesRoad;
         }
     }
 }

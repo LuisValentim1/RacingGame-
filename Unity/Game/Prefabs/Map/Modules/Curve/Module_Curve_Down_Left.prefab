@@ -145,7 +145,12 @@ MonoBehaviour:
     size: 30
     isStartingLine: 0
     isFinishLine: 0
-  moduleId: 0
+  sprites:
+    spriteRendererRoad: {fileID: 8868789506366063319}
+    spritesRoad:
+    - {fileID: 21300000, guid: 2da56cc536dda134eb04029dba0dd6fb, type: 3}
+    - {fileID: 21300000, guid: d561fa502f033ac40a8a7a404f328944, type: 3}
+  moduleID: 0
   playerWasInside: 0
   noBuildings: 1
 --- !u!61 &2067546827
