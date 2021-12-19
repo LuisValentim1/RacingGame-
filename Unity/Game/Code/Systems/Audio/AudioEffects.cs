@@ -3,10 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CatJam.Audios 
-{
-    public class AudioEffects : MonoBehaviour 
-    {
+namespace CatJam.Audio {
+    public class AudioEffects : MonoBehaviour {
     
         // Variables
         private List<AudioEffect> all_audio_effects;   

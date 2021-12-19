@@ -145,6 +145,46 @@ MonoBehaviour:
     size: 30
     isStartingLine: 0
     isFinishLine: 0
+  buildingPositions:
+  - buildingOffsets:
+    - {x: -12, y: -12, z: -10}
+    - {x: -11, y: -11, z: -10}
+    - {x: -10, y: -10, z: -10}
+  - buildingOffsets:
+    - {x: 0, y: 11.5, z: -10}
+    - {x: 0, y: 10.5, z: -10}
+    - {x: 0, y: 11, z: -10}
+  - buildingOffsets:
+    - {x: -11, y: 0, z: -10}
+    - {x: -11.5, y: 0, z: -10}
+    - {x: -10.5, y: 0, z: -10}
+  - buildingOffsets:
+    - {x: 10.5, y: -10.5, z: -10}
+    - {x: 11, y: -11, z: -10}
+    - {x: 11.5, y: -11.5, z: -10}
+  - buildingOffsets:
+    - {x: -10.5, y: -10.5, z: -10}
+    - {x: -11, y: 11, z: -10}
+    - {x: -11.5, y: 11.5, z: -10}
+  - buildingOffsets:
+    - {x: 11.5, y: 11.5, z: -10}
+    - {x: 11, y: 11, z: -10}
+    - {x: 10, y: 10, z: -10}
+  treeOffsets:
+  - {x: 99, y: 99, z: 99}
+  - {x: 99, y: 99, z: 99}
+  - {x: 99, y: 99, z: 99}
+  - {x: 99, y: 99, z: 99}
+  - {x: 99, y: 99, z: 99}
+  - {x: 99, y: 99, z: 99}
+  - {x: 99, y: 99, z: 99}
+  - {x: 99, y: 99, z: 99}
+  - {x: 99, y: 5.99, z: 99}
+  - {x: 99, y: 99, z: 99}
+  - {x: 99, y: 99, z: 99}
+  - {x: 99, y: 99, z: 99}
+  - {x: 99, y: 99, z: 99}
+  - {x: 99, y: 99, z: 99}
   sprites:
     spriteRendererRoad: {fileID: 6376504041872728488}
     spritesRoad:
@@ -153,6 +193,7 @@ MonoBehaviour:
   moduleID: 0
   playerWasInside: 0
   noBuildings: 1
+  noTrees: 1
 --- !u!61 &785140300
 BoxCollider2D:
   m_ObjectHideFlags: 0

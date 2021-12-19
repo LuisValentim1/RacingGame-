@@ -11,11 +11,14 @@ namespace CatJam.Map {
         // Variables
         public SquareConfiguration squareConfiguration;
         public ModuleConfiguration moduleConfiguration;
+        public BuildingPositions[] buildingPositions;
+        public Vector3[] treeOffsets;
         public Sprites sprites;
 
         public int moduleID;
         public bool playerWasInside;
         public bool noBuildings = true;
+        public bool noTrees = true;
 
         // Methods -> Standard
         private void Reset() {
@@ -120,6 +123,11 @@ namespace CatJam.Map {
         public struct Sprites {
             public SpriteRenderer spriteRendererRoad;
             public Sprite[] spritesRoad;
+        }
+
+        [Serializable]
+        public struct BuildingPositions {
+            public Vector3[] buildingOffsets;
         }
     }
 }

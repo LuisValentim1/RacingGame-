@@ -4,7 +4,7 @@ using UnityEngine;
 using CatJam.Players;
 using CatJam.Cameras;
 using CatJam.UI;
-using CatJam.Audios;
+using CatJam.Audio;
 using CatJam.Map;
 
 public static class GeneralMethods {

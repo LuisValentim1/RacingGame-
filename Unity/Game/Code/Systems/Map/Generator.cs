@@ -19,6 +19,7 @@ namespace CatJam.Map {
         public int deleteQuantity = 2;
         public GameObject[] startModules;
 
+        public GameObject treeObj;
         public GameObject[] backgroundPrefabs = new GameObject[2];
         public Vector3[] cornerOffsets = {new Vector3(), new Vector3(), new Vector3(), new Vector3()};
 
@@ -84,6 +85,7 @@ namespace CatJam.Map {
             arrayModules[currentModuleArray] = newObj;
             lastModule = newObj;
             generateBuildings(newObj);
+            addTrees(newObj);
 
             // Currect Module Number - Array
             currentModuleArray++;
@@ -100,12 +102,24 @@ namespace CatJam.Map {
             Vector3 pos = mod.transform.position;
             // Debug.Log(pos);
             if(mod.GetComponent<Module>().noBuildings){
-                for(int i = 0; i<4; i++){
-                    Vector3 b_pos = pos + cornerOffsets[i];
+                for(int i = 0; i<6; i++){
+                    Vector3 b_pos = pos + mod.GetComponent<Module>().buildingPositions[i].buildingOffsets[r.Next(0,3)];
                     GameObject b = Instantiate (backgroundPrefabs[r.Next(0,2)], b_pos, transform.rotation, mod.transform);
-                    mod.GetComponent<Module>().noBuildings = false;
                     // Debug.Log(b_pos);
                 }
+                mod.GetComponent<Module>().noBuildings = false;
+            }
+        }
+
+        public void addTrees(GameObject mod){ 
+            Vector3 pos = mod.transform.position;
+            if(mod.GetComponent<Module>().noTrees){
+                for(int i = 0; i<14; i++){
+                    Vector3 b_pos = pos + mod.GetComponent<Module>().treeOffsets[i];
+                    GameObject b = Instantiate (treeObj, b_pos, transform.rotation, mod.transform);
+                    // Debug.Log(b_pos);
+                }
+                mod.GetComponent<Module>().noTrees = false;
             }
         }
         

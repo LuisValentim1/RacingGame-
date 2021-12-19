@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 
-namespace CatJam.Audios
+namespace CatJam.Audio 
 {
     public class AudioEffect : MonoBehaviour {
         
