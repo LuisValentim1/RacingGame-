@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 
-namespace CatJam.Audio 
+namespace CatJam.Audios
 {
     abstract public class Audio : MonoBehaviour {
         
@@ -18,8 +18,6 @@ namespace CatJam.Audio
         abstract protected void OnAwake();
         abstract protected void OnStart();
         abstract protected void OnUpdate();
-        abstract protected void OnPlay();
-        abstract protected void OnStop();
 
         // Methods -> Standard
         public void AwakeAudio() {
@@ -36,7 +34,6 @@ namespace CatJam.Audio
 
         // Methods -> Public
         public void PlayAudio() {
-            OnPlay();
             started = true;
         }
 

@@ -2,9 +2,10 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace CatJam.Audio 
+namespace CatJam.Audios
 {
-    public class SysAudio : Sys {
+    public class SysAudio : Sys 
+    {
 
         // Instance
         public static SysAudio instance;

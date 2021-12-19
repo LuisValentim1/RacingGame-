@@ -2,9 +2,9 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace CatJam.Audio 
+namespace CatJam.Audios
 {
-    public class AudioMusic : MonoBehaviour {
+    public class AudioMusic : Audio {
 
         // Variables
         [SerializeField] private AudioSource audioSource;
@@ -15,18 +15,18 @@ namespace CatJam.Audio
 
 
         // Methods -> Standard
-        public void AwakeAudio() {
+        override protected void OnAwake() {
             if(audioSource == null)
                 audioSource.GetComponent<AudioSource>();
 
             started = false;
         }
 
-        public void StartAudio() {
+        override protected void OnStart() {
 
         }
-        
-        public void UpdateAudio() {
+
+        override protected void OnUpdate() {
 
         }
 
