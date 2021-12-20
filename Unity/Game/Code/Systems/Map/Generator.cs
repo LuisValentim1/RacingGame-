@@ -84,8 +84,7 @@ namespace CatJam.Map {
 
             arrayModules[currentModuleArray] = newObj;
             lastModule = newObj;
-            generateBuildings(newObj);
-            addTrees(newObj);
+            generateBackground(newObj);
 
             // Currect Module Number - Array
             currentModuleArray++;
@@ -98,20 +97,22 @@ namespace CatJam.Map {
         }
 
 
-        public void generateBuildings(GameObject mod){ 
+        public void generateBackground(GameObject mod){ 
             Vector3 pos = mod.transform.position;
-            // Debug.Log(pos);
-            if(mod.GetComponent<Module>().noBuildings){
-                for(int i = 0; i<6; i++){
-                    Vector3 b_pos = pos + mod.GetComponent<Module>().buildingPositions[i].buildingOffsets[r.Next(0,3)];
-                    GameObject b = Instantiate (backgroundPrefabs[r.Next(0,2)], b_pos, transform.rotation, mod.transform);
-                    // Debug.Log(b_pos);
+            if(mod.GetComponent<Module>().noBackground){
+                for(int i = 0; i<14; i++){
+                    if(i<6){
+                        Vector3 building_pos = pos + mod.GetComponent<Module>().buildingPositions[i].buildingOffsets[r.Next(0,3)];
+                        GameObject building = Instantiate(backgroundPrefabs[r.Next(0,2)], building_pos, transform.rotation, mod.transform);
+                    }
+                    Vector3 tree_pos = pos + mod.GetComponent<Module>().treeOffsets[i];
+                    GameObject tree = Instantiate(treeObj, tree_pos, transform.rotation, mod.transform);
                 }
-                mod.GetComponent<Module>().noBuildings = false;
+                mod.GetComponent<Module>().noBackground = false;
             }
         }
 
-        public void addTrees(GameObject mod){ 
+        /**public void addTrees(GameObject mod){ 
             Vector3 pos = mod.transform.position;
             if(mod.GetComponent<Module>().noTrees){
                 for(int i = 0; i<14; i++){
@@ -121,7 +122,7 @@ namespace CatJam.Map {
                 }
                 mod.GetComponent<Module>().noTrees = false;
             }
-        }
+        } */
         
 
         public void RestartMap() {
