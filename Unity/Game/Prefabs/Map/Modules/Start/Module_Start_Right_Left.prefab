@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: dc58d4f2535ffa544864eefd20546c60, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c1c76a6863c5fc54ab6274b53d60d61c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -188,11 +188,10 @@ MonoBehaviour:
   sprites:
     spriteRendererRoad: {fileID: 8246002742027599358}
     spritesRoad:
-    - {fileID: 21300000, guid: dc58d4f2535ffa544864eefd20546c60, type: 3}
+    - {fileID: 21300000, guid: c1c76a6863c5fc54ab6274b53d60d61c, type: 3}
   moduleID: 0
   playerWasInside: 0
-  noBuildings: 1
-  noTrees: 1
+  noBackground: 1
 --- !u!61 &6926957924229534080
 BoxCollider2D:
   m_ObjectHideFlags: 0
