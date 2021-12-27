@@ -12,7 +12,6 @@ namespace CatJam.Map {
         public SquareConfiguration squareConfiguration;
         public ModuleConfiguration moduleConfiguration;
         public BuildingPositions[] buildingPositions;
-        public Vector3[] treeOffsets;
         public Sprites sprites;
 
         public int moduleID;
@@ -126,7 +125,8 @@ namespace CatJam.Map {
 
         [Serializable]
         public struct BuildingPositions {
-            public Vector3[] buildingOffsets;
+            public float[] xs;
+            public float[] ys;
         }
     }
 }

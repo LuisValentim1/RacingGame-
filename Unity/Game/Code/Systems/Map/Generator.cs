@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CatJam.Map;
 
 namespace CatJam.Map {
     public class Generator : MonoBehaviour {
@@ -100,13 +101,13 @@ namespace CatJam.Map {
         public void generateBackground(GameObject mod){ 
             Vector3 pos = mod.transform.position;
             if(mod.GetComponent<Module>().noBackground){
-                for(int i = 0; i<14; i++){
-                    if(i<6){
-                        Vector3 building_pos = pos + mod.GetComponent<Module>().buildingPositions[i].buildingOffsets[r.Next(0,3)];
-                        GameObject building = Instantiate(backgroundPrefabs[r.Next(0,2)], building_pos, transform.rotation, mod.transform);
-                    }
-                    Vector3 tree_pos = pos + mod.GetComponent<Module>().treeOffsets[i];
-                    GameObject tree = Instantiate(treeObj, tree_pos, transform.rotation, mod.transform);
+                for(int i = 0; i<6; i++){
+                    //currentSquare = mod.GetComponent<Module>().buildingPositions[i];
+                    Vector3 offset = new Vector3(FloatWithinInterval(r,mod.GetComponent<Module>().buildingPositions[i].xs[1], mod.GetComponent<Module>().buildingPositions[i].xs[0]), FloatWithinInterval(r, mod.GetComponent<Module>().buildingPositions[i].ys[1], mod.GetComponent<Module>().buildingPositions[i].ys[0]), -1);
+                    Vector3 building_pos = pos + offset;
+                    GameObject building = Instantiate(backgroundPrefabs[r.Next(0,2)], building_pos, transform.rotation, mod.transform);
+                    //Vector3 tree_pos = pos + mod.GetComponent<Module>().treeOffsets[i];
+                    //GameObject tree = Instantiate(treeObj, tree_pos, transform.rotation, mod.transform);
                 }
                 mod.GetComponent<Module>().noBackground = false;
             }
@@ -124,6 +125,11 @@ namespace CatJam.Map {
             }
         } */
         
+
+        public float FloatWithinInterval(System.Random rng, float max, float min){
+            double val = (rng.NextDouble() * Math.Abs(max - min) + min);
+            return (float)val; 
+        }
 
         public void RestartMap() {
             for (int i = 0; i < arrayModules.Length; i++) {
