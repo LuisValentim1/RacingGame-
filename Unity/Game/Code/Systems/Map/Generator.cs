@@ -83,6 +83,16 @@ namespace CatJam.Map {
 
             newObj.GetComponent<Module>().Generate(number);
 
+            if(number>0){
+                float moduleSize = newObj.GetComponent<Module>().moduleConfiguration.size;
+                Vector2 from = new Vector2((lastModule.transform.position.x - newObj.transform.position.x) / moduleSize, (lastModule.transform.position.y - newObj.transform.position.y) / moduleSize);
+                if(from != newObj.GetComponent<Module>().moduleConfiguration.from_direction){
+                    newObj.GetComponent<Module>().moduleConfiguration.to_direction = newObj.GetComponent<Module>().moduleConfiguration.from_direction;
+                    newObj.GetComponent<Module>().moduleConfiguration.moduleFinish = newObj.GetComponent<Module>().moduleConfiguration.alternativeFinish;
+                    newObj.GetComponent<Module>().moduleConfiguration.modules = newObj.GetComponent<Module>().moduleConfiguration.alternativeModules;
+                }
+            }
+
             arrayModules[currentModuleArray] = newObj;
             lastModule = newObj;
             generateBackground(newObj);
@@ -102,29 +112,13 @@ namespace CatJam.Map {
             Vector3 pos = mod.transform.position;
             if(mod.GetComponent<Module>().noBackground){
                 for(int i = 0; i<6; i++){
-                    //currentSquare = mod.GetComponent<Module>().buildingPositions[i];
                     Vector3 offset = new Vector3(FloatWithinInterval(r,mod.GetComponent<Module>().buildingPositions[i].xs[1], mod.GetComponent<Module>().buildingPositions[i].xs[0]), FloatWithinInterval(r, mod.GetComponent<Module>().buildingPositions[i].ys[1], mod.GetComponent<Module>().buildingPositions[i].ys[0]), -1);
                     Vector3 building_pos = pos + offset;
                     GameObject building = Instantiate(backgroundPrefabs[r.Next(0,2)], building_pos, transform.rotation, mod.transform);
-                    //Vector3 tree_pos = pos + mod.GetComponent<Module>().treeOffsets[i];
-                    //GameObject tree = Instantiate(treeObj, tree_pos, transform.rotation, mod.transform);
                 }
                 mod.GetComponent<Module>().noBackground = false;
             }
         }
-
-        /**public void addTrees(GameObject mod){ 
-            Vector3 pos = mod.transform.position;
-            if(mod.GetComponent<Module>().noTrees){
-                for(int i = 0; i<14; i++){
-                    Vector3 b_pos = pos + mod.GetComponent<Module>().treeOffsets[i];
-                    GameObject b = Instantiate (treeObj, b_pos, transform.rotation, mod.transform);
-                    // Debug.Log(b_pos);
-                }
-                mod.GetComponent<Module>().noTrees = false;
-            }
-        } */
-        
 
         public float FloatWithinInterval(System.Random rng, float max, float min){
             double val = (rng.NextDouble() * Math.Abs(max - min) + min);

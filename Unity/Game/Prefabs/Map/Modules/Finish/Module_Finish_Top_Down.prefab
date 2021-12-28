@@ -186,8 +186,18 @@ MonoBehaviour:
     squares_rows_quant: 10
     squares_collumns_quant: 10
   moduleConfiguration:
-    modules: []
-    probability: 
+    modules:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    probability:
+    - 50
+    - 12.5
+    - 12.5
+    - 12.5
+    - 12.5
     moduleFinish: {fileID: 0}
     from_direction: {x: 0, y: 1}
     to_direction: {x: 0, y: -1}

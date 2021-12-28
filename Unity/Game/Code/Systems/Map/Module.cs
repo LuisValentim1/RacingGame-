@@ -70,7 +70,7 @@ namespace CatJam.Map {
             GameObject module = null;
 
             int module_number = 0;
-            int prob = Generator.Get().r.Next(0,100);
+            float prob = (float)Generator.Get().r.NextDouble() * 100;
 
             float increment = 0;
             for (int i = 0; i < moduleConfiguration.modules.Length; i++) {
@@ -99,9 +99,12 @@ namespace CatJam.Map {
         [Serializable]       
         public struct ModuleConfiguration {
             public GameObject[] modules;
-            public int[] probability;
+            public GameObject[] alternativeModules;
+            public float[] probability;
 
             public GameObject moduleFinish;
+            public GameObject alternativeFinish;
+
             public Vector2 from_direction;
             public Vector2 to_direction;
             public float size;
