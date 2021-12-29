@@ -12,11 +12,13 @@ namespace CatJam.Map {
         public SquareConfiguration squareConfiguration;
         public ModuleConfiguration moduleConfiguration;
         public BuildingPositions[] buildingPositions;
+        public RoadPosition[] freeRoadPositions;
         public Sprites sprites;
 
         public int moduleID;
         public bool playerWasInside;
         public bool noBackground = true;
+        public bool noElements = true;
 
         // Methods -> Standard
         private void Reset() {
@@ -131,6 +133,13 @@ namespace CatJam.Map {
         public struct BuildingPositions {
             public float[] xs;
             public float[] ys;
+        }
+
+        [Serializable]
+        public struct RoadPosition {
+            public float x;
+            public float y;
+            public int rotation;
         }
     }
 }

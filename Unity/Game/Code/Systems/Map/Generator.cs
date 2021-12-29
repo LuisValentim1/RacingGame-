@@ -21,7 +21,8 @@ namespace CatJam.Map {
         public GameObject[] startModules;
 
         public GameObject treeObj;
-        public GameObject[] backgroundPrefabs = new GameObject[2];
+        public GameObject[] backgroundPrefabs;
+        public GameObject[] elementPrefabs;
         public Vector3[] cornerOffsets = {new Vector3(), new Vector3(), new Vector3(), new Vector3()};
 
         public System.Random r;
@@ -96,6 +97,7 @@ namespace CatJam.Map {
             arrayModules[currentModuleArray] = newObj;
             lastModule = newObj;
             generateBackground(newObj);
+            generateRoadElements(newObj, 3);
 
             // Currect Module Number - Array
             currentModuleArray++;
@@ -108,17 +110,32 @@ namespace CatJam.Map {
         }
 
 
-        public void generateBackground(GameObject mod){ 
-            Vector3 pos = mod.transform.position;
-            if(mod.GetComponent<Module>().noBackground){
+        public void generateBackground(GameObject module){ 
+            Vector3 pos = module.transform.position;
+            if(module.GetComponent<Module>().noBackground){
                 for(int i = 0; i<6; i++){
-                    Vector3 offset = new Vector3(FloatWithinInterval(r,mod.GetComponent<Module>().buildingPositions[i].xs[1], mod.GetComponent<Module>().buildingPositions[i].xs[0]), FloatWithinInterval(r, mod.GetComponent<Module>().buildingPositions[i].ys[1], mod.GetComponent<Module>().buildingPositions[i].ys[0]), -1);
+                    Vector3 offset = new Vector3(FloatWithinInterval(r,module.GetComponent<Module>().buildingPositions[i].xs[1], module.GetComponent<Module>().buildingPositions[i].xs[0]), FloatWithinInterval(r, module.GetComponent<Module>().buildingPositions[i].ys[1], module.GetComponent<Module>().buildingPositions[i].ys[0]), -1);
                     Vector3 building_pos = pos + offset;
-                    GameObject building = Instantiate(backgroundPrefabs[r.Next(0,2)], building_pos, transform.rotation, mod.transform);
+                    GameObject building = Instantiate(backgroundPrefabs[r.Next(0,2)], building_pos, transform.rotation, module.transform);
                 }
-                mod.GetComponent<Module>().noBackground = false;
+                module.GetComponent<Module>().noBackground = false;
             }
         }
+
+        public void generateRoadElements(GameObject module, int numberOfElements){
+            Vector3 pos = module.transform.position;
+            if(module.GetComponent<Module>().noElements){
+                for(int i = 0; i<numberOfElements; i++){
+                    int pos_index = r.Next(0,module.GetComponent<Module>().freeRoadPositions.Length);
+                    Vector3 offset = new Vector3(module.GetComponent<Module>().freeRoadPositions[pos_index].x, module.GetComponent<Module>().freeRoadPositions[pos_index].y, -1);
+                    Vector3 element_pos = pos + offset;
+                    int element_index = r.Next(0,2);
+                    GameObject element = Instantiate(elementPrefabs[element_index], element_pos, Quaternion.Euler(0,0,module.GetComponent<Module>().freeRoadPositions[pos_index].rotation), module.transform);
+                }
+                module.GetComponent<Module>().noElements = false;
+            }
+        }
+
 
         public float FloatWithinInterval(System.Random rng, float max, float min){
             double val = (rng.NextDouble() * Math.Abs(max - min) + min);
