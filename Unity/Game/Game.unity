@@ -2996,7 +2996,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &358886171
 Transform:
   m_ObjectHideFlags: 0
@@ -18274,30 +18274,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 358886171}
     m_Modifications:
-    - target: {fileID: 595494543555883312, guid: 810ff62ef0c38c446b8a3be7060733c5, type: 3}
-      propertyPath: moduleConfiguration.alternativeModules.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 595494543555883312, guid: 810ff62ef0c38c446b8a3be7060733c5, type: 3}
-      propertyPath: moduleConfiguration.alternativeModules.Array.data[0]
-      value: 
-      objectReference: {fileID: 5048672665437879154, guid: 4c2098822ea3de04aa60cae763772bb6, type: 3}
-    - target: {fileID: 595494543555883312, guid: 810ff62ef0c38c446b8a3be7060733c5, type: 3}
-      propertyPath: moduleConfiguration.alternativeModules.Array.data[1]
-      value: 
-      objectReference: {fileID: 6392395650421920133, guid: 6c4f2e289babba54782504f7b1f12eb8, type: 3}
-    - target: {fileID: 595494543555883312, guid: 810ff62ef0c38c446b8a3be7060733c5, type: 3}
-      propertyPath: moduleConfiguration.alternativeModules.Array.data[2]
-      value: 
-      objectReference: {fileID: 6443028594123303482, guid: cfdc8fbdbbc3a634f971f7978070086d, type: 3}
-    - target: {fileID: 595494543555883312, guid: 810ff62ef0c38c446b8a3be7060733c5, type: 3}
-      propertyPath: moduleConfiguration.alternativeModules.Array.data[3]
-      value: 
-      objectReference: {fileID: 9117003505062794663, guid: 84e48198829585a4ba12cc7f3d6660cf, type: 3}
-    - target: {fileID: 595494543555883312, guid: 810ff62ef0c38c446b8a3be7060733c5, type: 3}
-      propertyPath: moduleConfiguration.alternativeModules.Array.data[4]
-      value: 
-      objectReference: {fileID: 8561660143344381352, guid: 16f2c01d85281594eb7dd74dda261a54, type: 3}
     - target: {fileID: 5707741460364066978, guid: 810ff62ef0c38c446b8a3be7060733c5, type: 3}
       propertyPath: m_Name
       value: Module_Horizontal_Right_Left

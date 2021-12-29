@@ -124,7 +124,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 1e6e9777f27725b4bb330546b0e3b000, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e75cb0d959d07a64dbf763204afbd690, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -192,6 +192,7 @@ MonoBehaviour:
     - {fileID: 4104818369502259058, guid: 20f865395ca99234d9d3f67f00b7ee45, type: 3}
     - {fileID: 2471110023994994380, guid: 71566a6b8e851264ca927ae1f0e8e4cc, type: 3}
     - {fileID: 2234861809484679378, guid: 180b283f7041cff4fb968dc8403bd9c3, type: 3}
+    alternativeModules: []
     probability:
     - 50
     - 12.5
@@ -199,6 +200,7 @@ MonoBehaviour:
     - 12.5
     - 12.5
     moduleFinish: {fileID: 3513992889690790048, guid: e87495f2df1c95c4280eec6cd7384005, type: 3}
+    alternativeFinish: {fileID: 0}
     from_direction: {x: 0, y: 1}
     to_direction: {x: 0, y: -1}
     size: 30
@@ -244,7 +246,7 @@ MonoBehaviour:
   sprites:
     spriteRendererRoad: {fileID: 815102638983810868}
     spritesRoad:
-    - {fileID: 21300000, guid: 1e6e9777f27725b4bb330546b0e3b000, type: 3}
+    - {fileID: 21300000, guid: e75cb0d959d07a64dbf763204afbd690, type: 3}
   moduleID: 0
   playerWasInside: 0
   noBackground: 1

@@ -109,6 +109,7 @@ namespace CatJam.Map {
             public Vector2 to_direction;
             public float size;
 
+            public bool isStraight;
             public bool isStartingLine;
             public bool isFinishLine;
         }
