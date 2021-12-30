@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,14 +17,13 @@ namespace CatJam.Map {
 
         [Header("Configurations")]
         public int modulesQuantity = 100;
+        public int numberOfElementsPerModule;
         public int generateQuantity = 1;
         public int deleteQuantity = 2;
         public GameObject[] startModules;
 
-        public GameObject treeObj;
         public GameObject[] backgroundPrefabs;
         public GameObject[] elementPrefabs;
-        public Vector3[] cornerOffsets = {new Vector3(), new Vector3(), new Vector3(), new Vector3()};
 
         public System.Random r;
 
@@ -82,8 +82,6 @@ namespace CatJam.Map {
                 newObj.transform.position = lastModule.GetComponent<Module>().GetToNewPosition();
             }
 
-            newObj.GetComponent<Module>().Generate(number);
-
             if(number>0){
                 float moduleSize = newObj.GetComponent<Module>().moduleConfiguration.size;
                 Vector2 from = new Vector2((lastModule.transform.position.x - newObj.transform.position.x) / moduleSize, (lastModule.transform.position.y - newObj.transform.position.y) / moduleSize);
@@ -94,10 +92,14 @@ namespace CatJam.Map {
                 }
             }
 
+            generateBackground(newObj);
+            if(number==0){
+                generateRoadElements(newObj, numberOfElementsPerModule);
+            }
+            newObj.GetComponent<Module>().Generate(number);
+
             arrayModules[currentModuleArray] = newObj;
             lastModule = newObj;
-            generateBackground(newObj);
-            generateRoadElements(newObj, 3);
 
             // Currect Module Number - Array
             currentModuleArray++;
@@ -114,7 +116,8 @@ namespace CatJam.Map {
             Vector3 pos = module.transform.position;
             if(module.GetComponent<Module>().noBackground){
                 for(int i = 0; i<6; i++){
-                    Vector3 offset = new Vector3(FloatWithinInterval(r,module.GetComponent<Module>().buildingPositions[i].xs[1], module.GetComponent<Module>().buildingPositions[i].xs[0]), FloatWithinInterval(r, module.GetComponent<Module>().buildingPositions[i].ys[1], module.GetComponent<Module>().buildingPositions[i].ys[0]), -1);
+                    Module.BuildingPositions curPosition = module.GetComponent<Module>().buildingPositions[i];
+                    Vector3 offset = new Vector3(FloatWithinInterval(r,curPosition.xs[1], curPosition.xs[0]), FloatWithinInterval(r, curPosition.ys[1], curPosition.ys[0]), -1);
                     Vector3 building_pos = pos + offset;
                     GameObject building = Instantiate(backgroundPrefabs[r.Next(0,2)], building_pos, transform.rotation, module.transform);
                 }
@@ -122,20 +125,25 @@ namespace CatJam.Map {
             }
         }
 
+
         public void generateRoadElements(GameObject module, int numberOfElements){
             Vector3 pos = module.transform.position;
+            Module.RoadPosition[] freeSpots = module.GetComponent<Module>().freeRoadPositions;
             if(module.GetComponent<Module>().noElements){
                 for(int i = 0; i<numberOfElements; i++){
-                    int pos_index = r.Next(0,module.GetComponent<Module>().freeRoadPositions.Length);
-                    Vector3 offset = new Vector3(module.GetComponent<Module>().freeRoadPositions[pos_index].x, module.GetComponent<Module>().freeRoadPositions[pos_index].y, -1);
+                    int pos_index = r.Next(0,freeSpots.Length);
+                    print(freeSpots.Length);
+                    print("index"  + pos_index.ToString());
+                    Vector3 offset = new Vector3(freeSpots[pos_index].x, freeSpots[pos_index].y, -1);
                     Vector3 element_pos = pos + offset;
                     int element_index = r.Next(0,2);
-                    GameObject element = Instantiate(elementPrefabs[element_index], element_pos, Quaternion.Euler(0,0,module.GetComponent<Module>().freeRoadPositions[pos_index].rotation), module.transform);
+                    GameObject element = Instantiate(elementPrefabs[element_index], element_pos, Quaternion.Euler(0, 0, freeSpots[pos_index].rotation), module.transform);
+                    Module.RoadPosition cur = freeSpots[pos_index];
+                    freeSpots = freeSpots.Where(e => !(e.Equals(cur))).ToArray();
                 }
                 module.GetComponent<Module>().noElements = false;
             }
-        }
-
+        } 
 
         public float FloatWithinInterval(System.Random rng, float max, float min){
             double val = (rng.NextDouble() * Math.Abs(max - min) + min);
@@ -174,5 +182,13 @@ namespace CatJam.Map {
 
             return 0;
         }
+        [Serializable]
+        public struct RoadPosition {
+            public float x;
+            public float y;
+            public int rotation;
+        }
     }
 }
+
+        
