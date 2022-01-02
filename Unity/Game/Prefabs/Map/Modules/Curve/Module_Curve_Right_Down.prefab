@@ -207,6 +207,7 @@ MonoBehaviour:
     from_direction: {x: 1, y: 0}
     to_direction: {x: 0, y: -1}
     size: 30
+    isStraight: 0
     isStartingLine: 0
     isFinishLine: 0
   buildingPositions:
@@ -246,6 +247,47 @@ MonoBehaviour:
     ys:
     - 10.92
     - 11.35
+  freeRoadPositions:
+  - x: -12
+    y: 2
+    rotation: -90
+    altRotation: -90
+  - x: -12
+    y: -1
+    rotation: -90
+    altRotation: -90
+  - x: -7
+    y: 2
+    rotation: -90
+    altRotation: -90
+  - x: -7
+    y: -1
+    rotation: -90
+    altRotation: -90
+  - x: -2
+    y: 14
+    rotation: -90
+    altRotation: 0
+  - x: 1
+    y: 14
+    rotation: -90
+    altRotation: 0
+  - x: -2
+    y: 8
+    rotation: -90
+    altRotation: 0
+  - x: 1
+    y: 8
+    rotation: -90
+    altRotation: 0
+  - x: 0
+    y: 1
+    rotation: -90
+    altRotation: -50
+  - x: -2
+    y: 4
+    rotation: -90
+    altRotation: -50
   sprites:
     spriteRendererRoad: {fileID: 6376504041872728488}
     spritesRoad:
@@ -253,6 +295,7 @@ MonoBehaviour:
   moduleID: 0
   playerWasInside: 0
   noBackground: 1
+  noElements: 1
 --- !u!61 &785140300
 BoxCollider2D:
   m_ObjectHideFlags: 0

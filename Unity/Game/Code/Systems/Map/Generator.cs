@@ -89,14 +89,16 @@ namespace CatJam.Map {
                     newObj.GetComponent<Module>().moduleConfiguration.to_direction = newObj.GetComponent<Module>().moduleConfiguration.from_direction;
                     newObj.GetComponent<Module>().moduleConfiguration.moduleFinish = newObj.GetComponent<Module>().moduleConfiguration.alternativeFinish;
                     newObj.GetComponent<Module>().moduleConfiguration.modules = newObj.GetComponent<Module>().moduleConfiguration.alternativeModules;
+                    Module.RoadPosition[] positions = newObj.GetComponent<Module>().freeRoadPositions;
+                    for(int i = 0; i<positions.Length; i++){
+                        positions[i].rotation = positions[i].altRotation;
+                    }
                 }
             }
 
             generateBackground(newObj);
             if(number!=0 && number!=modulesQuantity - 1){
-                if(newObj.GetComponent<Module>().freeRoadPositions.Length!=0){
-                    generateRoadElements(newObj, numberOfElementsPerModule);
-                }
+                generateRoadElements(newObj, numberOfElementsPerModule);
             }
 
             newObj.GetComponent<Module>().Generate(number);
