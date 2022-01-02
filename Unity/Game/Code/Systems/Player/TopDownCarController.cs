@@ -167,7 +167,7 @@ namespace CatJam.Players
             jumpHeightScale = jumpHeightScale * carRigidbody2D.velocity.magnitude * 0.05f;
             jumpHeightScale = Mathf.Clamp(jumpHeightScale, 0.0f, 1.0f);
 
-            // carCollider2D.enabled = false;
+            carCollider2D.enabled = false;
 
             while (isJumping)
             {
@@ -191,7 +191,7 @@ namespace CatJam.Players
             carShadowRenderer.transform.localPosition = Vector3.zero;
             carShadowRenderer.transform.localScale = carSpriteRenderer.transform.localScale;
 
-            // carCollider2D.enabled = true;
+            carCollider2D.enabled = true;
             isJumping = false; 
         }
 

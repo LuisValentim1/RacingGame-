@@ -93,9 +93,12 @@ namespace CatJam.Map {
             }
 
             generateBackground(newObj);
-            if(number==0){
-                generateRoadElements(newObj, numberOfElementsPerModule);
+            if(number!=0 && number!=modulesQuantity - 1){
+                if(newObj.GetComponent<Module>().freeRoadPositions.Length!=0){
+                    generateRoadElements(newObj, numberOfElementsPerModule);
+                }
             }
+
             newObj.GetComponent<Module>().Generate(number);
 
             arrayModules[currentModuleArray] = newObj;

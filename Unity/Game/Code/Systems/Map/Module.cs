@@ -141,6 +141,7 @@ namespace CatJam.Map {
             public float x;
             public float y;
             public int rotation;
+            public int altRotation;
         }
     }
 }
