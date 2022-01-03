@@ -27,6 +27,10 @@ public class TopDownCarController : MonoBehaviour
     float velocityVsUp = 0;
 
     bool isJumping = false;
+
+    bool isStripe = false;
+
+    float mana = 0;
     
 
     //Components
@@ -47,7 +51,7 @@ public class TopDownCarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        
     }
 
     void FixedUpdate()
@@ -183,6 +187,15 @@ public class TopDownCarController : MonoBehaviour
             JumpData jumpData = collider2d.GetComponent<JumpData>();
             Jump(jumpData.jumpHeightScale, jumpData.jumpPushScale);
         }
+
+        if (Input.GetKey(KeyCode.V) && collider2d.CompareTag("Mana"))
+        {
+            ManaStripe manaAmount = collider2d.GetComponent<ManaStripe>();
+            mana = mana + manaAmount.getMana();
+            Debug.Log(mana);
+        }
     }
+
+
 
 }
