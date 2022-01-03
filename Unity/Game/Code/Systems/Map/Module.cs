@@ -15,6 +15,7 @@ namespace CatJam.Map {
         public BuildingPositions[] buildingPositions;
         public RoadPosition[] freeRoadPositions;
         public Sprites sprites;
+        public CurveType curveKind;
 
         public int moduleID;
         public bool playerWasInside;
@@ -96,6 +97,13 @@ namespace CatJam.Map {
 
         public Sprite GetRandomSpriteRoad() {
             return sprites.spritesRoad[UnityEngine.Random.Range(0, sprites.spritesRoad.Length)];
+        }
+
+        [Flags]
+        public enum CurveType{
+            TR,
+            LD,
+            DR
         }
 
         // Structs 

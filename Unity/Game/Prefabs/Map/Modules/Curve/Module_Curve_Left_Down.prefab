@@ -244,42 +244,43 @@ MonoBehaviour:
     - 10.92
     - 11.35
   freeRoadPositions:
-  - x: -11.3
-    y: 1
-    rotation: -75
+  - x: 1.7
+    y: -13
+    rotation: 180
     altRotation: 0
-  - x: -11.3
-    y: -2
-    rotation: -75
+  - x: -1.5
+    y: -13
+    rotation: 180
     altRotation: 0
-  - x: -6
-    y: 0
-    rotation: -60
-    altRotation: 0
-  - x: -7
-    y: 2.5
-    rotation: -60
-    altRotation: 0
-  - x: -3
-    y: 6.5
-    rotation: -40
-    altRotation: 0
+  - x: -2.5
+    y: -8.5
+    rotation: -160
+    altRotation: 20
   - x: 0.5
-    y: 7
-    rotation: -27
-    altRotation: 0
-  - x: 1.5
-    y: 13
-    rotation: 0
-    altRotation: 0
-  - x: -1
-    y: 13
-    rotation: 0
-    altRotation: 0
+    y: -8.5
+    rotation: -160
+    altRotation: 20
+  - x: -6
+    y: -4
+    rotation: -140
+    altRotation: 40
+  - x: -4
+    y: -2
+    rotation: -140
+    altRotation: 40
+  - x: -12
+    y: 1.5
+    rotation: -90
+    altRotation: 90
+  - x: -12
+    y: -1.5
+    rotation: -90
+    altRotation: 90
   sprites:
     spriteRendererRoad: {fileID: 4495856807755370037}
     spritesRoad:
     - {fileID: 21300000, guid: d561fa502f033ac40a8a7a404f328944, type: 3}
+  curveKind: 1
   moduleID: 0
   playerWasInside: 0
   noBackground: 1

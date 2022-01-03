@@ -249,39 +249,40 @@ MonoBehaviour:
   - x: 5
     y: -2.5
     rotation: -60
-    altRotation: 0
+    altRotation: 120
   - x: 6
     y: -5
     rotation: -65
-    altRotation: 0
+    altRotation: 115
   - x: 10
     y: -3
     rotation: -80
-    altRotation: 0
+    altRotation: 100
   - x: 10
     y: 0
     rotation: -80
-    altRotation: 0
+    altRotation: 100
   - x: 0
     y: -7
     rotation: -40
-    altRotation: 0
+    altRotation: 140
   - x: 3.5
     y: -8
     rotation: -30
-    altRotation: 0
+    altRotation: 150
   - x: 2
     y: -11
     rotation: 0
-    altRotation: 0
+    altRotation: 180
   - x: -0.5
     y: -11
     rotation: 0
-    altRotation: 0
+    altRotation: 180
   sprites:
     spriteRendererRoad: {fileID: 8254135766090154800}
     spritesRoad:
     - {fileID: 21300000, guid: d561fa502f033ac40a8a7a404f328944, type: 3}
+  curveKind: 2
   moduleID: 0
   playerWasInside: 0
   noBackground: 1

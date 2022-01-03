@@ -36,7 +36,7 @@ namespace CatJam.Map {
         // Methods -> Standard
         public void OnAwake() {
             instance = this;
-            r = new System.Random(DateTime.Now.Day);
+            r = new System.Random(DateTime.Now.Second);
             arrayModules = new GameObject[generateQuantity + deleteQuantity];
         }
 
@@ -82,6 +82,8 @@ namespace CatJam.Map {
                 newObj.transform.position = lastModule.GetComponent<Module>().GetToNewPosition();
             }
 
+            Module.RoadPosition[] freePositions = newObj.GetComponent<Module>().freeRoadPositions;
+
             if(number>0){
                 float moduleSize = newObj.GetComponent<Module>().moduleConfiguration.size;
                 Vector2 from = new Vector2((lastModule.transform.position.x - newObj.transform.position.x) / moduleSize, (lastModule.transform.position.y - newObj.transform.position.y) / moduleSize);
@@ -89,16 +91,35 @@ namespace CatJam.Map {
                     newObj.GetComponent<Module>().moduleConfiguration.to_direction = newObj.GetComponent<Module>().moduleConfiguration.from_direction;
                     newObj.GetComponent<Module>().moduleConfiguration.moduleFinish = newObj.GetComponent<Module>().moduleConfiguration.alternativeFinish;
                     newObj.GetComponent<Module>().moduleConfiguration.modules = newObj.GetComponent<Module>().moduleConfiguration.alternativeModules;
-                    Module.RoadPosition[] positions = newObj.GetComponent<Module>().freeRoadPositions;
-                    for(int i = 0; i<positions.Length; i++){
-                        positions[i].rotation = positions[i].altRotation;
+                    for(int i = 0; i<freePositions.Length; i++){
+                        freePositions[i].rotation = freePositions[i].altRotation;
                     }
+                    /**
+                    Module.CurveType curve = newObj.GetComponent<Module>().curveKind;
+                    if(curve == Module.CurveType.TR){
+                        print("tr curve flipped");
+                        float negY;
+                        for(int i = 0; i<freePositions.Length; i++){
+                                negY = freePositions[i].x;
+                                freePositions[i].x = freePositions[i].y;
+                                freePositions[i].y = negY;
+                        } 
+                    }
+                    if(curve == Module.CurveType.DR){
+                        print("dr curve flipped");
+                        //float negX;
+                        for(int i = 0; i<freePositions.Length; i++){
+                                //negX = -freePositions[i].x;
+                                //freePositions[i].x = -freePositions[i].x;
+                                //freePositions[i].y = -freePositions[i].y;
+                        }
+                    } **/
                 }
             }
 
             generateBackground(newObj);
             if(number!=0 && number!=modulesQuantity - 1){
-                generateRoadElements(newObj, numberOfElementsPerModule);
+                generateRoadElements(newObj, freePositions, numberOfElementsPerModule);
             }
 
             newObj.GetComponent<Module>().Generate(number);
@@ -131,14 +152,11 @@ namespace CatJam.Map {
         }
 
 
-        public void generateRoadElements(GameObject module, int numberOfElements){
+        public void generateRoadElements(GameObject module, Module.RoadPosition[] freeSpots, int numberOfElements){
             Vector3 pos = module.transform.position;
-            Module.RoadPosition[] freeSpots = module.GetComponent<Module>().freeRoadPositions;
             if(module.GetComponent<Module>().noElements){
                 for(int i = 0; i<numberOfElements; i++){
                     int pos_index = r.Next(0,freeSpots.Length);
-                    print(freeSpots.Length);
-                    print("index"  + pos_index.ToString());
                     Vector3 offset = new Vector3(freeSpots[pos_index].x, freeSpots[pos_index].y, -1);
                     Vector3 element_pos = pos + offset;
                     int element_index = r.Next(0,2);
