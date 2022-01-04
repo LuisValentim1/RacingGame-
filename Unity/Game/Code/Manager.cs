@@ -10,6 +10,8 @@ public class Manager : MonoBehaviour
     public Sys[] systems;
     public Data data;
 
+    public bool dev_tools = true;
+
     // Methods -> Standard
     private void Awake() {
         data.OnAwake();
@@ -26,7 +28,10 @@ public class Manager : MonoBehaviour
         for (int i = 0; i < systems.Length; i++)
             systems[i].UpdateSys();
 
-        Dev_InputToSkip();
+
+        if (dev_tools == true) {
+            Dev_InputToSkip();
+        }
     }
 
 
