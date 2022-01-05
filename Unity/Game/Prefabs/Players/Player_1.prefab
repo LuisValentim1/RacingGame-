@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a610f3c138dcf8843bd75c6704bdb7f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: 
+  characterName: Tiger
   abilityBasic: {fileID: 2224988506461135036}
   abilityUlti: {fileID: 2224988507519942730}
   CharacterLogic: {fileID: 2224988506148844548}
@@ -199,7 +199,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.4, y: 0.95}
   m_EdgeRadius: 0
 --- !u!1 &2224988506461135039
 GameObject:
@@ -257,7 +257,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2224988506970429817}
   - component: {fileID: 2224988506970429812}
-  - component: {fileID: 2224988506970429813}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -335,20 +334,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2224988506970429813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2224988506970429818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Library: []
-  m_SpriteLibraryAsset: {fileID: 0}
 --- !u!1 &2224988507519942732
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,7 +605,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3928695248527300050

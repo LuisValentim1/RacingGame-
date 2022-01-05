@@ -204,7 +204,8 @@ MonoBehaviour:
     from_direction: {x: 1, y: 0}
     to_direction: {x: -1, y: 0}
     size: 30
-    isStraight: 0
+    isStraight: 1
+    isHorizontal: 1
     isStartingLine: 0
     isFinishLine: 0
   buildingPositions:

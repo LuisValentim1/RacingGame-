@@ -18893,18 +18893,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1912152241}
     m_Modifications:
-    - target: {fileID: 2224988506148844547, guid: 207161db44e62874491c0a69a9cd2719, type: 3}
-      propertyPath: characterName
-      value: Tiger
-      objectReference: {fileID: 0}
-    - target: {fileID: 2224988506148844550, guid: 207161db44e62874491c0a69a9cd2719, type: 3}
-      propertyPath: m_Size.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2224988506148844550, guid: 207161db44e62874491c0a69a9cd2719, type: 3}
-      propertyPath: m_Size.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2224988506148844554, guid: 207161db44e62874491c0a69a9cd2719, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -18953,8 +18941,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2224988506970429813, guid: 207161db44e62874491c0a69a9cd2719, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 207161db44e62874491c0a69a9cd2719, type: 3}
 --- !u!1001 &2234861810571017709
 PrefabInstance:

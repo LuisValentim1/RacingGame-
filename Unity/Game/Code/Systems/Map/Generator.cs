@@ -137,14 +137,31 @@ namespace CatJam.Map {
         //Each module has an array of available offsets and rotations in which elements may spawn 
         public void generateRoadElements(GameObject module, Module.RoadPosition[] freeSpots, int numberOfElements){
             Vector3 pos = module.transform.position;
+            Vector3 offset;
+            int pos_index;
+            Module.RoadPosition cur;
+            int x = 0;
             if(module.GetComponent<Module>().noElements){
-                for(int i = 0; i<numberOfElements; i++){
-                    int pos_index = r.Next(0,freeSpots.Length);
-                    Vector3 offset = new Vector3(freeSpots[pos_index].x, freeSpots[pos_index].y, -1);
+                if(module.GetComponent<Module>().moduleConfiguration.isStraight && r.Next(0,2) == 1){
+                    pos_index = r.Next(0,2);
+                    offset = new Vector3(freeSpots[pos_index].x, freeSpots[pos_index].y, -1);
+                    GameObject element = Instantiate(elementPrefabs[r.Next(2,4)], pos+offset, Quaternion.Euler(0, 0, freeSpots[pos_index].rotation), module.transform);
+                    cur = freeSpots[pos_index];
+                    if(module.GetComponent<Module>().moduleConfiguration.isHorizontal){
+                        freeSpots = freeSpots.Where(e => !(e.y.Equals(cur.y))).ToArray();
+                    }
+                    else{
+                        freeSpots = freeSpots.Where(e => !(e.x.Equals(cur.x))).ToArray();
+                    }
+                    x=1;
+                }
+                for(int i = 0 + x; i<numberOfElements; i++){
+                    pos_index = r.Next(0,freeSpots.Length);
+                    offset = new Vector3(freeSpots[pos_index].x, freeSpots[pos_index].y, -1);
                     Vector3 element_pos = pos + offset;
                     int element_index = r.Next(0,2);
                     GameObject element = Instantiate(elementPrefabs[element_index], element_pos, Quaternion.Euler(0, 0, freeSpots[pos_index].rotation), module.transform);
-                    Module.RoadPosition cur = freeSpots[pos_index];
+                    cur = freeSpots[pos_index];
                     freeSpots = freeSpots.Where(e => !(e.Equals(cur))).ToArray();
                 }
                 module.GetComponent<Module>().noElements = false;

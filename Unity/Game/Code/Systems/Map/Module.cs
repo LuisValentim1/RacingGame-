@@ -113,6 +113,7 @@ namespace CatJam.Map {
             public float size;
 
             public bool isStraight;
+            public bool isHorizontal;
             public bool isStartingLine;
             public bool isFinishLine;
         }
