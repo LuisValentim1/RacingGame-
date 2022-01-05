@@ -83,8 +83,10 @@ namespace CatJam.Map {
             }
 
             Module.RoadPosition[] freePositions = newObj.GetComponent<Module>().freeRoadPositions;
-
-            if(number>0){
+            // For track randomization purposes modules may spawn in places that don't match their standard orientation, a left->down curve may appear with top->left orientation
+            // When this happens values based on module have to be altered to their alternative versions 
+            // Road Element Generation is processed at this point for efficency reasons  
+            if(intIsWithinRange(modulesQuantity,0,number)){
                 float moduleSize = newObj.GetComponent<Module>().moduleConfiguration.size;
                 Vector2 from = new Vector2((lastModule.transform.position.x - newObj.transform.position.x) / moduleSize, (lastModule.transform.position.y - newObj.transform.position.y) / moduleSize);
                 if(from != newObj.GetComponent<Module>().moduleConfiguration.from_direction){
@@ -94,33 +96,10 @@ namespace CatJam.Map {
                     for(int i = 0; i<freePositions.Length; i++){
                         freePositions[i].rotation = freePositions[i].altRotation;
                     }
-                    /**
-                    Module.CurveType curve = newObj.GetComponent<Module>().curveKind;
-                    if(curve == Module.CurveType.TR){
-                        print("tr curve flipped");
-                        float negY;
-                        for(int i = 0; i<freePositions.Length; i++){
-                                negY = freePositions[i].x;
-                                freePositions[i].x = freePositions[i].y;
-                                freePositions[i].y = negY;
-                        } 
-                    }
-                    if(curve == Module.CurveType.DR){
-                        print("dr curve flipped");
-                        //float negX;
-                        for(int i = 0; i<freePositions.Length; i++){
-                                //negX = -freePositions[i].x;
-                                //freePositions[i].x = -freePositions[i].x;
-                                //freePositions[i].y = -freePositions[i].y;
-                        }
-                    } **/
                 }
-            }
-
-            generateBackground(newObj);
-            if(number!=0 && number!=modulesQuantity - 1){
                 generateRoadElements(newObj, freePositions, numberOfElementsPerModule);
             }
+            generateBackground(newObj);
 
             newObj.GetComponent<Module>().Generate(number);
 
@@ -137,7 +116,9 @@ namespace CatJam.Map {
             Destroy(arrayModules[currentModuleArray]);
         }
 
-
+        //Method for background buildings placement
+        //Get the module center position, add a semi random offset within certain intervals to assure buildings don't overlap, instatiate random building within calculated position, repeat for each of the six open positions in each module.
+        //Intervals are defined within the module
         public void generateBackground(GameObject module){ 
             Vector3 pos = module.transform.position;
             if(module.GetComponent<Module>().noBackground){
@@ -151,7 +132,9 @@ namespace CatJam.Map {
             }
         }
 
-
+        //Method for road elements placement
+        //Get the module center position, add a static offset, instatiate random element in the calculated position with an associated rotation, remove the offset used from possible offsets for following elements
+        //Each module has an array of available offsets and rotations in which elements may spawn 
         public void generateRoadElements(GameObject module, Module.RoadPosition[] freeSpots, int numberOfElements){
             Vector3 pos = module.transform.position;
             if(module.GetComponent<Module>().noElements){
@@ -168,6 +151,16 @@ namespace CatJam.Map {
             }
         } 
 
+        // Efficent check if int is within a range, min and max not included 
+        public Boolean intIsWithinRange(int max, int min, int x){
+            int check = (max-x) * (min-x);
+            if(check<0){
+                return true;
+            }
+            return false;
+        }
+
+        // Get a float within an interval
         public float FloatWithinInterval(System.Random rng, float max, float min){
             double val = (rng.NextDouble() * Math.Abs(max - min) + min);
             return (float)val; 
@@ -204,12 +197,6 @@ namespace CatJam.Map {
             }
 
             return 0;
-        }
-        [Serializable]
-        public struct RoadPosition {
-            public float x;
-            public float y;
-            public int rotation;
         }
     }
 }

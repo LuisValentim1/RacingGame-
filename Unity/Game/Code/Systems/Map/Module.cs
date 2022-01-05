@@ -15,7 +15,6 @@ namespace CatJam.Map {
         public BuildingPositions[] buildingPositions;
         public RoadPosition[] freeRoadPositions;
         public Sprites sprites;
-        public CurveType curveKind;
 
         public int moduleID;
         public bool playerWasInside;
@@ -99,13 +98,6 @@ namespace CatJam.Map {
             return sprites.spritesRoad[UnityEngine.Random.Range(0, sprites.spritesRoad.Length)];
         }
 
-        [Flags]
-        public enum CurveType{
-            TR,
-            LD,
-            DR
-        }
-
         // Structs 
         [Serializable]       
         public struct ModuleConfiguration {
@@ -125,6 +117,7 @@ namespace CatJam.Map {
             public bool isFinishLine;
         }
 
+        //Is this ever used?
         [Serializable]
         public struct SquareConfiguration {
             public int squares_rows_quant;

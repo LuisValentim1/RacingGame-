@@ -15662,10 +15662,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gerarTudo: 0
-  modulesQuantity: 40
+  modulesQuantity: 20
   numberOfElementsPerModule: 3
-  generateQuantity: 1
-  deleteQuantity: 2
+  generateQuantity: 2
+  deleteQuantity: 3
   startModules:
   - {fileID: 5382545792643906258, guid: 2555d3fa3f7216c47b5b71a5063282d9, type: 3}
   - {fileID: 7054744751457069216, guid: 50a3c722de86ff048a1cf54a6695adfe, type: 3}
