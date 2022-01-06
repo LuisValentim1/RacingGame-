@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace CatJam.UI 
+namespace JamCat.UI 
 {
     public enum FadeType { fade_in, fade_out }
     public class AutoCanvasGroup : MonoBehaviour {

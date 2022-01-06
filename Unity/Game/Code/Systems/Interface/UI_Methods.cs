@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CatJam.UI 
+namespace JamCat.UI 
 {
     public static class UI_Methods
     {

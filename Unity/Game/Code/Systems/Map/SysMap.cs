@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace CatJam.Map {
+namespace JamCat.Map {
     public class SysMap : Sys {
         
         // Instance

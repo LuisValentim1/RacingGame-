@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using CatJam.UI;
+using JamCat.UI;
 
 public class Manager : MonoBehaviour
 {
@@ -48,9 +48,22 @@ public class Manager : MonoBehaviour
     }
 
     public void SkipToGame(int characterNumber) {
-        Window_MainMenu.Get().Button_Play();
-        Window_CharacterSelection.Get().Button_Select_Character(characterNumber);
-        Window_CharacterSelection.Get().Button_Play();
-        GeneralMethods.StartGame();
+
+        if (Data.Get().gameLogic.in_main_menu == true) {
+            Window_MainMenu.Get().Button_Play();
+            Window_CharacterSelection.Get().Button_Select_Character(characterNumber);
+            Window_CharacterSelection.Get().Button_Play();
+        }
+        
+        if (Data.Get().gameLogic.game_finished == true) {
+            Window_Finish.Get().Button_PlayAgain();
+        }
+        
+        if (Data.Get().gameLogic.in_game == true) {
+            GeneralMethods.StartGame();
+        }
+        
+        
+       // GeneralMethods.StartGame();
     }
 }

@@ -201,11 +201,12 @@ MonoBehaviour:
     - 12.5
     - 12.5
     moduleFinish: {fileID: 514386206999953228, guid: f11e58aade171bb46985245338138c51, type: 3}
-    alternativeFinish: {fileID: 0}
+    alternativeFinish: {fileID: 3513992889690790048, guid: e87495f2df1c95c4280eec6cd7384005, type: 3}
     from_direction: {x: 0, y: -1}
     to_direction: {x: 1, y: 0}
     size: 30
     isStraight: 0
+    isHorizontal: 0
     isStartingLine: 0
     isFinishLine: 0
   buildingPositions:
@@ -282,7 +283,6 @@ MonoBehaviour:
     spriteRendererRoad: {fileID: 8254135766090154800}
     spritesRoad:
     - {fileID: 21300000, guid: d561fa502f033ac40a8a7a404f328944, type: 3}
-  curveKind: 2
   moduleID: 0
   playerWasInside: 0
   noBackground: 1

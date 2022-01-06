@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace CatJam.Audio 
+namespace JamCat.Audio 
 {
     public class AudioMusic : MonoBehaviour {
 

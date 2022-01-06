@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
-namespace CatJam.UI 
+namespace JamCat.UI 
 {
     public class Window_Options : Window
     {

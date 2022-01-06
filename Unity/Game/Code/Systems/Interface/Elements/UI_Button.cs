@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-namespace CatJam.UI 
+namespace JamCat.UI 
 {
     public class UI_Button : UI, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
     {

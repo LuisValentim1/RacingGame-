@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-namespace CatJam.UI 
+namespace JamCat.UI 
 {
     public class Window_Fade : Window
     {

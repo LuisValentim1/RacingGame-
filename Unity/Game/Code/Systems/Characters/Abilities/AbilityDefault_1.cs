@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace CatJam.Characters 
+namespace JamCat.Characters 
 {
     public class AbilityDefault_1 : Ability
     {

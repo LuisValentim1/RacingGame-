@@ -1,11 +1,11 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using CatJam.Players;
-using CatJam.Cameras;
-using CatJam.UI;
-using CatJam.Audio;
-using CatJam.Map;
+using JamCat.Players;
+using JamCat.Cameras;
+using JamCat.UI;
+using JamCat.Audio;
+using JamCat.Map;
 
 public static class GeneralMethods {
 

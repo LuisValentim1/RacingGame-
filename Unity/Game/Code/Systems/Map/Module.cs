@@ -4,9 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using CatJam.Players;
+using JamCat.Players;
 
-namespace CatJam.Map {
+namespace JamCat.Map {
     public class Module : MonoBehaviour {
 
         // Variables
@@ -30,18 +30,11 @@ namespace CatJam.Map {
 
             // Create new module and destroy last
             if (other.tag == "Player" && playerWasInside == false) {
-                if (moduleConfiguration.isFinishLine == true) {
-                    GeneralMethods.CallFinish();
-                } else {
-                    other.GetComponent<TopDownCarController>().inModule = moduleID;
-                    Generator.Get().DeleteLastModule(gameObject);
-
-                    if (moduleID + 1 != Generator.Get().modulesQuantity)
-                        Generator.Get().GenerateModule(moduleID + 1);
-            
-                    playerWasInside = true;                
-                }
-            }     
+                other.GetComponent<TopDownCarController>().inModule = moduleID;
+                Generator.Get().DeleteLastModule(gameObject);
+                Generator.Get().GenerateModule();
+                playerWasInside = true;              
+            } 
         }
 
         public void Generate(int moduleID) {

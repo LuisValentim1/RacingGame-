@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace CatJam.Cameras
+namespace JamCat.Cameras
 {
     public class SysCamera : Sys 
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace CatJam.Cameras
+namespace JamCat.Cameras
 {
     public class CameraFollowCar : CameraBase
     {

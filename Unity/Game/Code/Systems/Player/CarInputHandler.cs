@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace CatJam.Players 
+namespace JamCat.Players 
 {
     public class CarInputHandler : MonoBehaviour
     {
         // Variables
+        Player player;
         TopDownCarController topDownCarController;
 
         // Methods -> Standard
         public void AwakeCar() {
+            player = GetComponent<Player>();
             topDownCarController = GetComponent<TopDownCarController>();
         }
 
@@ -24,11 +26,13 @@ namespace CatJam.Players
             inputVector.x = Input.GetAxis("Horizontal");
             inputVector.y = Input.GetAxis("Vertical");
             topDownCarController.SetInputVector(inputVector);
+
             if(Input.GetButtonDown("Interaction")){
-                topDownCarController.InteractJump();
+                player.InteractJump();
             }
+
             if(Input.GetButton("Interaction")){
-                topDownCarController.InteractStripe();
+                player.InteractStripe();
             }
         } 
     }

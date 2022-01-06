@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 
-namespace CatJam.Players
+namespace JamCat.Players
 {
     public class SysPlayer : Sys {
         

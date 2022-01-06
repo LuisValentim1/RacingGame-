@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CatJam.UI 
+namespace JamCat.UI 
 {
     public class Window_PauseMenu : Window
     {
@@ -29,9 +29,8 @@ namespace CatJam.UI
 
         protected override void OnUpdateWindow() {
             if (quit == true) {
-                Window_Fade window = Window_Fade.Get() as Window_Fade;
-                UI_Methods.SetFade(window, FadeType.fade_out, 1f, 0);
-                if (window.canvasGroup.alpha <= 0)
+                Window_Fade.Get().CloseWindow(1, 0);
+                if (Window_Fade.Get().canvasGroup.alpha <= 0)
                     Application.Quit();
             }
         }
@@ -43,16 +42,15 @@ namespace CatJam.UI
         }
 
         public void Button_Options() {
-            UI_Methods.SetFade(this, FadeType.fade_out, 0.5f, 0);
-            Window_Options window = Window_Options.Get() as Window_Options;
-            window.StartOptions(this);
-            UI_Methods.SetFade(window, FadeType.fade_in, 0.5f, 0.5f);
+            CloseWindow(0.2f, 0);
+            Window_Options.Get().OpenWindow(0.2f, 0.2f);
+            Window_Options.Get().StartOptions(this);
         }
 
         public void Button_MainMenu() {
-            UI_Methods.SetFade(this, FadeType.fade_out, 0.5f, 0);
-            Window_MainMenu window = Window_MainMenu.Get() as Window_MainMenu;
-            UI_Methods.SetFade(window, FadeType.fade_in, 0.5f, 0.5f);
+            CloseWindow(0.2f, 0);
+            Window_HUD.Get().CloseWindow(0.2f, 0);
+            Window_MainMenu.Get().OpenWindow(0.2f, 0.2f);
 
             GeneralMethods.MainMenu();
         }

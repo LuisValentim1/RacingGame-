@@ -2,33 +2,31 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using CatJam.Map;
-using CatJam.Characters;
+using JamCat.Map;
+using JamCat.Characters;
 
-namespace CatJam.Players
+namespace JamCat.Players
 {
     public class TopDownCarController : MonoBehaviour
     {
-
-        public GameObject character;
-
         // Variables -> Public
+        Player player;
+
         [Header("Car settings")]
         public float driftFactor = 0.80f;
         public float accelerationFactor = 0.01f;
         public float turnFactor = 0.5f;
         public float maxSpeed = 20.0f;
         public float rotOffset = -90;
+        public float maxMana = 100;
         public float currentMana = 0;
-        public Boolean jumpFlag;
-        public Boolean stripeFlag;
-
 
         [Header("Sprites")]
         public SpriteRenderer carSpriteRenderer;
         public SpriteRenderer carShadowRenderer;
 
         [Header("Jumping")]
+        private Vector2 initialScale;
         public AnimationCurve jumpCurve;
 
         [Header("Jump info")]
@@ -51,61 +49,36 @@ namespace CatJam.Players
         Collider2D carCollider2D;
         WheelTrailRenderedHandler[] wheelTrailRenderedHandler;
 
-        // Methods -> Standard
         public void AwakeCar() {
+            player = GetComponent<Player>();
             carRigidbody2D = GetComponent<Rigidbody2D>();
             carCollider2D = GetComponentInChildren<Collider2D>();
             wheelTrailRenderedHandler = GetComponentsInChildren<WheelTrailRenderedHandler>();
             for (int i = 0; i < wheelTrailRenderedHandler.Length; i++)
                 wheelTrailRenderedHandler[i].OnAwake();
+
+            initialScale = carShadowRenderer.transform.localScale;
         }
         
         public void StartCar() {
 
         }
 
+        public void Restart() {
+            // Restart all the variables
+            transform.position = new Vector3(0, 0, -5);
+            steeringInput = 0;
+            accelerationInput = 0;
+            velocityVsUp = 0;
+            carRigidbody2D.velocity = Vector2.zero;
+
+            // Player starts with the initial rotation of the track
+            rotationAngle = Generator.Get().GetInitialPlayerRotation();
+        }
+
         public void UpdateCar() {
             for (int i = 0; i < wheelTrailRenderedHandler.Length; i++)
                 wheelTrailRenderedHandler[i].OnUpdate();
-        }
-
-        public void addMana(float manaValue){
-            currentMana += manaValue;
-            print(currentMana);
-        }
-
-        public void InteractJump(){
-            if(jumpFlag){
-                //character.currentMana(character.currentMana+10);
-                addMana(5.0f);
-                jumpBoost();
-            }
-        }
-
-        public void InteractStripe(){
-            if(stripeFlag){
-                addMana(0.04f);
-            } 
-        }
-
-        void OnTriggerExit2D(Collider2D collision){
-            if(collision.CompareTag("Stripe")){
-                stripeFlag = false;
-            }       
-        }
-        
-        void OnTriggerEnter2D(Collider2D collider2d) {
-            if(collider2d.CompareTag("Jump")) {
-                Jump(jumpHeightScale, jumpPushScale);
-                jumpFlag = true; 
-            }
-            if(collider2d.CompareTag("Stripe")){
-                stripeFlag = true;
-            }
-        }
-
-        public void jumpBoost(){
-            accelerationFactor = accelerationFactor * 2;
         }
 
         private void FixedUpdate() {
@@ -115,10 +88,16 @@ namespace CatJam.Players
             ApplyEngineForce();
             KillOrthogonalVelocity();
             ApplySteering();
-            jumpFlag = false;
         }
 
-        // Methods -> Private
+
+
+        // Methods
+        
+        public void ReduceVelocityBy(float value) {
+            carRigidbody2D.velocity /= value;
+        }
+        
         void ApplyEngineForce()
         {
             velocityVsUp = Vector2.Dot(transform.up, carRigidbody2D.velocity);
@@ -162,6 +141,7 @@ namespace CatJam.Players
             carRigidbody2D.velocity = forwardVelocity + rightVelocity*driftFactor;
         }
 
+
         float GetLateralVelocity()
         {
             return Vector2.Dot(transform.right, carRigidbody2D.velocity);
@@ -184,29 +164,31 @@ namespace CatJam.Players
             return false;
         }
 
-        public void SetInputVector(Vector2 inputVector)
-        {
-            steeringInput = inputVector.x;
-            accelerationInput = inputVector.y;
-        }
-
-            
-        public void Jump(float jumpHeightScale, float jumpPushScale)
-        {
-            if (!isJumping)
+        public void TriggerJump() {
+            player.jumpFlag = true; 
+            if (!isJumping) {
+                StartCoroutine(JumpFlagOver());
                 StartCoroutine(JumpCo(jumpHeightScale, jumpPushScale));
+            }
         }
 
-        private IEnumerator JumpCo(float jumpHeightScale, float jumpPushScale)
-        {
+        public void JumpBoost(){
+            accelerationFactor = accelerationFactor * 2;
+        }
+
+        private IEnumerator JumpFlagOver() {
+            yield return new WaitForSeconds(0.75f);
+            player.jumpFlag = false;
+            yield return null;
+        }
+
+        private IEnumerator JumpCo(float jumpHeightScale, float jumpPushScale) {
             isJumping = true;
 
             float jumpStartTime = Time.time;
             float jumpDuration = carRigidbody2D.velocity.magnitude * 0.05f;
-
             jumpHeightScale = jumpHeightScale * carRigidbody2D.velocity.magnitude * 0.05f;
             jumpHeightScale = Mathf.Clamp(jumpHeightScale, 0.0f, 1.0f);
-
             carCollider2D.enabled = false;
 
             while (isJumping)
@@ -215,10 +197,8 @@ namespace CatJam.Players
                 float jumpCompletedPercentage = (Time.time - jumpStartTime) / jumpDuration;
                 jumpCompletedPercentage = Mathf.Clamp01(jumpCompletedPercentage);
 
-                carSpriteRenderer.transform.localScale = Vector3.one + Vector3.one * jumpCurve.Evaluate(jumpCompletedPercentage) * jumpHeightScale;
-
+                carSpriteRenderer.transform.localScale = Vector3.one + Vector3.one  * jumpCurve.Evaluate(jumpCompletedPercentage) * jumpHeightScale;
                 carShadowRenderer.transform.localScale = carSpriteRenderer.transform.localScale * 0.75f;
-
                 carShadowRenderer.transform.localPosition = new Vector3(1, -1, 0.0f) * 3 * jumpCurve.Evaluate(jumpCompletedPercentage) * jumpHeightScale;
 
                 if (jumpCompletedPercentage == 1.0f)
@@ -227,25 +207,37 @@ namespace CatJam.Players
             }
 
             carSpriteRenderer.transform.localScale = Vector3.one;
-
             carShadowRenderer.transform.localPosition = Vector3.zero;
-            carShadowRenderer.transform.localScale = carSpriteRenderer.transform.localScale;
-
+            carShadowRenderer.transform.localScale = initialScale;
             carCollider2D.enabled = true;
             isJumping = false;
             accelerationFactor = 50;
         }
 
-        public void Restart() {
-            // Restart all the variables
-            transform.position = new Vector3(0, 0, -5);
-            steeringInput = 0;
-            accelerationInput = 0;
-            velocityVsUp = 0;
-            carRigidbody2D.velocity = Vector2.zero;
 
-            // Player starts with the initial rotation of the track
-            rotationAngle = Generator.Get().GetInitialPlayerRotation();
+        
+       
+
+         public void SetInputVector(Vector2 inputVector) {
+            steeringInput = inputVector.x;
+            accelerationInput = inputVector.y;
+        }
+
+
+        // Methods -> Interaction
+        public void HitObstacle(Collider2D collider2D) {
+            StartCoroutine(IE_HitObstacle(collider2D));
+        }
+
+        IEnumerator IE_HitObstacle(Collider2D collider2D) {
+            Destroy(collider2D.gameObject);
+            ElementObstacle elementObstacle = collider2D.GetComponent<ElementObstacle>();
+            accelerationFactor = elementObstacle.GetAccelerationFactor();
+            ReduceVelocityBy(elementObstacle.GetVelocityDivide());
+            yield return new WaitForSeconds(2);
+            accelerationFactor = 50;
+
+            yield return null;
         }
     }
 }

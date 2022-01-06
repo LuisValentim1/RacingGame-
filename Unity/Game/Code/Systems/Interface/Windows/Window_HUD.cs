@@ -4,16 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-namespace CatJam.UI 
+namespace JamCat.UI 
 {
-    public class Window_Game : Window
+    public class Window_HUD : Window
     {
         // Variables -> Instance
-        public static Window_Game instance;
-        public static Window_Game Get() { return instance; }
+        public static Window_HUD instance;
+        public static Window_HUD Get() { return instance; }
 
         // Variables
         public int currenct_character;
+        public UI_Bar barMana;
 
         // Methods -> Override
         protected override void OnAwakeWindow() {

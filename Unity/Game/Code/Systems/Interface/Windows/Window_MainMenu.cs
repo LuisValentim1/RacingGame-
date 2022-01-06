@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace CatJam.UI 
+namespace JamCat.UI 
 {
     public class Window_MainMenu : Window
     {

@@ -3,9 +3,9 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using CatJam.Map;
+using JamCat.Map;
 
-namespace CatJam.Map {
+namespace JamCat.Map {
     public class Generator : MonoBehaviour {
 
         // Instance
@@ -28,6 +28,7 @@ namespace CatJam.Map {
         public System.Random r;
 
         [Header("Runtime - Test")]
+        public int modulesCreated;
         public int currentModuleArray;
         public GameObject[] arrayModules;
         public GameObject lastModule;
@@ -37,7 +38,7 @@ namespace CatJam.Map {
         public void OnAwake() {
             instance = this;
             r = new System.Random(DateTime.Now.Second);
-            arrayModules = new GameObject[generateQuantity + deleteQuantity];
+            RestartMap();
         }
 
         public void OnStart() {
@@ -52,29 +53,32 @@ namespace CatJam.Map {
         public void GenerateMap() {
             if (gerarTudo == true) {
                 for (int i = 0; i < modulesQuantity; i++) {
-                    GenerateModule(i);
+                    GenerateModule();
                 }
             } else {
                 for (int i = 0; i < generateQuantity; i++) {
-                    GenerateModule(i);
+                    GenerateModule();
                 }
             }
         }
 
-        public void GenerateModule(int number) {
+        public void GenerateModule() {
+            if (modulesCreated == modulesQuantity) 
+                return;
+
             GameObject new_module;
 
             // Chooses the next Module
-            if (number == 0) {
+            if (modulesCreated == 0) {
                 new_module = startModules[UnityEngine.Random.Range(0, startModules.Length)];
-            } else if (number == modulesQuantity - 1) {
+            } else if (modulesCreated == modulesQuantity - 1) {
                 new_module = lastModule.GetComponent<Module>().GetFinish();
             } else {
                 new_module = lastModule.GetComponent<Module>().GetRandomModule();
             }
 
             GameObject newObj = null;
-            if (number == 0) {
+            if (modulesCreated == 0) {
                 newObj = Instantiate(new_module, transform);
                 newObj.transform.position = Vector3.zero;
             } else {
@@ -82,11 +86,13 @@ namespace CatJam.Map {
                 newObj.transform.position = lastModule.GetComponent<Module>().GetToNewPosition();
             }
 
+            newObj.GetComponent<Module>().Generate(modulesCreated);
+
             Module.RoadPosition[] freePositions = newObj.GetComponent<Module>().freeRoadPositions;
             // For track randomization purposes modules may spawn in places that don't match their standard orientation, a left->down curve may appear with top->left orientation
             // When this happens values based on module have to be altered to their alternative versions 
             // Road Element Generation is processed at this point for efficency reasons  
-            if(intIsWithinRange(modulesQuantity,0,number)){
+            if(intIsWithinRange(modulesQuantity - 1, 0, modulesCreated)){
                 float moduleSize = newObj.GetComponent<Module>().moduleConfiguration.size;
                 Vector2 from = new Vector2((lastModule.transform.position.x - newObj.transform.position.x) / moduleSize, (lastModule.transform.position.y - newObj.transform.position.y) / moduleSize);
                 if(from != newObj.GetComponent<Module>().moduleConfiguration.from_direction){
@@ -101,12 +107,13 @@ namespace CatJam.Map {
             }
             generateBackground(newObj);
 
-            newObj.GetComponent<Module>().Generate(number);
 
+            // Set Model Created
             arrayModules[currentModuleArray] = newObj;
             lastModule = newObj;
 
             // Currect Module Number - Array
+            modulesCreated++;
             currentModuleArray++;
             if (currentModuleArray >= deleteQuantity + generateQuantity)
                 currentModuleArray = 0;
@@ -157,6 +164,7 @@ namespace CatJam.Map {
                 }
                 for(int i = 0 + x; i<numberOfElements; i++){
                     pos_index = r.Next(0,freeSpots.Length);
+//                    print(module.GetComponent<Module>().moduleID);
                     offset = new Vector3(freeSpots[pos_index].x, freeSpots[pos_index].y, -1);
                     Vector3 element_pos = pos + offset;
                     int element_index = r.Next(0,2);
@@ -184,11 +192,17 @@ namespace CatJam.Map {
         }
 
         public void RestartMap() {
+            modulesCreated = 0;
+            currentModuleArray = 0;
+            lastModule = null;
+        
             for (int i = 0; i < arrayModules.Length; i++) {
                 if (arrayModules[i] != null)
                     Destroy(arrayModules[i]);
                 arrayModules[i] = null;
             }
+
+            arrayModules = new GameObject[generateQuantity + deleteQuantity];
         }
 
         public Module GetInitialModule() {
@@ -230,5 +244,3 @@ namespace CatJam.Map {
         }
     }
 }
-
-        

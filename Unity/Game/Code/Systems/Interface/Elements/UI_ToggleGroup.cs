@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace CatJam.UI {
+namespace JamCat.UI {
     public class UI_ToggleGroup : UI {
         
         // Variables

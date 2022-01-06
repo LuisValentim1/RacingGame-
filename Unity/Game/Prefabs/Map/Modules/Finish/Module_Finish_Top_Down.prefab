@@ -167,6 +167,7 @@ Transform:
   m_Children:
   - {fileID: 265876595119335428}
   - {fileID: 1540736106}
+  - {fileID: 4250742733602754155}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
@@ -204,6 +205,8 @@ MonoBehaviour:
     from_direction: {x: 0, y: 1}
     to_direction: {x: 0, y: -1}
     size: 30
+    isStraight: 0
+    isHorizontal: 0
     isStartingLine: 0
     isFinishLine: 1
   buildingPositions:
@@ -243,6 +246,7 @@ MonoBehaviour:
     ys:
     - 10.92
     - 11.35
+  freeRoadPositions: []
   sprites:
     spriteRendererRoad: {fileID: 6147044894026489163}
     spritesRoad:
@@ -250,6 +254,7 @@ MonoBehaviour:
   moduleID: 0
   playerWasInside: 0
   noBackground: 1
+  noElements: 1
 --- !u!61 &9028136942312009070
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -275,6 +280,64 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 29.779114, y: 30.223576}
+  m_EdgeRadius: 0
+--- !u!1 &8348049938106455377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4250742733602754155}
+  - component: {fileID: 708933893131996136}
+  m_Layer: 0
+  m_Name: FinishCollision
+  m_TagString: Finish
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4250742733602754155
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8348049938106455377}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -13.1, y: -0.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2292529006415736147}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &708933893131996136
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8348049938106455377}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.5739453, y: 0.8969655}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.923306, y: 1.0427396}
   m_EdgeRadius: 0
 --- !u!1001 &790435483992611134
 PrefabInstance:
