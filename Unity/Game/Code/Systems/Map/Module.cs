@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,11 +13,13 @@ namespace CatJam.Map {
         public SquareConfiguration squareConfiguration;
         public ModuleConfiguration moduleConfiguration;
         public BuildingPositions[] buildingPositions;
+        public RoadPosition[] freeRoadPositions;
         public Sprites sprites;
 
         public int moduleID;
         public bool playerWasInside;
         public bool noBackground = true;
+        public bool noElements = true;
 
         // Methods -> Standard
         private void Reset() {
@@ -110,10 +113,12 @@ namespace CatJam.Map {
             public float size;
 
             public bool isStraight;
+            public bool isHorizontal;
             public bool isStartingLine;
             public bool isFinishLine;
         }
 
+        //Is this ever used?
         [Serializable]
         public struct SquareConfiguration {
             public int squares_rows_quant;
@@ -131,6 +136,14 @@ namespace CatJam.Map {
         public struct BuildingPositions {
             public float[] xs;
             public float[] ys;
+        }
+
+        [Serializable]
+        public struct RoadPosition {
+            public float x;
+            public float y;
+            public int rotation;
+            public int altRotation;
         }
     }
 }

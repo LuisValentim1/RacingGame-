@@ -24,9 +24,12 @@ namespace CatJam.Players
             inputVector.x = Input.GetAxis("Horizontal");
             inputVector.y = Input.GetAxis("Vertical");
             topDownCarController.SetInputVector(inputVector);
-                
-            if (Input.GetButtonDown("Jump"))
-                topDownCarController.Jump(1.0f, 0.0f);
-        }
+            if(Input.GetButtonDown("Interaction")){
+                topDownCarController.InteractJump();
+            }
+            if(Input.GetButton("Interaction")){
+                topDownCarController.InteractStripe();
+            }
+        } 
     }
 }

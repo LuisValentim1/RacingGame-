@@ -8,6 +8,7 @@ namespace CatJam.Characters
     {
         // Variables
         public string characterName;
+        public int currentMana;
         public Ability abilityBasic;
         public Ability abilityUlti;
         public CharacterLogic CharacterLogic;
