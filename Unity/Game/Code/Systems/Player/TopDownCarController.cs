@@ -19,6 +19,7 @@ namespace CatJam.Players
         public float turnFactor = 0.5f;
         public float maxSpeed = 20.0f;
         public float rotOffset = -90;
+        public float currentMana = 0;
         public Boolean jumpFlag;
         public Boolean stripeFlag;
 
@@ -68,26 +69,26 @@ namespace CatJam.Players
                 wheelTrailRenderedHandler[i].OnUpdate();
         }
 
+        public void addMana(float manaValue){
+            currentMana += manaValue;
+            print(currentMana);
+        }
+
         public void InteractJump(){
             if(jumpFlag){
                 //character.currentMana(character.currentMana+10);
-                print("add 10 mana");
+                addMana(5.0f);
                 jumpBoost();
-                jumpFlag = false;
             }
         }
 
         public void InteractStripe(){
             if(stripeFlag){
-                //character.CharacterLogic.addMana(1);
-                print("add 1 mana");
+                addMana(0.04f);
             } 
         }
 
         void OnTriggerExit2D(Collider2D collision){
-            if(collision.CompareTag("Jump")){
-                jumpFlag = false;
-            }
             if(collision.CompareTag("Stripe")){
                 stripeFlag = false;
             }       
@@ -114,6 +115,7 @@ namespace CatJam.Players
             ApplyEngineForce();
             KillOrthogonalVelocity();
             ApplySteering();
+            jumpFlag = false;
         }
 
         // Methods -> Private
@@ -193,8 +195,6 @@ namespace CatJam.Players
         {
             if (!isJumping)
                 StartCoroutine(JumpCo(jumpHeightScale, jumpPushScale));
-                jumpFlag = false;
-            jumpFlag = false;
         }
 
         private IEnumerator JumpCo(float jumpHeightScale, float jumpPushScale)

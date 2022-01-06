@@ -29,11 +29,6 @@ namespace CatJam.Characters
             abilityUlti.UpdateAbility();
         }
 
-        public void addMana(int manaValue){
-            currentMana += manaValue;
-            print(currentMana);
-        }
-
         // Methods -> Publlic
         public void UseAbilityBasic() {
             abilityBasic.UseAbility();

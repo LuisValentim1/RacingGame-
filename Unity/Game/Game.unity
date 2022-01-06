@@ -7151,6 +7151,7 @@ MonoBehaviour:
   turnFactor: 4
   maxSpeed: 30
   rotOffset: -90
+  currentMana: 0
   jumpFlag: 0
   stripeFlag: 0
   carSpriteRenderer: {fileID: 1689083741}
@@ -9057,6 +9058,7 @@ MonoBehaviour:
   turnFactor: 4
   maxSpeed: 30
   rotOffset: -90
+  currentMana: 0
   jumpFlag: 0
   stripeFlag: 0
   carSpriteRenderer: {fileID: 1986421867}
@@ -14545,6 +14547,7 @@ MonoBehaviour:
   turnFactor: 4
   maxSpeed: 30
   rotOffset: -90
+  currentMana: 0
   jumpFlag: 0
   stripeFlag: 0
   carSpriteRenderer: {fileID: 251746241}
@@ -17776,11 +17779,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3359864111411699990, guid: 5a8590ef223774a44b553a44d3d117bd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -145.3
+      value: -145.6129
       objectReference: {fileID: 0}
     - target: {fileID: 3359864111411699990, guid: 5a8590ef223774a44b553a44d3d117bd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -17.97
+      value: -17.5212
       objectReference: {fileID: 0}
     - target: {fileID: 3359864111411699990, guid: 5a8590ef223774a44b553a44d3d117bd, type: 3}
       propertyPath: m_LocalPosition.z
