@@ -23,7 +23,7 @@ namespace CatJam.Map {
         public GameObject[] startModules;
 
         public GameObject[] backgroundPrefabs;
-        public GameObject[] elementPrefabs;
+        public ElementPrefabs[] elementPrefabs;
 
         public System.Random r;
 
@@ -145,7 +145,7 @@ namespace CatJam.Map {
                 if(module.GetComponent<Module>().moduleConfiguration.isStraight && r.Next(0,2) == 1){
                     pos_index = r.Next(0,2);
                     offset = new Vector3(freeSpots[pos_index].x, freeSpots[pos_index].y, -1);
-                    GameObject element = Instantiate(elementPrefabs[r.Next(2,4)], pos+offset, Quaternion.Euler(0, 0, freeSpots[pos_index].rotation), module.transform);
+                    GameObject element = Instantiate(elementPrefabs[2].prefabs[r.Next(0,2)], pos+offset, Quaternion.Euler(0, 0, freeSpots[pos_index].rotation), module.transform);
                     cur = freeSpots[pos_index];
                     if(module.GetComponent<Module>().moduleConfiguration.isHorizontal){
                         freeSpots = freeSpots.Where(e => !(e.y.Equals(cur.y))).ToArray();
@@ -160,7 +160,7 @@ namespace CatJam.Map {
                     offset = new Vector3(freeSpots[pos_index].x, freeSpots[pos_index].y, -1);
                     Vector3 element_pos = pos + offset;
                     int element_index = r.Next(0,2);
-                    GameObject element = Instantiate(elementPrefabs[element_index], element_pos, Quaternion.Euler(0, 0, freeSpots[pos_index].rotation), module.transform);
+                    GameObject element = Instantiate(elementPrefabs[element_index].prefabs[r.Next(0,elementPrefabs[element_index].prefabs.Length)], element_pos, Quaternion.Euler(0, 0, freeSpots[pos_index].rotation), module.transform);
                     cur = freeSpots[pos_index];
                     freeSpots = freeSpots.Where(e => !(e.Equals(cur))).ToArray();
                 }
@@ -214,6 +214,19 @@ namespace CatJam.Map {
             }
 
             return 0;
+        }
+
+        [Flags]
+        public enum ElementType{
+            Obstacle,
+            Ramp,
+            ManaStrip
+        }
+
+        [Serializable]
+        public struct ElementPrefabs {
+            public GameObject[] prefabs;
+            public ElementType type;
         }
     }
 }

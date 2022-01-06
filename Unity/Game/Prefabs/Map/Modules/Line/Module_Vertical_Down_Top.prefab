@@ -121,6 +121,7 @@ MonoBehaviour:
     to_direction: {x: 0, y: 1}
     size: 30
     isStraight: 1
+    isHorizontal: 0
     isStartingLine: 0
     isFinishLine: 0
   buildingPositions:
@@ -162,6 +163,14 @@ MonoBehaviour:
     - 11.35
   freeRoadPositions:
   - x: 1
+    y: -1.3
+    rotation: 0
+    altRotation: 0
+  - x: -2
+    y: -1.3
+    rotation: 0
+    altRotation: 0
+  - x: 1
     y: -13.3
     rotation: 0
     altRotation: 0
@@ -175,14 +184,6 @@ MonoBehaviour:
     altRotation: 0
   - x: 1
     y: -7.3
-    rotation: 0
-    altRotation: 0
-  - x: 1
-    y: -1.3
-    rotation: 0
-    altRotation: 0
-  - x: -2
-    y: -1.3
     rotation: 0
     altRotation: 0
   - x: -2

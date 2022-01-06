@@ -8,6 +8,5 @@ namespace CatJam.Characters
     {
         // Variables
         public bool usingShield;
-
     }
 }

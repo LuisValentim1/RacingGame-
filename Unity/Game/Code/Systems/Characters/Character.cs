@@ -8,6 +8,7 @@ namespace CatJam.Characters
     {
         // Variables
         public string characterName;
+        public int currentMana;
         public Ability abilityBasic;
         public Ability abilityUlti;
         public CharacterLogic CharacterLogic;
@@ -26,6 +27,11 @@ namespace CatJam.Characters
         public void OnUpdate() {
             abilityBasic.UpdateAbility();
             abilityUlti.UpdateAbility();
+        }
+
+        public void addMana(int manaValue){
+            currentMana += manaValue;
+            print(currentMana);
         }
 
         // Methods -> Publlic

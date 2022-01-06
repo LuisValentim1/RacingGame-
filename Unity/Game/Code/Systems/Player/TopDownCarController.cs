@@ -3,11 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CatJam.Map;
+using CatJam.Characters;
 
 namespace CatJam.Players
 {
     public class TopDownCarController : MonoBehaviour
     {
+
+        public GameObject character;
+
         // Variables -> Public
         [Header("Car settings")]
         public float driftFactor = 0.80f;
@@ -15,6 +19,8 @@ namespace CatJam.Players
         public float turnFactor = 0.5f;
         public float maxSpeed = 20.0f;
         public float rotOffset = -90;
+        public Boolean jumpFlag;
+        public Boolean stripeFlag;
 
 
         [Header("Sprites")]
@@ -62,11 +68,43 @@ namespace CatJam.Players
                 wheelTrailRenderedHandler[i].OnUpdate();
         }
 
+        public void InteractJump(){
+            if(jumpFlag){
+                //character.currentMana(character.currentMana+10);
+                print("add 10 mana");
+                jumpBoost();
+                jumpFlag = false;
+            }
+        }
+
+        public void InteractStripe(){
+            if(stripeFlag){
+                //character.CharacterLogic.addMana(1);
+                print("add 1 mana");
+            } 
+        }
+
+        void OnTriggerExit2D(Collider2D collision){
+            if(collision.CompareTag("Jump")){
+                jumpFlag = false;
+            }
+            if(collision.CompareTag("Stripe")){
+                stripeFlag = false;
+            }       
+        }
         
         void OnTriggerEnter2D(Collider2D collider2d) {
-            if (collider2d.CompareTag("Jump")) {
+            if(collider2d.CompareTag("Jump")) {
                 Jump(jumpHeightScale, jumpPushScale);
+                jumpFlag = true; 
             }
+            if(collider2d.CompareTag("Stripe")){
+                stripeFlag = true;
+            }
+        }
+
+        public void jumpBoost(){
+            accelerationFactor = accelerationFactor * 2;
         }
 
         private void FixedUpdate() {
@@ -155,6 +193,8 @@ namespace CatJam.Players
         {
             if (!isJumping)
                 StartCoroutine(JumpCo(jumpHeightScale, jumpPushScale));
+                jumpFlag = false;
+            jumpFlag = false;
         }
 
         private IEnumerator JumpCo(float jumpHeightScale, float jumpPushScale)
@@ -192,7 +232,8 @@ namespace CatJam.Players
             carShadowRenderer.transform.localScale = carSpriteRenderer.transform.localScale;
 
             carCollider2D.enabled = true;
-            isJumping = false; 
+            isJumping = false;
+            accelerationFactor = 50;
         }
 
         public void Restart() {

@@ -246,6 +246,14 @@ MonoBehaviour:
     - 10.92
     - 11.35
   freeRoadPositions:
+  - x: -1.2
+    y: 0.8
+    rotation: 90
+    altRotation: 0
+  - x: -1.2
+    y: -2
+    rotation: 90
+    altRotation: 0
   - x: -13.2
     y: 0.8
     rotation: 90
@@ -260,14 +268,6 @@ MonoBehaviour:
     altRotation: 0
   - x: -7.2
     y: 0.8
-    rotation: 90
-    altRotation: 0
-  - x: -1.2
-    y: 0.8
-    rotation: 90
-    altRotation: 0
-  - x: -1.2
-    y: -2
     rotation: 90
     altRotation: 0
   - x: 4.8
