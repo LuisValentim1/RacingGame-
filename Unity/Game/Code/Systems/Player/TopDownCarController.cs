@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using JamCat.Map;
 using JamCat.Characters;
+using Unity.Netcode;
 
 namespace JamCat.Players
 {
-    public class TopDownCarController : MonoBehaviour
+    public class TopDownCarController : NetworkBehaviour
     {
         // Variables -> Public
         Player player;
@@ -61,7 +62,7 @@ namespace JamCat.Players
         }
         
         public void StartCar() {
-
+            Restart();
         }
 
         public void Restart() {
@@ -83,6 +84,9 @@ namespace JamCat.Players
 
         private void FixedUpdate() {
             if (Data.Get().gameLogic.is_paused == true)
+                return;
+
+            if (player.GetNetworkObject().IsLocalPlayer == false)
                 return;
 
             ApplyEngineForce();
@@ -122,8 +126,15 @@ namespace JamCat.Players
 
             Vector2 engineForceVector = transform.up * accelerationInput * accelerationFactor;
             carRigidbody2D.AddForce(engineForceVector, ForceMode2D.Force);
+          //  AddForceServerRpc(engineForceVector);
         }
 
+/*
+        [ServerRpc]
+        void AddForceServerRpc(Vector2 engineForceVector) {
+
+        }
+*/
         void ApplySteering()
         {
             float minSpeedBeforeAllowTurningFactor = (carRigidbody2D.velocity.magnitude / 8);

@@ -17,8 +17,8 @@ GameObject:
   - component: {fileID: 2224988506148844553}
   - component: {fileID: 2224988506148844550}
   - component: {fileID: 513315561395019675}
-  - component: {fileID: 606632364115008569}
-  - component: {fileID: 4480747949637024732}
+  - component: {fileID: 1116209750923502922}
+  - component: {fileID: 5820679844257360510}
   m_Layer: 0
   m_Name: PlayerMultiplayer
   m_TagString: Player
@@ -34,7 +34,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2224988506148844555}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -1.4, y: 10.95, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -56,8 +56,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a2d8ecfb028c64887e2a465d0d3b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  local: 1
   character: {fileID: 2224988506148844547}
+  jumpFlag: 0
+  stripeFlag: 0
 --- !u!114 &2224988506148844547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,6 +75,8 @@ MonoBehaviour:
   abilityBasic: {fileID: 2224988506461135036}
   abilityUlti: {fileID: 2224988507519942730}
   CharacterLogic: {fileID: 2224988506148844548}
+  maxMana: 100
+  curMana: 0
 --- !u!114 &2224988506148844548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,6 +107,8 @@ MonoBehaviour:
   turnFactor: 4
   maxSpeed: 30
   rotOffset: -90
+  maxMana: 100
+  currentMana: 0
   carSpriteRenderer: {fileID: 2224988506970429812}
   carShadowRenderer: {fileID: 3928695248396988021}
   jumpCurve:
@@ -220,7 +225,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &606632364115008569
+--- !u!114 &1116209750923502922
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -229,7 +234,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2224988506148844555}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 54c9647dc784a46bca664910f182491e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SyncPositionX: 1
@@ -247,7 +252,7 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   CanCommitToTransform: 0
---- !u!114 &4480747949637024732
+--- !u!114 &5820679844257360510
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -256,7 +261,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2224988506148844555}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aaab5fe31dc3423e89747f088d7bcaf, type: 3}
+  m_Script: {fileID: 11500000, guid: 80d7c879794dfda4687da0e400131852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2224988506461135039
@@ -613,7 +618,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3928695248396988022
 Transform:
   m_ObjectHideFlags: 0

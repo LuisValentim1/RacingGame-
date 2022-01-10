@@ -1,18 +1,18 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using JamCat.Cameras;
 using JamCat.Characters;
+using Unity.Netcode;
 
 namespace JamCat.Players 
 {
     public class Player : MonoBehaviour 
     {
-        
         // Variables -> Private
-        public bool local;
-
         public Character character;
 
+        private NetworkObject networkObject;
         private TopDownCarController topDownCarController;
         private CarInputHandler carInputHandler;
         private WheelTrailRenderedHandler[] wheelTrailRenderedHandlers;
@@ -21,12 +21,35 @@ namespace JamCat.Players
         public Boolean stripeFlag;
 
         
+
+        private void Awake() {
+            OnAwake();
+        }
+
+        private void Start() {
+            OnStart();
+
+            /*
+            print(NetworkManager.Singleton.LocalClientId);
+            print(NetworkManager.Singleton.LocalClient);
+            print(NetworkManager.Singleton.LocalClient.PlayerObject);
+            print(NetworkManager.Singleton.LocalClient.PlayerObject.gameObject);
+            
+            if (NetworkManager.Singleton.LocalClient.PlayerObject.gameObject == gameObject) {
+                print("Awooo");
+                local = this;
+            }
+            */
+        }
+
         // Methods -> Standard
         public void OnAwake() {
             // Auto Configuration
+            networkObject = GetComponent<NetworkObject>();
             topDownCarController = GetComponent<TopDownCarController>();
             carInputHandler = GetComponent<CarInputHandler>();
             wheelTrailRenderedHandlers = GetComponentsInChildren<WheelTrailRenderedHandler>();
+            SysPlayerServer.Get().onlinePlayers.Add(this);
 
             // Awake the methods
             topDownCarController.AwakeCar();
@@ -37,16 +60,18 @@ namespace JamCat.Players
         }
 
         public void OnStart() {
-            if (local == false)
+            if (networkObject.IsLocalPlayer == false)
                 return;
 
             topDownCarController.StartCar();
             carInputHandler.StartCar();
             character.OnStart();
+
+            SysCamera.Get().SetPlayerTarget(this);
         }
 
         public void OnUpdate() {
-            if (local == false)
+            if (networkObject.IsLocalPlayer == false)
                 return;
 
             topDownCarController.UpdateCar();
@@ -54,10 +79,6 @@ namespace JamCat.Players
             character.OnUpdate();
             for (int i = 0; i < wheelTrailRenderedHandlers.Length; i++)
                 wheelTrailRenderedHandlers[i].OnUpdate();
-
-
-            if (jumpFlag)
-                print("AWOOOOOO");
 
             if (Input.GetButtonDown("Interaction")) {
                 InteractJump();
@@ -67,6 +88,9 @@ namespace JamCat.Players
 
 
         void OnTriggerEnter2D(Collider2D collider2d) {
+            if (networkObject.IsLocalPlayer == false)
+                return;
+
             if(collider2d.CompareTag("Jump")) 
                 topDownCarController.TriggerJump();
 
@@ -81,6 +105,9 @@ namespace JamCat.Players
         }
 
         private void OnTriggerExit2D(Collider2D collider2d) {
+            if (networkObject.IsLocalPlayer == false)
+                return;
+
             if(collider2d.CompareTag("Stripe"))
                 stripeFlag = false;
         }
@@ -105,5 +132,9 @@ namespace JamCat.Players
                 character.AddMana(0.2f);
             }
         }
+
+
+        // Methods -> Get
+        public NetworkObject GetNetworkObject() { return networkObject; }
     }
 }

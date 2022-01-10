@@ -32,6 +32,16 @@ namespace JamCat.UI
         }
 
         // Methods -> Public
+        public void ButtonHost() {
+            Button_Play();
+            ManagerServer.Get().StartHost();
+        }
+
+        public void ButtonJoin() {
+            Button_Play();
+            ManagerServer.Get().StartClient();
+        }
+
         public void Button_Play() {
             if (Data.Get().gameData.character_selected < 0)
                 return;
@@ -39,7 +49,6 @@ namespace JamCat.UI
             CloseWindow(0.2f, 0);
             Window_HUD.Get().OpenWindow(0.2f, 0.2f);
             GeneralMethods.StartGame();
-            GeneralMethods.PauseGame(false);
         }
 
         public void Button_Select_Character(int number) {

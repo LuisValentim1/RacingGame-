@@ -13,7 +13,12 @@ namespace JamCat.Cameras
     
         // Methods
         protected override void OnUpdate() {
-            transform.position = new Vector3 (player.position.x + offset.x, player.position.y + offset.y, offset.z); // Camera follows the player with specified offset position
+            if (player != null)
+                transform.position = new Vector3 (player.position.x + offset.x, player.position.y + offset.y, offset.z); // Camera follows the player with specified offset position
+        }
+
+        public void SetPlayerTarget(Transform transform) {
+            player = transform;
         }
     }
 }
