@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using JamCat.Players;
 
 namespace JamCat.Cameras
 {
@@ -26,7 +27,8 @@ namespace JamCat.Cameras
         }
 
         protected override void OnUpdate() {
-            currentCameraBase.UpdateCamera();
+            if (currentCameraBase != null)
+                currentCameraBase.UpdateCamera();
         }
 
         // Methods -> Public
@@ -40,6 +42,13 @@ namespace JamCat.Cameras
             cameras[id].gameObject.SetActive(true);
             currentCamera = cameras[id].GetComponent<Camera>();
             currentCameraBase = cameras[id].GetComponent<CameraBase>();
+        }
+
+        public void SetPlayerTarget(Player player) {
+            CameraFollowCar cameraFollowCar = currentCameraBase as CameraFollowCar;
+            if (cameraFollowCar != null) {
+                cameraFollowCar.SetPlayerTarget(player.transform);
+            }
         }
     }
 }

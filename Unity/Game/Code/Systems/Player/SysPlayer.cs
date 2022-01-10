@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
 
 namespace JamCat.Players
 {
@@ -12,21 +12,21 @@ namespace JamCat.Players
         public static SysPlayer Get() { return instance; }
 
         // Variables
-        public Player player;
-        public Player[] onlinePlayers;
+        [Header("Configuration")]
+        public SysPlayerServer sysPlayerServer;
 
         // Methods -> Override
         protected override void OnAwake() {
             instance = this;
-            player.OnAwake();
+            sysPlayerServer.OnAwake();
         }
 
         protected override void OnStart() {
-            player.OnStart();
+            
         }
     
         protected override void OnUpdate() {
-            player.OnUpdate();
+            sysPlayerServer.OnUpdate();
 
             if (Input.GetKeyDown(KeyCode.Escape)) {
                 if (Data.Get().gameLogic.is_paused == false) {
@@ -37,13 +37,8 @@ namespace JamCat.Players
             }
         }
 
-        public void RestartAllPlayers() {
-            for (int i = 0; i < onlinePlayers.Length; i++)
-                onlinePlayers[i].Restart();
-        }
-
-        public void RestartPlayer() {
-            player.Restart();
+        public void Restart() {
+            sysPlayerServer.OnRestart();
         }
     }
 }

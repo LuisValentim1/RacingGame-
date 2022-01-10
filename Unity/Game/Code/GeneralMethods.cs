@@ -19,8 +19,9 @@ public static class GeneralMethods {
         
         SysMap.Get().RestartMap();
         SysMap.Get().GenerateMap();
-        SysPlayer.Get().RestartPlayer();
+        SysPlayer.Get().Restart();
         SysCamera.Get().AutoConfigureCamera();
+        SysCamera.Get().SetCamera(1);
         SysAudio.Get().PlayGameMusic();
 
         Time.timeScale = 1;
@@ -53,7 +54,9 @@ public static class GeneralMethods {
         Data.Get().sceneConfiguration.scene_main_menu.SetActive(true);
         Data.Get().sceneConfiguration.scene_play.SetActive(false);
         SysMap.Get().RestartMap();
+        SysPlayer.Get().Restart();
         SysAudio.Get().PlayMainMenuMusic();
+        SysCamera.Get().SetCamera(0);
 
         // Terminar para os outros sistemas
     }

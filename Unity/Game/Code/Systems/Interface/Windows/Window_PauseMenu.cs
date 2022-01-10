@@ -53,9 +53,11 @@ namespace JamCat.UI
             Window_MainMenu.Get().OpenWindow(0.2f, 0.2f);
 
             GeneralMethods.MainMenu();
+            ManagerServer.Get().DisconnectServer();
         }
 
         public void Button_Quit() {
+            ManagerServer.Get().DisconnectServer();
             quit = true;
             Application.Quit();
         }
