@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.Netcode;
+using JamCat.Players;
 
 namespace JamCat.UI 
 {
@@ -13,6 +16,8 @@ namespace JamCat.UI
 
         // Variables
         public UI_ToggleGroup toggleGroup;
+        public UI_Toggle toggleReady;
+        public Text textPlayersReady;
 
         // Methods -> Override
         protected override void OnAwakeWindow() {
@@ -20,11 +25,22 @@ namespace JamCat.UI
         }
 
         protected override void OnUpdateWindow() {
+            if (Data.Get().gameData.characterSelected < 0)
+                toggleReady.SetInteractable(false);
 
+            textPlayersReady.text = "Players Ready: " + SysMultiplayer.Get().clientPlayersReady + "/" + SysMultiplayer.Get().curPlayers;
+       
+            if (SysMultiplayer.Get().networkManager.IsServer == true) {
+                if (SysMultiplayer.Get().clientPlayersReady == SysMultiplayer.Get().curPlayers) {
+                    SysMultiplayer.Get().multiplayerMethods.StartGameClientRpc();
+                }
+            }
         }
 
         protected override void OnOpenWindow() {
-
+            toggleGroup.DeactivateAll();
+            Data.Get().gameData.characterSelected = -1;
+            toggleReady.Activate(false);
         }
 
         protected override void OnCloseWindow() {
@@ -32,18 +48,16 @@ namespace JamCat.UI
         }
 
         // Methods -> Public
-        public void ButtonHost() {
-            Button_Play();
-            ManagerServer.Get().StartHost();
+        
+        public void ToggleReady() {
+            SysMultiplayer.Get().multiplayerMethods.OnReadyServerRpc(
+                SysPlayer.Get().localPlayerID,
+                toggleReady.activated
+            );
         }
-
-        public void ButtonJoin() {
-            Button_Play();
-            ManagerServer.Get().StartClient();
-        }
-
-        public void Button_Play() {
-            if (Data.Get().gameData.character_selected < 0)
+        
+        public void ButtonPlay() {
+            if (Data.Get().gameData.characterSelected < 0)
                 return;
 
             CloseWindow(0.2f, 0);
@@ -51,14 +65,16 @@ namespace JamCat.UI
             GeneralMethods.StartGame();
         }
 
-        public void Button_Select_Character(int number) {
-            Data.Get().gameData.character_selected = number;
+        public void ButtonSelectCharacter(int number) {
+            Data.Get().gameData.characterSelected = number;
+            toggleReady.SetInteractable(true);
         }
         
-        public void Button_Back() {
-            Data.Get().gameData.character_selected = -1;
-            CloseWindow(0.5f, 0);
-            Window_MainMenu.Get().OpenWindow(0.5f, 0.5f);
+        public void ButtonBack() {
+            Data.Get().gameData.characterSelected = -1;
+            SysMultiplayer.Get().Disconnect();
+            CloseWindow(0.2f, 0);
+            Window_Lobby.Get().OpenWindow(0.2f, 0.2f);
         }
     }
 }

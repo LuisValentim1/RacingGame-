@@ -42,7 +42,7 @@ public class Data : MonoBehaviour {
 
     [Serializable]
     public class GameData {
-        public int character_selected = -1;
+        public int characterSelected = -1;
     }
 
     [Serializable]

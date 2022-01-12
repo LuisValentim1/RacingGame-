@@ -12,21 +12,24 @@ namespace JamCat.Players
         public static SysPlayer Get() { return instance; }
 
         // Variables
-        [Header("Configuration")]
-        public SysPlayerServer sysPlayerServer;
+        public ulong localPlayerID;
+        public GameObject localPlayerObj;
+        public Player localPlayer;
 
         // Methods -> Override
         protected override void OnAwake() {
             instance = this;
-            sysPlayerServer.OnAwake();
         }
 
         protected override void OnStart() {
-            
+
         }
     
         protected override void OnUpdate() {
-            sysPlayerServer.OnUpdate();
+            if (Data.Get().gameLogic.in_game == false)
+                return;
+
+            localPlayer.OnUpdate();
 
             if (Input.GetKeyDown(KeyCode.Escape)) {
                 if (Data.Get().gameLogic.is_paused == false) {
@@ -35,10 +38,12 @@ namespace JamCat.Players
                     GeneralMethods.PauseGame(false);
                 }
             }
+
         }
 
         public void Restart() {
-            sysPlayerServer.OnRestart();
+            localPlayer = localPlayerObj.GetComponent<Player>();
+            localPlayer.Restart();
         }
     }
 }

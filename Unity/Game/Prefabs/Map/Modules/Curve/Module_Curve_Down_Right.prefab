@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 6443028594123303481}
   - component: {fileID: 6443028594123303480}
   - component: {fileID: 799275284}
+  - component: {fileID: 193932414131619066}
   m_Layer: 0
   m_Name: Module_Curve_Down_Right
   m_TagString: Untagged
@@ -287,6 +288,7 @@ MonoBehaviour:
   playerWasInside: 0
   noBackground: 1
   noElements: 1
+  elements: []
 --- !u!61 &799275284
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -313,6 +315,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 29.779114, y: 30.223576}
   m_EdgeRadius: 0
+--- !u!114 &193932414131619066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6443028594123303482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b5c61c7a1de524da7e4c5bdefe8d1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moduleID: 5
+  elements: []
 --- !u!1001 &217930111418073480
 PrefabInstance:
   m_ObjectHideFlags: 0

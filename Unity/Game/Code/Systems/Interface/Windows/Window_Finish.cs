@@ -37,7 +37,7 @@ namespace JamCat.UI
         }
         
         public void Button_MainMenu() {
-            Data.Get().gameData.character_selected = -1;
+            Data.Get().gameData.characterSelected = -1;
             CloseWindow(0.5f, 0);
             Window_MainMenu.Get().OpenWindow(0.5f, 0.5f);
             GeneralMethods.MainMenu();

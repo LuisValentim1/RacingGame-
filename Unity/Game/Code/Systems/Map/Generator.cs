@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 using JamCat.Map;
 
 namespace JamCat.Map {
@@ -37,7 +38,10 @@ namespace JamCat.Map {
         // Methods -> Standard
         public void OnAwake() {
             instance = this;
+
+            UnityEngine.Random.InitState(DateTime.Now.Second);
             r = new System.Random(DateTime.Now.Second);
+
             RestartMap();
         }
 
@@ -51,6 +55,9 @@ namespace JamCat.Map {
 
         // Methods -> Public
         public void GenerateMap() {
+            if (NetworkManager.Singleton.IsServer == false)
+                return;
+
             if (gerarTudo == true) {
                 for (int i = 0; i < modulesQuantity; i++) {
                     GenerateModule();

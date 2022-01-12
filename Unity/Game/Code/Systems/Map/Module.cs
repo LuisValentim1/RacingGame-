@@ -21,6 +21,8 @@ namespace JamCat.Map {
         public bool noBackground = true;
         public bool noElements = true;
 
+        public Element[] elements;
+
         // Methods -> Standard
         private void Reset() {
             
@@ -30,7 +32,7 @@ namespace JamCat.Map {
 
             // Create new module and destroy last
             if (other.tag == "Player" && playerWasInside == false) {
-                other.GetComponent<TopDownCarController>().inModule = moduleID;
+                other.GetComponent<Player>().inModule = moduleID;
                 Generator.Get().DeleteLastModule(gameObject);
                 Generator.Get().GenerateModule();
                 playerWasInside = true;              

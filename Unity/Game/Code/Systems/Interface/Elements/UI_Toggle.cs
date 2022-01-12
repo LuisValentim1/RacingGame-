@@ -5,49 +5,95 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 namespace JamCat.UI {
-    public class UI_Toggle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler {
+    public class UI_Toggle : UI, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler {
         
         // Variables
         [Header("Configurable")]
-        public Image image_background;
-        public Color color_default;
-        public Color color_highlighted;
-        public Color color_pressed;
+        public Image imageBackground;
+        public Color colorDisabled;
+        public Color colorDefault;
+        public Color colorHighlighted;
+        public Color colorPressed;
 
         [Header("Test")]
+        public bool isInteractable = true;
         public bool activated;
 
         private UI_ToggleGroup toggleGroup;
 
         // Methods -> Standard
-        public void AwakeToggle() {
-            image_background.color = color_default;
+        protected override void OnAwake() {
+            imageBackground.color = colorDefault;
             toggleGroup = GetComponentInParent<UI_ToggleGroup>();
         }
 
+        protected override void OnUpdate() {
+            
+        }
+
+        protected override void OnOpen() {
+
+        }
+
+        protected override void OnClose() {
+
+        }
+
         // Methods -> Public
+        public void SetInteractable(bool state) {
+            isInteractable = state;
+            GetComponent<Button>().interactable = state;
+
+            if (state == false) {
+                imageBackground.color = colorDisabled;
+            } else {
+                imageBackground.color = colorDefault;
+            }
+        }
+        
+        public void Toggle() {
+            activated = !activated;
+            if (activated == true) {
+                imageBackground.color = colorPressed;
+            } else {
+                imageBackground.color = colorDefault;
+            }
+        }
+
         public void Activate(bool value) {
             activated = value;
             if (value == true) {
-                image_background.color = color_highlighted;
+                imageBackground.color = colorPressed;
             } else {
-                image_background.color = color_default;
+                imageBackground.color = colorDefault;
             }
         }
 
         // EventSystems
         public void OnPointerEnter(PointerEventData pointerEventData) {
+            if (isInteractable == false)
+                return;
+
             if (activated == false)
-                image_background.color = color_highlighted;
+                imageBackground.color = colorHighlighted;
         }
 
         public void OnPointerExit(PointerEventData pointerEventData) {
+            if (isInteractable == false)
+                return;
+
             if (activated == false)
-                image_background.color = color_default;
+                imageBackground.color = colorDefault;
         }
 
         public void OnPointerDown(PointerEventData pointerEventData) {
-            toggleGroup.ActivateToggle(this);
+            if (isInteractable == false)
+                return;
+
+            if (toggleGroup != null)
+                toggleGroup.ActivateToggle(this);
+            else
+                Toggle();
         }
     }
 }

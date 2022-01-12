@@ -51,8 +51,9 @@ public class Manager : MonoBehaviour
 
         if (Data.Get().gameLogic.in_main_menu == true) {
             Window_MainMenu.Get().Button_Play();
-            Window_CharacterSelection.Get().Button_Select_Character(characterNumber);
-            Window_CharacterSelection.Get().Button_Play();
+            Window_Lobby.Get().ButtonHost();
+            Window_CharacterSelection.Get().ButtonSelectCharacter(characterNumber);
+            Window_CharacterSelection.Get().ToggleReady();
         }
         
         if (Data.Get().gameLogic.game_finished == true) {

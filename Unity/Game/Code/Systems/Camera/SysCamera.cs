@@ -32,10 +32,6 @@ namespace JamCat.Cameras
         }
 
         // Methods -> Public
-        public void AutoConfigureCamera() {
-
-        }
-
         public void SetCamera(int id) {
             for (int i = 0; i < cameras.Length; i++)
                 cameras[i].gameObject.SetActive(false);
@@ -44,10 +40,10 @@ namespace JamCat.Cameras
             currentCameraBase = cameras[id].GetComponent<CameraBase>();
         }
 
-        public void SetPlayerTarget(Player player) {
-            CameraFollowCar cameraFollowCar = currentCameraBase as CameraFollowCar;
+        public void SetPlayerTarget(Transform trasnf) {
+            CameraFollowCar cameraFollowCar = FindObjectOfType<CameraFollowCar>(true);
             if (cameraFollowCar != null) {
-                cameraFollowCar.SetPlayerTarget(player.transform);
+                cameraFollowCar.SetPlayerTarget(trasnf);
             }
         }
     }

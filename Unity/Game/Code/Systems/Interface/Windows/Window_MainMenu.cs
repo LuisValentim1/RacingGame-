@@ -21,7 +21,7 @@ namespace JamCat.UI
         }
 
         protected override void OnOpenWindow() {
-
+            
         }
         
         protected override void OnCloseWindow() {
@@ -32,9 +32,8 @@ namespace JamCat.UI
 
 
             if (quit == true) {
-                Window_Fade window = Window_Fade.Get() as Window_Fade;
-                UI_Methods.SetFade(window, FadeType.fade_out, 1f, 0);
-                if (window.canvasGroup.alpha <= 0)
+                Window_Fade.Get().CloseWindow(1, 0);
+                if (Window_Fade.Get().canvasGroup.alpha <= 0)
                     Application.Quit();
             }
         }
@@ -42,7 +41,7 @@ namespace JamCat.UI
         // Methods -> Public
         public void Button_Play() {
             CloseWindow(0.2f, 0f);
-            Window_CharacterSelection.Get().OpenWindow(0.2f, 0.2f);
+            Window_Lobby.Get().OpenWindow(0.2f, 0.2f);
         }
 
         public void Button_Options() {

@@ -63,6 +63,7 @@ GameObject:
   - component: {fileID: 992132629597899584}
   - component: {fileID: 8490924942608535094}
   - component: {fileID: 943603633559673662}
+  - component: {fileID: -5372636494317566351}
   m_Layer: 0
   m_Name: Module_Start_Top_Down
   m_TagString: Untagged
@@ -187,6 +188,7 @@ MonoBehaviour:
   playerWasInside: 0
   noBackground: 1
   noElements: 1
+  elements: []
 --- !u!61 &8490924942608535094
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -239,6 +241,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 30}
   m_EdgeRadius: 0
+--- !u!114 &-5372636494317566351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5382545792643906258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b5c61c7a1de524da7e4c5bdefe8d1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moduleID: 15
+  elements: []
 --- !u!1 &5979939477211986221
 GameObject:
   m_ObjectHideFlags: 0

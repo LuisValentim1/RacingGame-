@@ -17,14 +17,19 @@ public static class GeneralMethods {
         Data.Get().sceneConfiguration.scene_play.SetActive(true);
         Data.Get().sceneConfiguration.scene_main_menu.SetActive(false);
         
+        Window_CharacterSelection.Get().CloseWindow(0.2f, 0);
+        Window_HUD.Get().OpenWindow(0.2f, 0);
+
         SysMap.Get().RestartMap();
         SysMap.Get().GenerateMap();
-        SysPlayer.Get().Restart();
-        SysCamera.Get().AutoConfigureCamera();
-        SysCamera.Get().SetCamera(1);
-        SysAudio.Get().PlayGameMusic();
 
-        Time.timeScale = 1;
+        SysPlayer.Get().Restart();
+        SysCamera.Get().SetPlayerTarget(SysPlayer.Get().localPlayerObj.transform);
+
+        SysAudio.Get().PlayGameMusic();
+        
+        SysCamera.Get().SetCamera(1);
+
 
         // Terminar para os outros sistemas
     }
@@ -40,10 +45,8 @@ public static class GeneralMethods {
         Data.Get().gameLogic.is_paused = state;
         if (state == true) {
             Window_PauseMenu.Get().OpenWindow(0.2f, 0);
-            Time.timeScale = 0;
         } else {
             Window_PauseMenu.Get().CloseWindow(0.2f, 0);
-            Time.timeScale = 1;
         }
     }
 
@@ -63,7 +66,6 @@ public static class GeneralMethods {
 
     public static void CallFinish() {
         Data.Get().gameLogic.game_finished = true;
-        Time.timeScale = 0;
         Window_Finish.Get().OpenWindow(0.2f, 0);
 
         if (Data.Get().gameLogic.is_paused == true)

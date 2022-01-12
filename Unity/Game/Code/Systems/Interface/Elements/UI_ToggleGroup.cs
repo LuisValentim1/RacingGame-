@@ -11,7 +11,7 @@ namespace JamCat.UI {
         // Methods -> Standard
         protected override void OnAwake() {
             for (int i = 0; i < toggles.Length; i++)
-                toggles[i].AwakeToggle();
+                toggles[i].AwakeUI();
         }
 
         protected override void OnUpdate() {
@@ -33,6 +33,11 @@ namespace JamCat.UI {
                     toggles[i].Activate(false);
                 else
                     toggles[i].Activate(true);
+        }
+
+        public void DeactivateAll() {
+            for (int i = 0; i < toggles.Length; i++)
+                toggles[i].Activate(false);
         }
     }
 }

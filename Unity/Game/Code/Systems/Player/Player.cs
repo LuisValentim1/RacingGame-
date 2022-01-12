@@ -20,6 +20,7 @@ namespace JamCat.Players
         public Boolean jumpFlag;
         public Boolean stripeFlag;
 
+        public int inModule = 0;
         
 
         private void Awake() {
@@ -49,7 +50,6 @@ namespace JamCat.Players
             topDownCarController = GetComponent<TopDownCarController>();
             carInputHandler = GetComponent<CarInputHandler>();
             wheelTrailRenderedHandlers = GetComponentsInChildren<WheelTrailRenderedHandler>();
-            SysPlayerServer.Get().onlinePlayers.Add(this);
 
             // Awake the methods
             topDownCarController.AwakeCar();
@@ -67,7 +67,7 @@ namespace JamCat.Players
             carInputHandler.StartCar();
             character.OnStart();
 
-            SysCamera.Get().SetPlayerTarget(this);
+            SysCamera.Get().SetPlayerTarget(transform);
         }
 
         public void OnUpdate() {
@@ -111,7 +111,6 @@ namespace JamCat.Players
             if(collider2d.CompareTag("Stripe"))
                 stripeFlag = false;
         }
-        
 
         public void Restart() {
             topDownCarController.Restart();

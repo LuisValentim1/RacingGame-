@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4961240858081967954}
   - component: {fileID: 4961240858081967957}
+  - component: {fileID: -2465995186135386425}
   m_Layer: 0
   m_Name: mana_stripe_short
   m_TagString: Untagged
@@ -85,6 +86,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-2465995186135386425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4961240858081967955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bf7b833e9d3190488db0b15a8064ae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementID: 51
 --- !u!1 &7309290589205105251
 GameObject:
   m_ObjectHideFlags: 0

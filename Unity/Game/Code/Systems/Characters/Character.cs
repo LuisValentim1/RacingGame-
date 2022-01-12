@@ -50,12 +50,12 @@ namespace JamCat.Characters
 
         
         public void AddMana(float manaValue){
-            curMana += manaValue;
+            curMana += Time.deltaTime * manaValue;
             if (curMana > maxMana)
                 curMana = maxMana;
 
             Window_HUD.Get().barMana.SetPercentage(curMana);
-            print("From Character Class: " + curMana);
+            // print("From Character Class: " + curMana);
         }
     }
 }

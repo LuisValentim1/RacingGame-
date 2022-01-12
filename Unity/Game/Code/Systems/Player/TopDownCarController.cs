@@ -40,7 +40,6 @@ namespace JamCat.Players
         public float accelerationInput = 0;
         public float steeringInput = 0;
         public float rotationAngle = 0;
-        public int inModule = 0;
 
         float velocityVsUp = 0;
         bool isJumping = false;
@@ -83,8 +82,11 @@ namespace JamCat.Players
         }
 
         private void FixedUpdate() {
-            if (Data.Get().gameLogic.is_paused == true)
-                return;
+            //  if (Data.Get().gameLogic.in_game == false)
+            //    return;
+
+            //  if (Data.Get().gameLogic.is_paused == true)
+            //    return;
 
             if (player.GetNetworkObject().IsLocalPlayer == false)
                 return;
