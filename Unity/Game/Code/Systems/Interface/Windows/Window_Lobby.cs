@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,7 @@ namespace JamCat.UI
         public Text textPlayersInLobby;
 
         public UI_Button buttonCloseConnection, buttonStart;
+        public InputField inputFieldIP, inputFieldPort;
 
         // Methods -> Override
         protected override void OnAwakeWindow() {
@@ -63,6 +65,9 @@ namespace JamCat.UI
         public void ButtonHost() {
             SysMultiplayer.Get().maxPlayers = uiSliderPlayersQuantity.value;
             SysMultiplayer.Get().uNetTransport.MaxConnections = uiSliderPlayersQuantity.value;
+            SysMultiplayer.Get().uNetTransport.ConnectAddress = inputFieldIP.text;
+            SysMultiplayer.Get().uNetTransport.ConnectPort = int.Parse(inputFieldPort.text);
+
             SysMultiplayer.Get().StartHost();
             buttonCloseConnection.SetInterectable(true);
             buttonStart.SetInterectable(true);

@@ -35,5 +35,9 @@ namespace JamCat.Players
                 player.InteractStripe();
             }
         } 
+
+        public void Restart() {
+            topDownCarController.SetInputVector(Vector2.zero);
+        }
     }
 }

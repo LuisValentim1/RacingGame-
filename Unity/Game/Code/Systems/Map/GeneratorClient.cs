@@ -10,7 +10,6 @@ namespace JamCat.Map
 {
     public class GeneratorClient : MonoBehaviour 
     {
-
         // Instance
         public static GeneratorClient instance;
         public static GeneratorClient Get() { return instance; }

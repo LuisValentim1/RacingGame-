@@ -26,24 +26,13 @@ namespace JamCat.Players
         public int inModule = 0;
         
 
+        // Methods ->
         private void Awake() {
             OnAwake();
         }
 
         private void Start() {
             OnStart();
-
-            /*
-            print(NetworkManager.Singleton.LocalClientId);
-            print(NetworkManager.Singleton.LocalClient);
-            print(NetworkManager.Singleton.LocalClient.PlayerObject);
-            print(NetworkManager.Singleton.LocalClient.PlayerObject.gameObject);
-            
-            if (NetworkManager.Singleton.LocalClient.PlayerObject.gameObject == gameObject) {
-                print("Awooo");
-                local = this;
-            }
-            */
         }
 
         // Methods -> Standard
@@ -70,7 +59,6 @@ namespace JamCat.Players
             topDownCarController.StartCar();
             carInputHandler.StartCar();
             character.OnStart();
-
             SysCamera.Get().SetPlayerTarget(transform);
         }
 
@@ -79,11 +67,16 @@ namespace JamCat.Players
                 return;
 
             topDownCarController.UpdateCar();
-            carInputHandler.UpdateCar();
             character.OnUpdate();
             for (int i = 0; i < wheelTrailRenderedHandlers.Length; i++)
                 wheelTrailRenderedHandlers[i].OnUpdate();
 
+            if (character.isOut == true) {
+                carInputHandler.Restart();
+                return;
+            }
+
+            carInputHandler.UpdateCar();
             if (Input.GetButtonDown("Interaction")) {
                 InteractJump();
                 InteractStripe();

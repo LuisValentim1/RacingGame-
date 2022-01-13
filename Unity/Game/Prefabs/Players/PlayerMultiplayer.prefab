@@ -61,6 +61,7 @@ MonoBehaviour:
   character: {fileID: 2224988506148844547}
   jumpFlag: 0
   stripeFlag: 0
+  inModule: 0
 --- !u!114 &2224988506148844547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,6 +78,9 @@ MonoBehaviour:
   abilityBasic: {fileID: 2224988506461135036}
   abilityUlti: {fileID: 2224988507519942730}
   CharacterLogic: {fileID: 2224988506148844548}
+  isOut: 0
+  maxLifes: 7
+  curLifes: 7
   maxMana: 100
   curMana: 0
 --- !u!114 &2224988506148844548
@@ -151,7 +155,6 @@ MonoBehaviour:
   accelerationInput: 0
   steeringInput: 0
   rotationAngle: 0
-  inModule: 0
 --- !u!114 &2224988506148844552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,9 +248,9 @@ MonoBehaviour:
   SyncRotAngleX: 1
   SyncRotAngleY: 1
   SyncRotAngleZ: 1
-  SyncScaleX: 1
-  SyncScaleY: 1
-  SyncScaleZ: 1
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
   PositionThreshold: 0.001
   RotAngleThreshold: 0.01
   ScaleThreshold: 0.01
@@ -350,6 +353,7 @@ GameObject:
   - component: {fileID: 2224988506970429817}
   - component: {fileID: 2224988506970429812}
   - component: {fileID: 2224988506970429813}
+  - component: {fileID: 1912941570372405195}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -441,6 +445,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Library: []
   m_SpriteLibraryAsset: {fileID: 0}
+--- !u!114 &1912941570372405195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2224988506970429818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54c9647dc784a46bca664910f182491e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncPositionX: 0
+  SyncPositionY: 0
+  SyncPositionZ: 0
+  SyncRotAngleX: 0
+  SyncRotAngleY: 0
+  SyncRotAngleZ: 0
+  SyncScaleX: 1
+  SyncScaleY: 1
+  SyncScaleZ: 1
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  InLocalSpace: 0
+  Interpolate: 1
+  CanCommitToTransform: 0
 --- !u!1 &2224988507519942732
 GameObject:
   m_ObjectHideFlags: 0

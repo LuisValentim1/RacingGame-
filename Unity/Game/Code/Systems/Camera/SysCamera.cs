@@ -46,5 +46,6 @@ namespace JamCat.Cameras
                 cameraFollowCar.SetPlayerTarget(trasnf);
             }
         }
+
     }
 }

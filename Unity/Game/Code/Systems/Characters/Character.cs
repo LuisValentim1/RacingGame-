@@ -13,6 +13,9 @@ namespace JamCat.Characters
         public Ability abilityUlti;
         public CharacterLogic CharacterLogic;
 
+        public bool isOut;
+        public int maxLifes = 7;
+        public int curLifes = 7;
         public float maxMana = 100;
         public float curMana = 0;
 
@@ -44,7 +47,9 @@ namespace JamCat.Characters
         }
 
         public void Restart() {
+            isOut = false;
             curMana = 0;
+            curLifes = maxLifes;
             Window_HUD.Get().barMana.SetPercentage(curMana);
         }
 
@@ -56,6 +61,14 @@ namespace JamCat.Characters
 
             Window_HUD.Get().barMana.SetPercentage(curMana);
             // print("From Character Class: " + curMana);
+        }
+
+        public void RemoveLife() {
+            curLifes--;
+            if (curLifes < 0) {
+                isOut = true;
+                curLifes = 0;
+            }
         }
     }
 }

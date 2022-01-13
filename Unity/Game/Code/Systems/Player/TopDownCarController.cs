@@ -47,16 +47,11 @@ namespace JamCat.Players
         //Components
         Rigidbody2D carRigidbody2D;
         Collider2D carCollider2D;
-        WheelTrailRenderedHandler[] wheelTrailRenderedHandler;
 
         public void AwakeCar() {
             player = GetComponent<Player>();
             carRigidbody2D = GetComponent<Rigidbody2D>();
             carCollider2D = GetComponentInChildren<Collider2D>();
-            wheelTrailRenderedHandler = GetComponentsInChildren<WheelTrailRenderedHandler>();
-            for (int i = 0; i < wheelTrailRenderedHandler.Length; i++)
-                wheelTrailRenderedHandler[i].OnAwake();
-
             initialScale = carShadowRenderer.transform.localScale;
         }
         
@@ -77,8 +72,7 @@ namespace JamCat.Players
         }
 
         public void UpdateCar() {
-            for (int i = 0; i < wheelTrailRenderedHandler.Length; i++)
-                wheelTrailRenderedHandler[i].OnUpdate();
+            
         }
 
         private void FixedUpdate() {

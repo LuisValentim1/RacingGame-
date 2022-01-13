@@ -158,7 +158,19 @@ namespace JamCat.Multiplayer
         }
 
 
-        // ------------------------- Finished
+        // ------------------------- Player -> Life
+        [ServerRpc]
+        public void RemoveLifeServerRpc(ulong playerID) {
+            if (IsServer == false)
+                return;
+
+            RemoveLifeClientRpc(playerID);
+        }
+
+        [ClientRpc]
+        public void RemoveLifeClientRpc(ulong playerID) {
+             SysPlayer.Get().GetPlayer(playerID).character.RemoveLife();
+        }
 
 
 

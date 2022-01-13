@@ -42,6 +42,8 @@ namespace JamCat.Players
                 }
             }
 
+            if (Input.GetKeyDown(KeyCode.P))
+                SysMultiplayer.Get().multiplayerMethods.RemoveLifeServerRpc(localPlayerID);
         }
 
         public void Restart() {
