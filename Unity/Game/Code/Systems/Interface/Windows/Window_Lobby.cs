@@ -75,6 +75,8 @@ namespace JamCat.UI
         }
 
         public void ButtonJoin() {
+            SysMultiplayer.Get().uNetTransport.MaxConnections = uiSliderPlayersQuantity.value;
+            SysMultiplayer.Get().uNetTransport.ConnectAddress = inputFieldIP.text;
             SysMultiplayer.Get().StartClient();
             buttonCloseConnection.SetInterectable(false);
             buttonStart.SetInterectable(false);
