@@ -16,9 +16,12 @@ namespace JamCat.Players
         public GameObject localPlayerObj;
         public Player localPlayer;
 
+        public List<Player> onlinePlayers;
+
         // Methods -> Override
         protected override void OnAwake() {
             instance = this;
+            onlinePlayers = new List<Player>();
         }
 
         protected override void OnStart() {
@@ -44,6 +47,13 @@ namespace JamCat.Players
         public void Restart() {
             localPlayer = localPlayerObj.GetComponent<Player>();
             localPlayer.Restart();
+        }
+
+        public Player GetPlayer(ulong id) {
+            for (int i = 0; i < onlinePlayers.Count; i++)
+                if (onlinePlayers[i].GetNetworkObject().OwnerClientId == id)
+                    return onlinePlayers[i];
+            return null;
         }
     }
 }

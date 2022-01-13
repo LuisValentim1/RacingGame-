@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using JamCat.Cameras;
 using JamCat.Characters;
+using JamCat.Map;
 using Unity.Netcode;
 
 namespace JamCat.Players 
@@ -20,6 +21,8 @@ namespace JamCat.Players
         public Boolean jumpFlag;
         public Boolean stripeFlag;
 
+
+        // Variables -> Sync
         public int inModule = 0;
         
 
@@ -50,6 +53,7 @@ namespace JamCat.Players
             topDownCarController = GetComponent<TopDownCarController>();
             carInputHandler = GetComponent<CarInputHandler>();
             wheelTrailRenderedHandlers = GetComponentsInChildren<WheelTrailRenderedHandler>();
+            SysPlayer.Get().onlinePlayers.Add(this);
 
             // Awake the methods
             topDownCarController.AwakeCar();
@@ -86,6 +90,10 @@ namespace JamCat.Players
             }
         }
 
+        private void OnDestroy() {
+            SysPlayer.Get().onlinePlayers.Remove(this);
+        }
+
 
         void OnTriggerEnter2D(Collider2D collider2d) {
             if (networkObject.IsLocalPlayer == false)
@@ -102,6 +110,12 @@ namespace JamCat.Players
             
             if(collider2d.CompareTag("Finish")) 
                 GeneralMethods.CallFinish();
+
+            if(collider2d.CompareTag("Module")) {
+                Module module = collider2d.GetComponent<Module>();
+                inModule = module.moduleID;
+                SysMultiplayer.Get().multiplayerMethods.SetPlayerInModuleServerRpc(SysPlayer.Get().localPlayerID, inModule);
+            }
         }
 
         private void OnTriggerExit2D(Collider2D collider2d) {

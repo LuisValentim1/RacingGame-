@@ -10,29 +10,34 @@ namespace JamCat.Map {
         public static SysMap Get() { return instance; }
 
         // Variables -> Public
-        public Generator generator;
+        public GeneratorServer generatorServer;
+        public GeneratorClient generatorClient;
 
         // Methods -> Override
         protected override void OnAwake() {
             instance = this;
-            generator.OnAwake();
+            generatorServer.OnAwake();
+            generatorClient.OnAwake();
         }
 
         protected override void OnStart() {
-            generator.OnStart();
+            generatorServer.OnStart();
+            generatorClient.OnStart();
         }
 
         protected override void OnUpdate() {
-            generator.OnUpdate();
+            generatorServer.OnUpdate();
+            generatorClient.OnUpdate();
         }
 
         // Methods -> Public
         public void GenerateMap() {
-            generator.GenerateMap();
+            generatorServer.GenerateMap();
         }
 
         public void RestartMap() {
-            generator.RestartMap();
+            generatorServer.RestartMap();
+            generatorClient.RestartMap();
         }
     }
 }

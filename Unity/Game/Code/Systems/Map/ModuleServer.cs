@@ -11,10 +11,6 @@ namespace JamCat.Map
 {
     public class ModuleServer : NetworkBehaviour 
     {
-        [Header("Configuration")]
-        public int moduleID;
 
-        [Header("Run-Time")]
-        public Element[] elements;
     }
 }

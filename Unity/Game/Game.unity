@@ -10087,7 +10087,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   networkManager: {fileID: 1865458089}
   uNetTransport: {fileID: 1865458088}
-  localPlayerID: 0
   serverStarted: 0
   clientConnectedToServer: 0
   curPlayers: 1
@@ -17626,6 +17625,7 @@ GameObject:
   - component: {fileID: 1837847970}
   - component: {fileID: 1837847972}
   - component: {fileID: 1837847971}
+  - component: {fileID: 1837847974}
   - component: {fileID: 1837847973}
   m_Layer: 0
   m_Name: Map
@@ -17658,7 +17658,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1837847969}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6f69b5b50efc954eb341ed9abd1e6cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 891f515fa59f74e41a916a3d875f7317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gerarTudo: 0
@@ -17704,7 +17704,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   can_pause: 0
-  generator: {fileID: 1837847971}
+  generatorServer: {fileID: 1837847971}
+  generatorClient: {fileID: 1837847974}
 --- !u!114 &1837847973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17721,6 +17722,45 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!114 &1837847974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837847969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe20df9e7046e4478d984378e0aad5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allModules:
+  - {fileID: 1204973031283483175, guid: d1bb0f55bcfbd8f4c863254b70f5fb59, type: 3}
+  - {fileID: 5707741460364066978, guid: 810ff62ef0c38c446b8a3be7060733c5, type: 3}
+  - {fileID: 5048672665437879154, guid: 4c2098822ea3de04aa60cae763772bb6, type: 3}
+  - {fileID: 4196234488143808316, guid: 0698c9754be6c7a468f1d4724a7c92b2, type: 3}
+  - {fileID: 6392395650421920133, guid: 6c4f2e289babba54782504f7b1f12eb8, type: 3}
+  - {fileID: 6443028594123303482, guid: cfdc8fbdbbc3a634f971f7978070086d, type: 3}
+  - {fileID: 9117003505062794663, guid: 84e48198829585a4ba12cc7f3d6660cf, type: 3}
+  - {fileID: 2471110023994994380, guid: 71566a6b8e851264ca927ae1f0e8e4cc, type: 3}
+  - {fileID: 8561660143344381352, guid: 16f2c01d85281594eb7dd74dda261a54, type: 3}
+  - {fileID: 2234861809484679378, guid: 180b283f7041cff4fb968dc8403bd9c3, type: 3}
+  - {fileID: 6546965366535860026, guid: 751e06be415c21a46b6caf17a2ed45e0, type: 3}
+  - {fileID: 4104818369502259058, guid: 20f865395ca99234d9d3f67f00b7ee45, type: 3}
+  - {fileID: 5086570353260209477, guid: c01f0f82d6efbfd4c8bbd7dce072f421, type: 3}
+  - {fileID: 514386206999953228, guid: f11e58aade171bb46985245338138c51, type: 3}
+  - {fileID: 5941244086380087103, guid: f913f475dd840294eb5b9c22ff0c1dec, type: 3}
+  - {fileID: 3513992889690790048, guid: e87495f2df1c95c4280eec6cd7384005, type: 3}
+  - {fileID: 5732296484478441246, guid: 2ae7e111620205640bcdd866404a1858, type: 3}
+  - {fileID: 5848176228167328324, guid: 954b39cec72d1814790eed406e119849, type: 3}
+  - {fileID: 7054744751457069216, guid: 50a3c722de86ff048a1cf54a6695adfe, type: 3}
+  - {fileID: 5382545792643906258, guid: 2555d3fa3f7216c47b5b71a5063282d9, type: 3}
+  generateQuantity: 2
+  deleteQuantity: 3
+  modulesCreated: 0
+  currentModuleArray: 0
+  arrayModules: []
+  lastModule: {fileID: 0}
 --- !u!1001 &1840680236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18823,6 +18863,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   can_pause: 0
+  localPlayerID: 0
+  localPlayerObj: {fileID: 0}
+  localPlayer: {fileID: 0}
+  onlinePlayers: []
 --- !u!1 &1917321403
 GameObject:
   m_ObjectHideFlags: 0

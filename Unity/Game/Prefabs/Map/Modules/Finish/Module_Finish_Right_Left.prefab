@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: -5862102845491427880}
   m_Layer: 0
   m_Name: Module_Finish_Right_Left
-  m_TagString: Untagged
+  m_TagString: Module
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 224112318f868854bb1a5d6eb02cb731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elementID: 14
   squareConfiguration:
     squares_rows_quant: 10
     squares_collumns_quant: 10
@@ -269,8 +270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4b5c61c7a1de524da7e4c5bdefe8d1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moduleID: 18
-  elements: []
 --- !u!1 &6213134103108822651
 GameObject:
   m_ObjectHideFlags: 0

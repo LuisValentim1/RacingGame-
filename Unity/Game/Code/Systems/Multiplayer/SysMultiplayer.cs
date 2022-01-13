@@ -23,11 +23,13 @@ namespace JamCat
 
         public bool serverStarted;
         public bool clientConnectedToServer;
+        private float timeConnecting;
+
+        // Variables -> Sync
         public int curPlayers = 1, maxPlayers = 1;
         public Dictionary<ulong, bool> serverPlayersReady = new Dictionary<ulong, bool>();
         public int clientPlayersReady;
 
-        private float timeConnecting;
 
         // Methods -> Standard
         private void Awake() {

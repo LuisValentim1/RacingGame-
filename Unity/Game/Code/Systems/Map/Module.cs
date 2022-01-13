@@ -5,9 +5,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using JamCat.Players;
+using Unity.Netcode;
 
 namespace JamCat.Map {
-    public class Module : MonoBehaviour {
+    public class Module : Element {
 
         // Variables
         public SquareConfiguration squareConfiguration;
@@ -26,17 +27,6 @@ namespace JamCat.Map {
         // Methods -> Standard
         private void Reset() {
             
-        }
-         
-        private void OnTriggerEnter2D(Collider2D other) {
-
-            // Create new module and destroy last
-            if (other.tag == "Player" && playerWasInside == false) {
-                other.GetComponent<Player>().inModule = moduleID;
-                Generator.Get().DeleteLastModule(gameObject);
-                Generator.Get().GenerateModule();
-                playerWasInside = true;              
-            } 
         }
 
         public void Generate(int moduleID) {
@@ -68,7 +58,7 @@ namespace JamCat.Map {
             GameObject module = null;
 
             int module_number = 0;
-            float prob = (float)Generator.Get().r.NextDouble() * 100;
+            float prob = (float)GeneratorServer.Get().r.NextDouble() * 100;
 
             float increment = 0;
             for (int i = 0; i < moduleConfiguration.modules.Length; i++) {
@@ -140,5 +130,19 @@ namespace JamCat.Map {
             public int rotation;
             public int altRotation;
         }
+
+        /*
+        public struct SerializeElements : INetworkSerializable {
+            public int[] elementsID;
+            public Vector3[] elementsPos;
+            public Quaternion[] elementsRot;
+
+            void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter {
+                serializer.SerializeValue(ref elementsID);
+                serializer.SerializeValue(ref elementsPos);
+                serializer.SerializeValue(ref elementsRot);
+            }
+        }
+        */
     }
 }

@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using JamCat.Map;
+using JamCat.Players;
 using JamCat.UI;
 
 namespace JamCat.Multiplayer
@@ -50,6 +53,14 @@ namespace JamCat.Multiplayer
         }
 
         // ------------------------- Character Selection
+         [ClientRpc]
+        public void CallCaracterSelectionClientRpc() {
+            SysMultiplayer.Get().serverPlayersReady = new Dictionary<ulong, bool>();
+            SysMultiplayer.Get().clientPlayersReady = 0;
+            Window_Lobby.Get().CloseWindow(0.3f, 0);
+            Window_CharacterSelection.Get().OpenWindow(0.3f, 0.3f);
+        }
+
         [ServerRpc]
         public void OnReadyServerRpc(ulong id, bool readyState) {
             if (IsServer == false) 
@@ -63,18 +74,106 @@ namespace JamCat.Multiplayer
             SysMultiplayer.Get().clientPlayersReady = playersReady;
         }
 
-        // ------------------------- Character Selection
-        [ClientRpc]
-        public void CallCaracterSelectionClientRpc() {
-            SysMultiplayer.Get().serverPlayersReady = new Dictionary<ulong, bool>();
-            SysMultiplayer.Get().clientPlayersReady = 0;
-            Window_Lobby.Get().CloseWindow(0.3f, 0);
-            Window_CharacterSelection.Get().OpenWindow(0.3f, 0.3f);
+        [ServerRpc]
+        public void StartGameServerRpc() {
+            if (IsServer == false)
+                return;
+
+            StartGameClientRpc();
         }
 
         [ClientRpc]
         public void StartGameClientRpc() {
             GeneralMethods.StartGame();
+        }
+    
+
+
+
+        // ------------------------- Map
+        [ServerRpc]
+        public void SetPlayerInModuleServerRpc(ulong playerID, int moduleID) {
+            if (IsServer == false) 
+                return;
+
+            SetPlayerInModuleClientRpc(playerID, moduleID);
+
+            if (GeneratorServer.Get().GetModuleCreated(moduleID).playerWasInside == true)
+                return;
+
+            GeneratorServer.Get().GetModuleCreated(moduleID).playerWasInside = true;
+            GeneratorServer.Get().DeleteLastModule();     
+            Module module = GeneratorServer.Get().GenerateModule();
+            if (module != null)
+                RequestNewModuleClientRpc(module.elementID, module.transform.position);
+      
+        }
+        
+        [ClientRpc]
+        public void SetPlayerInModuleClientRpc(ulong playerID, int inModule) {
+            if (IsServer == true)
+                return;
+
+            Player player = SysPlayer.Get().GetPlayer(playerID);
+            player.inModule = inModule;
+        }
+
+
+
+        [ServerRpc]
+        public void GenerateModuleServerRpc() {
+             if (IsServer == false) 
+                return;
+
+            Module module = GeneratorServer.Get().GenerateModule();
+            if (module != null)
+                RequestNewModuleClientRpc(module.elementID, module.transform.position);
+        }
+
+        [ClientRpc]
+        public void RequestNewModuleClientRpc(int elementID, Vector3 pos) {
+            if (IsServer == true)
+                return;
+            
+            // print("ElementID: " + elementID + ";  Pos: " + pos);
+            GeneratorClient.Get().GenerateModule(elementID, pos);
+        }
+        
+
+        [ServerRpc]
+        public void DeleteLastModuleServerRpc() {
+             if (IsServer == false) 
+                return;
+                
+            GeneratorServer.Get().DeleteLastModule();
+        }
+
+        [ClientRpc]
+        public void DestroyLastModuleClientRpc() {
+            if (IsServer == true)
+                return;
+
+            print("Deleted");
+            GeneratorClient.Get().DeleteLastModule();
+        }
+
+
+        // ------------------------- Finished
+
+
+
+
+
+
+
+
+
+
+
+        // ------------------------- Test
+        [ServerRpc]
+        public void RequestMapServerRpc() {
+
         }
 
         [ClientRpc]
