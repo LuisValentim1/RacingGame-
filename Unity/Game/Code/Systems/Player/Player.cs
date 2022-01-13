@@ -81,6 +81,14 @@ namespace JamCat.Players
                 InteractJump();
                 InteractStripe();
             }
+
+            if (Input.GetKeyDown(KeyCode.K)) {
+                character.UseAbilityBasic();
+            }
+            
+            if (Input.GetKeyDown(KeyCode.L)) {
+                character.UseAbilityUlti();
+            }
         }
 
         private void OnDestroy() {
@@ -109,6 +117,11 @@ namespace JamCat.Players
                 inModule = module.moduleID;
                 SysMultiplayer.Get().multiplayerMethods.SetPlayerInModuleServerRpc(SysPlayer.Get().localPlayerID, inModule);
             }
+
+            if(collider2d.GetComponent<ASlow>() != null) {
+                ASlow aSlow = collider2d.GetComponent<ASlow>();
+                topDownCarController.ApplySlow(aSlow.slowIntensity, aSlow.maxAcceleration, aSlow.slowDuration);
+            }
         }
 
         private void OnTriggerExit2D(Collider2D collider2d) {
@@ -135,7 +148,7 @@ namespace JamCat.Players
 
         public void InteractStripe(){
             if(stripeFlag) {
-                character.AddMana(0.2f);
+                character.AddMana(20f);
             }
         }
 

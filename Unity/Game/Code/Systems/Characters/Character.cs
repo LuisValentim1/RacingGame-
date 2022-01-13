@@ -9,8 +9,7 @@ namespace JamCat.Characters
     {
         // Variables
         public string characterName;
-        public Ability abilityBasic;
-        public Ability abilityUlti;
+        public AbilityGroup abilityGroup;
         public CharacterLogic CharacterLogic;
 
         public bool isOut;
@@ -22,28 +21,25 @@ namespace JamCat.Characters
 
         // Methods -> Standard
         public void OnAwake() {
-            abilityBasic.AwakeAbility();
-            abilityUlti.AwakeAbility();
+            abilityGroup.OnAwake();
             Restart();
         }
 
         public void OnStart() {
-            abilityBasic.StartAbility();
-            abilityUlti.StartAbility();
+            abilityGroup.OnStart();
         }
 
         public void OnUpdate() {
-            abilityBasic.UpdateAbility();
-            abilityUlti.UpdateAbility();
+            abilityGroup.OnUpdate();
         }
 
         // Methods -> Publlic
         public void UseAbilityBasic() {
-            abilityBasic.UseAbility();
+            abilityGroup.UseAbilityBasic();
         }
 
         public void UseAbilityUlti() {
-            abilityUlti.UseAbility();
+            abilityGroup.UseAbilityUlti();
         }
 
         public void Restart() {

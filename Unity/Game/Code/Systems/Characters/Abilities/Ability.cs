@@ -7,7 +7,7 @@ namespace JamCat.Characters
     abstract public class Ability : MonoBehaviour 
     {
         // Variables -> Public
-        public Character character;
+        protected Character character;
         public float cooldown;
 
         private float curCooldown;

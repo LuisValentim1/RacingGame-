@@ -37,6 +37,7 @@ namespace JamCat.Players
 
         // Variables -> Private
         [Header("Test")]
+        public Vector2 engineForceVector;
         public float accelerationInput = 0;
         public float steeringInput = 0;
         public float rotationAngle = 0;
@@ -72,7 +73,7 @@ namespace JamCat.Players
         }
 
         public void UpdateCar() {
-            
+
         }
 
         private void FixedUpdate() {
@@ -120,7 +121,7 @@ namespace JamCat.Players
                 carRigidbody2D.drag = 0;
             }
 
-            Vector2 engineForceVector = transform.up * accelerationInput * accelerationFactor;
+            engineForceVector = transform.up * accelerationInput * accelerationFactor;
             carRigidbody2D.AddForce(engineForceVector, ForceMode2D.Force);
           //  AddForceServerRpc(engineForceVector);
         }
@@ -230,6 +231,10 @@ namespace JamCat.Players
             accelerationInput = inputVector.y;
         }
 
+        public float getVelocity() {
+            return carRigidbody2D.velocity.magnitude;
+        }
+
 
         // Methods -> Interaction
         public void HitObstacle(Collider2D collider2D) {
@@ -246,5 +251,31 @@ namespace JamCat.Players
 
             yield return null;
         }
+
+        public void ApplySlow(float slowIntensity, float maxAccerelation, float slowDuration) {
+            StartCoroutine(IE_ApplySlow(slowIntensity, maxAccerelation, slowDuration));
+            StartCoroutine(IE_ReduceVelocityBy(slowIntensity, 1));
+        }
+
+        IEnumerator IE_ApplySlow(float slowIntensity, float maxAcceleration, float slowDuration) {
+            this.accelerationFactor = maxAcceleration;
+            yield return new WaitForSeconds(slowDuration);
+            this.accelerationFactor = 50;
+
+            yield return null;
+        }
+        
+
+        IEnumerator IE_ReduceVelocityBy(float slowIntensity, float slowDuration) {
+            float timer = slowDuration;
+            while(timer > 0) {
+                timer -= Time.deltaTime;
+                Vector2 slowDown = carRigidbody2D.velocity * slowIntensity * -1;
+                carRigidbody2D.AddForce(slowDown);
+                yield return null;
+            }
+            yield return null;
+        }
+
     }
 }
