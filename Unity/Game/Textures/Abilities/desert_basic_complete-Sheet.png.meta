@@ -1,0 +1,1288 @@
+fileFormatVersion: 2
+guid: 84b586df24da75c48bd0514e6e2f7c2e
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1536
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d51f8d02f603230469ad06b6226b7499
+      internalID: -2084283382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 1536
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03c430435daca1c4b8e24a8f48837aa8
+      internalID: 1265946086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 1536
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb9b530f94cfe0e4b90c060c7e39f373
+      internalID: 275147445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1536
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60234ba06f9c69d438d96c312f58042e
+      internalID: -2070194067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 1536
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f29fd763297409d4db7e9b995e332255
+      internalID: -380913819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 1536
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99acf5f8aa863c140b5d51206bf691e0
+      internalID: -1323173183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 1536
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d04d76abbb98e34f81aeaf6f72df47f
+      internalID: 1047703404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 408c31a66ae81174c9205b76d86feef7
+      internalID: 1033866227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1280
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3943e38b49b92b43952cf4d342bb1cd
+      internalID: -1999103829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 1280
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0541eb45de2fbd249adba454d4b90678
+      internalID: -77689731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 1280
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 985d3beae80e2964bafe6f5b75d262b7
+      internalID: 970790867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1280
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 087f8088889e4264b9663d559583628b
+      internalID: 1128737422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 1280
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07cd8cfca84223640b3ed526415002f6
+      internalID: 1224476238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 1280
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f17dd0d962d8404ea9218c838185e32
+      internalID: -403818553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 1280
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a66b6b1b26bd38e4cb128a14e4508ccc
+      internalID: -1888120126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03a0a237c62dfbd4ea945f6598985e8e
+      internalID: 1237011795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1024
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab7d362d13c9b384f9ce9d054a99b266
+      internalID: -54904388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 1024
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f625cffc179e3a45b5df8ae13e41f30
+      internalID: -1385348343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 1024
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d867aa59c1d95e49b4b8f0e9335b4cd
+      internalID: 133161833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1024
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4be9d7402591d984f81655f1927faead
+      internalID: 1435748628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 1024
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9e8b420d283f1b49b98d6eb15d576e1
+      internalID: -47657137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 1024
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3922fd1334cdfa74da6d70aa0a06a726
+      internalID: 661864149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 1024
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8187dc24eedb7c42a64a04ffa2f0918
+      internalID: -1813840288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5a2771fd65918b4c981bd0fe29529f1
+      internalID: 763390093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 768
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 648860deb2dfc17448a5c842dab91f51
+      internalID: 172230924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 768
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62139335e8932df43b13512a245559b8
+      internalID: 422734581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 768
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33dc9a64176e98e4b8200e12d1464fd5
+      internalID: 1402194428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 768
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfcf192a289090c4ca613853d09d3f1b
+      internalID: -933921092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 768
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8b34c8798b9d5f478fe227a7baa5776
+      internalID: -833011927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 768
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f6650909c28b37419dffba3863b7940
+      internalID: -423777706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 768
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbc9498c024cbbd46b8b6cc12d01ca4a
+      internalID: -224433072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d3690a7af11d0246b3767d45c034d63
+      internalID: 19736772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 512
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a172c0d788c467c4aabe7ee9430a0c80
+      internalID: -1698364564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 512
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf153a8d30af12947b8de82eac5a5c89
+      internalID: 1410087150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 512
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdbe0a4edbbd33f4cb702ce5e37e0dd7
+      internalID: -1594947472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 512
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3674a36af6200cf42a3dbf12353b99e3
+      internalID: -1511124687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 512
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32dc063349ee03f4db6782b8c6cd5677
+      internalID: -273187730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 512
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7340ae29b11838942b559a7c266bcb71
+      internalID: 310496856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 512
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: feabbf86d270af24f9afb683d71900d6
+      internalID: 1126980200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c414bebef8a972143ae0915cc12e96be
+      internalID: 1006894872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 256
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f539813acaf5cab4ebda3b61dc1e2a08
+      internalID: -247817436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 256
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3f82ca44c7e6d046b16819614cfcc19
+      internalID: -1106964364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 256
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: befa66e90b063734d828daf2df0b16da
+      internalID: -1824192709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 256
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b6676b896897a34e908ca8b11a93c07
+      internalID: 901641498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_44
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 256
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b02e7acdcccd2384482ead2a1c07f990
+      internalID: 1884352454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_45
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 256
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0e560609fdc7594eae3fc3fee451387
+      internalID: -2087867522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_46
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 256
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bc3dc93b920db24aa2523f74d23efdf
+      internalID: 1997349589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_47
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c93ebbe20ecc2f2488124f7c2382a2ad
+      internalID: 1608081974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_48
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dc1943d5274b024fa9c29898e827442
+      internalID: -521520748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_49
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdb3cef553b85cb439de69cf13c1d31f
+      internalID: -2138761873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_50
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 0
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81608729fd8d69648938cedd9f3ad290
+      internalID: 782612798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_51
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fdec70eb983a6147951447371cff573
+      internalID: 339097365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_complete-Sheet_52
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 0
+        width: 144
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13664aff885b6d84da84c5f8bdc495c4
+      internalID: -1733486857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 3c9ae16c002e21a43afe8fe7c127906d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      desert_basic_complete-Sheet_42: -1824192709
+      desert_basic_complete-Sheet_2: 275147445
+      desert_basic_complete-Sheet_7: 1033866227
+      desert_basic_complete-Sheet_3: -2070194067
+      desert_basic_complete-Sheet_47: 1608081974
+      desert_basic_complete-Sheet_51: 339097365
+      desert_basic_complete-Sheet_19: 1435748628
+      desert_basic_complete-Sheet_40: -247817436
+      desert_basic_complete-Sheet_44: 1884352454
+      desert_basic_complete-Sheet_20: -47657137
+      desert_basic_complete-Sheet_34: -1594947472
+      desert_basic_complete-Sheet_48: -521520748
+      desert_basic_complete-Sheet_38: 1126980200
+      desert_basic_complete-Sheet_1: 1265946086
+      desert_basic_complete-Sheet_12: 1224476238
+      desert_basic_complete-Sheet_11: 1128737422
+      desert_basic_complete-Sheet_32: -1698364564
+      desert_basic_complete-Sheet_14: -1888120126
+      desert_basic_complete-Sheet_5: -1323173183
+      desert_basic_complete-Sheet_25: 422734581
+      desert_basic_complete-Sheet_21: 661864149
+      desert_basic_complete-Sheet_29: -423777706
+      desert_basic_complete-Sheet_22: -1813840288
+      desert_basic_complete-Sheet_24: 172230924
+      desert_basic_complete-Sheet_35: -1511124687
+      desert_basic_complete-Sheet_52: -1733486857
+      desert_basic_complete-Sheet_39: 1006894872
+      desert_basic_complete-Sheet_37: 310496856
+      desert_basic_complete-Sheet_27: -933921092
+      desert_basic_complete-Sheet_6: 1047703404
+      desert_basic_complete-Sheet_10: 970790867
+      desert_basic_complete-Sheet_36: -273187730
+      desert_basic_complete-Sheet_26: 1402194428
+      desert_basic_complete-Sheet_17: -1385348343
+      desert_basic_complete-Sheet_43: 901641498
+      desert_basic_complete-Sheet_9: -77689731
+      desert_basic_complete-Sheet_46: 1997349589
+      desert_basic_complete-Sheet_15: 1237011795
+      desert_basic_complete-Sheet_30: -224433072
+      desert_basic_complete-Sheet_23: 763390093
+      desert_basic_complete-Sheet_13: -403818553
+      desert_basic_complete-Sheet_0: -2084283382
+      desert_basic_complete-Sheet_16: -54904388
+      desert_basic_complete-Sheet_28: -833011927
+      desert_basic_complete-Sheet_49: -2138761873
+      desert_basic_complete-Sheet_8: -1999103829
+      desert_basic_complete-Sheet_31: 19736772
+      desert_basic_complete-Sheet_4: -380913819
+      desert_basic_complete-Sheet_18: 133161833
+      desert_basic_complete-Sheet_33: 1410087150
+      desert_basic_complete-Sheet_41: -1106964364
+      desert_basic_complete-Sheet_45: -2087867522
+      desert_basic_complete-Sheet_50: 782612798
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
