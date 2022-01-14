@@ -2,17 +2,23 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour 
 {
+    public Transform spawnPoint;
     private float timer;
+    private float timerToDestroy = 1f;
     private Vector2 direction;
     private float speed;
     private bool ended;
 
 
     private void Update() {
-        transform.position += transform.up * speed * Time.deltaTime;
         timer -= Time.deltaTime;
         if (timer <= 0) {
             ended = true;
+            timerToDestroy -= Time.deltaTime;
+            if (timerToDestroy <= 0)
+                Destroy(gameObject);
+        }else{
+            transform.position += transform.up * speed * Time.deltaTime;
         }
     }
 

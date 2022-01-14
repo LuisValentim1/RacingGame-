@@ -13,6 +13,7 @@ namespace JamCat.Players
         // Variables -> Public
         Player player;
 
+
         [Header("Car settings")]
         public float driftFactor = 0.80f;
         public float accelerationFactor = 0.01f;
@@ -37,6 +38,7 @@ namespace JamCat.Players
 
         // Variables -> Private
         [Header("Test")]
+        public float currentVelocity;
         public Vector2 engineForceVector;
         public float accelerationInput = 0;
         public float steeringInput = 0;
@@ -86,6 +88,7 @@ namespace JamCat.Players
             if (player.GetNetworkObject().IsLocalPlayer == false)
                 return;
 
+            currentVelocity = carRigidbody2D.velocity.magnitude;
             ApplyEngineForce();
             KillOrthogonalVelocity();
             ApplySteering();
@@ -214,12 +217,14 @@ namespace JamCat.Players
                 yield return null;
             }
 
+            player.jumpFlag = false;
             carSpriteRenderer.transform.localScale = Vector3.one;
             carShadowRenderer.transform.localPosition = Vector3.zero;
             carShadowRenderer.transform.localScale = initialScale;
             carCollider2D.enabled = true;
             isJumping = false;
             accelerationFactor = 50;
+            StopAllCoroutines();
         }
 
 

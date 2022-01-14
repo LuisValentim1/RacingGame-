@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UNET;
@@ -28,6 +29,7 @@ namespace JamCat
         // Variables -> Sync
         public int curPlayers = 1, maxPlayers = 1;
         public Dictionary<ulong, bool> serverPlayersReady = new Dictionary<ulong, bool>();
+        public Dictionary<ulong, int> serverCharacters = new Dictionary<ulong, int>();
         public int clientPlayersReady;
 
 
@@ -99,14 +101,19 @@ namespace JamCat
         }
 
         // Players Ready
-        public void PlayerReady(ulong id, bool state) {
-            if (serverPlayersReady.ContainsKey(id) == true)
+        public void PlayerReady(ulong id, bool state, int character) {
+            if (serverPlayersReady.ContainsKey(id) == true) {
+                serverCharacters[id] = character;
                 serverPlayersReady[id] = state;
-            else
+            } else {
+                serverCharacters.Add(id, character);
                 serverPlayersReady.Add(id, state);
+            }
 
             clientPlayersReady = GetPlayersReadyCount();
-            multiplayerMethods.OnReadyClientRpc(clientPlayersReady);
+            ulong[] ids = serverCharacters.Keys.ToArray();
+            int[] characters = serverCharacters.Values.ToArray();
+            multiplayerMethods.OnReadyClientRpc(clientPlayersReady, ids, characters);
         }
 
         public int GetPlayersReadyCount() {

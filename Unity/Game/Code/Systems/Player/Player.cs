@@ -142,17 +142,17 @@ namespace JamCat.Players
         // Interactions
         public void InteractJump(){
             if(jumpFlag) {
-                character.AddMana(5.0f);
+                character.AddMana(5);
                 topDownCarController.JumpBoost();
+                jumpFlag = false;
             }
         }
 
         public void InteractStripe(){
             if(stripeFlag) {
-                character.AddMana(40f);
+                character.AddManaByTime(40f);
             }
         }
-
 
         // Methods -> Get
         public NetworkObject GetNetworkObject() { return networkObject; }

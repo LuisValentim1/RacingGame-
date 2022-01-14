@@ -32,7 +32,6 @@ namespace JamCat.Characters
                     Projectile projectile = projectiles[i];
                     OnProjectileEnd(projectile);
                     projectiles.Remove(projectile);
-                    Destroy(projectile.gameObject);
                 }
             }
         }
@@ -47,7 +46,7 @@ namespace JamCat.Characters
 
 
         public void OnProjectileEnd(Projectile projectile) {
-            GameObject newObj = Instantiate(prefabAbilityDesert, projectile.transform.position, projectile.transform.rotation, null);
+            GameObject newObj = Instantiate(prefabAbilityDesert, projectile.spawnPoint.position, projectile.transform.rotation, null);
             abilities.Add(newObj);
         }
     }

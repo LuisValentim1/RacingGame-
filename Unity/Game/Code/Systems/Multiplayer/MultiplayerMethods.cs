@@ -62,16 +62,17 @@ namespace JamCat.Multiplayer
         }
 
         [ServerRpc]
-        public void OnReadyServerRpc(ulong id, bool readyState) {
+        public void OnReadyServerRpc(ulong id, bool readyState, int character) {
             if (IsServer == false) 
                 return;
 
-            SysMultiplayer.Get().PlayerReady(id, readyState);
+            SysMultiplayer.Get().PlayerReady(id, readyState, character);
         }
 
         [ClientRpc]
-        public void OnReadyClientRpc(int playersReady) {
+        public void OnReadyClientRpc(int playersReady, ulong[] ids, int[] characters) {
             SysMultiplayer.Get().clientPlayersReady = playersReady;
+            SysPlayer.Get().UpdateOnlinePlayers(ids, characters);
         }
 
         [ServerRpc]
@@ -87,8 +88,6 @@ namespace JamCat.Multiplayer
             GeneralMethods.StartGame();
         }
     
-
-
 
         // ------------------------- Player Enters Module
         [ServerRpc]

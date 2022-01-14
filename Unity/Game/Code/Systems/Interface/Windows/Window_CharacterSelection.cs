@@ -52,7 +52,8 @@ namespace JamCat.UI
         public void ToggleReady() {
             SysMultiplayer.Get().multiplayerMethods.OnReadyServerRpc(
                 SysPlayer.Get().localPlayerID,
-                toggleReady.activated
+                toggleReady.activated,
+                Data.Get().gameData.characterSelected
             );
         }
         

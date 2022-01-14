@@ -12,6 +12,8 @@ namespace JamCat.Characters
         public AbilityGroup abilityGroup;
         public CharacterLogic CharacterLogic;
 
+        public Sprite[] sprites;
+
         public bool isOut;
         public int maxLifes = 7;
         public int curLifes = 7;
@@ -48,10 +50,21 @@ namespace JamCat.Characters
             curLifes = maxLifes;
             Window_HUD.Get().barLife.SetPercentage(getLifePercentage());
             Window_HUD.Get().barMana.SetPercentage(curMana);
+
+            if (Data.Get().gameData.characterSelected >= 0)
+                GetComponentInChildren<SpriteRenderer>().sprite = sprites[Data.Get().gameData.characterSelected];
         }
 
-        
-        public void AddMana(float manaValue){
+          public void AddMana(float manaValue){
+            curMana += manaValue;
+            if (curMana > maxMana)
+                curMana = maxMana;
+
+            Window_HUD.Get().barMana.SetPercentage(curMana);
+            // print("From Character Class: " + curMana);
+        }
+
+        public void AddManaByTime(float manaValue){
             curMana += Time.deltaTime * manaValue;
             if (curMana > maxMana)
                 curMana = maxMana;
@@ -76,6 +89,13 @@ namespace JamCat.Characters
                 curLifes = 0;
             }
             Window_HUD.Get().barLife.SetPercentage(getLifePercentage());
+        }
+
+
+        
+
+        public void UpdateGraphics(int character) {
+            GetComponentInChildren<SpriteRenderer>().sprite = sprites[character];
         }
 
         public float getLifePercentage() {

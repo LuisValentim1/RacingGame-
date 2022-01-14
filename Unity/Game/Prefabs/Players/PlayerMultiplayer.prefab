@@ -131,7 +131,7 @@ Transform:
   m_GameObject: {fileID: 2224988506148844555}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.35, y: 1.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2224988506970429817}
@@ -173,6 +173,11 @@ MonoBehaviour:
   characterName: 
   abilityGroup: {fileID: 7053594439459832771}
   CharacterLogic: {fileID: 2224988506148844548}
+  sprites:
+  - {fileID: 1677186382, guid: a0075c9ef90f8f94e85bfe4084b55e2a, type: 3}
+  - {fileID: 1490803420, guid: 1ea9229ac62f1834ea572aa454c26119, type: 3}
+  - {fileID: -810171848, guid: f90603551f220454384b81542de3f55a, type: 3}
+  - {fileID: 1411163758, guid: 5efad3b80fc705f4da32c58333030175, type: 3}
   isOut: 0
   maxLifes: 7
   curLifes: 7
@@ -247,6 +252,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   jumpHeightScale: 3
   jumpPushScale: 1
+  currentVelocity: 0
   engineForceVector: {x: 0, y: 0}
   accelerationInput: 0
   steeringInput: 0
@@ -516,7 +522,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 07f3e35ae73e1c74aad050e33c470d58, type: 3}
+  m_Sprite: {fileID: 1677186382, guid: a0075c9ef90f8f94e85bfe4084b55e2a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -663,7 +669,7 @@ MonoBehaviour:
   prefabPojectile: {fileID: 3874696764685091845, guid: 092428f85fce5c94fbf2e77f2dcf46d0, type: 3}
   prefabAbilityDesert: {fileID: 2554369103171683915, guid: e22faa0a4a672f6429d3092ec53388d1, type: 3}
   projectileTimer: 0.6
-  projectileAnimatorGraphics: {fileID: 9100000, guid: 9704d0a47d61e1d45821f7b414577e19, type: 2}
+  projectileAnimatorGraphics: {fileID: 9100000, guid: 2a27c3499768f214b84fa52cac7109a6, type: 2}
 --- !u!1 &2837828822729886389
 GameObject:
   m_ObjectHideFlags: 0
