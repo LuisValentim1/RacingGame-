@@ -8,16 +8,17 @@ using JamCat.Players;
 using Unity.Netcode;
 
 namespace JamCat.Map {
-    public class Module : Element {
+    public class Module : MonoBehaviour {
 
         // Variables
+        public int moduleID;
         public SquareConfiguration squareConfiguration;
         public ModuleConfiguration moduleConfiguration;
         public BuildingPositions[] buildingPositions;
         public RoadPosition[] freeRoadPositions;
         public Sprites sprites;
 
-        public int moduleID;
+        public int moduleNumber;
         public bool playerWasInside;
         public bool noBackground = true;
         public bool noElements = true;
@@ -29,8 +30,8 @@ namespace JamCat.Map {
             
         }
 
-        public void Generate(int moduleID) {
-            this.moduleID = moduleID;
+        public void Generate(int moduleNumber) {
+            this.moduleNumber = moduleNumber;
             Sprite randomSprite = GetRandomSpriteRoad();
             sprites.spriteRendererRoad.sprite = randomSprite;
         }
@@ -130,19 +131,5 @@ namespace JamCat.Map {
             public int rotation;
             public int altRotation;
         }
-
-        /*
-        public struct SerializeElements : INetworkSerializable {
-            public int[] elementsID;
-            public Vector3[] elementsPos;
-            public Quaternion[] elementsRot;
-
-            void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter {
-                serializer.SerializeValue(ref elementsID);
-                serializer.SerializeValue(ref elementsPos);
-                serializer.SerializeValue(ref elementsRot);
-            }
-        }
-        */
     }
 }

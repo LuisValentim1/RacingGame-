@@ -133,10 +133,10 @@ namespace JamCat.Map {
         }
 
 
-        public Module GetModuleCreated(int moduleID) {
+        public Module GetModuleCreated(int moduleNumber) {
             for (int i = 0; i < arrayModules.Length; i++)
                 if (arrayModules[i] != null)
-                    if (arrayModules[i].GetComponent<Module>().moduleID == moduleID)
+                    if (arrayModules[i].GetComponent<Module>().moduleNumber == moduleNumber)
                         return arrayModules[i].GetComponent<Module>();
             return null;
         }

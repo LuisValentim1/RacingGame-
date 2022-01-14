@@ -90,23 +90,26 @@ namespace JamCat.Multiplayer
 
 
 
-        // ------------------------- Map
+        // ------------------------- Player Enters Module
         [ServerRpc]
-        public void SetPlayerInModuleServerRpc(ulong playerID, int moduleID) {
+        public void SetPlayerInModuleServerRpc(ulong playerID, int moduleNumber) {
             if (IsServer == false) 
                 return;
 
-            SetPlayerInModuleClientRpc(playerID, moduleID);
+            SetPlayerInModuleClientRpc(playerID, moduleNumber);
 
-            if (GeneratorServer.Get().GetModuleCreated(moduleID).playerWasInside == true)
+            if (GeneratorServer.Get().GetModuleCreated(moduleNumber).playerWasInside == true)
                 return;
 
-            GeneratorServer.Get().GetModuleCreated(moduleID).playerWasInside = true;
+            GeneratorServer.Get().GetModuleCreated(moduleNumber).playerWasInside = true;
             GeneratorServer.Get().DeleteLastModule();     
             Module module = GeneratorServer.Get().GenerateModule();
-            if (module != null)
-                RequestNewModuleClientRpc(module.elementID, module.transform.position);
-      
+            if (module != null) {
+                RequestNewModuleClientRpc(module.moduleID, module.transform.position);
+
+                ModuleClient.SerializeElements serializeElements = module.GetComponent<ModuleClient>().GetSerializeElements();
+                RequestElementsInModuleClientRpc(module.moduleNumber, serializeElements);
+            }
         }
         
         [ClientRpc]
@@ -119,15 +122,18 @@ namespace JamCat.Multiplayer
         }
 
 
-
+        // -------------------------  Generate Module
         [ServerRpc]
         public void GenerateModuleServerRpc() {
              if (IsServer == false) 
                 return;
 
             Module module = GeneratorServer.Get().GenerateModule();
-            if (module != null)
-                RequestNewModuleClientRpc(module.elementID, module.transform.position);
+            if (module != null) {
+                RequestNewModuleClientRpc(module.moduleID, module.transform.position);
+                ModuleClient.SerializeElements serializeElements = module.GetComponent<ModuleClient>().GetSerializeElements();
+                RequestElementsInModuleClientRpc(module.moduleNumber, serializeElements);
+            }
         }
 
         [ClientRpc]
@@ -135,11 +141,27 @@ namespace JamCat.Multiplayer
             if (IsServer == true)
                 return;
             
-            // print("ElementID: " + elementID + ";  Pos: " + pos);
             GeneratorClient.Get().GenerateModule(elementID, pos);
         }
         
+        // -------------------------  Generate Elements in Module
+        [ServerRpc]
+        public void GenerateElementsInModuleServerRpc() {
+             if (IsServer == false) 
+                return;
 
+
+        }
+
+        [ClientRpc]
+        public void RequestElementsInModuleClientRpc(int moduleNumber, ModuleClient.SerializeElements serializeElements) {
+            if (IsServer == true)
+                return;
+            
+            GeneratorClient.Get().GenerateElementsInModule(moduleNumber, serializeElements);
+        }
+
+        // -------------------------  Delete Last Module
         [ServerRpc]
         public void DeleteLastModuleServerRpc() {
              if (IsServer == false) 
@@ -156,6 +178,7 @@ namespace JamCat.Multiplayer
             print("Deleted");
             GeneratorClient.Get().DeleteLastModule();
         }
+
 
 
         // ------------------------- Player -> Life

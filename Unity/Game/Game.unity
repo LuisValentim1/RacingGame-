@@ -17757,6 +17757,16 @@ MonoBehaviour:
   - {fileID: 5848176228167328324, guid: 954b39cec72d1814790eed406e119849, type: 3}
   - {fileID: 7054744751457069216, guid: 50a3c722de86ff048a1cf54a6695adfe, type: 3}
   - {fileID: 5382545792643906258, guid: 2555d3fa3f7216c47b5b71a5063282d9, type: 3}
+  allElements:
+  - {fileID: 1112725905247685649, guid: b7e2b81fb4c8e394eb49788cea11971b, type: 3}
+  - {fileID: 8794668401230111739, guid: bc56fa5bac4d98246bbbe2372437e34a, type: 3}
+  - {fileID: 2050963389920047033, guid: 8988ff83c5274684c99a8a1461f19ae1, type: 3}
+  - {fileID: 4961240858081967955, guid: 8fa514e5ab3dc784999e776f53633b23, type: 3}
+  - {fileID: 8416785513201892878, guid: 60142929958386e44a2b1b88de8c2005, type: 3}
+  - {fileID: 7721788795073821693, guid: b166095dbab7f974b90194d4dec0c43f, type: 3}
+  - {fileID: 1092327455920691568, guid: 6c45aff51eb9d7a4d82d93a5bee3b878, type: 3}
+  - {fileID: 1965996330132431255, guid: 5a8590ef223774a44b553a44d3d117bd, type: 3}
+  - {fileID: 2508450008052773058, guid: 659e6d9cfd03fc24f896a078978f2fce, type: 3}
   generateQuantity: 2
   deleteQuantity: 3
   modulesCreated: 0

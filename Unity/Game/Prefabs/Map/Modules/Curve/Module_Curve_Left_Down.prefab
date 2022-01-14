@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 224112318f868854bb1a5d6eb02cb731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementID: 6
+  moduleID: 10
   squareConfiguration:
     squares_rows_quant: 10
     squares_collumns_quant: 10
@@ -283,7 +283,7 @@ MonoBehaviour:
     spriteRendererRoad: {fileID: 4495856807755370037}
     spritesRoad:
     - {fileID: 21300000, guid: d561fa502f033ac40a8a7a404f328944, type: 3}
-  moduleID: 0
+  moduleNumber: 0
   playerWasInside: 0
   noBackground: 1
   noElements: 1

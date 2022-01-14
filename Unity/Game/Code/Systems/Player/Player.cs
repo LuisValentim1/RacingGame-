@@ -97,6 +97,9 @@ namespace JamCat.Players
 
 
         void OnTriggerEnter2D(Collider2D collider2d) {
+            if(collider2d.CompareTag("Obstacle"))
+                topDownCarController.HitObstacle(collider2d);
+
             if (networkObject.IsLocalPlayer == false)
                 return;
 
@@ -105,16 +108,13 @@ namespace JamCat.Players
 
             if(collider2d.CompareTag("Stripe"))
                 stripeFlag = true;
-
-            if(collider2d.CompareTag("Obstacle"))
-                topDownCarController.HitObstacle(collider2d);
             
             if(collider2d.CompareTag("Finish")) 
                 GeneralMethods.CallFinish();
 
             if(collider2d.CompareTag("Module")) {
                 Module module = collider2d.GetComponent<Module>();
-                inModule = module.moduleID;
+                inModule = module.moduleNumber;
                 SysMultiplayer.Get().multiplayerMethods.SetPlayerInModuleServerRpc(SysPlayer.Get().localPlayerID, inModule);
             }
 
@@ -148,7 +148,7 @@ namespace JamCat.Players
 
         public void InteractStripe(){
             if(stripeFlag) {
-                character.AddMana(20f);
+                character.AddMana(40f);
             }
         }
 

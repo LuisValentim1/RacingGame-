@@ -17,6 +17,7 @@ namespace JamCat.Map
         // Variables 
         [Header("Configurations")]
         public GameObject[] allModules;
+        public GameObject[] allElements;
         public int generateQuantity = 1;
         public int deleteQuantity = 2;
 
@@ -42,10 +43,17 @@ namespace JamCat.Map
         }
 
         // Methods -> Public
-        public GameObject FindModuleObj(int elementID) {
+        public GameObject FindModuleObj(int moduleID) {
             for (int i = 0; i < allModules.Length; i++)
-                if (allModules[i].GetComponent<Module>().elementID == elementID)
+                if (allModules[i].GetComponent<Module>().moduleID == moduleID)
                     return allModules[i];
+            return null;
+        }
+
+        public GameObject FindElementObj(int elementID) {
+            for (int i = 0; i < allElements.Length; i++)
+                if (allElements[i].GetComponent<Element>().elementID == elementID)
+                    return allElements[i];
             return null;
         }
 
@@ -57,7 +65,7 @@ namespace JamCat.Map
             GameObject newObj = Instantiate(FindModuleObj(elementID), transform);
             newObj.transform.position = pos;
             Module module = newObj.GetComponent<Module>();
-            module.moduleID = modulesCreated;
+            module.moduleNumber = modulesCreated;
 
             // Set Model Created
             arrayModules[currentModuleArray] = newObj;
@@ -70,6 +78,19 @@ namespace JamCat.Map
                 currentModuleArray = 0;
 
             return newObj.GetComponent<Module>();
+        }
+
+        public void GenerateElementsInModule(int moduleNumber, ModuleClient.SerializeElements elements) {
+            Module module = GetModuleCreated(moduleNumber);
+            
+            for (int i = 0; i < elements.elementsID.Length; i++) {
+                GameObject objFound = FindElementObj(elements.elementsID[i]);
+
+                if (objFound.GetComponent<Element>().dontSync == true)
+                    continue;
+
+                GameObject newObj = Instantiate(objFound, elements.elementsPos[i], elements.elementsRot[i], module.transform);
+            }
         }
 
         public void DeleteLastModule() {
@@ -91,6 +112,14 @@ namespace JamCat.Map
             }
 
             arrayModules = new GameObject[generateQuantity + deleteQuantity];
+        }
+
+        public Module GetModuleCreated(int moduleNumber) {
+            for (int i = 0; i < arrayModules.Length; i++)
+                if (arrayModules[i] != null)
+                    if (arrayModules[i].GetComponent<Module>().moduleNumber == moduleNumber)
+                        return arrayModules[i].GetComponent<Module>();
+            return null;
         }
 
         public Module GetInitialModule() {
