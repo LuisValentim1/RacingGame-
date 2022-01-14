@@ -35,7 +35,7 @@ namespace JamCat
         public void StartHost() {
             networkManager.StartHost();
             // SysPlayerServer.Get().CreateLocalPlayer();
-            SysCamera.Get().SetPlayerTarget(SysPlayerServer.Get().GetLastPlayerCreated());
+            SysCamera.Get().SetPlayerTarget(SysPlayerServer.Get().GetLastPlayerCreated().transform);
             // uNetTransport.StartServer();
         }
 
