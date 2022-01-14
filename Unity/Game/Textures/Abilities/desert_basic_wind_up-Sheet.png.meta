@@ -1,0 +1,1200 @@
+fileFormatVersion: 2
+guid: 2c6c14fedf06990489145f95f907ead7
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 1104
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4f6a98f7da295641b6df6fb5a56738b
+      internalID: 180272980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 1104
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d45bbad3190102c4a8117d0d0d9b853c
+      internalID: -5969606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 1104
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff19996901488874caae7753e8b8e948
+      internalID: 1621999137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 1104
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46487fe6223589442ad0d452341c8d67
+      internalID: -337972177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 1104
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48b08de94ef621b4db2c63c47636bf25
+      internalID: -1532861138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 1104
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a581a8d31c0f0ea49931f47293bb5dc1
+      internalID: 376979567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 1104
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21c1842fef390744e9a130a0be6e4312
+      internalID: -1756449479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 920
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5db3631a1c81567408cc7e246b41ab8d
+      internalID: -1201560026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 920
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 215ec45e8dfc18e4888234efa769958c
+      internalID: -286848672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 920
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2282ed8528d39124799cfb9e8908f3f6
+      internalID: 989666331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 920
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8da886e76f80e34284a971c8e50033b
+      internalID: -427439988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 920
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a12a6d82845bce418a7dadff07a51c4
+      internalID: -1951708273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 920
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 160ecc32a9b6fb043960f87a25f61fce
+      internalID: 1513144042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 920
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4724359b3966c242ad7cbc7599649bb
+      internalID: -944201008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 920
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d440c5c71af3d84e920b9cee6e8326b
+      internalID: 107020155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 736
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ac7e7b0e6125354cb14e78168c64bf2
+      internalID: -1757327074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 736
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96f8ebe0f007daf40952557ed369f824
+      internalID: 364200359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 736
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a223f5fd809041e4c9c3cad31420f65a
+      internalID: 620340199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 736
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afa57a3882b0afc4984ff7d081d50a80
+      internalID: 255152135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 736
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac34db1e7e6863642b5a7156d3345565
+      internalID: -463017078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 736
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b86549103cc88443ab46e1b8f2795ef
+      internalID: -742956498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 736
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c979d0a0531c7445b8fbd2e0beda480
+      internalID: -119288746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 736
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 576e4bfeabcae924989da69fbad6de82
+      internalID: -363827931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 552
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8623a4ed2707c147a516d8d22287f1f
+      internalID: -2086556331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 552
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6f3bbefe26572147800012555ba68e7
+      internalID: -827479677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 552
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68a355421357cb14fa3f019d7661527f
+      internalID: -1587407029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 552
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e980bd4cec6b074b9e8ee1439134e45
+      internalID: 664239351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 552
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a74a46ddd44b9341af565d7b8e94c51
+      internalID: -1772805613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 552
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f85e756c1e7fbb48b83301dbb3ede1c
+      internalID: 1458548519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 552
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 466f4420969d7734e84b54638cbb3f1a
+      internalID: 1381698595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 552
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf0d6e69ffb59a34c8182d6b227a8205
+      internalID: 1684856062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 368
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3d356b64ac75e443b9042b3ba3ca15a
+      internalID: 512604706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 368
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 443751515466efc40ad9e1be854bf7e7
+      internalID: 1058263137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 368
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38c403e03dec5c048b3daac4c809ac77
+      internalID: 537579936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 368
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 201ae950642c8004babd0aa58d6b6b9c
+      internalID: -293501181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 368
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 123dc4b60c320524480d9c7ec5472dc1
+      internalID: 1902218357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 368
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6893922cd5a1ab4a92b1c2b52bf461c
+      internalID: 1829195916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 368
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0580bf322b6e274b805ef3dad9a15e4
+      internalID: -1841122797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 368
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24f751d3d21370c408d7b8401300bb09
+      internalID: 1063184958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 184
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edafd0323a3d6dd4b955345a795590ef
+      internalID: -1522438939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 184
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c206001927ec3494f8818dfec6282a94
+      internalID: 1323734985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 184
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b69910cf83ae6e54faa2ea4327091174
+      internalID: -879330682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 184
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2a79b3e6ec9135478a49c0e919c2b17
+      internalID: -1907943785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 184
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4eead9f40aea7bc418492b2fa33e8968
+      internalID: 343090523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_44
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 184
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ff23dca2b82f5f49b441da1a6471665
+      internalID: 1626585645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_45
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 184
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c69b6e1c28b6a124a858beb503d97410
+      internalID: -1198659252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_46
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 184
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad6fdc5166b14c34698187fe91b14a82
+      internalID: 948279763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_47
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a554dbae3921ca64dba83661fa1b9ad5
+      internalID: -1287044385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: desert_basic_wind_up-Sheet_48
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 0
+        width: 97
+        height: 184
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fc8e4a25b307e4448e010542d691189
+      internalID: 2023605179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 4220cf107a4514a49b4e46416d706c8f
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      desert_basic_wind_up-Sheet_16: 364200359
+      desert_basic_wind_up-Sheet_14: 107020155
+      desert_basic_wind_up-Sheet_23: -2086556331
+      desert_basic_wind_up-Sheet_4: -1532861138
+      desert_basic_wind_up-Sheet_48: 2023605179
+      desert_basic_wind_up-Sheet_6: -1756449479
+      desert_basic_wind_up-Sheet_17: 620340199
+      desert_basic_wind_up-Sheet_31: 512604706
+      desert_basic_wind_up-Sheet_45: -1198659252
+      desert_basic_wind_up-Sheet_15: -1757327074
+      desert_basic_wind_up-Sheet_2: 1621999137
+      desert_basic_wind_up-Sheet_0: 180272980
+      desert_basic_wind_up-Sheet_27: -1772805613
+      desert_basic_wind_up-Sheet_46: 948279763
+      desert_basic_wind_up-Sheet_37: -1841122797
+      desert_basic_wind_up-Sheet_18: 255152135
+      desert_basic_wind_up-Sheet_8: -286848672
+      desert_basic_wind_up-Sheet_36: 1829195916
+      desert_basic_wind_up-Sheet_5: 376979567
+      desert_basic_wind_up-Sheet_47: -1287044385
+      desert_basic_wind_up-Sheet_34: -293501181
+      desert_basic_wind_up-Sheet_39: -1522438939
+      desert_basic_wind_up-Sheet_12: 1513144042
+      desert_basic_wind_up-Sheet_13: -944201008
+      desert_basic_wind_up-Sheet_32: 1058263137
+      desert_basic_wind_up-Sheet_9: 989666331
+      desert_basic_wind_up-Sheet_35: 1902218357
+      desert_basic_wind_up-Sheet_24: -827479677
+      desert_basic_wind_up-Sheet_22: -363827931
+      desert_basic_wind_up-Sheet_21: -119288746
+      desert_basic_wind_up-Sheet_41: -879330682
+      desert_basic_wind_up-Sheet_40: 1323734985
+      desert_basic_wind_up-Sheet_19: -463017078
+      desert_basic_wind_up-Sheet_33: 537579936
+      desert_basic_wind_up-Sheet_26: 664239351
+      desert_basic_wind_up-Sheet_38: 1063184958
+      desert_basic_wind_up-Sheet_43: 343090523
+      desert_basic_wind_up-Sheet_28: 1458548519
+      desert_basic_wind_up-Sheet_11: -1951708273
+      desert_basic_wind_up-Sheet_10: -427439988
+      desert_basic_wind_up-Sheet_3: -337972177
+      desert_basic_wind_up-Sheet_20: -742956498
+      desert_basic_wind_up-Sheet_7: -1201560026
+      desert_basic_wind_up-Sheet_1: -5969606
+      desert_basic_wind_up-Sheet_29: 1381698595
+      desert_basic_wind_up-Sheet_25: -1587407029
+      desert_basic_wind_up-Sheet_44: 1626585645
+      desert_basic_wind_up-Sheet_30: 1684856062
+      desert_basic_wind_up-Sheet_42: -1907943785
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

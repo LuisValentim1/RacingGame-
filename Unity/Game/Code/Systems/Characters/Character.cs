@@ -46,6 +46,7 @@ namespace JamCat.Characters
             isOut = false;
             curMana = 0;
             curLifes = maxLifes;
+            Window_HUD.Get().barLife.SetPercentage(getLifePercentage());
             Window_HUD.Get().barMana.SetPercentage(curMana);
         }
 
@@ -58,13 +59,27 @@ namespace JamCat.Characters
             Window_HUD.Get().barMana.SetPercentage(curMana);
             // print("From Character Class: " + curMana);
         }
+        
+        public void RemoveMana(float manaValue){
+            curMana -= manaValue;
+            if (curMana < 0)
+                curMana = 0;
+
+            Window_HUD.Get().barMana.SetPercentage(curMana);
+            // print("From Character Class: " + curMana);
+        }
 
         public void RemoveLife() {
             curLifes--;
-            if (curLifes < 0) {
+            if (curLifes <= 0) {
                 isOut = true;
                 curLifes = 0;
             }
+            Window_HUD.Get().barLife.SetPercentage(getLifePercentage());
+        }
+
+        public float getLifePercentage() {
+            return (100f / maxLifes) * curLifes;
         }
     }
 }

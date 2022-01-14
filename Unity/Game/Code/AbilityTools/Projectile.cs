@@ -29,5 +29,9 @@ public class Projectile : MonoBehaviour
         ended = false;
     }
 
+    public void setGraphics(RuntimeAnimatorController runtimeAnimatorController) {
+        GetComponentInChildren<Animator>().runtimeAnimatorController = runtimeAnimatorController;
+    }
+
     public bool getEnded() { return ended; }
 }

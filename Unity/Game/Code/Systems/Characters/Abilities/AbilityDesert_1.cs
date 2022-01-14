@@ -14,6 +14,7 @@ namespace JamCat.Characters
         private List<GameObject> abilities;
        
         public float projectileTimer = 0.6f;
+        public RuntimeAnimatorController projectileAnimatorGraphics;
 
         // Methods -> Override
         protected override void OnAwake() {
@@ -38,8 +39,10 @@ namespace JamCat.Characters
 
         protected override void OnUse() {
             GameObject newObj = Instantiate(prefabPojectile, transform.position, transform.rotation, null);
-            newObj.GetComponent<Projectile>().setProjectile(projectileTimer, GetComponentInParent<TopDownCarController>().getVelocity() + 10);
-            projectiles.Add(newObj.GetComponent<Projectile>());
+            Projectile projectile = newObj.GetComponent<Projectile>();
+            projectile.setProjectile(projectileTimer, GetComponentInParent<TopDownCarController>().getVelocity() + 10);
+            projectile.setGraphics(projectileAnimatorGraphics);
+            projectiles.Add(projectile);
         }
 
 

@@ -15,6 +15,7 @@ namespace JamCat.UI
         // Variables
         public int currenct_character;
         public UI_Bar barMana;
+        public UI_Bar barLife;
 
         // Methods -> Override
         protected override void OnAwakeWindow() {

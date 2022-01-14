@@ -6,14 +6,19 @@ using JamCat.UI;
 
 public class Manager : MonoBehaviour
 {
+    public static Manager instance;
+    public static Manager Get() { return instance; }
+
     // Methods
     public Sys[] systems;
     public Data data;
 
     public bool dev_tools = true;
+    public bool hacks = false;
 
     // Methods -> Standard
     private void Awake() {
+        instance = this;
         data.OnAwake();
         for (int i = 0; i < systems.Length; i++)
             systems[i].AwakeSys();

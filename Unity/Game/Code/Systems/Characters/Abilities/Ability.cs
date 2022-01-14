@@ -8,6 +8,7 @@ namespace JamCat.Characters
     {
         // Variables -> Public
         protected Character character;
+        public float manaNeeded;
         public float cooldown;
 
         private float curCooldown;
@@ -36,10 +37,16 @@ namespace JamCat.Characters
         }
 
         public void UseAbility() {
-            if (curCooldown > 0)
-                return;
+            if (Manager.Get().hacks == false) {
+                if (curCooldown > 0)
+                    return;
+
+                if (character.curMana < manaNeeded)
+                    return;
+            }
 
             curCooldown = cooldown;
+            character.RemoveMana(manaNeeded);
             OnUse();
         }
     }

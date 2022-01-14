@@ -119,6 +119,7 @@ namespace JamCat.Players
             }
 
             if(collider2d.GetComponent<ASlow>() != null) {
+                // print("A");
                 ASlow aSlow = collider2d.GetComponent<ASlow>();
                 topDownCarController.ApplySlow(aSlow.slowIntensity, aSlow.maxAcceleration, aSlow.slowDuration);
             }

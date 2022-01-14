@@ -18,7 +18,7 @@ namespace JamCat.Map
             serializeElements.elementsPos = new Vector3[elements.Length];
             serializeElements.elementsRot = new Quaternion[elements.Length];
             for (int i = 0; i < elements.Length; i++) {
-                print(elements[i].name);
+                // print(elements[i].name);
                 serializeElements.elementsID[i] = elements[i].elementID;
                 serializeElements.elementsPos[i] = elements[i].transform.position;
                 serializeElements.elementsRot[i] = elements[i].transform.rotation;
