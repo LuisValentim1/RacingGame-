@@ -53,7 +53,7 @@ namespace JamCat.Players
 
         public void UpdateOnlinePlayers(ulong[] onlinePlayersIDs, int[] characters) {
             for (int i = 0; i < onlinePlayersIDs.Length; i++) {
-                GetPlayer(onlinePlayersIDs[i]).AutoChooseCharacter();
+                GetPlayer(onlinePlayersIDs[i]).ChooseCharacter(characters[i]);
             }
         }
 

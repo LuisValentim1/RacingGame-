@@ -143,6 +143,15 @@ namespace JamCat.Players
             character.Restart();
         }
 
+        public void ChooseCharacter(int number) {
+            if (number < 0)
+                return;
+
+            character = GetComponentsInChildren<Character>()[number];
+            character.OnAwake(this);
+            character.OnStart();
+        }
+
         public void AutoChooseCharacter() {
             int number = Data.Get().gameData.characterSelected;
             if (number < 0)
