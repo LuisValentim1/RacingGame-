@@ -11,18 +11,22 @@ namespace JamCat.Players
     public class Player : MonoBehaviour 
     {
         // Variables -> Private
-        public Character character;
+
+        [Header("Configurable")]
+        public SpriteRenderer spriteRenderer;
+
+        [Header("Run-Time")]
+        [SerializeField] private Character character;
+        public Boolean jumpFlag;
+        public Boolean stripeFlag;
 
         private NetworkObject networkObject;
         private TopDownCarController topDownCarController;
         private CarInputHandler carInputHandler;
         private WheelTrailRenderedHandler[] wheelTrailRenderedHandlers;
 
-        public Boolean jumpFlag;
-        public Boolean stripeFlag;
 
-
-        // Variables -> Sync
+        [Header("Synchronized")]
         public int inModule = 0;
         
 
@@ -47,7 +51,6 @@ namespace JamCat.Players
             // Awake the methods
             topDownCarController.AwakeCar();
             carInputHandler.AwakeCar();
-            character.OnAwake();
             for (int i = 0; i < wheelTrailRenderedHandlers.Length; i++) 
                 wheelTrailRenderedHandlers[i].OnAwake();
         }
@@ -58,7 +61,6 @@ namespace JamCat.Players
 
             topDownCarController.StartCar();
             carInputHandler.StartCar();
-            character.OnStart();
             SysCamera.Get().SetPlayerTarget(transform);
         }
 
@@ -67,7 +69,9 @@ namespace JamCat.Players
                 return;
 
             topDownCarController.UpdateCar();
-            character.OnUpdate();
+            if (character != null)
+                character.OnUpdate();
+
             for (int i = 0; i < wheelTrailRenderedHandlers.Length; i++)
                 wheelTrailRenderedHandlers[i].OnUpdate();
 
@@ -134,8 +138,19 @@ namespace JamCat.Players
         }
 
         public void Restart() {
+            AutoChooseCharacter();
             topDownCarController.Restart();
             character.Restart();
+        }
+
+        public void AutoChooseCharacter() {
+            int number = Data.Get().gameData.characterSelected;
+            if (number < 0)
+                return;
+
+            character = GetComponentsInChildren<Character>()[number];
+            character.OnAwake(this);
+            character.OnStart();
         }
 
 
@@ -155,6 +170,7 @@ namespace JamCat.Players
         }
 
         // Methods -> Get
-        public NetworkObject GetNetworkObject() { return networkObject; }
+        public Character getCharacter() { return character; }
+        public NetworkObject getNetworkObject() { return networkObject; }
     }
 }

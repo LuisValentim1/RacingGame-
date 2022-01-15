@@ -25,7 +25,7 @@ namespace JamCat.Characters
                 timer += Time.deltaTime;
 
                 if (timer >= duration) {
-                    character.CharacterLogic.usingShield = false;
+                    character.usingShield = false;
                     used = false;
                 }
             }
@@ -34,7 +34,7 @@ namespace JamCat.Characters
         protected override void OnUse() {
             used = true;
             timer = 0;
-            character.CharacterLogic.usingShield = true;
+            character.usingShield = true;
         }
     }
 }

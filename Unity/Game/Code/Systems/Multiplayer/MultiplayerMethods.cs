@@ -198,7 +198,7 @@ namespace JamCat.Multiplayer
 
         [ClientRpc]
         public void RemoveLifeClientRpc(ulong playerID) {
-             SysPlayer.Get().GetPlayer(playerID).character.RemoveLife();
+             SysPlayer.Get().GetPlayer(playerID).getCharacter().RemoveLife();
         }
 
 

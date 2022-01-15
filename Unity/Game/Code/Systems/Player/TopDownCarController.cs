@@ -85,7 +85,7 @@ namespace JamCat.Players
             //  if (Data.Get().gameLogic.is_paused == true)
             //    return;
 
-            if (player.GetNetworkObject().IsLocalPlayer == false)
+            if (player.getNetworkObject().IsLocalPlayer == false)
                 return;
 
             currentVelocity = carRigidbody2D.velocity.magnitude;

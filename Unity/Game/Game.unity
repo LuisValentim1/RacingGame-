@@ -16261,7 +16261,8 @@ MonoBehaviour:
   colorDefault: {r: 1, g: 1, b: 1, a: 1}
   colorHighlighted: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
   colorPressed: {r: 0.6273585, g: 1, b: 0.7191861, a: 1}
-  isInteractable: 1
+  isServerEnabled: 1
+  isLocalEnabled: 1
   activated: 0
 --- !u!1 &1666138987
 GameObject:
@@ -18122,6 +18123,7 @@ MonoBehaviour:
   - {fileID: 1659734120}
   - {fileID: 2118836444}
   toggleGroup: {fileID: 2038405005}
+  toggleGroupBlocker: {fileID: 0}
   toggleReady: {fileID: 1659734120}
   textPlayersReady: {fileID: 553575685}
 --- !u!1 &1830311035
@@ -20952,6 +20954,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef858867a0de19740911c27d5dc39283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: 0
+  toggleActivated: {fileID: 0}
   toggles:
   - {fileID: 5302008600943865572}
   - {fileID: 1498678114}

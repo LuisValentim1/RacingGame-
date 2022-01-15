@@ -2,27 +2,32 @@ using System;
 using System.Collections;
 using UnityEngine;
 using JamCat.UI;
+using JamCat.Players;
 
 namespace JamCat.Characters 
 {
     public class Character : MonoBehaviour 
     {
         // Variables
+        [Header("Configurable")]
         public string characterName;
         public AbilityGroup abilityGroup;
-        public CharacterLogic CharacterLogic;
-
-        public Sprite[] sprites;
-
-        public bool isOut;
+        public Sprite sprite;
+        // public Sprite[] sprites;
         public int maxLifes = 7;
-        public int curLifes = 7;
         public float maxMana = 100;
+
+        [Header("Run-Time")]
+        public Player player;
+        public int curLifes = 7;
         public float curMana = 0;
+        public bool isOut;
+        public bool usingShield;
 
 
         // Methods -> Standard
-        public void OnAwake() {
+        public void OnAwake(Player player) {
+            this.player = player;
             abilityGroup.OnAwake();
             Restart();
         }
@@ -50,12 +55,16 @@ namespace JamCat.Characters
             curLifes = maxLifes;
             Window_HUD.Get().barLife.SetPercentage(getLifePercentage());
             Window_HUD.Get().barMana.SetPercentage(curMana);
+            UpdateGraphics();
+        }
+        
 
-            if (Data.Get().gameData.characterSelected >= 0)
-                GetComponentInChildren<SpriteRenderer>().sprite = sprites[Data.Get().gameData.characterSelected];
+        public void UpdateGraphics() {
+            player.spriteRenderer.sprite = sprite;
         }
 
-          public void AddMana(float manaValue){
+
+        public void AddMana(float manaValue){
             curMana += manaValue;
             if (curMana > maxMana)
                 curMana = maxMana;
@@ -89,14 +98,6 @@ namespace JamCat.Characters
                 curLifes = 0;
             }
             Window_HUD.Get().barLife.SetPercentage(getLifePercentage());
-        }
-
-
-        
-
-        public void UpdateGraphics(int character) {
-            if (character >= 0)
-                GetComponentInChildren<SpriteRenderer>().sprite = sprites[character];
         }
 
         public float getLifePercentage() {
