@@ -16,7 +16,8 @@ namespace JamCat.UI {
         public Color colorPressed;
 
         [Header("Test")]
-        public bool isInteractable = true;
+        public bool isServerEnabled = true;
+        public bool isLocalEnabled = true;
         public bool activated;
 
         private UI_ToggleGroup toggleGroup;
@@ -32,7 +33,8 @@ namespace JamCat.UI {
         }
 
         protected override void OnOpen() {
-
+            activated = false;
+            imageBackground.color = colorDefault;
         }
 
         protected override void OnClose() {
@@ -40,18 +42,27 @@ namespace JamCat.UI {
         }
 
         // Methods -> Public
-        public void SetInteractable(bool state) {
-            isInteractable = state;
+        public void setServerEnabled(bool state) {
+            isServerEnabled = state;
             GetComponent<Button>().interactable = state;
-
-            if (state == false) {
-                imageBackground.color = colorDisabled;
+            if (isServerEnabled == true) {
+                if (activated == false)
+                    imageBackground.color = colorDefault;
+                else
+                    imageBackground.color = colorPressed;
             } else {
-                imageBackground.color = colorDefault;
+                if (activated == true && toggleGroup != null) {
+                    Activate(false);
+                    toggleGroup.toggleActivated = null;
+                }
+                imageBackground.color = colorDisabled;
             }
         }
-        
+
         public void Toggle() {
+            if (isServerEnabled == false)
+                return;
+
             activated = !activated;
             if (activated == true) {
                 imageBackground.color = colorPressed;
@@ -60,7 +71,10 @@ namespace JamCat.UI {
             }
         }
 
-        public void Activate(bool value) {
+        public void Activate(bool value) {            
+            if (isServerEnabled == false)
+                return;
+                
             activated = value;
             if (value == true) {
                 imageBackground.color = colorPressed;
@@ -71,7 +85,7 @@ namespace JamCat.UI {
 
         // EventSystems
         public void OnPointerEnter(PointerEventData pointerEventData) {
-            if (isInteractable == false)
+            if (isServerEnabled == false)
                 return;
 
             if (activated == false)
@@ -79,7 +93,7 @@ namespace JamCat.UI {
         }
 
         public void OnPointerExit(PointerEventData pointerEventData) {
-            if (isInteractable == false)
+            if (isServerEnabled == false)
                 return;
 
             if (activated == false)
@@ -87,7 +101,7 @@ namespace JamCat.UI {
         }
 
         public void OnPointerDown(PointerEventData pointerEventData) {
-            if (isInteractable == false)
+            if (isServerEnabled == false)
                 return;
 
             if (toggleGroup != null)

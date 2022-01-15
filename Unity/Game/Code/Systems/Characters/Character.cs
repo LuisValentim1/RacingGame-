@@ -95,7 +95,8 @@ namespace JamCat.Characters
         
 
         public void UpdateGraphics(int character) {
-            GetComponentInChildren<SpriteRenderer>().sprite = sprites[character];
+            if (character >= 0)
+                GetComponentInChildren<SpriteRenderer>().sprite = sprites[character];
         }
 
         public float getLifePercentage() {

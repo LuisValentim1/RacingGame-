@@ -53,8 +53,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a2d8ecfb028c64887e2a465d0d3b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  local: 1
   character: {fileID: 2224988506148844547}
+  jumpFlag: 0
+  stripeFlag: 0
+  inModule: 0
 --- !u!114 &2224988506148844547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,10 +70,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: 
-  currentMana: 0
-  abilityBasic: {fileID: 2224988506461135036}
-  abilityUlti: {fileID: 2224988507519942730}
+  abilityGroup: {fileID: 0}
   CharacterLogic: {fileID: 2224988506148844548}
+  sprites: []
+  isOut: 0
+  maxLifes: 7
+  curLifes: 7
+  maxMana: 100
+  curMana: 0
 --- !u!114 &2224988506148844548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,15 +103,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe15ca62272ed54596bba6b5aa38168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 0}
   driftFactor: 0.1
   accelerationFactor: 50
   turnFactor: 4
   maxSpeed: 30
   rotOffset: -90
+  maxMana: 100
   currentMana: 0
-  jumpFlag: 0
-  stripeFlag: 0
   carSpriteRenderer: {fileID: 2224988506970429812}
   carShadowRenderer: {fileID: 3928695248396988021}
   jumpCurve:
@@ -143,10 +147,11 @@ MonoBehaviour:
     m_RotationOrder: 4
   jumpHeightScale: 3
   jumpPushScale: 1
+  currentVelocity: 0
+  engineForceVector: {x: 0, y: 0}
   accelerationInput: 0
   steeringInput: 0
   rotationAngle: 0
-  inModule: 0
 --- !u!114 &2224988506148844552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636c8e94d4ec0d340ae7dae15a9ef743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 0}
+  manaNeeded: 0
   cooldown: 0
 --- !u!1 &2224988506970429818
 GameObject:
@@ -334,7 +339,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.5588235}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -398,7 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e29fbf9423635f4ea4452b1b9c563a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 0}
+  manaNeeded: 0
   cooldown: 0
 --- !u!1 &3928695247167016870
 GameObject:

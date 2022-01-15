@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67184c05eb59bc049bce3ce3a3c339fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontSync: 0
   elementID: 61
   velocityDivide: 4.04
   accelerationFactor: 22.1

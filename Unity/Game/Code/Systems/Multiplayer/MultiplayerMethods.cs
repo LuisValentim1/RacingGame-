@@ -55,7 +55,7 @@ namespace JamCat.Multiplayer
         // ------------------------- Character Selection
          [ClientRpc]
         public void CallCaracterSelectionClientRpc() {
-            SysMultiplayer.Get().serverPlayersReady = new Dictionary<ulong, bool>();
+            // SysMultiplayer.Get().serverPlayersReady = new Dictionary<ulong, bool>();
             SysMultiplayer.Get().clientPlayersReady = 0;
             Window_Lobby.Get().CloseWindow(0.3f, 0);
             Window_CharacterSelection.Get().OpenWindow(0.3f, 0.3f);
@@ -70,9 +70,16 @@ namespace JamCat.Multiplayer
         }
 
         [ClientRpc]
-        public void OnReadyClientRpc(int playersReady, ulong[] ids, int[] characters) {
-            SysMultiplayer.Get().clientPlayersReady = playersReady;
+        public void OnReadyClientRpc(ulong[] ids, int[] characters, bool[] ready) {
+            print( ids.Length + " : " + characters.Length + " : " + ready.Length);
+            int totalReady = 0;
+            for (int i = 0; i < ready.Length; i++)
+                if (ready[i] == true)
+                    totalReady++;
+            
+            SysMultiplayer.Get().clientPlayersReady = totalReady;
             SysPlayer.Get().UpdateOnlinePlayers(ids, characters);
+            Window_CharacterSelection.Get().UpdateCharactersAvaiable(characters, ready);
         }
 
         [ServerRpc]

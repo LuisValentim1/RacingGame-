@@ -67,6 +67,7 @@ namespace JamCat
             multiplayerMethods.OnStart();
 
             MultiplayerMethods.Get().OnConnectServerRpc();
+            PlayerReady(SysPlayer.Get().localPlayerID, false, 0);
             // print ("Server Created!");
             yield return null;
         }
@@ -95,6 +96,7 @@ namespace JamCat
             multiplayerMethods = SysPlayer.Get().localPlayerObj.GetComponent<MultiplayerMethods>();
             multiplayerMethods.OnStart();
             MultiplayerMethods.Get().OnConnectServerRpc();
+            multiplayerMethods.OnReadyServerRpc(SysPlayer.Get().localPlayerID, false, 0);
 
             // print ("Connected!");
             yield return null;
@@ -103,17 +105,21 @@ namespace JamCat
         // Players Ready
         public void PlayerReady(ulong id, bool state, int character) {
             if (serverPlayersReady.ContainsKey(id) == true) {
-                serverCharacters[id] = character;
                 serverPlayersReady[id] = state;
             } else {
-                serverCharacters.Add(id, character);
                 serverPlayersReady.Add(id, state);
             }
+            bool[] playersReady = serverPlayersReady.Values.ToArray();
 
-            clientPlayersReady = GetPlayersReadyCount();
+            if (serverCharacters.ContainsKey(id) == true) {
+                serverCharacters[id] = character;
+            } else {
+                serverCharacters.Add(id, character);
+            }
             ulong[] ids = serverCharacters.Keys.ToArray();
             int[] characters = serverCharacters.Values.ToArray();
-            multiplayerMethods.OnReadyClientRpc(clientPlayersReady, ids, characters);
+           
+            multiplayerMethods.OnReadyClientRpc(ids, characters, playersReady);
         }
 
         public int GetPlayersReadyCount() {
@@ -127,6 +133,8 @@ namespace JamCat
         // Disconnect
         public void Disconnect() {
             // print("IsServer = " + networkManager.IsServer + ";   IsHost = " + networkManager.IsHost + ";   IsClient = " + networkManager.IsClient);
+            serverCharacters = new Dictionary<ulong, int>();
+            serverPlayersReady = new Dictionary<ulong, bool>();
             StopAllCoroutines();
             if (networkManager.IsServer == true) {
                 if (clientConnectedToServer == true) {
@@ -145,7 +153,6 @@ namespace JamCat
         private void DisconnectServer() {
             serverStarted = false;
             clientConnectedToServer = false;
-            serverPlayersReady = new Dictionary<ulong, bool>();
             clientPlayersReady = 0;
             curPlayers = 0;
 
