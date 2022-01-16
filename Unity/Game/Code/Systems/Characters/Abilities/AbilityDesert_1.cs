@@ -36,6 +36,15 @@ namespace JamCat.Characters
             }
         }
 
+        protected override string[] OnSendInfo() {
+
+            return null;
+        }
+
+        protected override void OnGetInfo(string[] info) {
+            
+        }
+
         protected override void OnUse() {
             GameObject newObj = Instantiate(prefabPojectile, transform.position, transform.rotation, null);
             Projectile projectile = newObj.GetComponent<Projectile>();

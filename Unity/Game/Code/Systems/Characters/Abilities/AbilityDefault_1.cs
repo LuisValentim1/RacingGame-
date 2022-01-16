@@ -22,5 +22,14 @@ namespace JamCat.Characters
         protected override void OnUse() {
 
         }
+
+        protected override string[] OnSendInfo() {
+
+            return null;
+        }
+
+        protected override void OnGetInfo(string[] info) {
+
+        }
     }
 }

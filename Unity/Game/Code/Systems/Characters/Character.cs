@@ -97,7 +97,9 @@ namespace JamCat.Characters
                 isOut = true;
                 curLifes = 0;
             }
-            Window_HUD.Get().barLife.SetPercentage(getLifePercentage());
+
+            if (player.getNetworkObject().IsLocalPlayer)
+                Window_HUD.Get().barLife.SetPercentage(getLifePercentage());
         }
 
         public float getLifePercentage() {

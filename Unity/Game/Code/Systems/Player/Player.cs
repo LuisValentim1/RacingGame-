@@ -65,21 +65,23 @@ namespace JamCat.Players
         }
 
         public void OnUpdate() {
-            if (networkObject.IsLocalPlayer == false)
-                return;
-
-            topDownCarController.UpdateCar();
             if (character != null)
                 character.OnUpdate();
 
             for (int i = 0; i < wheelTrailRenderedHandlers.Length; i++)
                 wheelTrailRenderedHandlers[i].OnUpdate();
 
+            if (networkObject.IsLocalPlayer == false)
+                return;
+
+            // Physics
+            topDownCarController.UpdateCar();
             if (character.isOut == true) {
                 carInputHandler.Restart();
                 return;
             }
 
+            // Controls
             carInputHandler.UpdateCar();
             if (Input.GetButtonDown("Interaction")) {
                 InteractJump();
@@ -180,6 +182,7 @@ namespace JamCat.Players
 
         // Methods -> Get
         public Character getCharacter() { return character; }
+        public TopDownCarController getTopDownCarController() { return topDownCarController; }
         public NetworkObject getNetworkObject() { return networkObject; }
     }
 }

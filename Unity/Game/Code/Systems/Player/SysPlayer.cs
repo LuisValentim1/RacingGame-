@@ -32,7 +32,9 @@ namespace JamCat.Players
             if (Data.Get().gameLogic.in_game == false)
                 return;
 
-            localPlayer.OnUpdate();
+            // localPlayer.OnUpdate();
+            for (int i = 0; i < onlinePlayers.Count; i++)
+                onlinePlayers[i].OnUpdate();
 
             if (Input.GetKeyDown(KeyCode.Escape)) {
                 if (Data.Get().gameLogic.is_paused == false) {

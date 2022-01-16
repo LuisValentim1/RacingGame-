@@ -30,5 +30,14 @@ namespace JamCat.Characters
             timer = maxTime;
             sprite.SetActive(true);
         }
+
+        protected override string[] OnSendInfo() {
+
+            return null;
+        }
+
+        protected override void OnGetInfo(string[] info) {
+
+        }
     }
 }

@@ -24,13 +24,23 @@ namespace JamCat.Characters
             abilityUlti.UpdateAbility();
         }
 
-        // Methods -> Publlic
+        // Methods -> Public
         public void UseAbilityBasic() {
             abilityBasic.UseAbility();
         }
 
         public void UseAbilityUlti() {
             abilityUlti.UseAbility();
+        }
+
+        // Methods -> Get
+        public Ability GetAbility(int id) {
+            if (abilityBasic.id == id)
+                return abilityBasic;
+            else if (abilityUlti.id == id)
+                return abilityUlti;
+
+            return null;
         }
     }
 }

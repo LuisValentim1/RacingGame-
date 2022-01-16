@@ -36,5 +36,14 @@ namespace JamCat.Characters
             timer = 0;
             character.usingShield = true;
         }
+
+        protected override string[] OnSendInfo() {
+
+            return null;
+        }
+
+        protected override void OnGetInfo(string[] info) {
+
+        }
     }
 }

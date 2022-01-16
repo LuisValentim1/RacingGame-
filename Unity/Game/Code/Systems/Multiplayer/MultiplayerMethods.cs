@@ -150,15 +150,6 @@ namespace JamCat.Multiplayer
             GeneratorClient.Get().GenerateModule(elementID, pos);
         }
         
-        // -------------------------  Generate Elements in Module
-        [ServerRpc]
-        public void GenerateElementsInModuleServerRpc() {
-             if (IsServer == false) 
-                return;
-
-
-        }
-
         [ClientRpc]
         public void RequestElementsInModuleClientRpc(int moduleNumber, ModuleClient.SerializeElements serializeElements) {
             if (IsServer == true)
@@ -201,28 +192,57 @@ namespace JamCat.Multiplayer
              SysPlayer.Get().GetPlayer(playerID).getCharacter().RemoveLife();
         }
 
-
-
-
-
-
-
-
-
-
-
-        // ------------------------- Test
+        // ------------------------- Player -> Rigibody2D
         [ServerRpc]
-        public void RequestMapServerRpc() {
+        public void UpdateVelocityServerRpc(ulong playerID, float value) {
+            if (IsServer == false)
+                return;
 
+            UpdateVelocityClientRpc(playerID, value);
         }
 
         [ClientRpc]
-        public void OnConnectToOneClientRpc(int maxPlayers, ClientRpcParams clientRpcParams = default) {
-            if (IsOwner == true)
+        public void UpdateVelocityClientRpc(ulong playerID, float value) {
+            if (SysPlayer.Get().localPlayerID == playerID)
                 return;
 
-            // this.maxPlayers = maxPlayers;
+             SysPlayer.Get().GetPlayer(playerID).getTopDownCarController().setVelocity(value);
         }
+
+
+        // ------------------------- Abilities
+        [ServerRpc]
+        public void UseAbilityServerRpc(ulong playerID, int abilityID) {
+            if (IsServer == false)
+                return;
+
+            UseAbilityClientRpc(playerID, abilityID);
+        }
+
+        [ClientRpc]
+        public void UseAbilityClientRpc(ulong playerID, int abilityID) {
+            if (SysPlayer.Get().localPlayerID == playerID)
+                return;
+
+            SysPlayer.Get().GetPlayer(playerID).getCharacter().abilityGroup.GetAbility(abilityID).ReceiveInfoFromServer();
+        }
+
+        /*
+        [ServerRpc]
+        public void UseAbilityServerRpc(ulong playerID, int abilityID, string[] info) {
+            if (IsServer == false)
+                return;
+
+            UseAbilityClientRpc(playerID, abilityID, info);
+        }
+
+        [ClientRpc]
+        public void UseAbilityClientRpc(ulong playerID, int abilityID, string[] info) {
+            if (SysPlayer.Get().localPlayerID == playerID)
+                return;
+
+            SysPlayer.Get().GetPlayer(playerID).getCharacter().abilityGroup.GetAbility(abilityID).ReceiveInfoFromServer(info);
+        }
+        */
     }
 }

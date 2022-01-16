@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using JamCat.Map;
 using JamCat.Characters;
+using JamCat.Multiplayer;
 using Unity.Netcode;
 
 namespace JamCat.Players
@@ -76,6 +77,16 @@ namespace JamCat.Players
 
         public void UpdateCar() {
 
+        }
+        
+        private void Update() {
+            if (Data.Get().gameLogic.in_game == false)
+                return;
+
+            if (player.getNetworkObject().IsLocalPlayer == false)
+                return;
+                
+            MultiplayerMethods.Get().UpdateVelocityServerRpc(SysPlayer.Get().localPlayerID, getVelocity());
         }
 
         private void FixedUpdate() {
@@ -150,6 +161,9 @@ namespace JamCat.Players
             Vector2 rightVelocity = transform.right * Vector2.Dot(carRigidbody2D.velocity, transform.right);
 
             carRigidbody2D.velocity = forwardVelocity + rightVelocity*driftFactor;
+        
+            if (isSlowingDown == true)
+                carRigidbody2D.AddForce(slowingDownByVector);
         }
 
 
@@ -236,8 +250,13 @@ namespace JamCat.Players
             accelerationInput = inputVector.y;
         }
 
+
+        public void setVelocity(float value) {
+            currentVelocity = value;
+        }
+        
         public float getVelocity() {
-            return carRigidbody2D.velocity.magnitude;
+            return currentVelocity;
         }
 
 
@@ -271,14 +290,18 @@ namespace JamCat.Players
         }
         
 
+        bool isSlowingDown;
+        Vector2 slowingDownByVector;
         IEnumerator IE_ReduceVelocityBy(float slowIntensity, float slowDuration) {
+           isSlowingDown = true;
             float timer = slowDuration;
             while(timer > 0) {
                 timer -= Time.deltaTime;
-                Vector2 slowDown = carRigidbody2D.velocity * slowIntensity * -1;
-                carRigidbody2D.AddForce(slowDown);
+                slowingDownByVector = carRigidbody2D.velocity * slowIntensity * -1;
                 yield return null;
             }
+
+            isSlowingDown = false;
             yield return null;
         }
 

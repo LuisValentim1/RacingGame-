@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countdownToDestroy: 3
   slowDuration: 2
-  slowIntensity: 0.2
+  slowIntensity: 1.5
   maxAcceleration: 10
 --- !u!50 &7502588449466503647
 Rigidbody2D:

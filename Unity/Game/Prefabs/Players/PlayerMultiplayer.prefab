@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0634f8bade671c74e8093289a1990b7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 3
   manaNeeded: 100
   cooldown: 0
 --- !u!1 &2224988506148844555
@@ -333,8 +334,8 @@ MonoBehaviour:
   SyncScaleX: 0
   SyncScaleY: 0
   SyncScaleZ: 0
-  PositionThreshold: 0.001
-  RotAngleThreshold: 0.01
+  PositionThreshold: 0.0001
+  RotAngleThreshold: 0.001
   ScaleThreshold: 0.01
   InLocalSpace: 0
   Interpolate: 1
@@ -407,6 +408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636c8e94d4ec0d340ae7dae15a9ef743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 4
   manaNeeded: 50
   cooldown: 0
 --- !u!1 &2224988506970429818
@@ -583,6 +585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e29fbf9423635f4ea4452b1b9c563a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 5
   manaNeeded: 100
   cooldown: 0
 --- !u!1 &2574070073711006974
@@ -629,6 +632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f742ac1948772724fbf61ebd7925ead2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
   manaNeeded: 50
   cooldown: 0
   prefabPojectile: {fileID: 3874696764685091845, guid: 092428f85fce5c94fbf2e77f2dcf46d0, type: 3}
@@ -856,6 +860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dde0e443c468c164b8b24f1c89b7e74d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 1
   manaNeeded: 100
   cooldown: 0
   sprite: {fileID: 2844468304363249697}
@@ -905,6 +910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 214e673ba0dba1e449d6cebabc7e03a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 7
   manaNeeded: 100
   cooldown: 0
 --- !u!1 &3928695247167016870
@@ -1323,6 +1329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61e4adeeddaf08c4e848d7115bd750a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 6
   manaNeeded: 50
   cooldown: 0
 --- !u!1 &6283503372699524545
@@ -1369,6 +1376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01fe459526abbf447ad6042598ff2a58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 2
   manaNeeded: 50
   cooldown: 0
   duration: 0
