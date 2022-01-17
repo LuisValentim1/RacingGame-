@@ -55,11 +55,11 @@ namespace JamCat.Players
 
         public void UpdateOnlinePlayers(ulong[] onlinePlayersIDs, int[] characters) {
             for (int i = 0; i < onlinePlayersIDs.Length; i++) {
-                GetPlayer(onlinePlayersIDs[i]).ChooseCharacter(characters[i]);
+                getPlayer(onlinePlayersIDs[i]).ChooseCharacter(characters[i]);
             }
         }
 
-        public Player GetPlayer(ulong id) {
+        public Player getPlayer(ulong id) {
             for (int i = 0; i < onlinePlayers.Count; i++)
                 if (onlinePlayers[i].getNetworkObject().OwnerClientId == id)
                     return onlinePlayers[i];

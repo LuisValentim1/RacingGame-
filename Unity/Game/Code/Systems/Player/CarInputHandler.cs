@@ -22,22 +22,35 @@ namespace JamCat.Players
         }
 
         public void UpdateCar() {
-            Vector2 inputVector = Vector2.zero;
-            inputVector.x = Input.GetAxis("Horizontal");
-            inputVector.y = Input.GetAxis("Vertical");
-            topDownCarController.SetInputVector(inputVector);
+            if(topDownCarController.hasControl == true){
+                Vector2 inputVector = Vector2.zero;
+                inputVector.x = Input.GetAxis("Horizontal");
+                inputVector.y = Input.GetAxis("Vertical");
+                topDownCarController.setInputVector(inputVector);
 
-            if(Input.GetButtonDown("Interaction")){
-                player.InteractJump();
-            }
-
-            if(Input.GetButton("Interaction")){
                 player.InteractStripe();
+              
+                if(Input.GetButtonDown("Interaction"))
+                    player.InteractJump();
+                
+                if (Input.GetKeyDown(KeyCode.K)) 
+                    player.getCharacter().UseAbilityBasic();
+                
+                if (Input.GetKeyDown(KeyCode.L)) 
+                    player.getCharacter().UseAbilityUlti();
+            }
+            else{
+                Vector2 inputVector = Vector2.zero;
+                Vector2 curInput = topDownCarController.getInputVector();
+                Vector2 randomizedInput = topDownCarController.randomizeInputVector();
+                inputVector.x = randomizedInput.x;
+                inputVector.y = randomizedInput.y;
+                topDownCarController.setInputVector(inputVector);
             }
         } 
 
         public void Restart() {
-            topDownCarController.SetInputVector(Vector2.zero);
+            topDownCarController.setInputVector(Vector2.zero);
         }
     }
 }

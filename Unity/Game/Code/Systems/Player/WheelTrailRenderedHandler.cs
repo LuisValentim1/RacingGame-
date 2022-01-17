@@ -18,7 +18,7 @@ namespace JamCat.Players
         }
 
         public void OnUpdate() {
-            trailRenderer.emitting = topDownCarController.IsTireScreeching(out float lateralVelocity, out bool isBreaking);
+            trailRenderer.emitting = topDownCarController.isTireScreeching(out float lateralVelocity, out bool isBreaking);
         }
     }
 }

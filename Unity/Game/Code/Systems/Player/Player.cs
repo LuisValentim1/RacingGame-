@@ -10,7 +10,7 @@ namespace JamCat.Players
 {
     public class Player : MonoBehaviour 
     {
-        // Variables -> Private
+        // Variables
 
         [Header("Configurable")]
         public SpriteRenderer spriteRenderer;
@@ -30,7 +30,8 @@ namespace JamCat.Players
         public int inModule = 0;
         
 
-        // Methods ->
+        // Methods -> Standard
+
         private void Awake() {
             OnAwake();
         }
@@ -39,7 +40,6 @@ namespace JamCat.Players
             OnStart();
         }
 
-        // Methods -> Standard
         public void OnAwake() {
             // Auto Configuration
             networkObject = GetComponent<NetworkObject>();
@@ -83,18 +83,6 @@ namespace JamCat.Players
 
             // Controls
             carInputHandler.UpdateCar();
-            if (Input.GetButtonDown("Interaction")) {
-                InteractJump();
-                InteractStripe();
-            }
-
-            if (Input.GetKeyDown(KeyCode.K)) {
-                character.UseAbilityBasic();
-            }
-            
-            if (Input.GetKeyDown(KeyCode.L)) {
-                character.UseAbilityUlti();
-            }
         }
 
         private void OnDestroy() {
@@ -128,6 +116,12 @@ namespace JamCat.Players
                 // print("A");
                 ASlow aSlow = collider2d.GetComponent<ASlow>();
                 topDownCarController.ApplySlow(aSlow.slowIntensity, aSlow.maxAcceleration, aSlow.slowDuration);
+            }
+            
+            if(collider2d.GetComponent<ElementOil>() != null) {
+                print("A");
+                ElementOil elementOil = collider2d.GetComponent<ElementOil>();
+                topDownCarController.TriggerOil(elementOil.timerEffect);
             }
         }
 

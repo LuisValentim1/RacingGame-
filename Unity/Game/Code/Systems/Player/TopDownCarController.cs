@@ -21,8 +21,6 @@ namespace JamCat.Players
         public float turnFactor = 0.5f;
         public float maxSpeed = 20.0f;
         public float rotOffset = -90;
-        public float maxMana = 100;
-        public float currentMana = 0;
 
         [Header("Sprites")]
         public SpriteRenderer carSpriteRenderer;
@@ -48,11 +46,18 @@ namespace JamCat.Players
         float velocityVsUp = 0;
         bool isJumping = false;
 
+        public System.Random r;
+        public bool hasControl = true;
+
         //Components
         Rigidbody2D carRigidbody2D;
         Collider2D carCollider2D;
 
+
+        // Methods -> Standard
+
         public void AwakeCar() {
+            r = new System.Random(DateTime.Now.Second);
             player = GetComponent<Player>();
             carRigidbody2D = GetComponent<Rigidbody2D>();
             carCollider2D = GetComponentInChildren<Collider2D>();
@@ -61,6 +66,26 @@ namespace JamCat.Players
         
         public void StartCar() {
             Restart();
+        }
+
+        public void UpdateCar() {
+            if (Data.Get().gameLogic.in_game == false)
+                return;
+
+            if (player.getNetworkObject().IsLocalPlayer == false)
+                return;
+                
+            MultiplayerMethods.Get().UpdateVelocityServerRpc(SysPlayer.Get().localPlayerID, getVelocity());
+        }
+
+        private void FixedUpdate() {
+            if (player.getNetworkObject().IsLocalPlayer == false)
+                return;
+
+            currentVelocity = carRigidbody2D.velocity.magnitude;
+            ApplyEngineForce();
+            KillOrthogonalVelocity();
+            ApplySteering();
         }
 
         public void Restart() {
@@ -74,47 +99,11 @@ namespace JamCat.Players
             // Player starts with the initial rotation of the track
             rotationAngle = GeneratorServer.Get().GetInitialPlayerRotation();
         }
-
-        public void UpdateCar() {
-
-        }
         
-        private void Update() {
-            if (Data.Get().gameLogic.in_game == false)
-                return;
 
-            if (player.getNetworkObject().IsLocalPlayer == false)
-                return;
-                
-            MultiplayerMethods.Get().UpdateVelocityServerRpc(SysPlayer.Get().localPlayerID, getVelocity());
-        }
+        // Methods -> Physics
 
-        private void FixedUpdate() {
-            //  if (Data.Get().gameLogic.in_game == false)
-            //    return;
-
-            //  if (Data.Get().gameLogic.is_paused == true)
-            //    return;
-
-            if (player.getNetworkObject().IsLocalPlayer == false)
-                return;
-
-            currentVelocity = carRigidbody2D.velocity.magnitude;
-            ApplyEngineForce();
-            KillOrthogonalVelocity();
-            ApplySteering();
-        }
-
-
-
-        // Methods
-        
-        public void ReduceVelocityBy(float value) {
-            carRigidbody2D.velocity /= value;
-        }
-        
-        void ApplyEngineForce()
-        {
+        void ApplyEngineForce() {
             velocityVsUp = Vector2.Dot(transform.up, carRigidbody2D.velocity);
 
             if(velocityVsUp > maxSpeed * 0.5f && accelerationInput > 0){
@@ -137,17 +126,9 @@ namespace JamCat.Players
 
             engineForceVector = transform.up * accelerationInput * accelerationFactor;
             carRigidbody2D.AddForce(engineForceVector, ForceMode2D.Force);
-          //  AddForceServerRpc(engineForceVector);
         }
 
-/*
-        [ServerRpc]
-        void AddForceServerRpc(Vector2 engineForceVector) {
-
-        }
-*/
-        void ApplySteering()
-        {
+        void ApplySteering() {
             float minSpeedBeforeAllowTurningFactor = (carRigidbody2D.velocity.magnitude / 8);
             minSpeedBeforeAllowTurningFactor = Mathf.Clamp01(minSpeedBeforeAllowTurningFactor);
 
@@ -155,8 +136,7 @@ namespace JamCat.Players
             carRigidbody2D.MoveRotation(rotationAngle);
         }
 
-        void KillOrthogonalVelocity()
-        {
+        void KillOrthogonalVelocity() {
             Vector2 forwardVelocity = transform.up * Vector2.Dot(carRigidbody2D.velocity, transform.up);
             Vector2 rightVelocity = transform.right * Vector2.Dot(carRigidbody2D.velocity, transform.right);
 
@@ -167,14 +147,33 @@ namespace JamCat.Players
         }
 
 
-        float GetLateralVelocity()
-        {
+        
+        // Methods -> Getter and Setter
+        
+        public void setInputVector(Vector2 inputVector) {
+            steeringInput = inputVector.x;
+            accelerationInput = inputVector.y;
+        }
+
+        public Vector2 getInputVector() {
+            return new Vector2(steeringInput, accelerationInput);
+        }
+        
+
+        public void setVelocity(float value) {
+            currentVelocity = value;
+        }
+        
+        public float getVelocity() {
+            return currentVelocity;
+        }
+        
+        float getLateralVelocity() {
             return Vector2.Dot(transform.right, carRigidbody2D.velocity);
         }
 
-        public bool IsTireScreeching(out float lateralVelocity, out bool isBreaking)
-        {
-            lateralVelocity = GetLateralVelocity();
+        public bool isTireScreeching(out float lateralVelocity, out bool isBreaking) {
+            lateralVelocity = getLateralVelocity();
             isBreaking = false;
 
             if (accelerationInput < 0 && velocityVsUp > 0)
@@ -183,12 +182,15 @@ namespace JamCat.Players
                 return true;
             }
 
-            if (Mathf.Abs(GetLateralVelocity()) > 4.0f)
+            if (Mathf.Abs(getLateralVelocity()) > 4.0f)
                 return true;
 
             return false;
         }
 
+
+        // Methods -> Jump
+        
         public void TriggerJump() {
             player.jumpFlag = true; 
             if (!isJumping) {
@@ -242,25 +244,29 @@ namespace JamCat.Players
         }
 
 
+        // Methods -> Oil
         
-       
-
-         public void SetInputVector(Vector2 inputVector) {
-            steeringInput = inputVector.x;
-            accelerationInput = inputVector.y;
+        public void TriggerOil(float time) {
+            hasControl = false;
+            StartCoroutine(RegainControl(time));
         }
 
-
-        public void setVelocity(float value) {
-            currentVelocity = value;
+        private IEnumerator RegainControl(float time) {
+            yield return new WaitForSeconds(time);
+            hasControl = true;
+            yield return null;
         }
         
-        public float getVelocity() {
-            return currentVelocity;
+        public Vector2 randomizeInputVector(){
+            Vector2 curInput = getInputVector();
+            Vector2 randomizedInput = new Vector2((float)(r.NextDouble() * (curInput.x+0.005 - curInput.x-0.005) + curInput.x-0.005), (float)(r.NextDouble() * (curInput.y+0.005 - curInput.y-0.005) + curInput.y-0.005));
+            return curInput;
         }
+        
 
 
-        // Methods -> Interaction
+
+        // Methods -> Obstacle
         public void HitObstacle(Collider2D collider2D) {
             StartCoroutine(IE_HitObstacle(collider2D));
         }
@@ -276,6 +282,11 @@ namespace JamCat.Players
             yield return null;
         }
 
+
+        // Methods -> Slow
+        bool isSlowingDown;
+        Vector2 slowingDownByVector;
+
         public void ApplySlow(float slowIntensity, float maxAccerelation, float slowDuration) {
             StartCoroutine(IE_ApplySlow(slowIntensity, maxAccerelation, slowDuration));
             StartCoroutine(IE_ReduceVelocityBy(slowIntensity, 1));
@@ -289,9 +300,6 @@ namespace JamCat.Players
             yield return null;
         }
         
-
-        bool isSlowingDown;
-        Vector2 slowingDownByVector;
         IEnumerator IE_ReduceVelocityBy(float slowIntensity, float slowDuration) {
            isSlowingDown = true;
             float timer = slowDuration;
@@ -304,6 +312,9 @@ namespace JamCat.Players
             isSlowingDown = false;
             yield return null;
         }
-
+        
+        public void ReduceVelocityBy(float value) {
+            carRigidbody2D.velocity /= value;
+        }
     }
 }

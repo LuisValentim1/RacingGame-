@@ -123,7 +123,7 @@ namespace JamCat.Multiplayer
             if (IsServer == true)
                 return;
 
-            Player player = SysPlayer.Get().GetPlayer(playerID);
+            Player player = SysPlayer.Get().getPlayer(playerID);
             player.inModule = inModule;
         }
 
@@ -189,7 +189,7 @@ namespace JamCat.Multiplayer
 
         [ClientRpc]
         public void RemoveLifeClientRpc(ulong playerID) {
-             SysPlayer.Get().GetPlayer(playerID).getCharacter().RemoveLife();
+             SysPlayer.Get().getPlayer(playerID).getCharacter().RemoveLife();
         }
 
         // ------------------------- Player -> Rigibody2D
@@ -206,7 +206,7 @@ namespace JamCat.Multiplayer
             if (SysPlayer.Get().localPlayerID == playerID)
                 return;
 
-             SysPlayer.Get().GetPlayer(playerID).getTopDownCarController().setVelocity(value);
+             SysPlayer.Get().getPlayer(playerID).getTopDownCarController().setVelocity(value);
         }
 
 
@@ -224,7 +224,7 @@ namespace JamCat.Multiplayer
             if (SysPlayer.Get().localPlayerID == playerID)
                 return;
 
-            SysPlayer.Get().GetPlayer(playerID).getCharacter().abilityGroup.GetAbility(abilityID).ReceiveInfoFromServer();
+            SysPlayer.Get().getPlayer(playerID).getCharacter().abilityGroup.GetAbility(abilityID).ReceiveInfoFromServer();
         }
 
         /*
