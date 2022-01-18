@@ -91,8 +91,10 @@ namespace JamCat.Players
 
 
         void OnTriggerEnter2D(Collider2D collider2d) {
-            if(collider2d.CompareTag("Obstacle"))
+            if(collider2d.CompareTag("Obstacle")) {
                 topDownCarController.HitObstacle(collider2d);
+                character.OnHit();
+            }
 
             if (networkObject.IsLocalPlayer == false)
                 return;
@@ -116,15 +118,29 @@ namespace JamCat.Players
                 // print("A");
                 ASlow aSlow = collider2d.GetComponent<ASlow>();
                 topDownCarController.ApplySlow(aSlow.slowIntensity, aSlow.maxAcceleration, aSlow.slowDuration);
+                character.OnHit();
             }
-            
+
+            if(collider2d.GetComponent<AProject>() != null) {
+                AProject aProject = collider2d.GetComponent<AProject>();
+                topDownCarController.ApplyProjectionForce(aProject.duration, aProject.transform.right, aProject.force);
+                character.OnHit();
+            }
+
+            if(collider2d.GetComponent<AOil>() != null) {
+                AOil elementOil = collider2d.GetComponent<AOil>();
+                topDownCarController.TriggerOil(elementOil.timerEffect);
+                character.OnHit();
+            }
+
             if(collider2d.GetComponent<ElementOil>() != null) {
-                print("A");
+                // print("A");
                 ElementOil elementOil = collider2d.GetComponent<ElementOil>();
                 topDownCarController.TriggerOil(elementOil.timerEffect);
+                character.OnHit();
             }
         }
-
+        
         private void OnTriggerExit2D(Collider2D collider2d) {
             if (networkObject.IsLocalPlayer == false)
                 return;

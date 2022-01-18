@@ -47,5 +47,8 @@ namespace JamCat.Cameras
             }
         }
 
+        public Camera getCurrentCamera() {
+            return currentCamera;
+        }
     }
 }

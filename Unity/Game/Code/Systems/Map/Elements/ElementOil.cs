@@ -8,5 +8,6 @@ public class ElementOil : Element {
     [Header("Oil Configuration")]
     public float timerEffect;
 
-    // Methods    
+    // Methods
+    
 }

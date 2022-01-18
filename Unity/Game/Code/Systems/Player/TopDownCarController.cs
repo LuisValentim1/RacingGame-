@@ -86,6 +86,9 @@ namespace JamCat.Players
             ApplyEngineForce();
             KillOrthogonalVelocity();
             ApplySteering();
+
+            if (forceBeingExecuted == true)
+                carRigidbody2D.AddForce(projectionForce);
         }
 
         public void Restart() {
@@ -190,12 +193,12 @@ namespace JamCat.Players
 
 
         // Methods -> Jump
-        
+        Coroutine cJumpFlagOver, cJumpCo;
         public void TriggerJump() {
             player.jumpFlag = true; 
             if (!isJumping) {
-                StartCoroutine(JumpFlagOver());
-                StartCoroutine(JumpCo(jumpHeightScale, jumpPushScale));
+                cJumpFlagOver = StartCoroutine(JumpFlagOver());
+                cJumpCo = StartCoroutine(JumpCo(jumpHeightScale, jumpPushScale));
             }
         }
 
@@ -240,13 +243,17 @@ namespace JamCat.Players
             carCollider2D.enabled = true;
             isJumping = false;
             accelerationFactor = 50;
-            StopAllCoroutines();
+            StopCoroutine(cJumpFlagOver);
+            StopCoroutine(cJumpCo);
         }
 
 
         // Methods -> Oil
         
         public void TriggerOil(float time) {
+            if (player.getCharacter().usingShield == true)
+                return;
+
             hasControl = false;
             StartCoroutine(RegainControl(time));
         }
@@ -267,36 +274,66 @@ namespace JamCat.Players
 
 
         // Methods -> Obstacle
+        Coroutine cHitObstacle;
         public void HitObstacle(Collider2D collider2D) {
-            StartCoroutine(IE_HitObstacle(collider2D));
+            cHitObstacle = StartCoroutine(IE_HitObstacle(collider2D));
         }
 
         IEnumerator IE_HitObstacle(Collider2D collider2D) {
             Destroy(collider2D.gameObject);
-            ElementObstacle elementObstacle = collider2D.GetComponent<ElementObstacle>();
-            accelerationFactor = elementObstacle.GetAccelerationFactor();
-            ReduceVelocityBy(elementObstacle.GetVelocityDivide());
+
+            if (player.getCharacter().usingShield == false) {
+                ElementObstacle elementObstacle = collider2D.GetComponent<ElementObstacle>();
+                
+                if (elementObstacle != null) {
+                    accelerationFactor = elementObstacle.GetAccelerationFactor();
+                    ReduceVelocityBy(elementObstacle.GetVelocityDivide());
+                }
+            }
+   
             yield return new WaitForSeconds(2);
             accelerationFactor = 50;
-
+            StopCoroutine(cHitObstacle);
             yield return null;
         }
 
+        // Methods -> Projected
+        bool forceBeingExecuted;
+        Vector2 projectionForce;
+        Coroutine cApplyProjectionForce;
+        public void ApplyProjectionForce(float duration, Vector2 direction, float force) {
+            if (player.getCharacter().usingShield == true)
+                return;
+            
+            cApplyProjectionForce = StartCoroutine(IE_ApplyProjectionForce(duration, direction, force));
+        }
+
+        public IEnumerator IE_ApplyProjectionForce(float duration, Vector2 direction, float force) {
+            forceBeingExecuted = true;
+            projectionForce = direction * force;
+            yield return new WaitForSeconds(duration);
+            forceBeingExecuted = false;
+            StopCoroutine(cApplyProjectionForce);
+            yield return null;
+        }
 
         // Methods -> Slow
         bool isSlowingDown;
         Vector2 slowingDownByVector;
-
+        Coroutine cApplySlow, cReduceVelocityBy;
         public void ApplySlow(float slowIntensity, float maxAccerelation, float slowDuration) {
-            StartCoroutine(IE_ApplySlow(slowIntensity, maxAccerelation, slowDuration));
-            StartCoroutine(IE_ReduceVelocityBy(slowIntensity, 1));
+            if (player.getCharacter().usingShield == true)
+                return;
+            
+            cApplySlow = StartCoroutine(IE_ApplySlow(slowIntensity, maxAccerelation, slowDuration));
+            cReduceVelocityBy = StartCoroutine(IE_ReduceVelocityBy(slowIntensity, 1));
         }
 
         IEnumerator IE_ApplySlow(float slowIntensity, float maxAcceleration, float slowDuration) {
             this.accelerationFactor = maxAcceleration;
             yield return new WaitForSeconds(slowDuration);
             this.accelerationFactor = 50;
-
+            StopCoroutine(cApplySlow);
             yield return null;
         }
         
@@ -310,6 +347,7 @@ namespace JamCat.Players
             }
 
             isSlowingDown = false;
+            StopCoroutine(cReduceVelocityBy);
             yield return null;
         }
         

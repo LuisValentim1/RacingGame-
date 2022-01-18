@@ -12,7 +12,7 @@ namespace JamCat.Characters
 
         // Methods -> Override
         protected override void OnAwake() {
-
+            sprite.SetActive(false);
         }
 
         protected override void OnStart() {

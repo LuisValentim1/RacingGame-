@@ -6,6 +6,9 @@ namespace JamCat.Characters
 {
     public class AbilityDefault_1 : Ability
     {
+        public Transform spawnPivot;
+        public GameObject prefabOil;
+
         // Methods -> Override
         protected override void OnAwake() {
 
@@ -20,7 +23,7 @@ namespace JamCat.Characters
         }
 
         protected override void OnUse() {
-
+            Instantiate(prefabOil, spawnPivot.transform.position, Quaternion.identity);
         }
 
         protected override string[] OnSendInfo() {

@@ -40,6 +40,16 @@ namespace JamCat.Characters
             abilityGroup.OnUpdate();
         }
 
+        public void OnHit() {
+            if (usingShield == true) {
+                if (abilityGroup.abilityBasic.GetType() == typeof(AbilityWater_1)) {
+                    print("Funciona!");
+                    AbilityWater_1 ability = abilityGroup.abilityBasic as AbilityWater_1;
+                    ability.OnHit();
+                }
+            }
+        }
+
         // Methods -> Publlic
         public void UseAbilityBasic() {
             abilityGroup.UseAbilityBasic();

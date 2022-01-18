@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 2554369103171683913}
   - component: {fileID: 2554369103171683914}
   - component: {fileID: 6509396298484946079}
-  - component: {fileID: 5028214492876855636}
   - component: {fileID: 7502588449466503647}
+  - component: {fileID: 6167734870410406118}
   m_Layer: 0
-  m_Name: Desert_Ability_1
+  m_Name: City_Ability_1
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.9528302, g: 0.77893233, b: 0.33708617, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -114,22 +114,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &5028214492876855636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2554369103171683915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e3e4bf515affae458313d0ce30f6475, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  countdownToDestroy: 3
-  slowDuration: 2
-  slowIntensity: 1.5
-  maxAcceleration: 10
 --- !u!50 &7502588449466503647
 Rigidbody2D:
   serializedVersion: 4
@@ -151,6 +135,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6167734870410406118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2554369103171683915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55a22af8460c600498717061e6f8d7b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerEffect: 0.5
+  countdownToDestroy: 4
 --- !u!1 &7980654826940843594
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +159,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1821696115743413144}
   - component: {fileID: 4786190713176824713}
-  - component: {fileID: 8404942937766074895}
   m_Layer: 0
   m_Name: Graphic
   m_TagString: Untagged
@@ -226,7 +223,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: -266363602, guid: ae74cce1f51bc8b4aa78c8cb520beaeb, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -236,23 +233,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &8404942937766074895
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7980654826940843594}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9704d0a47d61e1d45821f7b414577e19, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
