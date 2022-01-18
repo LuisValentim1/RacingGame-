@@ -2,7 +2,12 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+<<<<<<< Updated upstream
 namespace CatJam.Cameras
+=======
+
+namespace JamCat.Cameras
+>>>>>>> Stashed changes
 {
     public class SysCamera : Sys 
     {
@@ -41,5 +46,20 @@ namespace CatJam.Cameras
             currentCamera = cameras[id].GetComponent<Camera>();
             currentCameraBase = cameras[id].GetComponent<CameraBase>();
         }
+<<<<<<< Updated upstream
+=======
+
+        public void SetPlayerTarget(Transform trasnf) {
+            CameraFollowCar cameraFollowCar = FindObjectOfType<CameraFollowCar>(true);
+            if (cameraFollowCar != null) {
+                cameraFollowCar.SetPlayerTarget(trasnf);
+            }
+        }
+
+        public Camera getCurrentCamera() {
+            return currentCamera;
+        }
+
+>>>>>>> Stashed changes
     }
 }
