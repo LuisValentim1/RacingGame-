@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using CatJam.Cameras;
+// using JamCat.Cameras;
 
 public class OnClickObject : MonoBehaviour
 {
