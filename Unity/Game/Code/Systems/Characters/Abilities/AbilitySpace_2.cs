@@ -6,6 +6,9 @@ namespace JamCat.Characters
 {
     public class AbilitySpace_2 : Ability
     {
+        public Transform spawnPivot;
+        public GameObject prefabPortal;
+
         // Methods -> Override
         protected override void OnAwake() {
 
@@ -20,7 +23,7 @@ namespace JamCat.Characters
         }
 
         protected override void OnUse() {
-
+            Instantiate(prefabPortal, spawnPivot.transform.position, Quaternion.identity);
         }
 
         protected override string[] OnSendInfo() {

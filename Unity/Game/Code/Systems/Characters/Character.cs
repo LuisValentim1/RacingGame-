@@ -43,7 +43,7 @@ namespace JamCat.Characters
         public void OnHit() {
             if (usingShield == true) {
                 if (abilityGroup.abilityBasic.GetType() == typeof(AbilityWater_1)) {
-                    print("Funciona!");
+                    // print("Funciona!");
                     AbilityWater_1 ability = abilityGroup.abilityBasic as AbilityWater_1;
                     ability.OnHit();
                 }
@@ -80,7 +80,6 @@ namespace JamCat.Characters
                 curMana = maxMana;
 
             Window_HUD.Get().barMana.SetPercentage(curMana);
-            // print("From Character Class: " + curMana);
         }
 
         public void AddManaByTime(float manaValue){
@@ -89,7 +88,6 @@ namespace JamCat.Characters
                 curMana = maxMana;
 
             Window_HUD.Get().barMana.SetPercentage(curMana);
-            // print("From Character Class: " + curMana);
         }
         
         public void RemoveMana(float manaValue){
@@ -98,10 +96,26 @@ namespace JamCat.Characters
                 curMana = 0;
 
             Window_HUD.Get().barMana.SetPercentage(curMana);
-            // print("From Character Class: " + curMana);
+        }
+
+        public void RemoveLife(int value) {
+            if (usingShield == true)
+                return;
+
+            curLifes -= value;
+            if (curLifes <= 0) {
+                isOut = true;
+                curLifes = 0;
+            }
+
+            if (player.getNetworkObject().IsLocalPlayer)
+                Window_HUD.Get().barLife.SetPercentage(getLifePercentage());
         }
 
         public void RemoveLife() {
+            if (usingShield == true)
+                return;
+
             curLifes--;
             if (curLifes <= 0) {
                 isOut = true;

@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635469609080514768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.37, y: 0, z: 0}
+  m_LocalPosition: {x: 1.47, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -870,6 +870,37 @@ MonoBehaviour:
   id: 5
   manaNeeded: 100
   cooldown: 0
+--- !u!1 &2504861019978337524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4830789284035790172}
+  m_Layer: 0
+  m_Name: SpawnPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4830789284035790172
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2504861019978337524}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 1.368, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5473591843575011839}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2574070073711006974
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,7 +1207,8 @@ Transform:
   m_LocalPosition: {x: 4.5374823, y: 2.6409175, z: 0.4396343}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5969937689613818416}
   m_Father: {fileID: 5805723955685614895}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1195,6 +1227,8 @@ MonoBehaviour:
   id: 7
   manaNeeded: 100
   cooldown: 0
+  spawnPivot: {fileID: 5969937689613818416}
+  prefabPortal: {fileID: 2554369103171683915, guid: 72ce1e48f73c7d4448d8d4c7db7fc7f4, type: 3}
 --- !u!1 &3928695247167016870
 GameObject:
   m_ObjectHideFlags: 0
@@ -1764,7 +1798,8 @@ Transform:
   m_LocalPosition: {x: 4.5374823, y: 2.6409175, z: 0.4396343}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4830789284035790172}
   m_Father: {fileID: 5805723955685614895}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1783,6 +1818,12 @@ MonoBehaviour:
   id: 6
   manaNeeded: 50
   cooldown: 0
+  prefabPojectile: {fileID: 3874696764685091845, guid: a3c519f70db065949a95841448ce8e89, type: 3}
+  transfSpawn: {fileID: 4830789284035790172}
+  projectileTimer: 4
+  duration: 1
+  speed: 20
+  projectileAnimatorGraphics: {fileID: 0}
 --- !u!1 &6283503372699524545
 GameObject:
   m_ObjectHideFlags: 0
@@ -1970,6 +2011,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityBasic: {fileID: 923501517630723810}
   abilityUlti: {fileID: 1259220279188905699}
+--- !u!1 &8448860906458386254
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5969937689613818416}
+  m_Layer: 0
+  m_Name: SpawnPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5969937689613818416
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8448860906458386254}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.734, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1523503531508644137}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8506370911795979075
 GameObject:
   m_ObjectHideFlags: 0

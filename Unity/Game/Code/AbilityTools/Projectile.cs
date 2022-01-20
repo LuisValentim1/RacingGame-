@@ -9,7 +9,6 @@ public class Projectile : MonoBehaviour
     private float speed;
     private bool ended;
 
-
     private void Update() {
         timer -= Time.deltaTime;
         if (timer <= 0) {
