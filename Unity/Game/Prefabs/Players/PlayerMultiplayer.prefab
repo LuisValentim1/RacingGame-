@@ -870,6 +870,8 @@ MonoBehaviour:
   id: 5
   manaNeeded: 100
   cooldown: 0
+  force: 50
+  duration: 0.2
 --- !u!1 &2504861019978337524
 GameObject:
   m_ObjectHideFlags: 0

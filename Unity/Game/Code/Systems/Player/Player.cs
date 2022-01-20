@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using JamCat.Cameras;
 using JamCat.Characters;
+using JamCat.Multiplayer;
 using JamCat.Map;
 using Unity.Netcode;
 
@@ -178,6 +179,22 @@ namespace JamCat.Players
             if(collider2d.CompareTag("Stripe"))
                 stripeFlag = false;
         }
+
+
+        private void OnCollisionEnter2D(Collision2D other) {
+            if (networkObject.IsLocalPlayer == false)
+                return;
+
+            if(other.gameObject.CompareTag("Player")) {
+                if(topDownCarController.dashActivated == true) {
+                    if (SysPlayer.Get().localPlayer == this) {
+                        ulong playerID = other.gameObject.GetComponent<NetworkObject>().OwnerClientId;
+                        GetComponent<MultiplayerMethods>().RemoveLifeServerRpc(playerID);
+                    }
+                }
+            }
+        }
+
 
         public void Restart() {
             AutoChooseCharacter();

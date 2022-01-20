@@ -89,6 +89,12 @@ namespace JamCat.Players
 
             if (forceBeingExecuted == true)
                 carRigidbody2D.AddForce(projectionForce);
+
+            if (dashForceActivated == true)
+                carRigidbody2D.AddForce(dashForce);
+
+            if (currentVelocity > maxSpeed / 2)
+                carRigidbody2D.AddForce(-1f * transform.up * 15f);
         }
 
         public void Restart() {
@@ -297,7 +303,33 @@ namespace JamCat.Players
             yield return null;
         }
 
+        // Methods -> Dash
+        public bool dashActivated;
+        public bool dashForceActivated;
+        Vector2 dashForce;
+        Coroutine cApplyDashForce;
+        public void ApplyDashForce(float duration, Vector2 direction, float force) {
+            if (player.getCharacter().usingShield == true)
+                return;
+            
+            cApplyDashForce = StartCoroutine(IE_ApplyDashForce(duration, direction, force));
+        }
+
+        public IEnumerator IE_ApplyDashForce(float duration, Vector2 direction, float force) {
+            dashActivated = dashForceActivated = true;
+            dashForce = direction * force;
+            yield return new WaitForSeconds(duration);
+            dashForceActivated = false;
+            yield return new WaitForSeconds(0.5f);
+            dashActivated = false;
+
+            StopCoroutine(cApplyDashForce);
+            yield return null;
+        }
+
+        
         // Methods -> Projected
+
         bool forceBeingExecuted;
         Vector2 projectionForce;
         Coroutine cApplyProjectionForce;

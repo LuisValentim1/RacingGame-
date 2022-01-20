@@ -172,7 +172,7 @@ namespace JamCat.Multiplayer
             if (IsServer == true)
                 return;
 
-            print("Deleted");
+            // print("Deleted");
             GeneratorClient.Get().DeleteLastModule();
         }
 
