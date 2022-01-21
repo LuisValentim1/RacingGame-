@@ -156,7 +156,7 @@ namespace JamCat.Map {
                     Module.BuildingPositions curPosition = module.GetComponent<Module>().buildingPositions[i];
                     Vector3 offset = new Vector3(FloatWithinInterval(r,curPosition.xs[1], curPosition.xs[0]), FloatWithinInterval(r, curPosition.ys[1], curPosition.ys[0]), -1);
                     Vector3 building_pos = pos + offset;
-                    GameObject building = Instantiate(backgroundPrefabs[r.Next(0,2)], building_pos, transform.rotation, module.transform);
+                    GameObject building = Instantiate(backgroundPrefabs[r.Next(0, backgroundPrefabs.Length)], building_pos, transform.rotation, module.transform);
                 }
                 module.GetComponent<Module>().noBackground = false;
             }
