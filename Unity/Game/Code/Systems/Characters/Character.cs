@@ -63,7 +63,7 @@ namespace JamCat.Characters
             isOut = false;
             curMana = 0;
             curLifes = maxLifes;
-            Window_HUD.Get().barLife.SetPercentage(getLifePercentage());
+            Window_HUD.Get().barLife.setValue(curLifes);
             Window_HUD.Get().barMana.SetPercentage(curMana);
             UpdateGraphics();
         }
@@ -109,7 +109,7 @@ namespace JamCat.Characters
             }
 
             if (player.getNetworkObject().IsLocalPlayer)
-                Window_HUD.Get().barLife.SetPercentage(getLifePercentage());
+                Window_HUD.Get().barLife.setValue(curLifes);
         }
 
         public void RemoveLife() {
@@ -123,11 +123,7 @@ namespace JamCat.Characters
             }
 
             if (player.getNetworkObject().IsLocalPlayer)
-                Window_HUD.Get().barLife.SetPercentage(getLifePercentage());
-        }
-
-        public float getLifePercentage() {
-            return (100f / maxLifes) * curLifes;
+                Window_HUD.Get().barLife.setValue(curLifes);
         }
     }
 }
