@@ -185,15 +185,17 @@ namespace JamCat.Map {
                     }
                     x=1;
                 }
-                for(int i = 0 + x; i<numberOfElements; i++){
+
+                for(int i = 0 + x; i < numberOfElements; i++){
                     pos_index = r.Next(0,freeSpots.Length);
 //                    print(module.GetComponent<Module>().moduleID);
                     offset = new Vector3(freeSpots[pos_index].x, freeSpots[pos_index].y, -1);
                     Vector3 element_pos = pos + offset;
                     int element_index = r.Next(0,2);
-                    GameObject element = Instantiate(elementPrefabs[element_index].prefabs[r.Next(0,elementPrefabs[element_index].prefabs.Length)], element_pos, Quaternion.Euler(0, 0, freeSpots[pos_index].rotation), module.transform);
+                    GameObject element = Instantiate(elementPrefabs[element_index].prefabs[r.Next(0, elementPrefabs[element_index].prefabs.Length)], element_pos, Quaternion.Euler(0, 0, freeSpots[pos_index].rotation), module.transform);
                     cur = freeSpots[pos_index];
                     freeSpots = freeSpots.Where(e => !(e.Equals(cur))).ToArray();
+                    // element.GetComponent<Element>().setModule(module.GetComponent<Module>(), i);
                 }
                 module.GetComponent<Module>().noElements = false;
             }

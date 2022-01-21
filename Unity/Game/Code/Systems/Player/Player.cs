@@ -182,6 +182,16 @@ namespace JamCat.Players
 
 
         private void OnCollisionEnter2D(Collision2D other) {
+            if(other.gameObject.tag == "Element") {
+                if (other.gameObject.GetComponent<ElementBarrel>() != null) {
+                    other.gameObject.GetComponent<ElementBarrel>().StartAnimation();
+                }
+            }
+                
+            if (other.gameObject.GetComponent<ElementTree>() != null) {
+                other.gameObject.GetComponent<Animator>().SetBool("hit", true);
+            }
+
             if (networkObject.IsLocalPlayer == false)
                 return;
 

@@ -517,6 +517,8 @@ MonoBehaviour:
   steeringInput: 0
   rotationAngle: 0
   hasControl: 1
+  dashActivated: 0
+  dashForceActivated: 0
 --- !u!114 &2224988506148844552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1042,7 +1044,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8286263725021615283
 Transform:
   m_ObjectHideFlags: 0
@@ -1051,7 +1053,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2844468304363249697}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.05, y: -11.44, z: 0}
+  m_LocalPosition: {x: 0.43, y: -11.58, z: 0}
   m_LocalScale: {x: 7.1663437, y: 7.1663437, z: 7.1663437}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1120,7 +1122,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 11
   m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.80784315}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.9490196}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
