@@ -21,19 +21,14 @@ public class ObjectJump : MonoBehaviour
 
     public void Jump() {
         StartCoroutine(JumpCo(jumpHeight));
-        /**
-        transform.position = originalPos + new Vector3(0, jumpHeight, 0);
-        print("1");
-        transform.position = originalPos;
-        print("2");
-        */
     }
 
     private IEnumerator JumpCo(float jumpHeightScale) {
             isJumping = true;
+            originalPos = transform.position;
 
             float jumpStartTime = Time.time;
-            float jumpDuration = 1.5f;
+            float jumpDuration = 0.08f;
             /**
             jumpHeightScale = jumpHeightScale * carRigidbody2D.velocity.magnitude * 0.05f;
             jumpHeightScale = Mathf.Clamp(jumpHeightScale, 0.0f, 1.0f);
@@ -47,7 +42,8 @@ public class ObjectJump : MonoBehaviour
 
                 //transform.localScale = Vector3.one + Vector3.one  * jumpCurve.Evaluate(jumpCompletedPercentage) * jumpHeightScale;
                 //transform.localScale = carSpriteRenderer.transform.localScale * 0.75f;
-                transform.position = new Vector3(1, -1, 0.0f) * 3 * jumpHeightScale;
+                transform.position = originalPos + new Vector3(0.0f, 1.0f, 0.0f) * jumpHeightScale;
+                //transform.position = originalPos;
 
                 if (jumpCompletedPercentage == 1.0f)
                     break; 
@@ -60,10 +56,9 @@ public class ObjectJump : MonoBehaviour
             carShadowRenderer.transform.localScale = initialScale;
             carCollider2D.enabled = true;
             */
+            transform.position = originalPos;
             isJumping = false;
             //accelerationFactor = 50;
-             
-
             StopAllCoroutines();
         }
 }
