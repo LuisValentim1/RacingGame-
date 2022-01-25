@@ -84,6 +84,7 @@ namespace JamCat.Map
             Module module = GetModuleCreated(moduleNumber);
             
             for (int i = 0; i < elements.elementsID.Length; i++) {
+                print("Element ID: " + elements.elementsID[i]);
                 GameObject objFound = FindElementObj(elements.elementsID[i]);
 
                 if (objFound.GetComponent<Element>().dontSync == true)

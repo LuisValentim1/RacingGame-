@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using JamCat.Players;
 
 namespace JamCat.Audio {
     public class AudioEffects : MonoBehaviour {

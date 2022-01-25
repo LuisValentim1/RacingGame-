@@ -67,7 +67,6 @@ namespace JamCat.UI
         public void Button_Apply() {
             Save();
             Apply();
-            Back();
         }
 
         public void Button_Back() {
@@ -97,6 +96,7 @@ namespace JamCat.UI
                 BinaryFormatter binary = new BinaryFormatter();
                 FileStream fStream = File.Open(path, FileMode.Open);
                 Data.Get().options = binary.Deserialize(fStream) as Data.Options;
+                fStream.Close();
             }
         }
 

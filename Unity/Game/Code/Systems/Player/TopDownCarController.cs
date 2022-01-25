@@ -158,10 +158,10 @@ namespace JamCat.Players
         }
 
         void PlayingEngineAudio() {
-            float volumeValue = GeneralMethods.Remap(currentVelocity, 0, maxSpeed, 0, 1f);
+            float volumeValue = GeneralMethods.Remap(currentVelocity, 0, maxSpeed / 2, 0, 1f);
             float pitchValue = GeneralMethods.Remap(currentVelocity, 0, maxSpeed, 0, 0.5f);
             audioEngine.pitch = 0.7f + pitchValue;
-            audioEngine.volume = volumeValue;
+            audioEngine.volume = volumeValue * Data.Get().options.audioEffectsVolume * Data.Get().options.audioGeneralVolume;
         }
 
         
