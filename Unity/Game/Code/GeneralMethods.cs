@@ -26,8 +26,7 @@ public static class GeneralMethods {
         SysPlayer.Get().Restart();
         SysCamera.Get().SetPlayerTarget(SysPlayer.Get().localPlayerObj.transform);
 
-        SysAudio.Get().PlayGameMusic();
-        
+        AudioMusic.Get().PlayMusic(1);
         SysCamera.Get().SetCamera(1);
 
 
@@ -58,7 +57,7 @@ public static class GeneralMethods {
         Data.Get().sceneConfiguration.scene_play.SetActive(false);
         SysMap.Get().RestartMap();
         SysPlayer.Get().Restart();
-        SysAudio.Get().PlayMainMenuMusic();
+        AudioMusic.Get().PlayMusic(0);
         SysCamera.Get().SetCamera(0);
 
         // Terminar para os outros sistemas

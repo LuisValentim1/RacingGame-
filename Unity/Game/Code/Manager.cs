@@ -27,6 +27,8 @@ public class Manager : MonoBehaviour
     private void Start() {
         for (int i = 0; i < systems.Length; i++)
             systems[i].StartSys();
+
+        GeneralMethods.MainMenu();
     }
 
     private void Update() {

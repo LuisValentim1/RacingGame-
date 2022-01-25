@@ -11,47 +11,31 @@ namespace JamCat.Audio
         public static SysAudio Get() { return instance; }    
 
         // Variables
-        public Audio[] audios_type;
-        public GameObject prefab_audio_effect;
+        public AudioAmbience audioAmbience;
+        public AudioEffects audioEffects;
+        public AudioMusic audioMusic;
 
         // Methods -> Override
         protected override void OnAwake() {
             instance = this;
-            for (int i = 0; i < audios_type.Length; i++)
-                audios_type[i].AwakeAudio();
+            audioAmbience.AwakeAudio();
+            audioEffects.AwakeAudio();
+            audioMusic.AwakeAudio();
         }
 
         protected override void OnStart() {
-            for (int i = 0; i < audios_type.Length; i++)
-                audios_type[i].StartAudio();
+            audioAmbience.StartAudio();
+            audioEffects.StartAudio();
+            audioMusic.StartAudio();
         }
 
         protected override void OnUpdate() {
-            for (int i = 0; i < audios_type.Length; i++)
-                audios_type[i].UpdateAudio();
+            audioAmbience.UpdateAudio();
+            audioEffects.UpdateAudio();
+            audioMusic.UpdateAudio();
         }
 
 
         // Methods -> Public
-        public void PlayAudioEffect(AudioClip clip) {
-
-        }
-
-        public void PlayMusic() {
-
-        }
-
-
-
-
-        public void PlayMainMenuMusic() {
-
-        }
-
-        public void PlayGameMusic() {
-
-        }
-
-
     }
 }

@@ -6,13 +6,16 @@ namespace JamCat.Audio
 {
     public class AudioMusic : MonoBehaviour {
 
+        public static AudioMusic instance;
+        public static AudioMusic Get() { return instance; }
+
         // Variables
         [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip[] audioClips;
+
         private AudioClip clip;
         private bool started;
-
-        public float volume;
-
+        private float volume;
 
         // Methods -> Standard
         public void AwakeAudio() {
@@ -20,6 +23,7 @@ namespace JamCat.Audio
                 audioSource.GetComponent<AudioSource>();
 
             started = false;
+            instance = this;
         }
 
         public void StartAudio() {
@@ -35,12 +39,18 @@ namespace JamCat.Audio
             if(audioSource.clip == null)
                 return;
 
+            print(0);
             started = true;
             audioSource.Play();
         }
 
+        public void PlayMusic(int number) {
+            setAudioClip(audioClips[number]);
+            PlayMusic();
+        }
+
         public void PlayMusic(AudioClip clip) {
-            SetAudioClip(clip);
+            setAudioClip(clip);
             PlayMusic();
         }
 
@@ -54,11 +64,12 @@ namespace JamCat.Audio
 
 
         // Methods -> Set
-        public void SetAudioClip(AudioClip clip) {
+        public void setAudioClip(AudioClip clip) {
             this.clip = clip;
+            audioSource.clip = clip;
         }
 
-        public void SetVolume(float value) {
+        public void setVolume(float value) {
             volume = Math.Clamp(value, 0, 1);
         }
     }
