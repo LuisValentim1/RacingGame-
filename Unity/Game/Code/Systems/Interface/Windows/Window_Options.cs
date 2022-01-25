@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.UI;
+using JamCat.Audio;
 
 namespace JamCat.UI 
 {
@@ -18,14 +20,22 @@ namespace JamCat.UI
 
         public CanvasGroup[] cvs;
 
+        public Slider sliderVolumeGeneral;
+        public Slider sliderVolumeMusic;
+        public Slider sliderVolumeAmbience;
+        public Slider sliderVolumeEffects;
+
         // Methods -> Override
         protected override void OnAwakeWindow() {
             instance = this;
-            LoadAndApply();
         }
 
         protected override void OnOpenWindow() {
-
+            Data.Options options = Data.Get().options;
+            sliderVolumeGeneral.value = options.audioGeneralVolume;
+            sliderVolumeMusic.value = options.audioMusicVolume;
+            sliderVolumeAmbience.value = options.audioAmbienceVolume;
+            sliderVolumeEffects.value = options.audioEffectsVolume;
         }
         
         protected override void OnCloseWindow() {
@@ -38,7 +48,7 @@ namespace JamCat.UI
 
         // Methods -> Public
         public void StartOptions(Window last_window) {
-            last_window = this.last_window;
+            this.last_window = last_window;
             Load();
         }
 
@@ -57,12 +67,11 @@ namespace JamCat.UI
         public void Button_Apply() {
             Save();
             Apply();
+            Back();
         }
 
         public void Button_Back() {
-            UI_Methods.SetFade(this, FadeType.fade_out, 0.5f, 0);
-            UI_Methods.SetFade(last_window, FadeType.fade_in, 0.5f, 0.5f);
-            last_window = null;
+            Back();
         }
 
 
@@ -70,6 +79,13 @@ namespace JamCat.UI
             string path = Application.persistentDataPath + "/options.dat";
             BinaryFormatter binary = new BinaryFormatter();
             FileStream fStream = File.Create(path);
+
+            Data.Options options = Data.Get().options;
+            options.audioGeneralVolume = sliderVolumeGeneral.value;
+            options.audioMusicVolume = sliderVolumeMusic.value;
+            options.audioAmbienceVolume = sliderVolumeAmbience.value;
+            options.audioEffectsVolume = sliderVolumeEffects.value;
+
             binary.Serialize(fStream, Data.Get().options);
             fStream.Close();
         }
@@ -84,7 +100,13 @@ namespace JamCat.UI
             }
         }
 
+
         public void Apply() {
+            float generalVolume = Data.Get().options.audioGeneralVolume;
+            AudioMusic.Get().setVolume(generalVolume * Data.Get().options.audioMusicVolume);
+            AudioAmbience.Get().setVolume(generalVolume * Data.Get().options.audioAmbienceVolume);
+            AudioEffects.Get().setVolume(generalVolume * Data.Get().options.audioEffectsVolume);
+
             // Quality Level
            // QualitySettings.SetQualityLevel(Data.options.quality_level);
 
@@ -126,6 +148,12 @@ namespace JamCat.UI
 
             // Anti Aliasing
             */
+        }
+
+        void Back() {
+            CloseWindow(0.3f, 0);
+            last_window.OpenWindow(0.3f, 0.3f);
+            last_window = null;
         }
 
         public void LoadAndApply() {

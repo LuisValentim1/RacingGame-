@@ -49,10 +49,10 @@ public class Data : MonoBehaviour {
     public class Options {
         public int quality_level = 0;
     
-        public float audio_general_volume = 0.8f;
-        public float audio_music_volume = 0.5f;
-        public float audio_effects_volume = 0.8f;
-        public float audio_dialogues_volume = 0.7f;
+        public float audioGeneralVolume = 0.8f;
+        public float audioMusicVolume = 0.5f;
+        public float audioAmbienceVolume = 0.5f;
+        public float audioEffectsVolume = 0.8f;
 
         public char controls_accelerate = 'w';
         public char controls_brake = 's';

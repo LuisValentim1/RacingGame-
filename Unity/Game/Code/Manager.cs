@@ -28,6 +28,7 @@ public class Manager : MonoBehaviour
         for (int i = 0; i < systems.Length; i++)
             systems[i].StartSys();
 
+        Window_Options.Get().LoadAndApply();
         GeneralMethods.MainMenu();
     }
 

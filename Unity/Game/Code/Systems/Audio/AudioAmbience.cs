@@ -69,6 +69,7 @@ namespace JamCat.Audio
 
         public void setVolume(float value) {
             volume = Math.Clamp(value, 0, 1);
+            audioSource.volume = volume;
         }
     }
 }

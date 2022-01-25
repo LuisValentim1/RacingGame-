@@ -23,5 +23,8 @@ namespace JamCat.Audio
             audioSource.Play();
         }
 
+        public AudioSource getAudioSource() {
+            return audioSource;
+        }
     }
 }

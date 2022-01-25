@@ -49,9 +49,9 @@ namespace JamCat.Players
         }
 
         public void Restart() {
-            if (localPlayer == null)
+            if (localPlayerObj == null)
                 return;
-                
+
             localPlayer = localPlayerObj.GetComponent<Player>();
             localPlayer.Restart();
         }

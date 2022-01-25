@@ -16,6 +16,7 @@ namespace JamCat.Players
 
 
         [Header("Car settings")]
+        public AudioSource audioEngine;
         public float driftFactor = 0.80f;
         public float accelerationFactor = 0.01f;
         public float turnFactor = 0.5f;
@@ -76,6 +77,7 @@ namespace JamCat.Players
                 return;
                 
             MultiplayerMethods.Get().UpdateVelocityServerRpc(SysPlayer.Get().localPlayerID, getVelocity());
+            PlayingEngineAudio();
         }
 
         private void FixedUpdate() {
@@ -155,6 +157,12 @@ namespace JamCat.Players
                 carRigidbody2D.AddForce(slowingDownByVector);
         }
 
+        void PlayingEngineAudio() {
+            float volumeValue = GeneralMethods.Remap(currentVelocity, 0, maxSpeed, 0, 1f);
+            float pitchValue = GeneralMethods.Remap(currentVelocity, 0, maxSpeed, 0, 0.5f);
+            audioEngine.pitch = 0.7f + pitchValue;
+            audioEngine.volume = volumeValue;
+        }
 
         
         // Methods -> Getter and Setter

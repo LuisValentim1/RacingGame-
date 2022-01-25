@@ -39,7 +39,7 @@ namespace JamCat.Audio
             if(audioSource.clip == null)
                 return;
 
-            print(0);
+            // print(0);
             started = true;
             audioSource.Play();
         }
@@ -71,6 +71,7 @@ namespace JamCat.Audio
 
         public void setVolume(float value) {
             volume = Math.Clamp(value, 0, 1);
+            audioSource.volume = volume;
         }
     }
 }
