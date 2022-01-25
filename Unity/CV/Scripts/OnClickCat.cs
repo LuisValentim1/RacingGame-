@@ -22,14 +22,26 @@ public class OnClickCat : MonoBehaviour
             if (Physics.Raycast(ray, out hit)) {
                 if (hit.collider != null) {
                     if (hit.collider.gameObject == gameObject) {
-                        audioSource.clip = audioClips[num];
-                        audioSource.Play();
-                        num++;
-                        if (num >= audioClips.Length)
-                            num = 0;
+                        if (GetComponentInParent<Animator>() != null) {
+                            if (GetComponentInParent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Pulo") == false) {
+                                GetComponent<Animator>().SetTrigger("Trigger");
+                                PlayAudio();
+                            }
+                        } else {
+                            PlayAudio();
+                        }
+                       
                     }
                 }
             }
         }
+    }
+    
+    void PlayAudio() {
+        audioSource.clip = audioClips[num];
+        audioSource.Play();
+        num++;
+        if (num >= audioClips.Length)
+            num = 0;
     }
 }

@@ -9,7 +9,7 @@ public class Sol : MonoBehaviour
 
     public bool fastForwardActivated = false;
     public float rotSpeed = 1;
-    public float rotZ;
+    public float rotZ, rotX;
 
     private void Awake() {
 
@@ -29,7 +29,8 @@ public class Sol : MonoBehaviour
 
         if (fastForwardActivated == true) {
             Vector3 euler = transform.localEulerAngles;
-            euler.z += Time.deltaTime * rotSpeed;
+            euler.x += Time.deltaTime * rotSpeed;
+            rotX = euler.x;
             transform.localEulerAngles = euler;
         } else {
             Vector3 euler = transform.localEulerAngles;
