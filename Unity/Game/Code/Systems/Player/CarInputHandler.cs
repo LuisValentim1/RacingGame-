@@ -73,10 +73,10 @@ namespace JamCat.Players
                 if(Input.GetButtonDown("Interaction"))
                     player.InteractJump();
                 
-                if (Input.GetKeyDown(KeyCode.K)) 
+                if (Input.GetKeyDown(KeyCode.N)) 
                     player.getCharacter().UseAbilityBasic();
                 
-                if (Input.GetKeyDown(KeyCode.L)) 
+                if (Input.GetKeyDown(KeyCode.M)) 
                     player.getCharacter().UseAbilityUlti();
             } else {
                 Vector2 inputVector = Vector2.zero;
@@ -100,10 +100,10 @@ namespace JamCat.Players
                 if(Input.GetKeyDown(KeyCode.Keypad0))
                     player.InteractJump();
                 
-                if(Input.GetKeyDown(KeyCode.Keypad1))
+                if(Input.GetKeyDown(KeyCode.Keypad2))
                     player.getCharacter().UseAbilityBasic();
                 
-                if(Input.GetKeyDown(KeyCode.Keypad2))
+                if(Input.GetKeyDown(KeyCode.Keypad3))
                     player.getCharacter().UseAbilityUlti();
             } else {
                 Vector2 inputVector = Vector2.zero;

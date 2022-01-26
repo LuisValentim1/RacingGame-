@@ -105,7 +105,7 @@ namespace JamCat.UI
             AudioMusic.Get().setVolume(generalVolume * Data.Get().options.audioMusicVolume);
             AudioAmbience.Get().setVolume(generalVolume * Data.Get().options.audioAmbienceVolume);
             AudioEffects.Get().setVolume(generalVolume * Data.Get().options.audioEffectsVolume);
-
+            
             // Quality Level
            // QualitySettings.SetQualityLevel(Data.options.quality_level);
 
