@@ -22,6 +22,7 @@ namespace JamCat.UI
         public Text textPlayersReady;
 
         int preCharacter = -1;
+        int localPlayersReady = 0;
 
         // Methods -> Override
         protected override void OnAwakeWindow() {
@@ -29,7 +30,6 @@ namespace JamCat.UI
         }
 
         protected override void OnUpdateWindow() {
-            textPlayersReady.text = "Players Ready: " + SysMultiplayer.Get().clientPlayersReady + "/" + SysMultiplayer.Get().curPlayers;
 
             if (toggleGroup.toggleActivated == null) {
                 toggleReady.setServerEnabled(false);
@@ -37,15 +37,28 @@ namespace JamCat.UI
                 toggleReady.setServerEnabled(true);
             }
 
-            if (SysMultiplayer.Get().networkManager.IsServer == true) {
-                if (SysMultiplayer.Get().clientPlayersReady == SysMultiplayer.Get().curPlayers) {
-                    SysMultiplayer.Get().multiplayerMethods.StartGameClientRpc();
+            if (Data.Get().gameData.localMode == false) {
+                textPlayersReady.text = "Players Ready: " + SysMultiplayer.Get().clientPlayersReady + "/" + SysMultiplayer.Get().curPlayers;
+                if (SysMultiplayer.Get().networkManager.IsServer == true) {
+                    if (SysMultiplayer.Get().clientPlayersReady == SysMultiplayer.Get().curPlayers) {
+                        SysMultiplayer.Get().multiplayerMethods.StartGameClientRpc();
+                    }
+                }
+            } else {
+                textPlayersReady.text = "Players Ready: " + localPlayersReady + "/" + 2;
+                if (localPlayersReady == 2) {
+                    GeneralMethods.StartGame();
                 }
             }
         }
 
         protected override void OnOpenWindow() {
+            localPlayersReady = 0;
+            Data.Get().gameData.charactersSelected = new int[2];
+            for (int i = 0; i < Data.Get().gameData.charactersSelected.Length; i++)
+                Data.Get().gameData.charactersSelected[i] = -1;
             Data.Get().gameData.characterSelected = -1;
+            
             toggleGroup.setServerEnabledAll(true);
             toggleGroup.ActivateAll(false);
             toggleReady.Activate(false);
@@ -57,16 +70,6 @@ namespace JamCat.UI
 
         // Methods -> Public
         public void UpdateCharactersAvaiable(int[] characters, bool[] ready) {
-          /*
-            for (int i = 0; i < characters.Length; i++) {
-                print("c: " + characters[i] + ",  r: " + ready[i]);
-                if (characters[i] == Data.Get().gameData.characterSelected && toggleReady.activated == true) {
-                    
-                } else {
-                    toggleGroup.setServerEnabled(characters[i], !ready[i]);
-                }
-            }
-            */
             if (toggleReady.activated == true) {
                 for (int i = 0; i < toggleGroup.toggles.Length; i++) {
                     if (Data.Get().gameData.characterSelected == i) {
@@ -89,18 +92,34 @@ namespace JamCat.UI
                 } 
             }
         }
+
+        public void UpdateCharactersAvaiable_LocalMode() {
+            for (int i = 0; i < toggleGroup.toggles.Length; i++)
+                toggleGroup.setServerEnabled(i, true);
+                
+            for (int y = 0; y < 2; y++)
+                if (Data.Get().gameData.charactersSelected[y] > -1)
+                    toggleGroup.setServerEnabled(Data.Get().gameData.charactersSelected[y], false);
+        }
         
         public void ToggleReady() {
-            if (toggleReady.activated == true)
-                Data.Get().gameData.characterSelected = preCharacter;
-            else 
-                Data.Get().gameData.characterSelected = -1;
+            if (Data.Get().gameData.localMode == false) {
+                if (toggleReady.activated == true)
+                    Data.Get().gameData.characterSelected = preCharacter;
+                else 
+                    Data.Get().gameData.characterSelected = -1;
 
-            SysMultiplayer.Get().multiplayerMethods.OnReadyServerRpc(
-                SysPlayer.Get().localPlayerID,
-                toggleReady.activated,
-                Data.Get().gameData.characterSelected
-            );
+                SysMultiplayer.Get().multiplayerMethods.OnReadyServerRpc(
+                    SysPlayer.Get().localPlayerID,
+                    toggleReady.activated,
+                    Data.Get().gameData.characterSelected
+                );
+            } else {
+                Data.Get().gameData.charactersSelected[localPlayersReady] = preCharacter;
+                Data.Get().gameData.characterSelected = preCharacter = -1;
+                localPlayersReady++;
+                UpdateCharactersAvaiable_LocalMode();
+            }
         }
 
         public void ButtonSelectCharacter(int number) {
@@ -108,9 +127,14 @@ namespace JamCat.UI
         }
         
         public void ButtonBack() {
+            if (Data.Get().gameData.localMode == false) {
+                SysMultiplayer.Get().Disconnect();
+            } else {
+                Data.Get().gameData.charactersSelected = new int[2];
+            }
+
             preCharacter = -1;
             Data.Get().gameData.characterSelected = -1;
-            SysMultiplayer.Get().Disconnect();
             CloseWindow(0.2f, 0);
             Window_Lobby.Get().OpenWindow(0.2f, 0.2f);
         }

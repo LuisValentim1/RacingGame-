@@ -26,6 +26,8 @@ namespace JamCat.Players
         private CarInputHandler carInputHandler;
         private WheelTrailRenderedHandler[] wheelTrailRenderedHandlers;
 
+        public int playerID;
+
 
         [Header("Synchronized")]
         public int inModule = 0;
@@ -57,12 +59,15 @@ namespace JamCat.Players
         }
 
         public void OnStart() {
-            if (networkObject.IsLocalPlayer == false)
-                return;
+            if (Data.Get().gameData.localMode == false)
+                if (networkObject.IsLocalPlayer == false)
+                    return;
 
             topDownCarController.StartCar();
             carInputHandler.StartCar();
-            SysCamera.Get().SetPlayerTarget(transform);
+
+            if (Data.Get().gameData.localMode == false)
+                SysCamera.Get().SetPlayerTarget(transform);
         }
 
         public void OnUpdate() {
@@ -72,8 +77,9 @@ namespace JamCat.Players
             for (int i = 0; i < wheelTrailRenderedHandlers.Length; i++)
                 wheelTrailRenderedHandlers[i].OnUpdate();
 
-            if (networkObject.IsLocalPlayer == false)
-                return;
+            if (Data.Get().gameData.localMode == false)
+                if (networkObject.IsLocalPlayer == false)
+                    return;
 
             // Physics
             topDownCarController.UpdateCar();
@@ -127,8 +133,9 @@ namespace JamCat.Players
 
 
             // Se é Local Player
-            if (networkObject.IsLocalPlayer == false)
-                return;
+            if (Data.Get().gameData.localMode == false)
+                if (networkObject.IsLocalPlayer == false)
+                    return;
 
             if(collider2d.CompareTag("Jump")) 
                 topDownCarController.TriggerJump();
@@ -142,7 +149,13 @@ namespace JamCat.Players
             if(collider2d.CompareTag("Module")) {
                 Module module = collider2d.GetComponent<Module>();
                 inModule = module.moduleNumber;
-                SysMultiplayer.Get().multiplayerMethods.SetPlayerInModuleServerRpc(SysPlayer.Get().localPlayerID, inModule);
+
+                if (Data.Get().gameData.localMode == false)
+                    SysMultiplayer.Get().multiplayerMethods.SetPlayerInModuleServerRpc(SysPlayer.Get().localPlayerID, inModule);
+                else {
+                    GeneratorServer.Get().SetPlayerInModule_LocalMode(inModule);
+                }
+
             }
 
             if(collider2d.GetComponent<ASlow>() != null) {
@@ -173,8 +186,9 @@ namespace JamCat.Players
         }
         
         private void OnTriggerExit2D(Collider2D collider2d) {
-            if (networkObject.IsLocalPlayer == false)
-                return;
+            if (Data.Get().gameData.localMode == false)
+                if (networkObject.IsLocalPlayer == false)
+                    return;
 
             if(collider2d.CompareTag("Stripe"))
                 stripeFlag = false;
@@ -191,16 +205,23 @@ namespace JamCat.Players
             if (other.gameObject.GetComponent<ElementTree>() != null) {
                 other.gameObject.GetComponent<Animator>().SetBool("hit", true);
             }
-
-            if (networkObject.IsLocalPlayer == false)
-                return;
+            
+            if (Data.Get().gameData.localMode == false)
+                if (networkObject.IsLocalPlayer == false)
+                    return;
 
             if(other.gameObject.CompareTag("Player")) {
                 if(topDownCarController.dashActivated == true) {
-                    if (SysPlayer.Get().localPlayer == this) {
-                        ulong playerID = other.gameObject.GetComponent<NetworkObject>().OwnerClientId;
-                        GetComponent<MultiplayerMethods>().RemoveLifeServerRpc(playerID);
+                    
+                    if (Data.Get().gameData.localMode == false) {
+                        if (SysPlayer.Get().localPlayer == this) {
+                            ulong playerID = other.gameObject.GetComponent<NetworkObject>().OwnerClientId;
+                            GetComponent<MultiplayerMethods>().RemoveLifeServerRpc(playerID);
+                        }
+                    } else {
+                        other.gameObject.GetComponent<Player>().getCharacter().RemoveLife();
                     }
+
                 }
             }
         }

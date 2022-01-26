@@ -18,10 +18,14 @@ namespace JamCat.Players
 
         public List<Player> onlinePlayers;
 
+        public GameObject prefabLocalPlayer;
+        public List<Player> localPlayers;
+
         // Methods -> Override
         protected override void OnAwake() {
             instance = this;
             onlinePlayers = new List<Player>();
+            localPlayers = new List<Player>();
         }
 
         protected override void OnStart() {
@@ -33,8 +37,19 @@ namespace JamCat.Players
                 return;
 
             // localPlayer.OnUpdate();
-            for (int i = 0; i < onlinePlayers.Count; i++)
-                onlinePlayers[i].OnUpdate();
+            if (Data.Get().gameData.localMode == false) { 
+                
+                for (int i = 0; i < onlinePlayers.Count; i++)
+                    onlinePlayers[i].OnUpdate();
+                if (Input.GetKeyDown(KeyCode.P))
+                    SysMultiplayer.Get().multiplayerMethods.RemoveLifeServerRpc(localPlayerID);
+
+            } else {
+
+                for (int i = 0; i < localPlayers.Count; i++)
+                    localPlayers[i].OnUpdate();
+
+            }
 
             if (Input.GetKeyDown(KeyCode.Escape)) {
                 if (Data.Get().gameLogic.is_paused == false) {
@@ -43,17 +58,30 @@ namespace JamCat.Players
                     GeneralMethods.PauseGame(false);
                 }
             }
-
-            if (Input.GetKeyDown(KeyCode.P))
-                SysMultiplayer.Get().multiplayerMethods.RemoveLifeServerRpc(localPlayerID);
         }
 
         public void Restart() {
-            if (localPlayerObj == null)
-                return;
+            if (Data.Get().gameData.localMode == false) {
+                if (localPlayerObj == null)
+                    return;
 
-            localPlayer = localPlayerObj.GetComponent<Player>();
-            localPlayer.Restart();
+                localPlayer = localPlayerObj.GetComponent<Player>();
+                localPlayer.Restart();
+            } else {
+                for (int i = 0; i < localPlayers.Count; i++) 
+                    Destroy(localPlayers[i].gameObject);
+                localPlayers = new List<Player>();
+                
+                if (Data.Get().gameLogic.in_game == true) {
+                    for (int i = 0; i < Data.Get().gameData.charactersSelected.Length; i++) {
+                        GameObject newPlayer = Instantiate(prefabLocalPlayer, transform);
+                        Player player = newPlayer.GetComponent<Player>();
+                        player.ChooseCharacter(Data.Get().gameData.charactersSelected[i]);
+                        player.playerID = i;
+                        localPlayers.Add(player);
+                    }
+                }
+            }
         }
 
         public void UpdateOnlinePlayers(ulong[] onlinePlayersIDs, int[] characters) {
@@ -67,6 +95,10 @@ namespace JamCat.Players
                 if (onlinePlayers[i].getNetworkObject().OwnerClientId == id)
                     return onlinePlayers[i];
             return null;
+        }
+
+        public Player getLocalPlayer(int id) {
+            return localPlayers[id];
         }
     }
 }

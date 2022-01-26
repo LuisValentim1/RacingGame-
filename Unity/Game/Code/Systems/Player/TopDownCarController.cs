@@ -14,7 +14,6 @@ namespace JamCat.Players
         // Variables -> Public
         Player player;
 
-
         [Header("Car settings")]
         public AudioSource audioEngine;
         public float driftFactor = 0.80f;
@@ -73,16 +72,19 @@ namespace JamCat.Players
             if (Data.Get().gameLogic.in_game == false)
                 return;
 
-            if (player.getNetworkObject().IsLocalPlayer == false)
-                return;
-                
-            MultiplayerMethods.Get().UpdateVelocityServerRpc(SysPlayer.Get().localPlayerID, getVelocity());
             PlayingEngineAudio();
+            
+            if (Data.Get().gameData.localMode == false) {
+                if (player.getNetworkObject().IsLocalPlayer == false)
+                    return;
+                MultiplayerMethods.Get().UpdateVelocityServerRpc(SysPlayer.Get().localPlayerID, getVelocity());
+            }
         }
 
         private void FixedUpdate() {
-            if (player.getNetworkObject().IsLocalPlayer == false)
-                return;
+            if (Data.Get().gameData.localMode == false)
+                if (player.getNetworkObject().IsLocalPlayer == false)
+                    return;
 
             currentVelocity = carRigidbody2D.velocity.magnitude;
             ApplyEngineForce();

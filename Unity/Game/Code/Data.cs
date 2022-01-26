@@ -43,6 +43,9 @@ public class Data : MonoBehaviour {
     [Serializable]
     public class GameData {
         public int characterSelected = -1;
+
+        public bool localMode = false;
+        public int[] charactersSelected; 
     }
 
     [Serializable]

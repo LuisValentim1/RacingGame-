@@ -62,7 +62,15 @@ namespace JamCat.UI
         }
 
         // Methods -> Public
+        public void ButtonLocalMode() {
+            CloseWindow(0.3f, 0);
+            Window_CharacterSelection.Get().OpenWindow(0.3f, 0.3f);
+            Data.Get().gameData.localMode = true;
+        }
+
         public void ButtonHost() {
+            Data.Get().gameData.localMode = false;
+            
             SysMultiplayer.Get().maxPlayers = uiSliderPlayersQuantity.value;
             SysMultiplayer.Get().uNetTransport.MaxConnections = uiSliderPlayersQuantity.value;
             SysMultiplayer.Get().uNetTransport.ConnectAddress = inputFieldIP.text;
@@ -75,6 +83,8 @@ namespace JamCat.UI
         }
 
         public void ButtonJoin() {
+            Data.Get().gameData.localMode = false;
+            
             SysMultiplayer.Get().uNetTransport.MaxConnections = uiSliderPlayersQuantity.value;
             SysMultiplayer.Get().uNetTransport.ConnectAddress = inputFieldIP.text;
             SysMultiplayer.Get().StartClient();

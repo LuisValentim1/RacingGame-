@@ -25,6 +25,9 @@ namespace JamCat.UI
         public Slider sliderVolumeAmbience;
         public Slider sliderVolumeEffects;
 
+       // public bool sliderVolumeEffects;
+
+
         // Methods -> Override
         protected override void OnAwakeWindow() {
             instance = this;
@@ -51,17 +54,13 @@ namespace JamCat.UI
             this.last_window = last_window;
             Load();
         }
-
-        public void Button_Graphics() {
-            CloseAllWindows_Instead(cvs[0]);
-        }
-
+        
         public void Button_Audio() {
-            CloseAllWindows_Instead(cvs[1]);
+            CloseAllWindows_Instead(cvs[0]);
         }
         
         public void Button_Controls() {
-            CloseAllWindows_Instead(cvs[2]);
+            CloseAllWindows_Instead(cvs[1]);
         }
 
         public void Button_Apply() {

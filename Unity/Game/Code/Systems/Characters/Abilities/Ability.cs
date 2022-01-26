@@ -61,7 +61,8 @@ namespace JamCat.Characters
         }
 
         public void SendInfoToServer() {
-            MultiplayerMethods.Get().UseAbilityServerRpc(SysPlayer.Get().localPlayerID, id);
+            if (Data.Get().gameData.localMode == false)
+                MultiplayerMethods.Get().UseAbilityServerRpc(SysPlayer.Get().localPlayerID, id);
         }
 
         public void ReceiveInfoFromServer() {

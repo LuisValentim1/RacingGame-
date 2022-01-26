@@ -457,6 +457,7 @@ MonoBehaviour:
   character: {fileID: 861951613748801486}
   jumpFlag: 0
   stripeFlag: 0
+  playerID: 0
   inModule: 0
 --- !u!114 &2224988506148844551
 MonoBehaviour:
@@ -1142,7 +1143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8286263725021615283
 Transform:
   m_ObjectHideFlags: 0

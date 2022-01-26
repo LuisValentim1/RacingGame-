@@ -44,8 +44,9 @@ public class Manager : MonoBehaviour
 
 
     public void Dev_InputToSkip() {
-        if (Input.GetKeyDown(KeyCode.Keypad1)) {
+        if (Input.GetKeyDown(KeyCode.O))
             SkipToGame(0);
+            /*
         } else if (Input.GetKeyDown(KeyCode.Keypad2)) {
             SkipToGame(1);
         } else if (Input.GetKeyDown(KeyCode.Keypad3)) {
@@ -53,6 +54,7 @@ public class Manager : MonoBehaviour
         } else if (Input.GetKeyDown(KeyCode.Keypad4)) {
             SkipToGame(3);
         }
+        */
     }
 
     public void SkipToGame(int characterNumber) {

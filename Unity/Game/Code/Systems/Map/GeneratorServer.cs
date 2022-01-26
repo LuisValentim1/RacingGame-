@@ -55,8 +55,9 @@ namespace JamCat.Map {
 
         // Methods -> Public
         public void GenerateMap() {
-            if (NetworkManager.Singleton.IsServer == false)
-                return;
+            if (Data.Get().gameData.localMode == false)
+                if (NetworkManager.Singleton.IsServer == false)
+                    return;
 
             if (gerarTudo == true) {
                 for (int i = 0; i < modulesQuantity; i++) {
@@ -64,14 +65,28 @@ namespace JamCat.Map {
                 }
             } else {
                 for (int i = 0; i < generateQuantity; i++) {
-                    SysMultiplayer.Get().multiplayerMethods.GenerateModuleServerRpc();
+                    
+                    if (Data.Get().gameData.localMode == false)
+                        SysMultiplayer.Get().multiplayerMethods.GenerateModuleServerRpc();
+                    else
+                        GenerateModule();
                 }
             }
         }
 
+        public void SetPlayerInModule_LocalMode(int inModule) {
+            if (GeneratorServer.Get().GetModuleCreated(inModule).playerWasInside == true)
+                return;
+
+            GeneratorServer.Get().GetModuleCreated(inModule).playerWasInside = true;
+            GeneratorServer.Get().DeleteLastModule();     
+            GeneratorServer.Get().GenerateModule();
+        }
+
         public Module GenerateModule() {
-            if (NetworkManager.Singleton.IsServer == false)
-                return null;
+            if (Data.Get().gameData.localMode == false)
+                if (NetworkManager.Singleton.IsServer == false)
+                    return null;
 
             if (modulesCreated == modulesQuantity) 
                 return null;
@@ -143,7 +158,9 @@ namespace JamCat.Map {
 
         public void DeleteLastModule() {
             Destroy(arrayModules[currentModuleArray]);
-            SysMultiplayer.Get().multiplayerMethods.DestroyLastModuleClientRpc();
+
+            if (Data.Get().gameData.localMode == false)
+                SysMultiplayer.Get().multiplayerMethods.DestroyLastModuleClientRpc();
         }
 
         //Method for background buildings placement

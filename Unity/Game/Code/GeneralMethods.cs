@@ -24,7 +24,11 @@ public static class GeneralMethods {
         SysMap.Get().GenerateMap();
 
         SysPlayer.Get().Restart();
-        SysCamera.Get().SetPlayerTarget(SysPlayer.Get().localPlayerObj.transform);
+
+        if (Data.Get().gameData.localMode == false)
+            SysCamera.Get().SetPlayerTarget(SysPlayer.Get().localPlayerObj.transform);
+        else
+            SysCamera.Get().SetPlayerTarget(SysPlayer.Get().getLocalPlayer(0).transform);
 
         AudioMusic.Get().PlayMusic(1);
         SysCamera.Get().SetCamera(1);

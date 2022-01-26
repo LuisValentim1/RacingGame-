@@ -33,7 +33,11 @@ namespace JamCat.UI
         // Methods -> Public
         public void Button_PlayAgain() {
             CloseWindow(0.5f, 0);
-            SysMultiplayer.Get().multiplayerMethods.StartGameServerRpc();
+
+            if (Data.Get().gameData.localMode == false)
+                SysMultiplayer.Get().multiplayerMethods.StartGameServerRpc();
+            else 
+                GeneralMethods.StartGame();
         }
         
         public void Button_MainMenu() {
@@ -41,7 +45,9 @@ namespace JamCat.UI
             CloseWindow(0.5f, 0);
             Window_MainMenu.Get().OpenWindow(0.5f, 0.5f);
             GeneralMethods.MainMenu();
-            SysMultiplayer.Get().Disconnect();
+
+            if (Data.Get().gameData.localMode == false)
+                SysMultiplayer.Get().Disconnect();
         }
     }
 }
