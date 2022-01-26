@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using JamCat.UI;
+using JamCat.Players;
+using JamCat.Cameras;
+using JamCat.Map;
 
 public class Manager : MonoBehaviour
 {
@@ -15,6 +18,9 @@ public class Manager : MonoBehaviour
 
     public bool dev_tools = true;
     public bool hacks = false;
+
+    public int frontModule = 0;
+    public float curDist = 100000.0f;
 
     // Methods -> Standard
     private void Awake() {
@@ -40,8 +46,36 @@ public class Manager : MonoBehaviour
         if (dev_tools == true) {
             Dev_InputToSkip();
         }
+
+        UpdateFirstCar();
     }
 
+    public void UpdateFirstCar(){
+        List<JamCat.Players.Player> onPlayers = systems[1].GetComponent<SysPlayer>().onlinePlayers;
+        for(int i = 0; i<onPlayers.Count; i++){
+            if(onPlayers[i].inModule > frontModule){
+                systems[2].GetComponent<SysCamera>().SetPlayerTarget(onPlayers[i].transform);
+                frontModule = onPlayers[i].inModule;
+                curDist = 20000.0f;
+            }
+            if(onPlayers[i].inModule == frontModule){
+                if(checkCloser(onPlayers[i])){
+                    systems[2].GetComponent<SysCamera>().SetPlayerTarget(onPlayers[i].transform);
+                }
+            }
+        }
+    }
+
+    public bool checkCloser(Player pl){
+        Module mod = systems[3].GetComponent<SysMap>().generatorServer.GetModuleCreated(pl.inModule);
+        Vector3 mod_pos = mod.transform.position;
+        Vector3 offset = new Vector3(mod.moduleConfiguration.to_direction.x * mod.moduleConfiguration.size, mod.moduleConfiguration.to_direction.y * mod.moduleConfiguration.size,0);
+        if(Vector3.Distance(mod_pos+offset, pl.transform.position)<curDist){
+            curDist = Vector3.Distance(mod_pos+offset, pl.transform.position);
+            return true;
+        }
+        return false;
+    }
 
     public void Dev_InputToSkip() {
         if (Input.GetKeyDown(KeyCode.O))

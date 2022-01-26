@@ -33,6 +33,7 @@ namespace JamCat.Map {
         public int currentModuleArray;
         public GameObject[] arrayModules;
         public GameObject lastModule;
+        //public GameObject firstCar;
 
 
         // Methods -> Standard
@@ -50,7 +51,14 @@ namespace JamCat.Map {
         }
 
         public void OnUpdate() {
+            updateFirst();
+        }
 
+        /**public Transform GetCurFirst(){
+            return firstCar.transform;
+        }*/
+
+        public void updateFirst(){
         }
 
         // Methods -> Public
@@ -146,7 +154,6 @@ namespace JamCat.Map {
 
             return module;
         }
-
 
         public Module GetModuleCreated(int moduleNumber) {
             for (int i = 0; i < arrayModules.Length; i++)

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using JamCat.Cameras;
 
 namespace JamCat.Map {
     public class SysMap : Sys {
@@ -12,6 +13,7 @@ namespace JamCat.Map {
         // Variables -> Public
         public GeneratorServer generatorServer;
         public GeneratorClient generatorClient;
+        public JamCat.Cameras.SysCamera gameCamera;
 
         // Methods -> Override
         protected override void OnAwake() {
@@ -28,7 +30,12 @@ namespace JamCat.Map {
         protected override void OnUpdate() {
             generatorServer.OnUpdate();
             generatorClient.OnUpdate();
+            //gameCamera.SetPlayerTarget(GetFirstCar());
         }
+
+        /**public Transform GetFirstCar(){
+            return generatorServer.GetCurFirst();
+        }**/
 
         // Methods -> Public
         public void GenerateMap() {

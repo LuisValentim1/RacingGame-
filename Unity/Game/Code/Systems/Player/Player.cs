@@ -31,6 +31,7 @@ namespace JamCat.Players
 
         [Header("Synchronized")]
         public int inModule = 0;
+        public float dist = 0.0f;
         
 
         // Methods -> Standard
