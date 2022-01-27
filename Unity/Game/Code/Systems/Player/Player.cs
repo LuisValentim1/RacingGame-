@@ -157,6 +157,7 @@ namespace JamCat.Players
                     GeneratorServer.Get().SetPlayerInModule_LocalMode(inModule);
                 }
 
+                SysPlayer.Get().OnEnterModule();
             }
 
             if(collider2d.GetComponent<ASlow>() != null) {

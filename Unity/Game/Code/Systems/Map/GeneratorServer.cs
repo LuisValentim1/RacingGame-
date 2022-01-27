@@ -262,6 +262,27 @@ namespace JamCat.Map {
             return null;
         }
 
+        public float getPlayerRotation (int inModule) {
+            for (int i = 0; i < arrayModules.Length; i++) {
+                if (arrayModules[i] != null) {
+                    Module module = arrayModules[i].GetComponent<Module>();
+                    if (module.moduleNumber == inModule) {
+                        if (module.moduleConfiguration.to_direction == new Vector2(0, 1)) {
+                            return 0;
+                        } else if (module.moduleConfiguration.to_direction == new Vector2(1, 0)) {
+                            return 270;
+                        } else if (module.moduleConfiguration.to_direction == new Vector2(0, -1)) {
+                            return 180;
+                        } else if (module.moduleConfiguration.to_direction == new Vector2(-1, 0)) {
+                            return 90;
+                        }
+                    }
+                }
+            }
+
+            return 0;
+        }
+
         public float GetInitialPlayerRotation() {
             Module firstModule = GetInitialModule();
             if (firstModule != null) {

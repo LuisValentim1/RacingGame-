@@ -63,6 +63,7 @@ namespace JamCat.Players
 
         public void PlayerOne () {
             if(topDownCarController.hasControl == true) {
+
                 Vector2 inputVector = Vector2.zero;
                 inputVector.x = Input.GetAxis("Horizontal");
                 inputVector.y = Input.GetAxis("Vertical");
@@ -73,23 +74,27 @@ namespace JamCat.Players
                 if(Input.GetButtonDown("Interaction"))
                     player.InteractJump();
                 
-                if (Input.GetKeyDown(KeyCode.D)) 
+                if (Input.GetKeyDown(KeyCode.N)) 
                     player.getCharacter().UseAbilityBasic();
                 
-                if (Input.GetKeyDown(KeyCode.F)) 
+                if (Input.GetKeyDown(KeyCode.M)) 
                     player.getCharacter().UseAbilityUlti();
+
             } else {
+
                 Vector2 inputVector = Vector2.zero;
                 Vector2 curInput = topDownCarController.getInputVector();
                 Vector2 randomizedInput = topDownCarController.randomizeInputVector();
                 inputVector.x = randomizedInput.x;
                 inputVector.y = randomizedInput.y;
                 topDownCarController.setInputVector(inputVector);
+                
             }
         }
 
         public void PlayerTwo () {
             if(topDownCarController.hasControl == true) {
+
                 Vector2 inputVector = Vector2.zero;
                 inputVector.x = Input.GetAxis("HorizontalPlayer2");
                 inputVector.y = Input.GetAxis("VerticalPlayer2");
@@ -100,18 +105,21 @@ namespace JamCat.Players
                 if(Input.GetKeyDown(KeyCode.Keypad0))
                     player.InteractJump();
                 
-                if(Input.GetKeyDown(KeyCode.LeftArrow))
+                if(Input.GetKeyDown(KeyCode.Keypad2))
                     player.getCharacter().UseAbilityBasic();
                 
-                if(Input.GetKeyDown(KeyCode.RightArrow))
+                if(Input.GetKeyDown(KeyCode.Keypad3))
                     player.getCharacter().UseAbilityUlti();
+
             } else {
+
                 Vector2 inputVector = Vector2.zero;
                 Vector2 curInput = topDownCarController.getInputVector();
                 Vector2 randomizedInput = topDownCarController.randomizeInputVector();
                 inputVector.x = randomizedInput.x;
                 inputVector.y = randomizedInput.y;
                 topDownCarController.setInputVector(inputVector);
+
             }
         }
 

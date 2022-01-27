@@ -110,7 +110,7 @@ namespace JamCat.Players
             carRigidbody2D.velocity = Vector2.zero;
 
             // Player starts with the initial rotation of the track
-            rotationAngle = GeneratorServer.Get().GetInitialPlayerRotation();
+            rotationAngle = GeneratorServer.Get().getPlayerRotation(player.inModule);
         }
         
 

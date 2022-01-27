@@ -13,9 +13,16 @@ namespace JamCat.UI
         public static Window_HUD Get() { return instance; }
 
         // Variables
-        public int currenct_character;
+        [Header("Configuration")]
         public UI_Bar barMana;
         public UI_Bar_Array barLife;
+        public Window windowControlsInfo;
+
+        [Header("Run-Time")]
+        public int currenct_character;
+
+        private bool triggerControlInfo;
+        public float timerControlsInfo;
 
         // Methods -> Override
         protected override void OnAwakeWindow() {
@@ -23,11 +30,20 @@ namespace JamCat.UI
         }
 
         protected override void OnUpdateWindow() {
-
+            if (triggerControlInfo == true) {
+                timerControlsInfo -= Time.deltaTime;
+                if (timerControlsInfo <= 0) {
+                    triggerControlInfo = false;
+                    windowControlsInfo.CloseWindow(1f, 0);
+                }
+            }
         }
 
         protected override void OnOpenWindow() {
-
+            windowControlsInfo.CloseWindow(0, 0);
+            windowControlsInfo.OpenWindow(1f, 0);
+            timerControlsInfo = 4f;
+            triggerControlInfo = true;
         }
 
         protected override void OnCloseWindow() {

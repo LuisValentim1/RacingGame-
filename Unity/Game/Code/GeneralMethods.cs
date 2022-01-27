@@ -17,6 +17,7 @@ public static class GeneralMethods {
         Data.Get().sceneConfiguration.scene_play.SetActive(true);
         Data.Get().sceneConfiguration.scene_main_menu.SetActive(false);
         
+        SysUI.Get().CloseAllWindows();
         Window_CharacterSelection.Get().CloseWindow(0.2f, 0);
         Window_HUD.Get().OpenWindow(0.2f, 0);
 

@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using JamCat.Cameras;
+using JamCat.Map;
 
 namespace JamCat.Players
 {
@@ -19,13 +21,14 @@ namespace JamCat.Players
         public List<Player> onlinePlayers;
 
         public GameObject prefabLocalPlayer;
-        public List<Player> localPlayers;
+
+        public float curDist = 100000.0f;
+
 
         // Methods -> Override
         protected override void OnAwake() {
             instance = this;
             onlinePlayers = new List<Player>();
-            localPlayers = new List<Player>();
         }
 
         protected override void OnStart() {
@@ -46,10 +49,13 @@ namespace JamCat.Players
 
             } else {
 
-                for (int i = 0; i < localPlayers.Count; i++)
-                    localPlayers[i].OnUpdate();
+                for (int i = 0; i < onlinePlayers.Count; i++)
+                    onlinePlayers[i].OnUpdate();
 
             }
+                
+            UpdateFirstCar();
+            UpdateDeaths();
 
             if (Input.GetKeyDown(KeyCode.Escape)) {
                 if (Data.Get().gameLogic.is_paused == false) {
@@ -68,9 +74,9 @@ namespace JamCat.Players
                 localPlayer = localPlayerObj.GetComponent<Player>();
                 localPlayer.Restart();
             } else {
-                for (int i = 0; i < localPlayers.Count; i++) 
-                    Destroy(localPlayers[i].gameObject);
-                localPlayers = new List<Player>();
+                for (int i = 0; i < onlinePlayers.Count; i++) 
+                    Destroy(onlinePlayers[i].gameObject);
+                onlinePlayers = new List<Player>();
                 
                 if (Data.Get().gameLogic.in_game == true) {
                     for (int i = 0; i < Data.Get().gameData.charactersSelected.Length; i++) {
@@ -78,7 +84,7 @@ namespace JamCat.Players
                         Player player = newPlayer.GetComponent<Player>();
                         player.ChooseCharacter(Data.Get().gameData.charactersSelected[i]);
                         player.playerID = i;
-                        localPlayers.Add(player);
+                        onlinePlayers.Add(player);
                     }
                 }
             }
@@ -90,6 +96,65 @@ namespace JamCat.Players
             }
         }
 
+
+        public void OnEnterModule() {
+            curDist = 1000000f;
+        }
+
+        public void UpdateFirstCar(){
+            for (int i = 0; i < onlinePlayers.Count; i++) {
+                if (onlinePlayers[i].inModule == getInFrontModule()) {
+                    if (CheckCloser(onlinePlayers[i])) {
+                        SysCamera.Get().SetPlayerTarget(onlinePlayers[i].transform);
+                    }
+                }
+            }
+        }
+
+        public void UpdateDeaths(){
+            for(int i = 0; i < onlinePlayers.Count; i++){
+                if(CheckDeath(onlinePlayers[i])){
+                    RestartOnModule();
+                }
+            }
+        }
+        
+        public bool CheckDeath(Player pl){
+            if(IsObjectVisible(pl.GetComponentInChildren<SpriteRenderer>()))
+                return false;
+            else
+                return true;
+        }
+
+        public bool CheckCloser(Player pl){
+            Module mod = GeneratorServer.Get().GetModuleCreated(pl.inModule);
+            Vector3 mod_pos = mod.transform.position;
+            Vector3 offset = new Vector3(mod.moduleConfiguration.to_direction.x * mod.moduleConfiguration.size, mod.moduleConfiguration.to_direction.y * mod.moduleConfiguration.size, 0);
+            if (Vector3.Distance (mod_pos+offset, pl.transform.position) < curDist){
+                curDist = Vector3.Distance(mod_pos + offset, pl.transform.position);
+                return true;
+            }
+            return false;
+        }
+
+        public void RestartOnModule() {
+            Module mod = GeneratorServer.Get().GetModuleCreated(getInFrontModule());
+            Vector3 mod_pos = mod.transform.position;
+            Vector3 offset = new Vector3(mod.moduleConfiguration.to_direction.x * mod.moduleConfiguration.size, mod.moduleConfiguration.to_direction.y * mod.moduleConfiguration.size,0);
+            for(int i = 0; i < onlinePlayers.Count; i++){
+                onlinePlayers[i].getTopDownCarController().Restart();
+                onlinePlayers[i].transform.position = mod_pos - 1/2 * offset;
+                // onlinePlayers[i].getTopDownCarController().rotationAngle = GeneratorServer.Get().GetInitialPlayerRotation();
+            }
+        }
+
+        public bool IsObjectVisible(Renderer renderer) {
+            return GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(SysCamera.Get().getCurrentCamera()), renderer.bounds);
+        }
+
+
+
+
         public Player getPlayer(ulong id) {
             for (int i = 0; i < onlinePlayers.Count; i++)
                 if (onlinePlayers[i].getNetworkObject().OwnerClientId == id)
@@ -98,7 +163,23 @@ namespace JamCat.Players
         }
 
         public Player getLocalPlayer(int id) {
-            return localPlayers[id];
+            return onlinePlayers[id];
+        }
+
+        public int getInFrontModule() {
+            int value = -1;
+            for (int i = 0; i < onlinePlayers.Count; i++)
+                if (value < onlinePlayers[i].inModule)
+                    value = onlinePlayers[i].inModule;
+            return value;
+        }
+        
+        public int getQuantPlayersInFrontModule() {
+            int value = 0;
+            for (int i = 0; i < onlinePlayers.Count; i++)
+                if (onlinePlayers[i].inModule == getInFrontModule())
+                    value++;
+            return value;
         }
     }
 }
