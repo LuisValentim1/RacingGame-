@@ -48,6 +48,7 @@ public class Manager : MonoBehaviour
         }
 
         UpdateFirstCar();
+        UpdateDeaths();
     }
 
     public void UpdateFirstCar(){
@@ -59,14 +60,35 @@ public class Manager : MonoBehaviour
                 curDist = 20000.0f;
             }
             if(onPlayers[i].inModule == frontModule){
-                if(checkCloser(onPlayers[i])){
+                if(CheckCloser(onPlayers[i])){
                     systems[2].GetComponent<SysCamera>().SetPlayerTarget(onPlayers[i].transform);
                 }
             }
         }
     }
 
-    public bool checkCloser(Player pl){
+    public void UpdateDeaths(){
+        List<JamCat.Players.Player> onPlayers = systems[1].GetComponent<SysPlayer>().onlinePlayers;
+        for(int i = 0; i<onPlayers.Count; i++){
+            if(CheckDeath(onPlayers[i])){
+                RestartOnModule();
+            }
+
+        }
+    }
+
+    public bool CheckDeath(Player pl){
+        Vector3 cam = systems[2].GetComponent<SysCamera>();
+        if(IsObjectVisible(cam, pl.GetCoponent<SpriteRenderer>())){
+            return false;
+        }
+        else{
+            return true;
+        }
+        
+    }
+
+    public bool CheckCloser(Player pl){
         Module mod = systems[3].GetComponent<SysMap>().generatorServer.GetModuleCreated(pl.inModule);
         Vector3 mod_pos = mod.transform.position;
         Vector3 offset = new Vector3(mod.moduleConfiguration.to_direction.x * mod.moduleConfiguration.size, mod.moduleConfiguration.to_direction.y * mod.moduleConfiguration.size,0);
@@ -75,6 +97,21 @@ public class Manager : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void RestartOnModule(){
+        List<JamCat.Players.Player> onPlayers = systems[1].GetComponent<SysPlayer>().onlinePlayers;
+        Module mod = systems[3].GetComponent<SysMap>().generatorServer.GetModuleCreated(pl.inModule);
+        Vector3 mod_pos = mod.transform.position;
+        Vector3 offset = new Vector3(mod.moduleConfiguration.to_direction.x * mod.moduleConfiguration.size, mod.moduleConfiguration.to_direction.y * mod.moduleConfiguration.size,0);
+        for(int i = 0; i<onPlayers.Count; i++){
+            onPlayers[i].transform.position = mod_pos - 1/2 * offset;
+        }
+    }
+
+    public bool IsObjectVisible(JamCat.Cameras.SysCamera cam, Renderer renderer)
+    {
+        return GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(cam.GetComponent<CameraFollowCar>()), renderer.bounds);
     }
 
     public void Dev_InputToSkip() {

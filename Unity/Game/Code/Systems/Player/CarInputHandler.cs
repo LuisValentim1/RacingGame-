@@ -72,6 +72,7 @@ namespace JamCat.Players
             
                 if(Input.GetButtonDown("Interaction"))
                     player.InteractJump();
+                
                 if (Input.GetKeyDown(KeyCode.D)) 
                     player.getCharacter().UseAbilityBasic();
                 
@@ -98,6 +99,7 @@ namespace JamCat.Players
             
                 if(Input.GetKeyDown(KeyCode.Keypad0))
                     player.InteractJump();
+                
                 if(Input.GetKeyDown(KeyCode.LeftArrow))
                     player.getCharacter().UseAbilityBasic();
                 

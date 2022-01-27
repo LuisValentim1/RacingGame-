@@ -9471,6 +9471,8 @@ MonoBehaviour:
   data: {fileID: 1330949567}
   dev_tools: 1
   hacks: 1
+  frontModule: 0
+  curDist: 0
 --- !u!114 &1330949567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13106,6 +13108,7 @@ MonoBehaviour:
   can_pause: 0
   generatorServer: {fileID: 1837847971}
   generatorClient: {fileID: 1837847974}
+  gameCamera: {fileID: 1431976956}
 --- !u!114 &1837847973
 MonoBehaviour:
   m_ObjectHideFlags: 0

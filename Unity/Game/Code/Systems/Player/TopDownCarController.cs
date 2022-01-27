@@ -19,7 +19,7 @@ namespace JamCat.Players
         public float driftFactor = 0.80f;
         public float accelerationFactor = 0.01f;
         public float turnFactor = 0.5f;
-        public float maxSpeed = 20.0f;
+        public float maxSpeed = 5.0f;
         public float rotOffset = -90;
 
         [Header("Sprites")]
