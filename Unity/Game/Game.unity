@@ -10023,10 +10023,10 @@ MonoBehaviour:
   ui_elements:
   - {fileID: 616810401}
   - {fileID: 44117476}
-  currenct_character: 0
   barMana: {fileID: 616810401}
   barLife: {fileID: 44117476}
   windowControlsInfo: {fileID: 189543605}
+  currenct_character: 0
   timerControlsInfo: 0
 --- !u!1 &1398958648
 GameObject:
