@@ -34,8 +34,14 @@ public static class GeneralMethods {
         AudioMusic.Get().PlayMusic(1);
         SysCamera.Get().SetCamera(1);
 
+        GeneralMethods.StartCountdown(3);
 
         // Terminar para os outros sistemas
+    }
+
+    public static void StartCountdown(int seconds) {
+        Data.Get().gameLogic.countdown = seconds;
+        Window_HUD.Get().StartCountdown();
     }
 
     public static void PauseGame(bool state) {
@@ -68,9 +74,10 @@ public static class GeneralMethods {
         // Terminar para os outros sistemas
     }
 
-    public static void CallFinish() {
+    public static void CallFinish(int characterNumber) {
         Data.Get().gameLogic.game_finished = true;
         Window_Finish.Get().OpenWindow(0.2f, 0);
+        Window_Finish.Get().UpdateCharacterPic(characterNumber);
 
         if (Data.Get().gameLogic.is_paused == true)
             Window_PauseMenu.Get().CloseWindow(0.3f, 0);

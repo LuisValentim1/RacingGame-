@@ -10,6 +10,7 @@ namespace JamCat.Characters
     {
         // Variables
         [Header("Configurable")]
+        public int characterNumber;
         public string characterName;
         public AbilityGroup abilityGroup;
         public Sprite sprite;
@@ -24,12 +25,13 @@ namespace JamCat.Characters
         public bool isOut;
         public bool usingShield;
 
+        public UI_Character uiCharacter;
+
 
         // Methods -> Standard
         public void OnAwake(Player player) {
             this.player = player;
             abilityGroup.OnAwake();
-            Restart();
         }
 
         public void OnStart() {
@@ -63,8 +65,10 @@ namespace JamCat.Characters
             isOut = false;
             curMana = 0;
             curLifes = maxLifes;
-            Window_HUD.Get().barLife.setValue(curLifes);
-            Window_HUD.Get().barMana.SetPercentage(curMana);
+
+            uiCharacter.uiBarArrayLives.setValue(curLifes);
+            uiCharacter.uiBarMana.SetPercentage(curMana);
+
             UpdateGraphics();
         }
         
@@ -79,7 +83,7 @@ namespace JamCat.Characters
             if (curMana > maxMana)
                 curMana = maxMana;
 
-            Window_HUD.Get().barMana.SetPercentage(curMana);
+            uiCharacter.uiBarMana.SetPercentage(curMana);
         }
 
         public void AddManaByTime(float manaValue){
@@ -87,7 +91,7 @@ namespace JamCat.Characters
             if (curMana > maxMana)
                 curMana = maxMana;
 
-            Window_HUD.Get().barMana.SetPercentage(curMana);
+            uiCharacter.uiBarMana.SetPercentage(curMana);
         }
         
         public void RemoveMana(float manaValue){
@@ -95,7 +99,7 @@ namespace JamCat.Characters
             if (curMana < 0)
                 curMana = 0;
 
-            Window_HUD.Get().barMana.SetPercentage(curMana);
+            uiCharacter.uiBarMana.SetPercentage(curMana);
         }
 
         public void RemoveLife(int value) {
@@ -108,8 +112,7 @@ namespace JamCat.Characters
                 curLifes = 0;
             }
 
-            if (player.getNetworkObject().IsLocalPlayer)
-                Window_HUD.Get().barLife.setValue(curLifes);
+            uiCharacter.uiBarArrayLives.setValue(curLifes);
         }
 
         public void RemoveLife() {
@@ -122,8 +125,19 @@ namespace JamCat.Characters
                 curLifes = 0;
             }
 
-            if (player.getNetworkObject().IsLocalPlayer)
-                Window_HUD.Get().barLife.setValue(curLifes);
+            uiCharacter.uiBarArrayLives.setValue(curLifes);
+        }
+
+
+        public void setUICharacter(UI_Character uiCharacter) {
+            this.uiCharacter = uiCharacter;
+        }
+
+        public bool isAlive() {
+            if(curLifes > 0)
+                return true;
+            else
+                return false;
         }
     }
 }

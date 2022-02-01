@@ -43,13 +43,17 @@ public class Manager : MonoBehaviour
         if (dev_tools == true) {
             Dev_InputToSkip();
         }
+
+        if (Data.Get().gameLogic.countdown > 0) {
+            Data.Get().gameLogic.countdown -= Time.deltaTime;
+        }
     }
 
 
     public void Dev_InputToSkip() {
+            /*
         if (Input.GetKeyDown(KeyCode.O))
             SkipToGame(0);
-            /*
         } else if (Input.GetKeyDown(KeyCode.Keypad2)) {
             SkipToGame(1);
         } else if (Input.GetKeyDown(KeyCode.Keypad3)) {

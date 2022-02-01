@@ -111,6 +111,8 @@ namespace JamCat.Players
 
             // Player starts with the initial rotation of the track
             rotationAngle = GeneratorServer.Get().getPlayerRotation(player.inModule);
+            audioEngine.pitch = 0;
+            audioEngine.volume = 0;
         }
         
 

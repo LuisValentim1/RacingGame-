@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace JamCat.UI 
 {
@@ -11,7 +12,10 @@ namespace JamCat.UI
         public static Window_Finish instance;
         public static Window_Finish Get() { return instance; }
 
+
         // Variables
+        public Image imgCharacterPic;
+        public Sprite[] sprites;
 
         // Methods -> Override
         protected override void OnAwakeWindow() {
@@ -48,6 +52,10 @@ namespace JamCat.UI
 
             if (Data.Get().gameData.localMode == false)
                 SysMultiplayer.Get().Disconnect();
+        }
+
+        public void UpdateCharacterPic(int characterNumber) {
+            imgCharacterPic.sprite = sprites[characterNumber];
         }
     }
 }

@@ -76,14 +76,15 @@ namespace JamCat.Players
             } else {
                 for (int i = 0; i < onlinePlayers.Count; i++) 
                     Destroy(onlinePlayers[i].gameObject);
+
                 onlinePlayers = new List<Player>();
                 
                 if (Data.Get().gameLogic.in_game == true) {
                     for (int i = 0; i < Data.Get().gameData.charactersSelected.Length; i++) {
                         GameObject newPlayer = Instantiate(prefabLocalPlayer, transform);
                         Player player = newPlayer.GetComponent<Player>();
-                        player.ChooseCharacter(Data.Get().gameData.charactersSelected[i]);
                         player.playerID = i;
+                        player.Restart();
                         onlinePlayers.Add(player);
                     }
                 }
@@ -111,10 +112,21 @@ namespace JamCat.Players
             }
         }
 
+        bool deathCalled = false;
         public void UpdateDeaths(){
+            if (Data.Get().gameLogic.countdown > 0) {
+                return;
+            } else {
+                deathCalled = false;
+            }
+
             for(int i = 0; i < onlinePlayers.Count; i++){
-                if(CheckDeath(onlinePlayers[i])){
-                    RestartOnModule();
+                if(CheckDeath(onlinePlayers[i]) && onlinePlayers[i].getCharacter().isAlive() == true){
+                    if (deathCalled == false) {
+                        RestartOnModule();
+                        onlinePlayers[i].getCharacter().RemoveLife();
+                        deathCalled = true;
+                    }
                 }
             }
         }
@@ -122,7 +134,7 @@ namespace JamCat.Players
         public bool CheckDeath(Player pl){
             if(IsObjectVisible(pl.GetComponentInChildren<SpriteRenderer>()))
                 return false;
-            else
+            else 
                 return true;
         }
 
@@ -146,6 +158,8 @@ namespace JamCat.Players
                 onlinePlayers[i].transform.position = mod_pos - 1/2 * offset;
                 // onlinePlayers[i].getTopDownCarController().rotationAngle = GeneratorServer.Get().GetInitialPlayerRotation();
             }
+
+            GeneralMethods.StartCountdown(3);
         }
 
         public bool IsObjectVisible(Renderer renderer) {

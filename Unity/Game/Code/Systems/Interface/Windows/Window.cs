@@ -64,9 +64,9 @@ namespace JamCat.UI
 
         public void Toggle() {
             if (is_opened == true)
-                OnClose();
+                CloseWindow(0.3f, 0);
             else
-                OnOpen();
+                OpenWindow(0.3f, 0);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using JamCat.Players;
 
 namespace JamCat.UI 
 {
@@ -14,9 +15,12 @@ namespace JamCat.UI
 
         // Variables
         [Header("Configuration")]
-        public UI_Bar barMana;
-        public UI_Bar_Array barLife;
+        // public UI_Bar barMana;
+        // public UI_Bar_Array barLife;
         public Window windowControlsInfo;
+
+        public GameObject prefabCharacter;
+        public Transform transfCharacters;
 
         [Header("Run-Time")]
         public int currenct_character;
@@ -24,12 +28,24 @@ namespace JamCat.UI
         private bool triggerControlInfo;
         public float timerControlsInfo;
 
+        public UI_Character[] uiCharacters;
+
+
+        public SpriteRenderer spriteRendererSemaforoBackground;
+        public Animator animatorSemaforo;
+
         // Methods -> Override
         protected override void OnAwakeWindow() {
             instance = this;
         }
 
         protected override void OnUpdateWindow() {
+            if (Data.Get().gameLogic.countdown > 0) {
+                spriteRendererSemaforoBackground.color = new Color(0, 0, 0, 0.65f);
+            } else {
+                spriteRendererSemaforoBackground.color = new Color(0, 0, 0, 0);
+            }
+
             if (triggerControlInfo == true) {
                 timerControlsInfo -= Time.deltaTime;
                 if (timerControlsInfo <= 0) {
@@ -42,8 +58,10 @@ namespace JamCat.UI
         protected override void OnOpenWindow() {
             windowControlsInfo.CloseWindow(0, 0);
             windowControlsInfo.OpenWindow(1f, 0);
-            timerControlsInfo = 4f;
+            timerControlsInfo = 3f;
             triggerControlInfo = true;
+
+            Restart();
         }
 
         protected override void OnCloseWindow() {
@@ -57,6 +75,26 @@ namespace JamCat.UI
 
         public void Button_PauseMenu() {
             Window_PauseMenu.Get().OpenWindow(0.2f, 0);
+        }
+
+        public void Restart() {
+            for (int i = 0; i < uiCharacters.Length; i++)
+                if (uiCharacters[i] != null)
+                    Destroy(uiCharacters[i].gameObject);
+
+            uiCharacters = new UI_Character[Data.Get().gameData.charactersSelected.Length];
+        }
+
+        public UI_Character AddCharacter(int playerNumber, int characterNumber) {
+            GameObject newObj = Instantiate(prefabCharacter, transfCharacters);
+            UI_Character uiCharacter = newObj.GetComponent<UI_Character>();
+            uiCharacter.ChooseCharacterImg(characterNumber);
+            uiCharacters[playerNumber] = uiCharacter;
+            return uiCharacter;
+        }
+
+        public void StartCountdown() {
+            animatorSemaforo.SetTrigger("Countdown");
         }
     }
 }

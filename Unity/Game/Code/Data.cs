@@ -19,8 +19,6 @@ public class Data : MonoBehaviour {
         gameLogic = new GameLogic();
         gameData = new GameData();
         options = new Options();
-
-
     }
 
 
@@ -32,6 +30,8 @@ public class Data : MonoBehaviour {
         public bool in_game = false;
         public bool in_main_menu = true;
         public bool game_finished = false;
+
+        public float countdown = 0;
     }
 
     [Serializable]

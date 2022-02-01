@@ -5,6 +5,7 @@ using JamCat.Cameras;
 using JamCat.Characters;
 using JamCat.Multiplayer;
 using JamCat.Map;
+using JamCat.UI;
 using Unity.Netcode;
 
 namespace JamCat.Players 
@@ -25,13 +26,14 @@ namespace JamCat.Players
         private TopDownCarController topDownCarController;
         private CarInputHandler carInputHandler;
         private WheelTrailRenderedHandler[] wheelTrailRenderedHandlers;
-
+    
         public int playerID;
 
 
         [Header("Synchronized")]
         public int inModule = 0;
         public float dist = 0.0f;
+    
         
 
         // Methods -> Standard
@@ -72,6 +74,10 @@ namespace JamCat.Players
         }
 
         public void OnUpdate() {
+            
+            if (Data.Get().gameLogic.countdown > 0)
+                return;
+                
             if (character != null)
                 character.OnUpdate();
 
@@ -144,8 +150,9 @@ namespace JamCat.Players
             if(collider2d.CompareTag("Stripe"))
                 stripeFlag = true;
             
-            if(collider2d.CompareTag("Finish")) 
-                GeneralMethods.CallFinish();
+            if(collider2d.CompareTag("Finish"))
+                if (Data.Get().gameLogic.game_finished == false)
+                    GeneralMethods.CallFinish(character.characterNumber);
 
             if(collider2d.CompareTag("Module")) {
                 Module module = collider2d.GetComponent<Module>();
@@ -230,20 +237,24 @@ namespace JamCat.Players
 
 
         public void Restart() {
-            AutoChooseCharacter();
+            ChooseCharacter(Data.Get().gameData.charactersSelected[playerID]);
             topDownCarController.Restart();
             character.Restart();
         }
 
-        public void ChooseCharacter(int number) {
-            if (number < 0)
+        public void ChooseCharacter(int characterNumber) {
+            if (characterNumber < 0)
                 return;
 
-            character = GetComponentsInChildren<Character>()[number];
+            character = GetComponentsInChildren<Character>()[characterNumber];
             character.OnAwake(this);
             character.OnStart();
+            character.characterNumber = characterNumber;
+            character.setUICharacter(Window_HUD.Get().AddCharacter(playerID, characterNumber));
         }
 
+/*
+        // Deprecated
         public void AutoChooseCharacter() {
             int number = Data.Get().gameData.characterSelected;
             if (number < 0)
@@ -252,8 +263,9 @@ namespace JamCat.Players
             character = GetComponentsInChildren<Character>()[number];
             character.OnAwake(this);
             character.OnStart();
+            character.setUICharacter(Window_HUD.Get().AddCharacter(0, number));
         }
-
+*/
 
         // Interactions
         public void InteractJump(){

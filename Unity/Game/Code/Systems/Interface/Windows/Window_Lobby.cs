@@ -25,6 +25,8 @@ namespace JamCat.UI
         public UI_Button buttonCloseConnection, buttonStart;
         public InputField inputFieldIP, inputFieldPort;
 
+        public Animator animatorOnPlay;
+
         // Methods -> Override
         protected override void OnAwakeWindow() {
             instance = this;
@@ -121,6 +123,7 @@ namespace JamCat.UI
             } else {
                 CloseWindow(0.5f, 0);
                 Window_MainMenu.Get().OpenWindow(0.5f, 0.5f);
+                animatorOnPlay.SetBool("Opening", false);
             }
         }
     }

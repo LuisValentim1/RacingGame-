@@ -24,7 +24,7 @@ namespace JamCat.Audio
         }
 
         public AudioSource getAudioSource() {
-            return audioSource;
+            return GetComponent<AudioSource>();
         }
     }
 }
