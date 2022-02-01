@@ -16,6 +16,7 @@ namespace JamCat.Players
 
         [Header("Configurable")]
         public SpriteRenderer spriteRenderer;
+        public GraphicChanger graphicChanger;
 
         [Header("Run-Time")]
         [SerializeField] private Character character;
@@ -83,6 +84,8 @@ namespace JamCat.Players
 
             for (int i = 0; i < wheelTrailRenderedHandlers.Length; i++)
                 wheelTrailRenderedHandlers[i].OnUpdate();
+
+            graphicChanger.OnUpdate();
 
             if (Data.Get().gameData.localMode == false)
                 if (networkObject.IsLocalPlayer == false)
@@ -240,6 +243,7 @@ namespace JamCat.Players
             ChooseCharacter(Data.Get().gameData.charactersSelected[playerID]);
             topDownCarController.Restart();
             character.Restart();
+            graphicChanger.Restart(this);
         }
 
         public void ChooseCharacter(int characterNumber) {
@@ -253,7 +257,7 @@ namespace JamCat.Players
             character.setUICharacter(Window_HUD.Get().AddCharacter(playerID, characterNumber));
         }
 
-/*
+        /*
         // Deprecated
         public void AutoChooseCharacter() {
             int number = Data.Get().gameData.characterSelected;
@@ -265,7 +269,7 @@ namespace JamCat.Players
             character.OnStart();
             character.setUICharacter(Window_HUD.Get().AddCharacter(0, number));
         }
-*/
+        */
 
         // Interactions
         public void InteractJump(){

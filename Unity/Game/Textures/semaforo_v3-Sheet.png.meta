@@ -460,6 +460,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: semaforo_v3-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 0
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fa17ac8f68b4d341a4ff42c5cae5967
+      internalID: 200263945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -474,6 +495,7 @@ TextureImporter:
       semaforo_v3-Sheet_16: -533030492
       semaforo_v3-Sheet_11: 1066222933
       semaforo_v3-Sheet_12: -802029858
+      semaforo_v3-Sheet_17: 200263945
       semaforo_v3-Sheet_5: 1800350755
       semaforo_v3-Sheet_8: -1195221492
       semaforo_v3-Sheet_13: 1692583629

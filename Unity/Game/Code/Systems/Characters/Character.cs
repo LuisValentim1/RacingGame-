@@ -14,6 +14,7 @@ namespace JamCat.Characters
         public string characterName;
         public AbilityGroup abilityGroup;
         public Sprite sprite;
+        public Sprite[] sprites;
         // public Sprite[] sprites;
         public int maxLifes = 7;
         public float maxMana = 100;

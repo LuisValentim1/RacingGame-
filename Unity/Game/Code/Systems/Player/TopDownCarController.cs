@@ -231,6 +231,9 @@ namespace JamCat.Players
         }
 
         private IEnumerator JumpCo(float jumpHeightScale, float jumpPushScale) {
+            GraphicChanger graphicChanger = GetComponentInChildren<GraphicChanger>();
+            int oldLayer = graphicChanger.spriteRenderer.sortingOrder;
+            graphicChanger.spriteRenderer.sortingOrder = 50;
             isJumping = true;
 
             float jumpStartTime = Time.time;
@@ -261,6 +264,7 @@ namespace JamCat.Players
             carCollider2D.enabled = true;
             isJumping = false;
             accelerationFactor = 50;
+            graphicChanger.spriteRenderer.sortingOrder = oldLayer;
             StopCoroutine(cJumpFlagOver);
             StopCoroutine(cJumpCo);
         }

@@ -33,6 +33,9 @@ namespace JamCat.Audio {
         }
 
         public void PlayAudioEffect(Transform point, AudioClip clip) {
+            if (clip == null)
+                return;
+
             GameObject newObj = null;
             if (point != null)
                 newObj = Instantiate(prefabAudioEffect, point.position, Quaternion.identity, transform);
