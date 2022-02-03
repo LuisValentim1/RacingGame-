@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using JamCat.UI;
+using JamCat.Players;
+using JamCat.Cameras;
+using JamCat.Map;
 
 public class Manager : MonoBehaviour
 {
@@ -40,11 +43,16 @@ public class Manager : MonoBehaviour
         if (dev_tools == true) {
             Dev_InputToSkip();
         }
+
+        if (Data.Get().gameLogic.countdown > 0) {
+            Data.Get().gameLogic.countdown -= Time.deltaTime;
+        }
     }
 
 
     public void Dev_InputToSkip() {
-        if (Input.GetKeyDown(KeyCode.Keypad1)) {
+            /*
+        if (Input.GetKeyDown(KeyCode.O))
             SkipToGame(0);
         } else if (Input.GetKeyDown(KeyCode.Keypad2)) {
             SkipToGame(1);
@@ -53,6 +61,7 @@ public class Manager : MonoBehaviour
         } else if (Input.GetKeyDown(KeyCode.Keypad4)) {
             SkipToGame(3);
         }
+        */
     }
 
     public void SkipToGame(int characterNumber) {

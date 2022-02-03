@@ -33,6 +33,7 @@ namespace JamCat.Map {
         public int currentModuleArray;
         public GameObject[] arrayModules;
         public GameObject lastModule;
+        //public GameObject firstCar;
 
 
         // Methods -> Standard
@@ -50,13 +51,21 @@ namespace JamCat.Map {
         }
 
         public void OnUpdate() {
+            updateFirst();
+        }
 
+        /**public Transform GetCurFirst(){
+            return firstCar.transform;
+        }*/
+
+        public void updateFirst(){
         }
 
         // Methods -> Public
         public void GenerateMap() {
-            if (NetworkManager.Singleton.IsServer == false)
-                return;
+            if (Data.Get().gameData.localMode == false)
+                if (NetworkManager.Singleton.IsServer == false)
+                    return;
 
             if (gerarTudo == true) {
                 for (int i = 0; i < modulesQuantity; i++) {
@@ -64,14 +73,28 @@ namespace JamCat.Map {
                 }
             } else {
                 for (int i = 0; i < generateQuantity; i++) {
-                    SysMultiplayer.Get().multiplayerMethods.GenerateModuleServerRpc();
+                    
+                    if (Data.Get().gameData.localMode == false)
+                        SysMultiplayer.Get().multiplayerMethods.GenerateModuleServerRpc();
+                    else
+                        GenerateModule();
                 }
             }
         }
 
+        public void SetPlayerInModule_LocalMode(int inModule) {
+            if (GeneratorServer.Get().GetModuleCreated(inModule).playerWasInside == true)
+                return;
+
+            GeneratorServer.Get().GetModuleCreated(inModule).playerWasInside = true;
+            GeneratorServer.Get().DeleteLastModule();     
+            GeneratorServer.Get().GenerateModule();
+        }
+
         public Module GenerateModule() {
-            if (NetworkManager.Singleton.IsServer == false)
-                return null;
+            if (Data.Get().gameData.localMode == false)
+                if (NetworkManager.Singleton.IsServer == false)
+                    return null;
 
             if (modulesCreated == modulesQuantity) 
                 return null;
@@ -132,7 +155,6 @@ namespace JamCat.Map {
             return module;
         }
 
-
         public Module GetModuleCreated(int moduleNumber) {
             for (int i = 0; i < arrayModules.Length; i++)
                 if (arrayModules[i] != null)
@@ -143,7 +165,9 @@ namespace JamCat.Map {
 
         public void DeleteLastModule() {
             Destroy(arrayModules[currentModuleArray]);
-            SysMultiplayer.Get().multiplayerMethods.DestroyLastModuleClientRpc();
+
+            if (Data.Get().gameData.localMode == false)
+                SysMultiplayer.Get().multiplayerMethods.DestroyLastModuleClientRpc();
         }
 
         //Method for background buildings placement
@@ -236,6 +260,27 @@ namespace JamCat.Map {
                     if (arrayModules[i].GetComponent<Module>().moduleConfiguration.isStartingLine == true)
                         return arrayModules[i].GetComponent<Module>();
             return null;
+        }
+
+        public float getPlayerRotation (int inModule) {
+            for (int i = 0; i < arrayModules.Length; i++) {
+                if (arrayModules[i] != null) {
+                    Module module = arrayModules[i].GetComponent<Module>();
+                    if (module.moduleNumber == inModule) {
+                        if (module.moduleConfiguration.to_direction == new Vector2(0, 1)) {
+                            return 0;
+                        } else if (module.moduleConfiguration.to_direction == new Vector2(1, 0)) {
+                            return 270;
+                        } else if (module.moduleConfiguration.to_direction == new Vector2(0, -1)) {
+                            return 180;
+                        } else if (module.moduleConfiguration.to_direction == new Vector2(-1, 0)) {
+                            return 90;
+                        }
+                    }
+                }
+            }
+
+            return 0;
         }
 
         public float GetInitialPlayerRotation() {

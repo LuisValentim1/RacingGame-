@@ -10,13 +10,16 @@ namespace JamCat.Cameras
         // Variables
         public Transform player;
         public Vector3 offset;
+        public float speed = 5;
     
         // Methods
         protected override void OnUpdate() {
             // transform.position = Vector3.Lerp(,)
 
-            if (player != null)
-                transform.position = new Vector3 (player.position.x + offset.x, player.position.y + offset.y, offset.z); // Camera follows the player with specified offset position
+            if (player != null) {
+                Vector3 newPos = new Vector3 (player.position.x + offset.x, player.position.y + offset.y, offset.z);
+                transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * speed);
+            }
         }
 
         public void SetPlayerTarget(Transform transform) {

@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using JamCat.Audio;
 
 namespace JamCat.UI {
     public class UI_Toggle : UI, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler {
@@ -21,6 +22,9 @@ namespace JamCat.UI {
         public bool activated;
 
         private UI_ToggleGroup toggleGroup;
+
+        public AudioClip clipOnClick;
+        public AudioClip clipOnHover;
 
         // Methods -> Standard
         protected override void OnAwake() {
@@ -90,6 +94,8 @@ namespace JamCat.UI {
 
             if (activated == false)
                 imageBackground.color = colorHighlighted;
+
+            AudioEffects.Get().PlayAudioEffect(null, clipOnHover);
         }
 
         public void OnPointerExit(PointerEventData pointerEventData) {
@@ -108,6 +114,8 @@ namespace JamCat.UI {
                 toggleGroup.ActivateToggle(this);
             else
                 Toggle();
+         
+            AudioEffects.Get().PlayAudioEffect(null, clipOnClick);
         }
     }
 }

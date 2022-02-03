@@ -216,9 +216,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a610f3c138dcf8843bd75c6704bdb7f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterNumber: 2
   characterName: Tiger
   abilityGroup: {fileID: 7028458507383072058}
   sprite: {fileID: -810171848, guid: f90603551f220454384b81542de3f55a, type: 3}
+  sprites:
+  - {fileID: 477566804, guid: f90603551f220454384b81542de3f55a, type: 3}
+  - {fileID: 1808080305, guid: f90603551f220454384b81542de3f55a, type: 3}
+  - {fileID: -1807122592, guid: f90603551f220454384b81542de3f55a, type: 3}
+  - {fileID: -898992625, guid: f90603551f220454384b81542de3f55a, type: 3}
+  - {fileID: 887947459, guid: f90603551f220454384b81542de3f55a, type: 3}
+  - {fileID: -766886978, guid: f90603551f220454384b81542de3f55a, type: 3}
+  - {fileID: -810171848, guid: f90603551f220454384b81542de3f55a, type: 3}
+  - {fileID: -17151263, guid: f90603551f220454384b81542de3f55a, type: 3}
   maxLifes: 7
   maxMana: 100
   player: {fileID: 0}
@@ -226,6 +236,7 @@ MonoBehaviour:
   curMana: 0
   isOut: 0
   usingShield: 0
+  uiCharacter: {fileID: 0}
 --- !u!114 &7028458507383072058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,10 +465,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 2224988506970429812}
+  graphicChanger: {fileID: 4484907303757788315}
   character: {fileID: 861951613748801486}
   jumpFlag: 0
   stripeFlag: 0
+  playerID: 0
   inModule: 0
+  dist: 0
 --- !u!114 &2224988506148844551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,10 +485,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioEngine: {fileID: 7312471393648429571}
-  driftFactor: 0.1
+  driftFactor: 0.6
   accelerationFactor: 50
-  turnFactor: 4
-  maxSpeed: 30
+  turnFactor: 3
+  maxSpeed: 25
   rotOffset: -90
   carSpriteRenderer: {fileID: 2224988506970429812}
   carShadowRenderer: {fileID: 3928695248396988021}
@@ -805,6 +819,7 @@ GameObject:
   - component: {fileID: 2224988506970429812}
   - component: {fileID: 2224988506970429813}
   - component: {fileID: 1912941570372405195}
+  - component: {fileID: 4484907303757788315}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -923,6 +938,20 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   CanCommitToTransform: 0
+--- !u!114 &4484907303757788315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2224988506970429818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65089f9630c59864699dc6dd6d0ef872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 2224988506970429812}
+  offset: 0
 --- !u!1 &2224988507519942732
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,9 +1130,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a610f3c138dcf8843bd75c6704bdb7f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterNumber: 0
   characterName: Frost
   abilityGroup: {fileID: 1605604847551736459}
   sprite: {fileID: 1490803420, guid: 1ea9229ac62f1834ea572aa454c26119, type: 3}
+  sprites:
+  - {fileID: -457360254, guid: 1ea9229ac62f1834ea572aa454c26119, type: 3}
+  - {fileID: 1088153560, guid: 1ea9229ac62f1834ea572aa454c26119, type: 3}
+  - {fileID: 7059391, guid: 1ea9229ac62f1834ea572aa454c26119, type: 3}
+  - {fileID: -1510283180, guid: 1ea9229ac62f1834ea572aa454c26119, type: 3}
+  - {fileID: -1506666751, guid: 1ea9229ac62f1834ea572aa454c26119, type: 3}
+  - {fileID: -1799252324, guid: 1ea9229ac62f1834ea572aa454c26119, type: 3}
+  - {fileID: 1490803420, guid: 1ea9229ac62f1834ea572aa454c26119, type: 3}
+  - {fileID: 2069874502, guid: 1ea9229ac62f1834ea572aa454c26119, type: 3}
   maxLifes: 7
   maxMana: 100
   player: {fileID: 0}
@@ -1111,6 +1150,7 @@ MonoBehaviour:
   curMana: 0
   isOut: 0
   usingShield: 0
+  uiCharacter: {fileID: 0}
 --- !u!114 &1605604847551736459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1142,7 +1182,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8286263725021615283
 Transform:
   m_ObjectHideFlags: 0
@@ -2089,9 +2129,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a610f3c138dcf8843bd75c6704bdb7f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterNumber: 0
   characterName: Blackie
   abilityGroup: {fileID: 6402398043624691469}
   sprite: {fileID: 1411163758, guid: 5efad3b80fc705f4da32c58333030175, type: 3}
+  sprites:
+  - {fileID: 1060106451, guid: 5efad3b80fc705f4da32c58333030175, type: 3}
+  - {fileID: 329282410, guid: 5efad3b80fc705f4da32c58333030175, type: 3}
+  - {fileID: 85758817, guid: 5efad3b80fc705f4da32c58333030175, type: 3}
+  - {fileID: -1626652935, guid: 5efad3b80fc705f4da32c58333030175, type: 3}
+  - {fileID: -1377370487, guid: 5efad3b80fc705f4da32c58333030175, type: 3}
+  - {fileID: -1834681981, guid: 5efad3b80fc705f4da32c58333030175, type: 3}
+  - {fileID: 1411163758, guid: 5efad3b80fc705f4da32c58333030175, type: 3}
+  - {fileID: -1343689724, guid: 5efad3b80fc705f4da32c58333030175, type: 3}
   maxLifes: 7
   maxMana: 100
   player: {fileID: 0}
@@ -2099,6 +2149,7 @@ MonoBehaviour:
   curMana: 0
   isOut: 0
   usingShield: 0
+  uiCharacter: {fileID: 0}
 --- !u!114 &6402398043624691469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2191,9 +2242,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a610f3c138dcf8843bd75c6704bdb7f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterNumber: 0
   characterName: Cleo
   abilityGroup: {fileID: 7053594439459832771}
   sprite: {fileID: 1677186382, guid: a0075c9ef90f8f94e85bfe4084b55e2a, type: 3}
+  sprites:
+  - {fileID: -976475825, guid: a0075c9ef90f8f94e85bfe4084b55e2a, type: 3}
+  - {fileID: 1179919644, guid: a0075c9ef90f8f94e85bfe4084b55e2a, type: 3}
+  - {fileID: -686880507, guid: a0075c9ef90f8f94e85bfe4084b55e2a, type: 3}
+  - {fileID: -2007510344, guid: a0075c9ef90f8f94e85bfe4084b55e2a, type: 3}
+  - {fileID: -753126640, guid: a0075c9ef90f8f94e85bfe4084b55e2a, type: 3}
+  - {fileID: 565798939, guid: a0075c9ef90f8f94e85bfe4084b55e2a, type: 3}
+  - {fileID: 1677186382, guid: a0075c9ef90f8f94e85bfe4084b55e2a, type: 3}
+  - {fileID: -1942829739, guid: a0075c9ef90f8f94e85bfe4084b55e2a, type: 3}
   maxLifes: 7
   maxMana: 100
   player: {fileID: 0}
@@ -2201,6 +2262,7 @@ MonoBehaviour:
   curMana: 0
   isOut: 0
   usingShield: 0
+  uiCharacter: {fileID: 0}
 --- !u!114 &7053594439459832771
 MonoBehaviour:
   m_ObjectHideFlags: 0

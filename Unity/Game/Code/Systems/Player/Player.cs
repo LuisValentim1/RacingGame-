@@ -5,6 +5,7 @@ using JamCat.Cameras;
 using JamCat.Characters;
 using JamCat.Multiplayer;
 using JamCat.Map;
+using JamCat.UI;
 using Unity.Netcode;
 
 namespace JamCat.Players 
@@ -15,6 +16,7 @@ namespace JamCat.Players
 
         [Header("Configurable")]
         public SpriteRenderer spriteRenderer;
+        public GraphicChanger graphicChanger;
 
         [Header("Run-Time")]
         [SerializeField] private Character character;
@@ -25,10 +27,14 @@ namespace JamCat.Players
         private TopDownCarController topDownCarController;
         private CarInputHandler carInputHandler;
         private WheelTrailRenderedHandler[] wheelTrailRenderedHandlers;
+    
+        public int playerID;
 
 
         [Header("Synchronized")]
         public int inModule = 0;
+        public float dist = 0.0f;
+    
         
 
         // Methods -> Standard
@@ -57,23 +63,33 @@ namespace JamCat.Players
         }
 
         public void OnStart() {
-            if (networkObject.IsLocalPlayer == false)
-                return;
+            if (Data.Get().gameData.localMode == false)
+                if (networkObject.IsLocalPlayer == false)
+                    return;
 
             topDownCarController.StartCar();
             carInputHandler.StartCar();
-            SysCamera.Get().SetPlayerTarget(transform);
+
+            if (Data.Get().gameData.localMode == false)
+                SysCamera.Get().SetPlayerTarget(transform);
         }
 
         public void OnUpdate() {
+            
+            if (Data.Get().gameLogic.countdown > 0)
+                return;
+                
             if (character != null)
                 character.OnUpdate();
 
             for (int i = 0; i < wheelTrailRenderedHandlers.Length; i++)
                 wheelTrailRenderedHandlers[i].OnUpdate();
 
-            if (networkObject.IsLocalPlayer == false)
-                return;
+            graphicChanger.OnUpdate();
+
+            if (Data.Get().gameData.localMode == false)
+                if (networkObject.IsLocalPlayer == false)
+                    return;
 
             // Physics
             topDownCarController.UpdateCar();
@@ -127,8 +143,9 @@ namespace JamCat.Players
 
 
             // Se é Local Player
-            if (networkObject.IsLocalPlayer == false)
-                return;
+            if (Data.Get().gameData.localMode == false)
+                if (networkObject.IsLocalPlayer == false)
+                    return;
 
             if(collider2d.CompareTag("Jump")) 
                 topDownCarController.TriggerJump();
@@ -136,13 +153,21 @@ namespace JamCat.Players
             if(collider2d.CompareTag("Stripe"))
                 stripeFlag = true;
             
-            if(collider2d.CompareTag("Finish")) 
-                GeneralMethods.CallFinish();
+            if(collider2d.CompareTag("Finish"))
+                if (Data.Get().gameLogic.game_finished == false)
+                    GeneralMethods.CallFinish(character.characterNumber);
 
             if(collider2d.CompareTag("Module")) {
                 Module module = collider2d.GetComponent<Module>();
                 inModule = module.moduleNumber;
-                SysMultiplayer.Get().multiplayerMethods.SetPlayerInModuleServerRpc(SysPlayer.Get().localPlayerID, inModule);
+
+                if (Data.Get().gameData.localMode == false)
+                    SysMultiplayer.Get().multiplayerMethods.SetPlayerInModuleServerRpc(SysPlayer.Get().localPlayerID, inModule);
+                else {
+                    GeneratorServer.Get().SetPlayerInModule_LocalMode(inModule);
+                }
+
+                SysPlayer.Get().OnEnterModule();
             }
 
             if(collider2d.GetComponent<ASlow>() != null) {
@@ -173,8 +198,9 @@ namespace JamCat.Players
         }
         
         private void OnTriggerExit2D(Collider2D collider2d) {
-            if (networkObject.IsLocalPlayer == false)
-                return;
+            if (Data.Get().gameData.localMode == false)
+                if (networkObject.IsLocalPlayer == false)
+                    return;
 
             if(collider2d.CompareTag("Stripe"))
                 stripeFlag = false;
@@ -191,36 +217,48 @@ namespace JamCat.Players
             if (other.gameObject.GetComponent<ElementTree>() != null) {
                 other.gameObject.GetComponent<Animator>().SetBool("hit", true);
             }
-
-            if (networkObject.IsLocalPlayer == false)
-                return;
+            
+            if (Data.Get().gameData.localMode == false)
+                if (networkObject.IsLocalPlayer == false)
+                    return;
 
             if(other.gameObject.CompareTag("Player")) {
                 if(topDownCarController.dashActivated == true) {
-                    if (SysPlayer.Get().localPlayer == this) {
-                        ulong playerID = other.gameObject.GetComponent<NetworkObject>().OwnerClientId;
-                        GetComponent<MultiplayerMethods>().RemoveLifeServerRpc(playerID);
+                    
+                    if (Data.Get().gameData.localMode == false) {
+                        if (SysPlayer.Get().localPlayer == this) {
+                            ulong playerID = other.gameObject.GetComponent<NetworkObject>().OwnerClientId;
+                            GetComponent<MultiplayerMethods>().RemoveLifeServerRpc(playerID);
+                        }
+                    } else {
+                        other.gameObject.GetComponent<Player>().getCharacter().RemoveLife();
                     }
+
                 }
             }
         }
 
 
         public void Restart() {
-            AutoChooseCharacter();
+            ChooseCharacter(Data.Get().gameData.charactersSelected[playerID]);
             topDownCarController.Restart();
             character.Restart();
+            graphicChanger.Restart(this);
         }
 
-        public void ChooseCharacter(int number) {
-            if (number < 0)
+        public void ChooseCharacter(int characterNumber) {
+            if (characterNumber < 0)
                 return;
 
-            character = GetComponentsInChildren<Character>()[number];
+            character = GetComponentsInChildren<Character>()[characterNumber];
             character.OnAwake(this);
             character.OnStart();
+            character.characterNumber = characterNumber;
+            character.setUICharacter(Window_HUD.Get().AddCharacter(playerID, characterNumber));
         }
 
+        /*
+        // Deprecated
         public void AutoChooseCharacter() {
             int number = Data.Get().gameData.characterSelected;
             if (number < 0)
@@ -229,8 +267,9 @@ namespace JamCat.Players
             character = GetComponentsInChildren<Character>()[number];
             character.OnAwake(this);
             character.OnStart();
+            character.setUICharacter(Window_HUD.Get().AddCharacter(0, number));
         }
-
+        */
 
         // Interactions
         public void InteractJump(){

@@ -14,13 +14,12 @@ namespace JamCat.Players
         // Variables -> Public
         Player player;
 
-
         [Header("Car settings")]
         public AudioSource audioEngine;
         public float driftFactor = 0.80f;
         public float accelerationFactor = 0.01f;
         public float turnFactor = 0.5f;
-        public float maxSpeed = 20.0f;
+        public float maxSpeed = 5.0f;
         public float rotOffset = -90;
 
         [Header("Sprites")]
@@ -73,16 +72,19 @@ namespace JamCat.Players
             if (Data.Get().gameLogic.in_game == false)
                 return;
 
-            if (player.getNetworkObject().IsLocalPlayer == false)
-                return;
-                
-            MultiplayerMethods.Get().UpdateVelocityServerRpc(SysPlayer.Get().localPlayerID, getVelocity());
             PlayingEngineAudio();
+            
+            if (Data.Get().gameData.localMode == false) {
+                if (player.getNetworkObject().IsLocalPlayer == false)
+                    return;
+                MultiplayerMethods.Get().UpdateVelocityServerRpc(SysPlayer.Get().localPlayerID, getVelocity());
+            }
         }
 
         private void FixedUpdate() {
-            if (player.getNetworkObject().IsLocalPlayer == false)
-                return;
+            if (Data.Get().gameData.localMode == false)
+                if (player.getNetworkObject().IsLocalPlayer == false)
+                    return;
 
             currentVelocity = carRigidbody2D.velocity.magnitude;
             ApplyEngineForce();
@@ -108,7 +110,9 @@ namespace JamCat.Players
             carRigidbody2D.velocity = Vector2.zero;
 
             // Player starts with the initial rotation of the track
-            rotationAngle = GeneratorServer.Get().GetInitialPlayerRotation();
+            rotationAngle = GeneratorServer.Get().getPlayerRotation(player.inModule);
+            audioEngine.pitch = 0;
+            audioEngine.volume = 0;
         }
         
 
@@ -227,6 +231,9 @@ namespace JamCat.Players
         }
 
         private IEnumerator JumpCo(float jumpHeightScale, float jumpPushScale) {
+            GraphicChanger graphicChanger = GetComponentInChildren<GraphicChanger>();
+            int oldLayer = graphicChanger.spriteRenderer.sortingOrder;
+            graphicChanger.spriteRenderer.sortingOrder = 50;
             isJumping = true;
 
             float jumpStartTime = Time.time;
@@ -257,6 +264,7 @@ namespace JamCat.Players
             carCollider2D.enabled = true;
             isJumping = false;
             accelerationFactor = 50;
+            graphicChanger.spriteRenderer.sortingOrder = oldLayer;
             StopCoroutine(cJumpFlagOver);
             StopCoroutine(cJumpCo);
         }

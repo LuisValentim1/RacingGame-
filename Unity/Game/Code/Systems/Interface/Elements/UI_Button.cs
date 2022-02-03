@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using JamCat.Audio;
 
 namespace JamCat.UI 
 {
@@ -23,6 +24,8 @@ namespace JamCat.UI
         public Color color_text_highlighted;
         public Color color_text_pressed;
 
+        public AudioClip clipOnClick;
+        public AudioClip clipOnHover;
 
 
         // ---> Implement Audio
@@ -70,6 +73,7 @@ namespace JamCat.UI
 
             img_background.color = color_highlighted;
             text.color = color_text_highlighted;
+            AudioEffects.Get().PlayAudioEffect(null, clipOnHover);
         }
 
         public void OnPointerExit(PointerEventData data) {
@@ -86,6 +90,7 @@ namespace JamCat.UI
 
             img_background.color = color_pressed;
             text.color = color_text_pressed;
+            AudioEffects.Get().PlayAudioEffect(null, clipOnClick);
         }
     }
 }

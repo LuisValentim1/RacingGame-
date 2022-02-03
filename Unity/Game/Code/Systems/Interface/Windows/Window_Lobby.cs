@@ -25,6 +25,8 @@ namespace JamCat.UI
         public UI_Button buttonCloseConnection, buttonStart;
         public InputField inputFieldIP, inputFieldPort;
 
+        public Animator animatorOnPlay;
+
         // Methods -> Override
         protected override void OnAwakeWindow() {
             instance = this;
@@ -62,7 +64,15 @@ namespace JamCat.UI
         }
 
         // Methods -> Public
+        public void ButtonLocalMode() {
+            CloseWindow(0.3f, 0);
+            Window_CharacterSelection.Get().OpenWindow(0.3f, 0.3f);
+            Data.Get().gameData.localMode = true;
+        }
+
         public void ButtonHost() {
+            Data.Get().gameData.localMode = false;
+            
             SysMultiplayer.Get().maxPlayers = uiSliderPlayersQuantity.value;
             SysMultiplayer.Get().uNetTransport.MaxConnections = uiSliderPlayersQuantity.value;
             SysMultiplayer.Get().uNetTransport.ConnectAddress = inputFieldIP.text;
@@ -75,6 +85,8 @@ namespace JamCat.UI
         }
 
         public void ButtonJoin() {
+            Data.Get().gameData.localMode = false;
+            
             SysMultiplayer.Get().uNetTransport.MaxConnections = uiSliderPlayersQuantity.value;
             SysMultiplayer.Get().uNetTransport.ConnectAddress = inputFieldIP.text;
             SysMultiplayer.Get().StartClient();
@@ -111,6 +123,7 @@ namespace JamCat.UI
             } else {
                 CloseWindow(0.5f, 0);
                 Window_MainMenu.Get().OpenWindow(0.5f, 0.5f);
+                animatorOnPlay.SetBool("Opening", false);
             }
         }
     }

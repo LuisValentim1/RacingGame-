@@ -53,11 +53,15 @@ namespace JamCat.UI
             Window_MainMenu.Get().OpenWindow(0.2f, 0.2f);
 
             GeneralMethods.MainMenu();
-            SysMultiplayer.Get().Disconnect();
+
+            if (Data.Get().gameData.localMode == false)
+                SysMultiplayer.Get().Disconnect();
         }
 
         public void Button_Quit() {
-            SysMultiplayer.Get().Disconnect();
+            if (Data.Get().gameData.localMode == false)
+                SysMultiplayer.Get().Disconnect();
+                
             quit = true;
             Application.Quit();
         }

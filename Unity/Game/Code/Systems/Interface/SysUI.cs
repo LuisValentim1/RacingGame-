@@ -47,7 +47,7 @@ namespace JamCat.UI
         // Methods -> Public
         public void CloseAllWindows() {
             for (int i = 0; i < windows_opened.Count; i++)
-                windows_opened[i].CloseUI();
+                windows_opened[i].CloseWindow(0, 0);
         }
 
         public void CloseAllWindowsInstead(Window target) {

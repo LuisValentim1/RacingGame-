@@ -14,6 +14,9 @@ namespace JamCat.UI
 
         // Variables
         private bool quit;
+        public Window windowHiddenInfoCV;
+        public Window windowMainMenu;
+        public Animator animatorOnPlay;
 
         // Methods -> Override
         protected override void OnAwakeWindow() {
@@ -30,6 +33,14 @@ namespace JamCat.UI
 
         protected override void OnUpdateWindow() {
 
+            if (Input.GetKeyDown(KeyCode.O)) {
+                windowHiddenInfoCV.Toggle();
+
+                if (windowHiddenInfoCV.is_opened == true) 
+                    windowMainMenu.CloseWindow(0.3f, 0);
+                else 
+                    windowMainMenu.OpenWindow(0.3f, 0);
+            }
 
             if (quit == true) {
                 Window_Fade.Get().CloseWindow(1, 0);
@@ -42,6 +53,7 @@ namespace JamCat.UI
         public void Button_Play() {
             CloseWindow(0.2f, 0f);
             Window_Lobby.Get().OpenWindow(0.2f, 0.2f);
+            animatorOnPlay.SetBool("Opening", true);
         }
 
         public void Button_Options() {
