@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace JamCat.UI 
+namespace JamCat.UI
 {
     public class Window_Finish : Window
     {
@@ -47,6 +47,7 @@ namespace JamCat.UI
         public void Button_MainMenu() {
             Data.Get().gameData.characterSelected = -1;
             CloseWindow(0.5f, 0);
+            Window_HUD.Get().CloseWindow(0.2f, 0);
             Window_MainMenu.Get().OpenWindow(0.5f, 0.5f);
             GeneralMethods.MainMenu();
 

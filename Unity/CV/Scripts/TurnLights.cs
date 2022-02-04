@@ -34,8 +34,7 @@ public class TurnLights : MonoBehaviour
     }
 
     public void SwitchManual(bool state) {
-        if (stateA == true)
-            return;
+        SwitchAutomaticLights(false);
             
         this.stateM = state;
         for (int i = 0; i < objLights.Length; i++)
