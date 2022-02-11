@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class Data : MonoBehaviour {
 
@@ -26,10 +27,11 @@ public class Data : MonoBehaviour {
 
     [Serializable]
     public class GameLogic {
-        public bool is_paused = false;
-        public bool in_game = false;
-        public bool in_main_menu = true;
-        public bool game_finished = false;
+        public bool inIntro = false;
+        public bool isPaused = false;
+        public bool inGame = false;
+        public bool inMainMenu = true;
+        public bool gameFinished = false;
 
         public float countdown = 0;
     }

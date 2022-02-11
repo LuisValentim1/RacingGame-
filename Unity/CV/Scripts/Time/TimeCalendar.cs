@@ -44,7 +44,7 @@ public class TimeCalendar : MonoBehaviour
     }
 
     public void Update() {
-        if (Data.Get().gameLogic.in_main_menu == true)
+        if (Data.Get().gameLogic.inMainMenu == true)
             UpdateTime();
     }
 

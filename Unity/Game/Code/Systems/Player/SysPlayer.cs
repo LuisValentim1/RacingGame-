@@ -23,7 +23,7 @@ namespace JamCat.Players
         public GameObject prefabLocalPlayer;
 
         public float curDist = 100000.0f;
-
+        public int playersCreated = 0;
 
         // Methods -> Override
         protected override void OnAwake() {
@@ -36,32 +36,30 @@ namespace JamCat.Players
         }
     
         protected override void OnUpdate() {
-            if (Data.Get().gameLogic.in_game == false)
+            if (Data.Get().gameLogic.inGame == false)
                 return;
 
             // localPlayer.OnUpdate();
             if (Data.Get().gameData.localMode == false) { 
-                
                 for (int i = 0; i < onlinePlayers.Count; i++)
                     onlinePlayers[i].OnUpdate();
                 if (Input.GetKeyDown(KeyCode.P))
                     SysMultiplayer.Get().multiplayerMethods.RemoveLifeServerRpc(localPlayerID);
-
             } else {
-
                 for (int i = 0; i < onlinePlayers.Count; i++)
                     onlinePlayers[i].OnUpdate();
-
             }
-                
-            UpdateFirstCar();
-            UpdateDeaths();
+            
+            if (Data.Get().gameLogic.gameFinished == false) {
+                UpdateFirstCar();
+                UpdateDeaths();
 
-            if (Input.GetKeyDown(KeyCode.Escape)) {
-                if (Data.Get().gameLogic.is_paused == false) {
-                    GeneralMethods.PauseGame(true);
-                } else {
-                    GeneralMethods.PauseGame(false);
+                if (Input.GetKeyDown(KeyCode.Escape)) {
+                    if (Data.Get().gameLogic.isPaused == false) {
+                        GeneralMethods.PauseGame(true);
+                    } else {
+                        GeneralMethods.PauseGame(false);
+                    }
                 }
             }
         }
@@ -79,7 +77,7 @@ namespace JamCat.Players
 
                 onlinePlayers = new List<Player>();
                 
-                if (Data.Get().gameLogic.in_game == true) {
+                if (Data.Get().gameLogic.inGame == true) {
                     for (int i = 0; i < Data.Get().gameData.charactersSelected.Length; i++) {
                         GameObject newPlayer = Instantiate(prefabLocalPlayer, transform);
                         Player player = newPlayer.GetComponent<Player>();
@@ -89,6 +87,8 @@ namespace JamCat.Players
                     }
                 }
             }
+
+            playersCreated = 0;
         }
 
         public void UpdateOnlinePlayers(ulong[] onlinePlayersIDs, int[] characters) {
@@ -165,9 +165,6 @@ namespace JamCat.Players
         public bool IsObjectVisible(Renderer renderer) {
             return GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(SysCamera.Get().getCurrentCamera()), renderer.bounds);
         }
-
-
-
 
         public Player getPlayer(ulong id) {
             for (int i = 0; i < onlinePlayers.Count; i++)

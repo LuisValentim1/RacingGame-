@@ -11,30 +11,27 @@ namespace JamCat.Audio
         public static SysAudio Get() { return instance; }    
 
         // Variables
-        public AudioAmbience audioAmbience;
-        public AudioEffects audioEffects;
-        public AudioMusic audioMusic;
+        public Audio[] audios;
 
         // Methods -> Override
         protected override void OnAwake() {
             instance = this;
-            audioAmbience.AwakeAudio();
-            audioEffects.AwakeAudio();
-            audioMusic.AwakeAudio();
+            for (int i = 0; i < audios.Length; i++) {
+                audios[i].AwakeAudio();
+            }
         }
 
         protected override void OnStart() {
-            audioAmbience.StartAudio();
-            audioEffects.StartAudio();
-            audioMusic.StartAudio();
+            for (int i = 0; i < audios.Length; i++) {
+                audios[i].StartAudio();
+            }
         }
 
         protected override void OnUpdate() {
-            audioAmbience.UpdateAudio();
-            audioEffects.UpdateAudio();
-            audioMusic.UpdateAudio();
+            for (int i = 0; i < audios.Length; i++) {
+                audios[i].UpdateAudio();
+            }
         }
-
 
         // Methods -> Public
     }

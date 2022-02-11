@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace JamCat.Audio 
 {
-    public class AudioMusic : MonoBehaviour {
+    public class AudioMusic : Audio {
 
         public static AudioMusic instance;
         public static AudioMusic Get() { return instance; }
@@ -13,12 +13,10 @@ namespace JamCat.Audio
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip[] audioClips;
 
-        private AudioClip clip;
-        private bool started;
-        private float volume;
+        protected AudioClip clip;
 
         // Methods -> Standard
-        public void AwakeAudio() {
+        protected override void OnAwake() {
             if(audioSource == null)
                 audioSource.GetComponent<AudioSource>();
 
@@ -26,11 +24,11 @@ namespace JamCat.Audio
             instance = this;
         }
 
-        public void StartAudio() {
-
-        }
+        protected override void OnStart() {
         
-        public void UpdateAudio() {
+        }
+
+        protected override void OnUpdate() {
 
         }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 using JamCat.Players;
 
 namespace JamCat.Audio {
-    public class AudioEffects : MonoBehaviour {
+    public class AudioEffects : Audio {
     
         public static AudioEffects instance;
         public static AudioEffects Get() { return instance; }
@@ -14,23 +14,22 @@ namespace JamCat.Audio {
         private List<AudioEffect> allAudioEffects;   
         public GameObject prefabAudioEffect;
 
-        float volume;
-
         // Methods
-        public void AwakeAudio() {
+        protected override void OnAwake() {
             allAudioEffects = new List<AudioEffect>();
             instance = this;
         }
 
-        public void StartAudio() {
-
+        protected override void OnStart() {
+        
         }
 
-        public void UpdateAudio() {
+        protected override void OnUpdate() {
             for (int i = 0; i < allAudioEffects.Count; i++) {
                 allAudioEffects[i].UpdateEffect();
             }
         }
+
 
         public void PlayAudioEffect(Transform point, AudioClip clip) {
             if (clip == null)

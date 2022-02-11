@@ -154,7 +154,7 @@ namespace JamCat.Players
                 stripeFlag = true;
             
             if(collider2d.CompareTag("Finish"))
-                if (Data.Get().gameLogic.game_finished == false)
+                if (Data.Get().gameLogic.gameFinished == false)
                     GeneralMethods.CallFinish(character.characterNumber);
 
             if(collider2d.CompareTag("Module")) {
@@ -254,22 +254,14 @@ namespace JamCat.Players
             character.OnAwake(this);
             character.OnStart();
             character.characterNumber = characterNumber;
-            character.setUICharacter(Window_HUD.Get().AddCharacter(playerID, characterNumber));
-        }
 
-        /*
-        // Deprecated
-        public void AutoChooseCharacter() {
-            int number = Data.Get().gameData.characterSelected;
-            if (number < 0)
-                return;
+            if (SysPlayer.Get().playersCreated == 0)
+                character.setUICharacter(Window_HUD.Get().AddCharacterLeft(playerID, characterNumber));
+            else
+                character.setUICharacter(Window_HUD.Get().AddCharacterRight(playerID, characterNumber));
 
-            character = GetComponentsInChildren<Character>()[number];
-            character.OnAwake(this);
-            character.OnStart();
-            character.setUICharacter(Window_HUD.Get().AddCharacter(0, number));
+            SysPlayer.Get().playersCreated++;
         }
-        */
 
         // Interactions
         public void InteractJump(){

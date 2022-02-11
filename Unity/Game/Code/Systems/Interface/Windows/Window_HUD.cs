@@ -19,8 +19,8 @@ namespace JamCat.UI
         // public UI_Bar_Array barLife;
         public Window windowControlsInfo;
 
-        public GameObject prefabCharacter;
-        public Transform transfCharacters;
+        public GameObject prefabCharLeft, prefabCharRight;
+        public Transform parentCharLeft, parentCharRight;
 
         [Header("Run-Time")]
         public int currenct_character;
@@ -85,8 +85,16 @@ namespace JamCat.UI
             uiCharacters = new UI_Character[Data.Get().gameData.charactersSelected.Length];
         }
 
-        public UI_Character AddCharacter(int playerNumber, int characterNumber) {
-            GameObject newObj = Instantiate(prefabCharacter, transfCharacters);
+        public UI_Character AddCharacterLeft(int playerNumber, int characterNumber) {
+            GameObject newObj = Instantiate(prefabCharLeft, parentCharLeft);
+            UI_Character uiCharacter = newObj.GetComponent<UI_Character>();
+            uiCharacter.ChooseCharacterImg(characterNumber);
+            uiCharacters[playerNumber] = uiCharacter;
+            return uiCharacter;
+        }
+
+        public UI_Character AddCharacterRight(int playerNumber, int characterNumber) {
+            GameObject newObj = Instantiate(prefabCharRight, parentCharRight);
             UI_Character uiCharacter = newObj.GetComponent<UI_Character>();
             uiCharacter.ChooseCharacterImg(characterNumber);
             uiCharacters[playerNumber] = uiCharacter;

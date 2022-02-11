@@ -13,17 +13,15 @@ namespace JamCat.UI
         public static Window_SplashScreen Get() { return instance; }
 
         // Variables
-        public bool skip;
+        private bool skip;
 
         // Methods -> Override
         protected override void OnAwakeWindow() {
             instance = this;
-            canvasGroup.alpha = 1;
-            canvasGroup.blocksRaycasts = true;
         }
 
         protected override void OnOpenWindow() {
-
+            StartCoroutine(IE_SplashScreen());
         }
 
         protected override void OnCloseWindow() {
@@ -31,9 +29,30 @@ namespace JamCat.UI
         }
 
         protected override void OnUpdateWindow() {
-            
+            if (skip == false)
+                if (Input.anyKeyDown == true)
+                    Skip();
         }
 
         // Methods -> Public
+        IEnumerator IE_SplashScreen() {
+
+            yield return new WaitForSeconds(3);
+
+            Window_SplashScreen.Get().CloseWindow(0.25f, 0f);
+            Window_MainMenu.Get().OpenWindow(0.25f, 0.25f);
+
+            skip = true;
+        }
+
+        void Skip() {
+            StopAllCoroutines();
+            
+            // StopCoroutine(IE_OpenGame());
+            Window_Fade.Get().CloseWindow(0.25f, 0f);
+            Window_SplashScreen.Get().CloseWindow(0.25f, 0f);
+            Window_MainMenu.Get().OpenWindow(0.25f, 0f);
+            skip = true;
+        }
     }
 }

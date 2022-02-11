@@ -47,8 +47,6 @@ namespace JamCat
                 // print("Connections: " + networkManager.ConnectedClients.Count);
                 curPlayers = networkManager.ConnectedClients.Count;
             } 
-            
-            
         }
 
         // Methods -> Hosting / Connecting

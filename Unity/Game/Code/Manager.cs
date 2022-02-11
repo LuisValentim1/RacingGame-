@@ -32,13 +32,12 @@ public class Manager : MonoBehaviour
             systems[i].StartSys();
 
         Window_Options.Get().LoadAndApply();
-        GeneralMethods.MainMenu();
+        GeneralMethods.CallIntro();
     }
 
     private void Update() {
         for (int i = 0; i < systems.Length; i++)
             systems[i].UpdateSys();
-
 
         if (dev_tools == true) {
             Dev_InputToSkip();
@@ -66,18 +65,18 @@ public class Manager : MonoBehaviour
 
     public void SkipToGame(int characterNumber) {
 
-        if (Data.Get().gameLogic.in_main_menu == true) {
+        if (Data.Get().gameLogic.inMainMenu == true) {
             Window_MainMenu.Get().Button_Play();
             Window_Lobby.Get().ButtonHost();
             Window_CharacterSelection.Get().ButtonSelectCharacter(characterNumber);
             Window_CharacterSelection.Get().ToggleReady();
         }
         
-        if (Data.Get().gameLogic.game_finished == true) {
+        if (Data.Get().gameLogic.gameFinished == true) {
             Window_Finish.Get().Button_PlayAgain();
         }
         
-        if (Data.Get().gameLogic.in_game == true) {
+        if (Data.Get().gameLogic.inGame == true) {
             GeneralMethods.StartGame();
         }
         

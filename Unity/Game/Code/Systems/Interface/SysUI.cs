@@ -14,7 +14,6 @@ namespace JamCat.UI
         public Window[] windows_loaded;
         public List<Window> windows_opened = new List<Window>();
 
-        private bool skip_open_game;
 
 
         // Methods -> Override
@@ -24,13 +23,11 @@ namespace JamCat.UI
                 windows_loaded[i].AwakeUI();
 
             // Open Window fade
-            Window_Fade fade = Window_Fade.Get();
-            CloseAllWindowsInstead(fade);
+            // CloseAllWindowsInstead(Window_Fade.Get());
         }
 
         protected override void OnStart() {
             // Start Open Game Logic
-            StartCoroutine(IE_OpenGame());
         }
 
         protected override void OnUpdate() {
@@ -38,9 +35,6 @@ namespace JamCat.UI
                 windows_opened[i].UpdateUI();
 
             // Skip Splash Screen
-            if (skip_open_game == false)
-                if (Input.anyKeyDown == true)
-                    SkipOpenGame();
         }
 
 
@@ -75,31 +69,6 @@ namespace JamCat.UI
                 windows_opened[windows_opened.Count - 1].CloseUI();
         }
 
-
         // IEnumerators
-        IEnumerator IE_OpenGame() {
-
-            yield return new WaitForSeconds(0.2f);
-
-            Window_Fade.Get().CloseWindow(0.25f, 0f);
-            Window_SplashScreen.Get().OpenWindow(0.25f, 0.25f);
-
-            yield return new WaitForSeconds(3);
-
-            Window_SplashScreen.Get().CloseWindow(0.25f, 0f);
-            Window_MainMenu.Get().OpenWindow(0.25f, 0.25f);
-
-            skip_open_game = true;
-        }
-
-        void SkipOpenGame() {
-            StopAllCoroutines();
-            
-            // StopCoroutine(IE_OpenGame());
-            Window_Fade.Get().CloseWindow(0.25f, 0f);
-            Window_SplashScreen.Get().CloseWindow(0.25f, 0f);
-            Window_MainMenu.Get().OpenWindow(0.25f, 0f);
-            skip_open_game = true;
-        }
     }
 }

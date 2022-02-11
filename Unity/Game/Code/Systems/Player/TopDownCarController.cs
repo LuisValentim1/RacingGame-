@@ -69,7 +69,7 @@ namespace JamCat.Players
         }
 
         public void UpdateCar() {
-            if (Data.Get().gameLogic.in_game == false)
+            if (Data.Get().gameLogic.inGame == false)
                 return;
 
             PlayingEngineAudio();

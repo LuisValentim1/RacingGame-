@@ -14,7 +14,7 @@ public class CatArm : MonoBehaviour
     }
 
     void FixedUpdate(){
-        if (Data.Get().gameLogic.in_main_menu == true)
+        if (Data.Get().gameLogic.inMainMenu == true)
             UpdateRaycast();
     }
 

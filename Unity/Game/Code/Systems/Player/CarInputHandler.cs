@@ -22,6 +22,9 @@ namespace JamCat.Players
         }
 
         public void UpdateCar() {
+            if (Data.Get().gameLogic.gameFinished == true)
+                return;
+
             if (Data.Get().gameData.localMode == false) {
 
                 if(topDownCarController.hasControl == true){

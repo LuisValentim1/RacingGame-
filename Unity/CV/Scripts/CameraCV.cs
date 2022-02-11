@@ -22,7 +22,7 @@ public class CameraCV : MonoBehaviour
     }
 
     private void Update() {
-        if (Data.Get().gameLogic.in_main_menu == true) {
+        if (Data.Get().gameLogic.inMainMenu == true) {
             if (Input.GetMouseButtonDown(1)) {
                 moving = true;
             }

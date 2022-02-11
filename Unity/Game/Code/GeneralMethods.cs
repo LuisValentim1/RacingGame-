@@ -11,9 +11,9 @@ public static class GeneralMethods {
 
     public static void StartGame() {
         PauseGame(false);
-        Data.Get().gameLogic.in_main_menu = false;
-        Data.Get().gameLogic.in_game = true;
-        Data.Get().gameLogic.game_finished = false;
+        Data.Get().gameLogic.inMainMenu = false;
+        Data.Get().gameLogic.inGame = true;
+        Data.Get().gameLogic.gameFinished = false;
         Data.Get().sceneConfiguration.scene_play.SetActive(true);
         Data.Get().sceneConfiguration.scene_main_menu.SetActive(false);
         
@@ -45,14 +45,14 @@ public static class GeneralMethods {
     }
 
     public static void PauseGame(bool state) {
-        if (Data.Get().gameLogic.game_finished == true)
+        if (Data.Get().gameLogic.gameFinished == true)
             return;
 
-        if (Data.Get().gameLogic.in_game == false)
+        if (Data.Get().gameLogic.inGame == false)
             return;
 
         // Debug.Log("Pause was called: " + state);
-        Data.Get().gameLogic.is_paused = state;
+        Data.Get().gameLogic.isPaused = state;
         if (state == true) {
             Window_PauseMenu.Get().OpenWindow(0.2f, 0);
         } else {
@@ -62,8 +62,9 @@ public static class GeneralMethods {
 
     public static void MainMenu() {
         PauseGame(false);
-        Data.Get().gameLogic.in_main_menu = true;
-        Data.Get().gameLogic.in_game = false;
+        Data.Get().gameLogic.inIntro = false;
+        Data.Get().gameLogic.inMainMenu = true;
+        Data.Get().gameLogic.inGame = false;
         Data.Get().sceneConfiguration.scene_main_menu.SetActive(true);
         Data.Get().sceneConfiguration.scene_play.SetActive(false);
         SysMap.Get().RestartMap();
@@ -71,22 +72,29 @@ public static class GeneralMethods {
         AudioMusic.Get().PlayMusic(0);
         SysCamera.Get().SetCamera(0);
 
+
+
         // Terminar para os outros sistemas
     }
 
+    public static void CallIntro() {
+        Window_Fade.Get().CloseWindow(0.5f, 0.2f);
+        Window_Intro.Get().OpenWindow(0.2f, 0f);
+        Data.Get().gameLogic.inIntro = true;
+        Window_Intro.Get().videoPlayer.Play();
+    }
+
     public static void CallFinish(int characterNumber) {
-        Data.Get().gameLogic.game_finished = true;
+        Data.Get().gameLogic.gameFinished = true;
         Window_Finish.Get().OpenWindow(0.2f, 0);
         Window_Finish.Get().UpdateCharacterPic(characterNumber);
 
-        if (Data.Get().gameLogic.is_paused == true)
+        if (Data.Get().gameLogic.isPaused == true)
             Window_PauseMenu.Get().CloseWindow(0.3f, 0);
     }
 
 
 
-
-    
 
     public static float Remap(float value, float from1, float to1, float from2, float to2)
     {

@@ -8,8 +8,6 @@ namespace JamCat.Audio
     abstract public class Audio : MonoBehaviour {
         
         // Variables
-        protected AudioSource audioSource;
-        protected AudioClip clip;
         protected bool started;
 
         public float volume;
@@ -18,43 +16,18 @@ namespace JamCat.Audio
         abstract protected void OnAwake();
         abstract protected void OnStart();
         abstract protected void OnUpdate();
-        abstract protected void OnPlay();
-        abstract protected void OnStop();
 
         // Methods -> Standard
         public void AwakeAudio() {
-
+            OnAwake();
         }
 
         public void StartAudio() {
-
+            OnStart();
         }
         
         public void UpdateAudio() {
-
-        }
-
-        // Methods -> Public
-        public void PlayAudio() {
-            OnPlay();
-            started = true;
-        }
-
-        public void PlayAudio (AudioClip clip) {
-            SetAudio(clip);
-            PlayAudio();
-        }
-
-        public void StopAudio() {
-
-        }
-
-        public void SetAudio(AudioClip clip) {
-            this.clip = clip;
-        }
-
-        public void SetVolume(float value) {
-            volume = Math.Clamp(value, 0, 1);
+            OnUpdate();
         }
     }
 }
