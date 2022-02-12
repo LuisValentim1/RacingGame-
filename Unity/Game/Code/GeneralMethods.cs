@@ -31,7 +31,7 @@ public static class GeneralMethods {
         else
             SysCamera.Get().SetPlayerTarget(SysPlayer.Get().getLocalPlayer(0).transform);
 
-        AudioMusic.Get().PlayMusic(1);
+        AudioMusic.Get().Play(1);
         SysCamera.Get().SetCamera(1);
 
         GeneralMethods.StartCountdown(3);
@@ -69,7 +69,7 @@ public static class GeneralMethods {
         Data.Get().sceneConfiguration.scene_play.SetActive(false);
         SysMap.Get().RestartMap();
         SysPlayer.Get().Restart();
-        AudioMusic.Get().PlayMusic(0);
+        AudioMusic.Get().Play(0);
         SysCamera.Get().SetCamera(0);
 
 

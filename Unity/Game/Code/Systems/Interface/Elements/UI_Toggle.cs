@@ -95,7 +95,7 @@ namespace JamCat.UI {
             if (activated == false)
                 imageBackground.color = colorHighlighted;
 
-            AudioEffects.Get().PlayAudioEffect(null, clipOnHover);
+            AudioEffects.Get().Play(clipOnHover);
         }
 
         public void OnPointerExit(PointerEventData pointerEventData) {
@@ -115,7 +115,7 @@ namespace JamCat.UI {
             else
                 Toggle();
          
-            AudioEffects.Get().PlayAudioEffect(null, clipOnClick);
+            AudioEffects.Get().Play(clipOnClick);
         }
     }
 }

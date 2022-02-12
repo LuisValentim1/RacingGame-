@@ -8,7 +8,7 @@ public class AnimationEvents : MonoBehaviour
     public AudioClip[] audioClips;
 
     public void PlaySound(int i) {
-        AudioEffects.Get().PlayAudioEffect(null, audioClips[i]);
+        AudioEffects.Get().Play(audioClips[i]);
     }
 
 

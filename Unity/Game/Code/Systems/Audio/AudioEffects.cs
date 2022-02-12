@@ -30,24 +30,21 @@ namespace JamCat.Audio {
             }
         }
 
-
-        public void PlayAudioEffect(Transform point, AudioClip clip) {
+        protected override void OnPlay() {
             if (clip == null)
                 return;
 
             GameObject newObj = null;
-            if (point != null)
-                newObj = Instantiate(prefabAudioEffect, point.position, Quaternion.identity, transform);
-            else 
-                newObj = Instantiate(prefabAudioEffect, Vector3.zero, Quaternion.identity, transform);
+            newObj = Instantiate(prefabAudioEffect, Vector3.zero, Quaternion.identity, transform);
 
             AudioEffect audioEffect = newObj.GetComponent<AudioEffect>();
             audioEffect.getAudioSource().volume = Data.Get().options.audioGeneralVolume * Data.Get().options.audioEffectsVolume;
             audioEffect.Play(clip);
         }
 
-        public void setVolume(float value) {
-            volume = value;
+
+        public override void setVolume(float value) {
+            base.setVolume(value);
             for (int i = 0; i < allAudioEffects.Count; i++)
                 allAudioEffects[i].getAudioSource().volume = volume;
         }

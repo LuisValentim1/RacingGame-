@@ -73,7 +73,7 @@ namespace JamCat.UI
 
             img_background.color = color_highlighted;
             text.color = color_text_highlighted;
-            AudioEffects.Get().PlayAudioEffect(null, clipOnHover);
+            AudioEffects.Get().Play(clipOnHover);
         }
 
         public void OnPointerExit(PointerEventData data) {
@@ -90,7 +90,7 @@ namespace JamCat.UI
 
             img_background.color = color_pressed;
             text.color = color_text_pressed;
-            AudioEffects.Get().PlayAudioEffect(null, clipOnClick);
+            AudioEffects.Get().Play(clipOnClick);
         }
     }
 }
