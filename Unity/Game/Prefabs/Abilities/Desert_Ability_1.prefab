@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countdownToDestroy: 3
+  useAnimatorToDestroy: 1
   slowDuration: 2
   slowIntensity: 1.5
   maxAcceleration: 10
@@ -162,6 +163,7 @@ GameObject:
   - component: {fileID: 1821696115743413144}
   - component: {fileID: 4786190713176824713}
   - component: {fileID: 8404942937766074895}
+  - component: {fileID: 2330782663100681565}
   m_Layer: 0
   m_Name: Graphic
   m_TagString: Untagged
@@ -177,7 +179,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7980654826940843594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.48, y: 0.42, z: 0}
+  m_LocalPosition: {x: 0.027, y: 0, z: 0}
   m_LocalScale: {x: 1.488131, y: 1.488131, z: 1.488131}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -256,3 +258,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2330782663100681565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7980654826940843594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b84985f4a43f901469c1a58f2fbd2eea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips: []

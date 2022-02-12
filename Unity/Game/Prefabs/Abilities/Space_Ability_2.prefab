@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countdownToDestroy: 3
+  useAnimatorToDestroy: 1
   removeLifes: 1
 --- !u!1 &7980654826940843594
 GameObject:
@@ -159,6 +160,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1821696115743413144}
   - component: {fileID: 4786190713176824713}
+  - component: {fileID: 734981538958873184}
+  - component: {fileID: 5280389435256947146}
   m_Layer: 0
   m_Name: Graphic
   m_TagString: Untagged
@@ -174,7 +177,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7980654826940843594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.48, y: 0.42, z: 0}
+  m_LocalPosition: {x: -0.012, y: -0.02, z: 0}
   m_LocalScale: {x: 1.488131, y: 1.488131, z: 1.488131}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -222,14 +225,47 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -266363602, guid: ae74cce1f51bc8b4aa78c8cb520beaeb, type: 3}
-  m_Color: {r: 0.38124943, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.66, y: 0.59}
+  m_Size: {x: 1.72, y: 1.17}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &734981538958873184
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7980654826940843594}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 196b751f8abed7143adbf24595d69fba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5280389435256947146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7980654826940843594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b84985f4a43f901469c1a58f2fbd2eea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips: []

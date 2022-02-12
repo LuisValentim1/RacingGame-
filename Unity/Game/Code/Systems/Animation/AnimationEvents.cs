@@ -15,4 +15,8 @@ public class AnimationEvents : MonoBehaviour
     public void DestroyThis() {
         Destroy(transform.parent.gameObject);
     }
+    
+    public void DestroyParent() {
+        Destroy(transform.parent.gameObject);
+    }
 }

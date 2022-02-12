@@ -694,7 +694,7 @@ MonoBehaviour:
   sprites:
     spriteRendererRoad: {fileID: 8246002742027599358}
     spritesRoad:
-    - {fileID: 21300000, guid: 3e6989dc216b34547a89f0a4fecc7b58, type: 3}
+    - {fileID: 21300000, guid: d5ed37a716bbd2f44a9ecd905aee27d5, type: 3}
   moduleNumber: 0
   playerWasInside: 0
   noBackground: 1
