@@ -1,0 +1,606 @@
+fileFormatVersion: 2
+guid: 6f8941ba8ff8af643ac5b35a2d823cf2
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: espaco_ult_v2i-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 468
+        width: 172
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb3ee51e3aca4054f9d4b0c81e024250
+      internalID: -891420755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: espaco_ult_v2i-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 468
+        width: 172
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 268b95643a81d9a4b882cbe7d7c09ec6
+      internalID: 1882388811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: espaco_ult_v2i-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 468
+        width: 172
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df2bc000063cda341a6eea5e779700ff
+      internalID: 1262083971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: espaco_ult_v2i-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 468
+        width: 172
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6443defdc5c88f43b846a31fa382db3
+      internalID: 818452058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: espaco_ult_v2i-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 468
+        width: 172
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90931503dbabe0741a4e5b8c39c7e1e7
+      internalID: -194242458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: espaco_ult_v2i-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 351
+        width: 172
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4be25642f37903a439f823e397861594
+      internalID: -987377243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: espaco_ult_v2i-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 351
+        width: 172
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbf3ab2d07b44424da4f1a130ffdfb54
+      internalID: 1143047730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: espaco_ult_v2i-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 351
+        width: 172
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f97d0fd53a4f3fc489306107544b8297
+      internalID: 1216310157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: espaco_ult_v2i-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 351
+        width: 172
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfcfbd7c3ef3a2547a844e4c496705ae
+      internalID: 179656928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: espaco_ult_v2i-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 351
+        width: 172
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4538ad36c443f4e4982d91e79588a355
+      internalID: 1288097716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: espaco_ult_v2i-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 234
+        width: 172
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14f0a2f20cb161f44a502604dead178e
+      internalID: -1452973756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: espaco_ult_v2i-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 234
+        width: 172
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d706d8193985da54a816cefde912758c
+      internalID: 500812854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: espaco_ult_v2i-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 234
+        width: 172
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01234a60750fe5746a0885f0f22301bd
+      internalID: -1032686218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: espaco_ult_v2i-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 234
+        width: 172
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ef99361acc4d154f9296d33151bb718
+      internalID: -601807672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: espaco_ult_v2i-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 234
+        width: 172
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21fb1fe410004114a8df2a602fa6fad0
+      internalID: 1084726483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: espaco_ult_v2i-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 117
+        width: 172
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61c0ef5230165c842a26807e5c8c0970
+      internalID: -315175206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: espaco_ult_v2i-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 117
+        width: 172
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfa5f83da6f34c4459c8047c40afd5c2
+      internalID: -421572805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: espaco_ult_v2i-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 117
+        width: 172
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aed8910c945acbe4e9f3961c9745fc9a
+      internalID: -178553340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: espaco_ult_v2i-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 117
+        width: 172
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e5fbad17157c1d4ea6f55c5ee44d72d
+      internalID: -1619513214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: espaco_ult_v2i-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 117
+        width: 172
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c4f08329559a7043b8a766af63df411
+      internalID: -161014051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: espaco_ult_v2i-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 172
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f059b382d5f57c45a802834e7e8a44e
+      internalID: 1721747131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: espaco_ult_v2i-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 0
+        width: 172
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eae83c0dcf4f3af4d96c6c3da9b08fff
+      internalID: -1443929687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 3354f1bfeee8e1f4ba5857e396a7e091
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      espaco_ult_v2i-Sheet_8: 179656928
+      espaco_ult_v2i-Sheet_10: -1452973756
+      espaco_ult_v2i-Sheet_2: 1262083971
+      espaco_ult_v2i-Sheet_5: -987377243
+      espaco_ult_v2i-Sheet_12: -1032686218
+      espaco_ult_v2i-Sheet_6: 1143047730
+      espaco_ult_v2i-Sheet_4: -194242458
+      espaco_ult_v2i-Sheet_3: 818452058
+      espaco_ult_v2i-Sheet_16: -421572805
+      espaco_ult_v2i-Sheet_14: 1084726483
+      espaco_ult_v2i-Sheet_21: -1443929687
+      espaco_ult_v2i-Sheet_17: -178553340
+      espaco_ult_v2i-Sheet_11: 500812854
+      espaco_ult_v2i-Sheet_20: 1721747131
+      espaco_ult_v2i-Sheet_13: -601807672
+      espaco_ult_v2i-Sheet_19: -161014051
+      espaco_ult_v2i-Sheet_0: -891420755
+      espaco_ult_v2i-Sheet_1: 1882388811
+      espaco_ult_v2i-Sheet_9: 1288097716
+      espaco_ult_v2i-Sheet_7: 1216310157
+      espaco_ult_v2i-Sheet_15: -315175206
+      espaco_ult_v2i-Sheet_18: -1619513214
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
