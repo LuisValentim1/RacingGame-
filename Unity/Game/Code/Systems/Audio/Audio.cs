@@ -9,7 +9,6 @@ namespace JamCat.Audio
         
         // Variables
         protected bool started;
-
         public float volume;
 
         // Methods -> Abstract

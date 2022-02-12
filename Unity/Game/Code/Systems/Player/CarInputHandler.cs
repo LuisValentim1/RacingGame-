@@ -22,8 +22,10 @@ namespace JamCat.Players
         }
 
         public void UpdateCar() {
-            if (Data.Get().gameLogic.gameFinished == true)
+            if (Data.Get().gameLogic.gameFinished == true) {
+                topDownCarController.setInputVector(Vector2.zero);
                 return;
+            }
 
             if (Data.Get().gameData.localMode == false) {
 
