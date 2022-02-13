@@ -53,7 +53,6 @@ namespace JamCat.Players
             topDownCarController = GetComponent<TopDownCarController>();
             carInputHandler = GetComponent<CarInputHandler>();
             wheelTrailRenderedHandlers = GetComponentsInChildren<WheelTrailRenderedHandler>();
-            SysPlayer.Get().onlinePlayers.Add(this);
 
             // Awake the methods
             topDownCarController.AwakeCar();

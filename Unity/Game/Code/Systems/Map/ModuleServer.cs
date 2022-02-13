@@ -11,7 +11,6 @@ namespace JamCat.Map
 {
     public class ModuleServer : NetworkBehaviour 
     {
-        
 
         public struct SerializeElements : INetworkSerializable {
             public int[] elementsID;

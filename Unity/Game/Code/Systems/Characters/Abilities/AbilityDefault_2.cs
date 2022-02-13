@@ -7,6 +7,7 @@ namespace JamCat.Characters
 {
     public class AbilityDefault_2 : Ability
     {
+        public Animator animator;
         public float force, duration;
         
         // Methods -> Override
@@ -24,6 +25,7 @@ namespace JamCat.Characters
 
         protected override void OnUse() {
             GetComponentInParent<TopDownCarController>().ApplyDashForce(duration, transform.up, force);
+            animator.SetTrigger("Activated");
         }
 
         protected override string[] OnSendInfo() {

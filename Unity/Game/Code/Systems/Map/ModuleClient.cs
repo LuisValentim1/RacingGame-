@@ -11,6 +11,7 @@ namespace JamCat.Map
 {
     public class ModuleClient : NetworkBehaviour 
     {
+
         public SerializeElements GetSerializeElements() {
             SerializeElements serializeElements = new SerializeElements();
             Element[] elements = GetComponentsInChildren<Element>();
@@ -18,21 +19,10 @@ namespace JamCat.Map
             serializeElements.elementsPos = new Vector3[elements.Length];
             serializeElements.elementsRot = new Quaternion[elements.Length];
             for (int i = 0; i < elements.Length; i++) {
-                // print(elements[i].name);
                 serializeElements.elementsID[i] = elements[i].elementID;
                 serializeElements.elementsPos[i] = elements[i].transform.position;
                 serializeElements.elementsRot[i] = elements[i].transform.rotation;
             }        
-/*
-SerializeElements serializeElements = new SerializeElements {
-                for (int i = 0; i < elements.Length; i++) {
-                    elementsID[i] = elements[i].elementID;
-                    elementsPos[i] = elements[i].transform.position;
-                    elementsRot[i] = elements[i].transform.rotation;    
-                }                
-            };
-*/
-
             return serializeElements;
         }
 

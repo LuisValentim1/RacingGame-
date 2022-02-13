@@ -22130,7 +22130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gerarTudo: 0
-  modulesQuantity: 4
+  modulesQuantity: 20
   numberOfElementsPerModule: 3
   generateQuantity: 2
   deleteQuantity: 3
@@ -33508,7 +33508,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c454db7c4c1ef5b4d9a7fa96d36796fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume: 0
   audioSource: {fileID: 2873918279019894509}
   audioClips: []
 --- !u!4 &2873918279019894499
@@ -33666,7 +33665,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf78ee3e2cd940c47a64babe4777a08a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume: 0
+  audioSource: {fileID: 0}
+  audioClips: []
   prefabAudioEffect: {fileID: 935795483466659180, guid: c6e29168119ccfa47acff7015012471b, type: 3}
 --- !u!1 &2873918279546601282
 GameObject:
@@ -33794,7 +33794,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286a870dc2dd2f7459a86b2fc2c7cd0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume: 0
   audioSource: {fileID: 2873918279546601292}
   audioClips:
   - {fileID: 8300000, guid: fad706b8ebed40c4598cef73c5533f5d, type: 3}

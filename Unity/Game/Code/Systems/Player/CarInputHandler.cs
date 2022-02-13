@@ -76,11 +76,14 @@ namespace JamCat.Players
 
                 player.InteractStripe();
             
+
                 if(Input.GetButtonDown("Interaction"))
                     player.InteractJump();
                 
-                if (Input.GetKeyDown(KeyCode.N)) 
+                if (Input.GetKeyDown(KeyCode.N)) {
+                    print("a");
                     player.getCharacter().UseAbilityBasic();
+                }
                 
                 if (Input.GetKeyDown(KeyCode.M)) 
                     player.getCharacter().UseAbilityUlti();
