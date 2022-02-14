@@ -48,12 +48,13 @@ public class TimeCalendar : MonoBehaviour
             UpdateTime();
     }
 
+/*
     private void OnValidate() {
         UpdateDayState();
         UpdateMonth();
         UpdateSeason();
     }
-
+*/
     // METHODS - PRIVATE
     void UpdateTime() {
         if (textShowTime != null)

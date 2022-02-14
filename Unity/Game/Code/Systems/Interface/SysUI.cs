@@ -23,6 +23,7 @@ namespace JamCat.UI
                 windows_loaded[i].AwakeUI();
 
             // Open Window fade
+            // Window_Fade.Get().canvasGroup.alpha = 1;
             // CloseAllWindowsInstead(Window_Fade.Get());
         }
 

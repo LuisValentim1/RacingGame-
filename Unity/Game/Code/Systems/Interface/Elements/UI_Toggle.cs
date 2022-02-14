@@ -15,6 +15,11 @@ namespace JamCat.UI {
         public Color colorDefault;
         public Color colorHighlighted;
         public Color colorPressed;
+        
+        [Header("Text Box")]
+        public bool hasText;
+        public UI_TextBox textBox;
+        [TextArea] public string text;
 
         [Header("Test")]
         public bool isServerEnabled = true;
@@ -25,6 +30,10 @@ namespace JamCat.UI {
 
         public AudioClip clipOnClick;
         public AudioClip clipOnHover;
+
+
+        
+
 
         // Methods -> Standard
         protected override void OnAwake() {
@@ -96,6 +105,11 @@ namespace JamCat.UI {
                 imageBackground.color = colorHighlighted;
 
             AudioEffects.Get().Play(clipOnHover);
+
+            if (hasText == true) {
+                textBox.setVisible(true);
+                textBox.setText(text);
+            }
         }
 
         public void OnPointerExit(PointerEventData pointerEventData) {
@@ -104,6 +118,11 @@ namespace JamCat.UI {
 
             if (activated == false)
                 imageBackground.color = colorDefault;
+                
+
+            if (hasText == true) {
+                textBox.setVisible(false);
+            }
         }
 
         public void OnPointerDown(PointerEventData pointerEventData) {
@@ -116,6 +135,10 @@ namespace JamCat.UI {
                 Toggle();
          
             AudioEffects.Get().Play(clipOnClick);
+            
+            if (hasText == true) {
+                textBox.setVisible(false);
+            }
         }
     }
 }

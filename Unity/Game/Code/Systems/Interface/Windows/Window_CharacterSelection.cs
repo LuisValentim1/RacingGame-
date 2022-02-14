@@ -17,7 +17,6 @@ namespace JamCat.UI
 
         // Variables
         public UI_ToggleGroup toggleGroup;
-        public CanvasGroup toggleGroupBlocker;
         public UI_Toggle toggleReady;
         public Text textPlayersReady;
 

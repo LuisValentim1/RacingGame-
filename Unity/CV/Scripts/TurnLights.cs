@@ -13,7 +13,7 @@ public class TurnLights : MonoBehaviour
     public Text txtA;
 
     private void Awake() {
-        SwitchManual(false);
+        SwitchManualNoSound(false);
         SwitchAutomaticLights(true);
     }
 
@@ -50,6 +50,21 @@ public class TurnLights : MonoBehaviour
 
     }
     
+
+    public void SwitchManualNoSound(bool state) {
+        SwitchAutomaticLights(false);
+            
+        this.stateM = state;
+        for (int i = 0; i < objLights.Length; i++)
+            objLights[i].SetActive(state);
+
+        if (state == true) {
+            txt.text = "L - Switch Off Lights";
+        } else {
+            txt.text = "L - Switch On Lights";
+        }
+
+    }
 
 
     public void SwitchAuto() {

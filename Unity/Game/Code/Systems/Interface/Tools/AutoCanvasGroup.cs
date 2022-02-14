@@ -25,14 +25,14 @@ namespace JamCat.UI
 
             // Apenas vai mudar o valor do fade quando o valor do execute_in for 0
             if (execute_in > 0) {
-                execute_in -= Time.unscaledDeltaTime;
+                execute_in -= Time.deltaTime;
                 return;
             }
 
             // Muda o valor do fade conforme o tipo de fade
             switch(fade_type){
                 case FadeType.fade_in:
-                    fade_value += Time.unscaledDeltaTime / fade_time;
+                    fade_value += Time.deltaTime / fade_time;
 
                     if (fade_value >= 1) {
                         canvas_group.blocksRaycasts = true;
@@ -40,7 +40,7 @@ namespace JamCat.UI
                     }
                     break;
                 case FadeType.fade_out:
-                    fade_value -= Time.unscaledDeltaTime / fade_time;
+                    fade_value -= Time.deltaTime / fade_time;
                     canvas_group.blocksRaycasts = false;
                     if (fade_value <= 0)
                         finished = true;

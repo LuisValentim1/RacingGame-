@@ -113,22 +113,32 @@ namespace JamCat.Players
         }
 
         bool deathCalled = false;
-        public void UpdateDeaths(){
-            if (Data.Get().gameLogic.countdown > 0) {
-                return;
-            } else {
+        public void UpdateDeaths() {
+            if (Data.Get().gameLogic.countdown <= 0) {
                 deathCalled = false;
-            }
-
-            for(int i = 0; i < onlinePlayers.Count; i++){
-                if(CheckDeath(onlinePlayers[i]) && onlinePlayers[i].getCharacter().isAlive() == true){
-                    if (deathCalled == false) {
-                        RestartOnModule();
+                for(int i = 0; i < onlinePlayers.Count; i++) {
+                    if(CheckDeath(onlinePlayers[i]) && onlinePlayers[i].getCharacter().isAlive() == true) {
                         onlinePlayers[i].getCharacter().RemoveLife();
-                        deathCalled = true;
+
+                        if (getPlayersAlive().Length == 1) {
+                            GeneralMethods.CallFinish(getPlayersAlive()[0].getCharacter().characterNumber);
+                        } else {
+                            if (deathCalled == false) {
+                                RestartOnModule();
+                                deathCalled = true;
+                            }
+                        }
                     }
                 }
             }
+        }
+
+        public Player[] getPlayersAlive() {
+            List<Player> value = new List<Player>();
+            for (int i = 0; i < onlinePlayers.Count; i++)
+                if (onlinePlayers[i].getCharacter().isAlive() == true)
+                    value.Add(onlinePlayers[i]);
+            return value.ToArray();
         }
         
         public bool CheckDeath(Player pl){

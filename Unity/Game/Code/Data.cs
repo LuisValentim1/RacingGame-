@@ -30,7 +30,7 @@ public class Data : MonoBehaviour {
         public bool inIntro = false;
         public bool isPaused = false;
         public bool inGame = false;
-        public bool inMainMenu = true;
+        public bool inMainMenu = false;
         public bool gameFinished = false;
 
         public float countdown = 0;

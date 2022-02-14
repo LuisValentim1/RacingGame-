@@ -70,6 +70,7 @@ public static class GeneralMethods {
         SysMap.Get().RestartMap();
         SysPlayer.Get().Restart();
         AudioMusic.Get().Play(0);
+        AudioAmbience.Get().Play(0);
         SysCamera.Get().SetCamera(0);
 
 
@@ -78,7 +79,7 @@ public static class GeneralMethods {
     }
 
     public static void CallIntro() {
-        Window_Fade.Get().CloseWindow(0.5f, 0.2f);
+        Window_Fade.Get().CloseWindow(3f, 1f);
         Window_Intro.Get().OpenWindow(0.2f, 0f);
         Data.Get().gameLogic.inIntro = true;
         Window_Intro.Get().videoPlayer.Play();
