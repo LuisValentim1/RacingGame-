@@ -41,6 +41,8 @@ namespace JamCat.Characters
 
         public void OnUpdate() {
             abilityGroup.OnUpdate();
+     
+            AddManaByTime(0.5f);
         }
 
         public void OnHit() {

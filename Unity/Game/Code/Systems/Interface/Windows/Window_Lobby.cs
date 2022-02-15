@@ -65,10 +65,18 @@ namespace JamCat.UI
 
         // Methods -> Public
         public void ButtonLocalMode() {
+            Data.Get().gameData.localMode = true;
             CloseWindow(0.3f, 0);
             Window_CharacterSelection.Get().OpenWindow(0.3f, 0.3f);
-            Data.Get().gameData.localMode = true;
         }
+        
+        public void ButtonTrainingMode() {
+            Data.Get().gameData.localMode = true;
+            Data.Get().gameData.trainingMode = true;
+            CloseWindow(0.3f, 0);
+            Window_CharacterSelection.Get().OpenWindow(0.3f, 0.3f);
+        }
+
 
         public void ButtonHost() {
             Data.Get().gameData.localMode = false;

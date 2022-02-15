@@ -17,7 +17,8 @@ namespace JamCat.UI
         [Header("Configuration")]
         // public UI_Bar barMana;
         // public UI_Bar_Array barLife;
-        public Window windowControlsInfo;
+        public Window windowControlsPlayer1;
+        public Window windowControlsPlayer2;
 
         public GameObject prefabCharLeft, prefabCharRight;
         public Transform parentCharLeft, parentCharRight;
@@ -50,14 +51,21 @@ namespace JamCat.UI
                 timerControlsInfo -= Time.deltaTime;
                 if (timerControlsInfo <= 0) {
                     triggerControlInfo = false;
-                    windowControlsInfo.CloseWindow(1f, 0);
+                    windowControlsPlayer1.CloseWindow(1f, 0);
+                    windowControlsPlayer2.CloseWindow(1f, 0);
                 }
             }
         }
 
         protected override void OnOpenWindow() {
-            windowControlsInfo.CloseWindow(0, 0);
-            windowControlsInfo.OpenWindow(1f, 0);
+            if (Data.Get().gameData.localMode == true) {
+                windowControlsPlayer1.OpenWindow(1f, 0);
+                
+                if (Data.Get().gameData.trainingMode == false) {
+                    windowControlsPlayer2.OpenWindow(1f, 0);
+                }
+            }
+            
             timerControlsInfo = 3f;
             triggerControlInfo = true;
 
@@ -65,7 +73,8 @@ namespace JamCat.UI
         }
 
         protected override void OnCloseWindow() {
-
+            windowControlsPlayer1.CloseWindow(0, 0);
+            windowControlsPlayer2.CloseWindow(0, 0);
         }
 
         // Methods -> Public

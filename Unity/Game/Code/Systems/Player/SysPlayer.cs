@@ -117,16 +117,15 @@ namespace JamCat.Players
             if (Data.Get().gameLogic.countdown <= 0) {
                 deathCalled = false;
                 for(int i = 0; i < onlinePlayers.Count; i++) {
-                    if(CheckDeath(onlinePlayers[i]) && onlinePlayers[i].getCharacter().isAlive() == true) {
+                    if(CheckDeath(onlinePlayers[i]) && onlinePlayers[i].getCharacter().isAlive() == true && deathCalled == false) {
                         onlinePlayers[i].getCharacter().RemoveLife();
 
                         if (getPlayersAlive().Length == 1) {
-                            GeneralMethods.CallFinish(getPlayersAlive()[0].getCharacter().characterNumber);
+                            if (Data.Get().gameData.trainingMode == false)
+                                GeneralMethods.CallFinish(getPlayersAlive()[0].getCharacter().characterNumber);
                         } else {
-                            if (deathCalled == false) {
-                                RestartOnModule();
-                                deathCalled = true;
-                            }
+                            RestartOnModule();
+                            deathCalled = true;
                         }
                     }
                 }

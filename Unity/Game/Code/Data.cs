@@ -47,6 +47,7 @@ public class Data : MonoBehaviour {
         public int characterSelected = -1;
 
         public bool localMode = false;
+        public bool trainingMode = false;
         public int[] charactersSelected;
     }
 

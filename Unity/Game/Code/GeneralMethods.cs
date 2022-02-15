@@ -73,7 +73,7 @@ public static class GeneralMethods {
         AudioAmbience.Get().Play(0);
         SysCamera.Get().SetCamera(0);
 
-
+        Data.Get().gameData.trainingMode = Data.Get().gameData.localMode = false;
 
         // Terminar para os outros sistemas
     }

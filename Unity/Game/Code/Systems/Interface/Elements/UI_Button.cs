@@ -27,6 +27,11 @@ namespace JamCat.UI
         public AudioClip clipOnClick;
         public AudioClip clipOnHover;
 
+        [Header("Text Box")]
+        public bool hasText;
+        public UI_TextBox textBox;
+        [TextArea] public string textBoxText;
+
 
         // ---> Implement Audio
 
@@ -74,6 +79,11 @@ namespace JamCat.UI
             img_background.color = color_highlighted;
             text.color = color_text_highlighted;
             AudioEffects.Get().Play(clipOnHover);
+            
+            if (hasText == true) {
+                textBox.setVisible(true);
+                textBox.setText(textBoxText);
+            }
         }
 
         public void OnPointerExit(PointerEventData data) {
@@ -82,6 +92,10 @@ namespace JamCat.UI
 
             img_background.color = color_Default;
             text.color = color_text_Default;
+            
+            if (hasText == true) {
+                textBox.setVisible(false);
+            }
         }
 
         public void OnPointerDown(PointerEventData data) {
@@ -91,6 +105,10 @@ namespace JamCat.UI
             img_background.color = color_pressed;
             text.color = color_text_pressed;
             AudioEffects.Get().Play(clipOnClick);
+            
+            if (hasText == true) {
+                textBox.setVisible(false);
+            }
         }
     }
 }
